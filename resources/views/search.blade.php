@@ -13,7 +13,7 @@
 
     <div class="row" dir="rtl">
         <div class="col-lg-3">
-
+            <jilsati-city-search just-search="true" :cities="{{json_encode($cities)}}"></jilsati-city-search>
         </div>
         <div class="jumbotron m-4 rounded-0 shadow-sm bg-light col-lg-9">
             <div class="row card-columns">

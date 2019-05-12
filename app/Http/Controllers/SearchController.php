@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jilsah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class SearchController extends Controller
 {
@@ -14,7 +15,9 @@ class SearchController extends Controller
      */
     public function index()
     {
-        return view('search');
+        $cities = DB::table('cities')->select('*')->get();
+
+        return view('search',compact('cities'));
     }
 
     /**

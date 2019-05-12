@@ -1811,8 +1811,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['cities'],
+  props: ['cities', 'justSearch'],
   data: function data() {
     return {
       city: ''
@@ -37218,28 +37221,63 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "container" }, [
-    _c("div", { staticClass: "input-group form-group py-2 mb-3 row" }, [
-      _vm._m(0),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _c(
-        "select",
-        { staticClass: "form-control col-lg-10 col-8", attrs: { dir: "rtl" } },
-        [
-          _c(
-            "option",
-            { attrs: { selected: "selected", disabled: "disabled" } },
-            [_vm._v("اختار المدينة...")]
-          ),
-          _vm._v(" "),
-          _vm._l(_vm.cities, function(city) {
-            return _c("option", { key: city.id }, [_vm._v(_vm._s(city.name))])
-          })
-        ],
-        2
-      )
-    ])
+    _vm.justSearch
+      ? _c(
+          "select",
+          {
+            staticClass: "form-control col-lg-10 col-8",
+            attrs: { name: "city", dir: "rtl" }
+          },
+          [
+            _c(
+              "option",
+              { attrs: { selected: "selected", disabled: "disabled" } },
+              [_vm._v("اختار المدينة...")]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.cities, function(city) {
+              return _c("option", { key: city.id }, [_vm._v(_vm._s(city.name))])
+            })
+          ],
+          2
+        )
+      : _c(
+          "form",
+          {
+            staticClass: "form-group input-group py-2 mb-3 row",
+            attrs: { method: "get", action: "/search" }
+          },
+          [
+            _c("input", {
+              staticClass: "btn btn-success ml-2",
+              attrs: { type: "submit", role: "button", value: "ابحث" }
+            }),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c(
+              "select",
+              {
+                staticClass: "form-control col-lg-10 col-8",
+                attrs: { name: "city", dir: "rtl" }
+              },
+              [
+                _c(
+                  "option",
+                  { attrs: { selected: "selected", disabled: "disabled" } },
+                  [_vm._v("اختار المدينة...")]
+                ),
+                _vm._v(" "),
+                _vm._l(_vm.cities, function(city) {
+                  return _c("option", { key: city.id }, [
+                    _vm._v(_vm._s(city.name))
+                  ])
+                })
+              ],
+              2
+            )
+          ]
+        )
   ])
 }
 var staticRenderFns = [
@@ -37248,30 +37286,13 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c(
-      "form",
+      "select",
       {
-        staticClass: "form-group input-group-prepend",
-        attrs: { method: "get", action: "search" }
+        staticClass: "form-control col-lg-2 col-4",
+        attrs: { name: "type", dir: "rtl" }
       },
       [
-        _c("input", {
-          staticClass: "btn btn-info btn-outline-secondary ml-2",
-          attrs: { type: "submit", role: "button", value: "ابحث" }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      { staticClass: "form-control col-lg-2 col-4", attrs: { dir: "rtl" } },
-      [
-        _c("option", [_vm._v("اي شي")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("جلسات")]),
+        _c("option", { attrs: { selected: "selected" } }, [_vm._v("جلسات")]),
         _vm._v(" "),
         _c("option", [_vm._v("استراحات")])
       ]
