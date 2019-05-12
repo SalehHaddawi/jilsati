@@ -1754,6 +1754,34 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-card.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-card.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['imgSrc', 'title', 'description', 'addedAt']
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-city-search.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-city-search.vue?vue&type=script&lang=js& ***!
@@ -37123,6 +37151,57 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-card.vue?vue&type=template&id=1f1abb90&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-card.vue?vue&type=template&id=1f1abb90& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card shadow-sm col-lg-4 col-md-6 col-12" }, [
+    _c("img", {
+      staticClass: "card-img-top pt-1",
+      attrs: { src: _vm.imgSrc, alt: "..." }
+    }),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-body" }, [
+      _c("h5", { staticClass: "card-title text-right" }, [
+        _vm._v(_vm._s(_vm.title))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-text text-right" }, [
+        _vm._v(
+          _vm._s(
+            _vm.description.length > 50
+              ? _vm.description.substring(0, 50) + "..."
+              : _vm.description
+          )
+        )
+      ])
+    ]),
+    _vm._v(" "),
+    _c("div", { staticClass: "card-footer text-right" }, [
+      _c("small", { staticClass: "text-muted" }, [
+        _vm._v(_vm._s("تم الاضافة في " + _vm.addedAt))
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-city-search.vue?vue&type=template&id=8f94d15c&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-city-search.vue?vue&type=template&id=8f94d15c& ***!
@@ -49544,6 +49623,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
 Vue.component('jilsati-navbar', __webpack_require__(/*! ./components/jilsati-navbar */ "./resources/js/components/jilsati-navbar.vue")["default"]);
 Vue.component('jilsati-city-search', __webpack_require__(/*! ./components/jilsati-city-search */ "./resources/js/components/jilsati-city-search.vue")["default"]);
+Vue.component('jilsati-card', __webpack_require__(/*! ./components/jilsati-card */ "./resources/js/components/jilsati-card.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49553,7 +49633,37 @@ Vue.component('jilsati-city-search', __webpack_require__(/*! ./components/jilsat
 var app = new Vue({
   el: '#app',
   data: {
-    showCities: false
+    istrahas: [{
+      id: 0,
+      title: 'شاليهات الواحة',
+      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 1,
+      title: 'شاليهات جدة',
+      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 2,
+      title: 'شاليهات هدر',
+      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 3,
+      title: 'شاليهات ابها',
+      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 4,
+      title: 'شاليهات دبي',
+      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 5,
+      title: 'شاليهات نننن',
+      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }]
   }
 });
 
@@ -49614,6 +49724,75 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-card.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/jilsati-card.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_card_vue_vue_type_template_id_1f1abb90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-card.vue?vue&type=template&id=1f1abb90& */ "./resources/js/components/jilsati-card.vue?vue&type=template&id=1f1abb90&");
+/* harmony import */ var _jilsati_card_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-card.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-card.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_card_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_card_vue_vue_type_template_id_1f1abb90___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_card_vue_vue_type_template_id_1f1abb90___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-card.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-card.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/jilsati-card.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_card_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-card.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-card.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_card_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-card.vue?vue&type=template&id=1f1abb90&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/jilsati-card.vue?vue&type=template&id=1f1abb90& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_card_vue_vue_type_template_id_1f1abb90___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-card.vue?vue&type=template&id=1f1abb90& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-card.vue?vue&type=template&id=1f1abb90&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_card_vue_vue_type_template_id_1f1abb90___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_card_vue_vue_type_template_id_1f1abb90___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 

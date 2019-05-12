@@ -23,6 +23,8 @@ Vue.component('jilsati-navbar', require('./components/jilsati-navbar').default);
 
 Vue.component('jilsati-city-search', require('./components/jilsati-city-search').default);
 
+Vue.component('jilsati-card', require('./components/jilsati-card').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -33,6 +35,13 @@ const app = new Vue({
     el: '#app',
 
     data : {
-        showCities : false
+        istrahas : [
+            {id:0,title:'شاليهات الواحة',description:'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',imgSrc:'images/ad_1.jpg'},
+            {id:1,title:'شاليهات جدة',description:'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',imgSrc:'images/ad_1.jpg'},
+            {id:2,title:'شاليهات هدر',description:'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',imgSrc:'images/ad_1.jpg'},
+            {id:3,title:'شاليهات ابها',description:'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',imgSrc:'images/ad_1.jpg'},
+            {id:4,title:'شاليهات دبي',description:'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',imgSrc:'images/ad_1.jpg'},
+            {id:5,title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',imgSrc:'images/ad_1.jpg'},
+        ]
     },
 });
