@@ -22,6 +22,10 @@
     </style>
 </head>
 
+<body class="fonts">
+
 @yield('body')
+
+</body>
 
 </html>

@@ -37168,16 +37168,19 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "input-group-prepend" }, [
-      _c(
-        "button",
-        {
+    return _c(
+      "form",
+      {
+        staticClass: "form-group input-group-prepend",
+        attrs: { method: "get", action: "search" }
+      },
+      [
+        _c("input", {
           staticClass: "btn btn-info btn-outline-secondary ml-2",
-          attrs: { type: "submit" }
-        },
-        [_vm._v("ابحث")]
-      )
-    ])
+          attrs: { type: "submit", role: "button", value: "ابحث" }
+        })
+      ]
+    )
   },
   function() {
     var _vm = this
