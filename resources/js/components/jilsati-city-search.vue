@@ -13,7 +13,7 @@
                 <option>استراحات</option>
             </select>
             <select name="city" dir="rtl" class="form-control col-lg-10 col-8">
-                <option selected="selected" disabled="disabled">اختار المدينة...</option>
+                <option selected="selected" disabled="disabled">اختار المدينة....</option>
 
                 <option v-for="city in cities" :key="city.id">{{city.name}}</option>
             </select>

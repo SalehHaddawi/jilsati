@@ -37169,34 +37169,38 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "card shadow-sm col-lg-4 col-md-6 col-12" }, [
-    _c("img", {
-      staticClass: "card-img-top pt-1",
-      attrs: { src: _vm.imgSrc, alt: "..." }
-    }),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-body" }, [
-      _c("h5", { staticClass: "card-title text-right" }, [
-        _vm._v(_vm._s(_vm.title))
+  return _c(
+    "div",
+    { staticClass: "card shadow-sm col-lg-4 col-md-6 col-sm-6 col-12" },
+    [
+      _c("img", {
+        staticClass: "card-img-top pt-1",
+        attrs: { src: _vm.imgSrc, alt: "..." }
+      }),
+      _vm._v(" "),
+      _c("div", { staticClass: "card-body" }, [
+        _c("h5", { staticClass: "card-title text-right" }, [
+          _vm._v(_vm._s(_vm.title))
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: "card-text text-right" }, [
+          _vm._v(
+            _vm._s(
+              _vm.description.length > 50
+                ? _vm.description.substring(0, 50) + "..."
+                : _vm.description
+            )
+          )
+        ])
       ]),
       _vm._v(" "),
-      _c("p", { staticClass: "card-text text-right" }, [
-        _vm._v(
-          _vm._s(
-            _vm.description.length > 50
-              ? _vm.description.substring(0, 50) + "..."
-              : _vm.description
-          )
-        )
+      _c("div", { staticClass: "card-footer text-right" }, [
+        _c("small", { staticClass: "text-muted" }, [
+          _vm._v(_vm._s(_vm.addedAt))
+        ])
       ])
-    ]),
-    _vm._v(" "),
-    _c("div", { staticClass: "card-footer text-right" }, [
-      _c("small", { staticClass: "text-muted" }, [
-        _vm._v(_vm._s("تم الاضافة في " + _vm.addedAt))
-      ])
-    ])
-  ])
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -37265,7 +37269,7 @@ var render = function() {
                 _c(
                   "option",
                   { attrs: { selected: "selected", disabled: "disabled" } },
-                  [_vm._v("اختار المدينة...")]
+                  [_vm._v("اختار المدينة....")]
                 ),
                 _vm._v(" "),
                 _vm._l(_vm.cities, function(city) {
@@ -49657,32 +49661,57 @@ var app = new Vue({
     istrahas: [{
       id: 0,
       title: 'شاليهات الواحة',
-      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىمكبنورحيكثقونبلثبيقنخةولخثقبةلثسيبةتثيقبهةتنبقثهةتخصنهىخنصصى',
       imgSrc: 'images/ad_1.jpg'
     }, {
       id: 1,
       title: 'شاليهات جدة',
-      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسمنثقبي ةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقبهنىخصنهىخنصصى',
       imgSrc: 'images/ad_1.jpg'
     }, {
       id: 2,
       title: 'شاليهات هدر',
-      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      description: 'نةنةشنسىةنهىسةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقنهشةىسنشىةشسهنىخصنهىخنصصى',
       imgSrc: 'images/ad_1.jpg'
     }, {
       id: 3,
       title: 'شاليهات ابها',
-      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      description: 'نةنةشنسىةنهىسنهشةىسنةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقشىةشسهنىخصنهىخنصصى',
       imgSrc: 'images/ad_1.jpg'
     }, {
       id: 4,
       title: 'شاليهات دبي',
-      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      description: 'نةنةشنسىةنهىسنهشةىةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقسنشىةشسهنىخصنهىخنصصى',
       imgSrc: 'images/ad_1.jpg'
     }, {
       id: 5,
       title: 'شاليهات نننن',
-      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىخصنهىخنصصى',
+      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 6,
+      title: 'شاليهات نننن',
+      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 7,
+      title: 'شاليهات نننن',
+      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 8,
+      title: 'شاليهات نننن',
+      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 9,
+      title: 'شاليهات نننن',
+      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
+      imgSrc: 'images/ad_1.jpg'
+    }, {
+      id: 10,
+      title: 'شاليهات نننن',
+      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
       imgSrc: 'images/ad_1.jpg'
     }]
   }

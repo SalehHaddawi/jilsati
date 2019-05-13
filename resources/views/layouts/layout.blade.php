@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
     <link rel="stylesheet" href="{{'css/app.css'}}">
+    <link rel="stylesheet" href="{{'css/custom.css'}}">
 
     <style>
         .fonts{
