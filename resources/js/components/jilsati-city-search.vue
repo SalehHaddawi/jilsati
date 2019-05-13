@@ -1,9 +1,7 @@
 <template>
     <div class="container">
-        <select v-if="justSearch" name="city" dir="rtl" class="form-control col-lg-10 col-8">
-            <option selected="selected" disabled="disabled">اختار المدينة...</option>
-
-            <option v-for="city in cities" :key="city.id">{{city.name}}</option>
+        <select v-if="justSearch" v-model="selectedCity" name="city" dir="rtl" class="form-control col-lg-10 col-8">
+            <option v-for="c in cities" :key="c.id" :selected="c.name === current">{{c.name}}</option>
         </select>
 
         <form v-else method="get" action="/search" class="form-group input-group py-2 mb-3 row">
@@ -12,10 +10,10 @@
                 <option selected="selected">جلسات</option>
                 <option>استراحات</option>
             </select>
-            <select name="city" dir="rtl" class="form-control col-lg-10 col-8">
+            <select v-model="selectedCity" name="city" dir="rtl" class="form-control col-lg-10 col-8">
                 <option selected="selected" disabled="disabled">اختار المدينة....</option>
 
-                <option v-for="city in cities" :key="city.id">{{city.name}}</option>
+                <option v-for="c in cities" :key="c.id">{{c.name}}</option>
             </select>
         </form>
     </div>
@@ -23,12 +21,17 @@
 
 <script>
     export default {
-        props : ['cities', 'justSearch'],
+        props : ['cities', 'justSearch', 'current'],
 
         data : function(){
           return {
-              city : ''
+              selectedCity : 'اختار المدينة....'
           }
         },
+
+        created : function () {
+            if(this.current)
+                this.selectedCity = this.current;
+        }
     }
 </script>

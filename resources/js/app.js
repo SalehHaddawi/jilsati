@@ -25,6 +25,7 @@ Vue.component('jilsati-city-search', require('./components/jilsati-city-search')
 
 Vue.component('jilsati-card', require('./components/jilsati-card').default);
 
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

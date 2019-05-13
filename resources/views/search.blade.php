@@ -15,13 +15,14 @@
         <div class="col-lg-3 col-md d-none d-lg-block">
             <div class="form-group">
                 <jilsati-city-search just-search="true"
+                                     current="سكاكا"
                                      :cities="{{json_encode($cities)}}">
                 </jilsati-city-search>
             </div>
-            <form dir="ltr">
+            <form>
                 <div class="custom-control custom-checkbox">
                     <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                    <label class="custom-control-label" for="customCheck">عائلات</label>
+                    <label class="custom-control-label" for="customCheck">Check this custom checkbox</label>
                 </div>
             </form>
         </div>

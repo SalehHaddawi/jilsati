@@ -1812,14 +1812,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['cities', 'justSearch'],
+  props: ['cities', 'justSearch', 'current'],
   data: function data() {
     return {
-      city: ''
+      selectedCity: 'اختار المدينة....'
     };
+  },
+  created: function created() {
+    if (this.current) this.selectedCity = this.current;
   }
 });
 
@@ -37229,21 +37230,40 @@ var render = function() {
       ? _c(
           "select",
           {
+            directives: [
+              {
+                name: "model",
+                rawName: "v-model",
+                value: _vm.selectedCity,
+                expression: "selectedCity"
+              }
+            ],
             staticClass: "form-control col-lg-10 col-8",
-            attrs: { name: "city", dir: "rtl" }
+            attrs: { name: "city", dir: "rtl" },
+            on: {
+              change: function($event) {
+                var $$selectedVal = Array.prototype.filter
+                  .call($event.target.options, function(o) {
+                    return o.selected
+                  })
+                  .map(function(o) {
+                    var val = "_value" in o ? o._value : o.value
+                    return val
+                  })
+                _vm.selectedCity = $event.target.multiple
+                  ? $$selectedVal
+                  : $$selectedVal[0]
+              }
+            }
           },
-          [
-            _c(
+          _vm._l(_vm.cities, function(c) {
+            return _c(
               "option",
-              { attrs: { selected: "selected", disabled: "disabled" } },
-              [_vm._v("اختار المدينة...")]
-            ),
-            _vm._v(" "),
-            _vm._l(_vm.cities, function(city) {
-              return _c("option", { key: city.id }, [_vm._v(_vm._s(city.name))])
-            })
-          ],
-          2
+              { key: c.id, domProps: { selected: c.name === _vm.current } },
+              [_vm._v(_vm._s(c.name))]
+            )
+          }),
+          0
         )
       : _c(
           "form",
@@ -37262,8 +37282,31 @@ var render = function() {
             _c(
               "select",
               {
+                directives: [
+                  {
+                    name: "model",
+                    rawName: "v-model",
+                    value: _vm.selectedCity,
+                    expression: "selectedCity"
+                  }
+                ],
                 staticClass: "form-control col-lg-10 col-8",
-                attrs: { name: "city", dir: "rtl" }
+                attrs: { name: "city", dir: "rtl" },
+                on: {
+                  change: function($event) {
+                    var $$selectedVal = Array.prototype.filter
+                      .call($event.target.options, function(o) {
+                        return o.selected
+                      })
+                      .map(function(o) {
+                        var val = "_value" in o ? o._value : o.value
+                        return val
+                      })
+                    _vm.selectedCity = $event.target.multiple
+                      ? $$selectedVal
+                      : $$selectedVal[0]
+                  }
+                }
               },
               [
                 _c(
@@ -37272,10 +37315,8 @@ var render = function() {
                   [_vm._v("اختار المدينة....")]
                 ),
                 _vm._v(" "),
-                _vm._l(_vm.cities, function(city) {
-                  return _c("option", { key: city.id }, [
-                    _vm._v(_vm._s(city.name))
-                  ])
+                _vm._l(_vm.cities, function(c) {
+                  return _c("option", { key: c.id }, [_vm._v(_vm._s(c.name))])
                 })
               ],
               2
