@@ -12,17 +12,42 @@
     </div>
 
     <div class="row" dir="rtl">
-        <div class="col-lg-3 col-md d-none d-lg-block">
-            <div class="form-group">
-                <jilsati-city-search just-search="true"
-                                     current="سكاكا"
-                                     :cities="{{json_encode($cities)}}">
-                </jilsati-city-search>
-            </div>
-            <form>
-                <div class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
-                    <label class="custom-control-label" for="customCheck">Check this custom checkbox</label>
+        <div class="col-lg-3">
+            <form method="get" action="/search">
+                <div class="accordion shadow text-right mb-2" id="accordionExample">
+                    <div class="card">
+                        <div class="card-header" id="headingOne">
+                            <jilsati-city-search just-search="true"
+                                                 current="{{\Illuminate\Support\Facades\Input::get('city')}}"
+                                                 :cities="{{json_encode($cities)}}"
+                                                 class="rounded-0">
+                            </jilsati-city-search>
+                            <h2 class="mb-0">
+                                <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    بحث متقدم...
+                                </button>
+                            </h2>
+                        </div>
+
+                        <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                            <div class="card-body">
+                                <div>
+                                    <jilsati-checkbox name="families">عائلات</jilsati-checkbox>
+                                    <jilsati-checkbox name="guys">شباب</jilsati-checkbox>
+                                    <jilsati-checkbox name="pool">مسبح</jilsati-checkbox>
+                                    <jilsati-checkbox name="women-pool">مسبح نساء</jilsati-checkbox>
+                                    <jilsati-checkbox name="playground">ملعب</jilsati-checkbox>
+                                    <jilsati-checkbox name="women-section">قسم نساء منفصل</jilsati-checkbox>
+                                    <jilsati-checkbox name="tv">تلفزيون</jilsati-checkbox>
+                                    <jilsati-checkbox name="wifi">واي فاي</jilsati-checkbox>
+                                    <jilsati-checkbox name="garden">حديقة</jilsati-checkbox>
+                                    <jilsati-checkbox name="air-condition">مكيفة</jilsati-checkbox>
+                                    <jilsati-checkbox name="celebrations">مناسبات</jilsati-checkbox>
+                                </div>
+                            </div>
+                        </div>
+                        <input type="submit" value="ابحث مرة ثانية" class="btn btn-success input-group-append rounded-0">
+                    </div>
                 </div>
             </form>
         </div>

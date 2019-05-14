@@ -25,6 +25,8 @@ Vue.component('jilsati-city-search', require('./components/jilsati-city-search')
 
 Vue.component('jilsati-card', require('./components/jilsati-card').default);
 
+Vue.component('jilsati-checkbox',require('./components/jilsati-checkbox').default);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

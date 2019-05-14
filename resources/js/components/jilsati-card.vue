@@ -1,5 +1,5 @@
 <template>
-    <div class="card shadow-sm col-lg-4 col-md-6 col-sm-6 col-12">
+    <div class="card shadow-sm rounded-0 col-lg-4 col-md-6 col-sm-6 col-12">
         <img :src="imgSrc" class="card-img-top pt-1" alt="...">
         <div class="card-body">
             <h5 class="card-title text-right">{{title}}</h5>

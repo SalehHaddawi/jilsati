@@ -1782,6 +1782,34 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-checkbox.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-checkbox.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    name: {
+      required: true,
+      type: String
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-city-search.vue?vue&type=script&lang=js&":
 /*!******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-city-search.vue?vue&type=script&lang=js& ***!
@@ -1791,6 +1819,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
 //
 //
 //
@@ -37172,7 +37201,9 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    { staticClass: "card shadow-sm col-lg-4 col-md-6 col-sm-6 col-12" },
+    {
+      staticClass: "card shadow-sm rounded-0 col-lg-4 col-md-6 col-sm-6 col-12"
+    },
     [
       _c("img", {
         staticClass: "card-img-top pt-1",
@@ -37210,6 +37241,46 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-checkbox.vue?vue&type=template&id=0138e96b&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-checkbox.vue?vue&type=template&id=0138e96b& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "custom-control custom-checkbox text-right mr-3 mb-2" },
+    [
+      _c("input", {
+        staticClass: "custom-control-input",
+        attrs: { type: "checkbox", id: _vm.name, name: _vm.name }
+      }),
+      _vm._v(" "),
+      _c(
+        "label",
+        { staticClass: "custom-control-label", attrs: { for: _vm.name } },
+        [_vm._t("default")],
+        2
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-city-search.vue?vue&type=template&id=8f94d15c&":
 /*!**********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-city-search.vue?vue&type=template&id=8f94d15c& ***!
@@ -37225,7 +37296,7 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container" }, [
+  return _c("div", { staticClass: "m-2" }, [
     _vm.justSearch
       ? _c(
           "select",
@@ -37238,7 +37309,7 @@ var render = function() {
                 expression: "selectedCity"
               }
             ],
-            staticClass: "form-control col-lg-10 col-8",
+            staticClass: "form-control",
             attrs: { name: "city", dir: "rtl" },
             on: {
               change: function($event) {
@@ -37256,14 +37327,22 @@ var render = function() {
               }
             }
           },
-          _vm._l(_vm.cities, function(c) {
-            return _c(
+          [
+            _c(
               "option",
-              { key: c.id, domProps: { selected: c.name === _vm.current } },
-              [_vm._v(_vm._s(c.name))]
-            )
-          }),
-          0
+              { attrs: { selected: "selected", disabled: "disabled" } },
+              [_vm._v("اختار المدينة....")]
+            ),
+            _vm._v(" "),
+            _vm._l(_vm.cities, function(c) {
+              return _c(
+                "option",
+                { key: c.id, domProps: { selected: c.name === _vm.current } },
+                [_vm._v(_vm._s(c.name))]
+              )
+            })
+          ],
+          2
         )
       : _c(
           "form",
@@ -37447,7 +37526,7 @@ var render = function() {
                 class: { active: _vm.active === "main" }
               },
               [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
+                _c("a", { staticClass: "nav-link", attrs: { href: "/" } }, [
                   _vm._v("الصفحة الرئيسية"),
                   _vm.active === "main"
                     ? _c("span", { staticClass: "sr-only" }, [
@@ -49690,6 +49769,7 @@ __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 Vue.component('jilsati-navbar', __webpack_require__(/*! ./components/jilsati-navbar */ "./resources/js/components/jilsati-navbar.vue")["default"]);
 Vue.component('jilsati-city-search', __webpack_require__(/*! ./components/jilsati-city-search */ "./resources/js/components/jilsati-city-search.vue")["default"]);
 Vue.component('jilsati-card', __webpack_require__(/*! ./components/jilsati-card */ "./resources/js/components/jilsati-card.vue")["default"]);
+Vue.component('jilsati-checkbox', __webpack_require__(/*! ./components/jilsati-checkbox */ "./resources/js/components/jilsati-checkbox.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -49882,6 +49962,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_card_vue_vue_type_template_id_1f1abb90___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_card_vue_vue_type_template_id_1f1abb90___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-checkbox.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/jilsati-checkbox.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_checkbox_vue_vue_type_template_id_0138e96b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-checkbox.vue?vue&type=template&id=0138e96b& */ "./resources/js/components/jilsati-checkbox.vue?vue&type=template&id=0138e96b&");
+/* harmony import */ var _jilsati_checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-checkbox.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-checkbox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_checkbox_vue_vue_type_template_id_0138e96b___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_checkbox_vue_vue_type_template_id_0138e96b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-checkbox.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-checkbox.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/jilsati-checkbox.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-checkbox.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-checkbox.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_checkbox_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-checkbox.vue?vue&type=template&id=0138e96b&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-checkbox.vue?vue&type=template&id=0138e96b& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_checkbox_vue_vue_type_template_id_0138e96b___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-checkbox.vue?vue&type=template&id=0138e96b& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-checkbox.vue?vue&type=template&id=0138e96b&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_checkbox_vue_vue_type_template_id_0138e96b___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_checkbox_vue_vue_type_template_id_0138e96b___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

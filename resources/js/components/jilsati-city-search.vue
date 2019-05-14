@@ -1,6 +1,7 @@
 <template>
-    <div class="container">
-        <select v-if="justSearch" v-model="selectedCity" name="city" dir="rtl" class="form-control col-lg-10 col-8">
+    <div class="m-2">
+        <select v-if="justSearch" v-model="selectedCity" name="city" dir="rtl" class="form-control">
+            <option selected="selected" disabled="disabled">اختار المدينة....</option>
             <option v-for="c in cities" :key="c.id" :selected="c.name === current">{{c.name}}</option>
         </select>
 

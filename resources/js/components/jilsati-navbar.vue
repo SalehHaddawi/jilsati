@@ -21,7 +21,7 @@
                     <a class="nav-link" href="#">دخول/تسجيل<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'main'}">
-                    <a class="nav-link" href="#">الصفحة الرئيسية<span v-if="active === 'main'" class="sr-only">(الحالية)</span></a>
+                    <a class="nav-link" href="/">الصفحة الرئيسية<span v-if="active === 'main'" class="sr-only">(الحالية)</span></a>
                 </li>
             </ul>
         </div>
