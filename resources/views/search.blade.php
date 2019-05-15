@@ -20,7 +20,6 @@
     <div class="row mb-5" dir="rtl">
         <div class="col-lg-3 col-0 d-lg-block d-md-none d-sm-none d-none">
             <form method="get" action="/search">
-                {{csrf_token()}}
                 <div class="accordion shadow text-right mb-2" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -65,15 +64,14 @@
     <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
-                <div class="modal-header text-right">
+                <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLongTitle">تغيير البحث</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <form method="get" action="/search">
-                    {{csrf_token()}}
-                    <div class="accordion shadow text-right mb-2" id="accordionExample">
+                    <div class="accordion shadow mb-2" id="accordionExample">
                         <div class="card">
                             <div class="card-header" id="headingOne">
                                 <jilsati-city-search just-search="true"
@@ -81,7 +79,7 @@
                                                      :cities="{{json_encode($cities)}}"
                                                      class="rounded-0">
                                 </jilsati-city-search>
-                                <h2 class="mb-0">
+                                <h2 class="mb-0 text-right">
                                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                         بحث متقدم...
                                     </button>
