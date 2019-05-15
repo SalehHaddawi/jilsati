@@ -1,7 +1,7 @@
 <template>
     <div class="custom-control custom-checkbox text-right mr-3 mb-2">
-        <input type="checkbox" class="custom-control-input" :id="name" :name="name" :checked="checked ? 'checked' : ''">
-        <label class="custom-control-label" :for="name"><slot></slot></label>
+        <input type="checkbox" class="custom-control-input" :id="name + postfix" :name="name" :checked="checked ? 'checked' : ''">
+        <label class="custom-control-label" :for="name + postfix"><slot></slot></label>
     </div>
 </template>
 
@@ -17,6 +17,12 @@
 
             checked : {
                 required: false
+            },
+
+            postfix : {
+                required : false,
+
+                default : ''
             }
         }
     }

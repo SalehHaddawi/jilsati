@@ -1812,6 +1812,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['imgSrc', 'title', 'description', 'addedAt', 'city', 'price', 'comments']
 });
@@ -1843,6 +1845,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     checked: {
       required: false
+    },
+    postfix: {
+      required: false,
+      "default": ''
     }
   }
 });
@@ -1931,7 +1937,8 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     properties: {
       required: true
-    }
+    },
+    idPostfix: ''
   }
 });
 
@@ -37328,24 +37335,27 @@ var render = function() {
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "col-4 d-inline text-center" }, [
+          _c("h5", [
+            _c("span", { staticClass: "badge badge-warning shadow-sm" }, [
+              _vm._v(
+                _vm._s(
+                  (_vm.price
+                    ? _vm.price + "ر.س"
+                    : Math.floor(Math.random() * (+4000 - +150)) + +150) +
+                    " ر.س"
+                )
+              )
+            ])
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "col-4 d-inline text-left" }, [
           _c("span", { staticClass: "badge badge-info shadow-sm" }, [
             _vm._v(
               _vm._s(
                 (_vm.comments
                   ? _vm.comments + "تقييم"
                   : Math.floor(Math.random() * (+40 - +0)) + +0) + " تقييم"
-              )
-            )
-          ])
-        ]),
-        _vm._v(" "),
-        _c("div", { staticClass: "col-4 d-inline text-left" }, [
-          _c("span", { staticClass: "badge badge-warning  shadow-sm" }, [
-            _vm._v(
-              _vm._s(
-                (_vm.price
-                  ? _vm.price + "ر.س"
-                  : Math.floor(Math.random() * (+4000 - +150)) + +150) + " ر.س"
               )
             )
           ])
@@ -37410,13 +37420,16 @@ var render = function() {
     [
       _c("input", {
         staticClass: "custom-control-input",
-        attrs: { type: "checkbox", id: _vm.name, name: _vm.name },
+        attrs: { type: "checkbox", id: _vm.name + _vm.postfix, name: _vm.name },
         domProps: { checked: _vm.checked ? "checked" : "" }
       }),
       _vm._v(" "),
       _c(
         "label",
-        { staticClass: "custom-control-label", attrs: { for: _vm.name } },
+        {
+          staticClass: "custom-control-label",
+          attrs: { for: _vm.name + _vm.postfix }
+        },
         [_vm._t("default")],
         2
       )
@@ -37598,40 +37611,72 @@ var render = function() {
     [
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["families"], name: "families" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["families"],
+            name: "families"
+          }
+        },
         [_vm._v("عائلات")]
       ),
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["guys"], name: "guys" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["guys"],
+            name: "guys"
+          }
+        },
         [_vm._v("شباب")]
       ),
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["pool"], name: "pool" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["pool"],
+            name: "pool"
+          }
+        },
         [_vm._v("مسبح")]
       ),
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
         {
-          attrs: { checked: _vm.properties["women-pool"], name: "women-pool" }
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["women-pool"],
+            name: "women-pool"
+          }
         },
         [_vm._v("مسبح نساء")]
       ),
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["kids-pool"], name: "kids-pool" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["kids-pool"],
+            name: "kids-pool"
+          }
+        },
         [_vm._v("مسبح اطفال")]
       ),
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
         {
-          attrs: { checked: _vm.properties["playground"], name: "playground" }
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["playground"],
+            name: "playground"
+          }
         },
         [_vm._v("ملعب")]
       ),
@@ -37640,6 +37685,7 @@ var render = function() {
         "jilsati-checkbox",
         {
           attrs: {
+            postfix: _vm.idPostfix,
             checked: _vm.properties["women-section"],
             name: "women-section"
           }
@@ -37649,19 +37695,37 @@ var render = function() {
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["tv"], name: "tv" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["tv"],
+            name: "tv"
+          }
+        },
         [_vm._v("تلفزيون")]
       ),
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["wifi"], name: "wifi" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["wifi"],
+            name: "wifi"
+          }
+        },
         [_vm._v("واي فاي")]
       ),
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["garden"], name: "garden" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["garden"],
+            name: "garden"
+          }
+        },
         [_vm._v("حديقة")]
       ),
       _vm._v(" "),
@@ -37669,6 +37733,7 @@ var render = function() {
         "jilsati-checkbox",
         {
           attrs: {
+            postfix: _vm.idPostfix,
             checked: _vm.properties["air-condition"],
             name: "air-condition"
           }
@@ -37680,6 +37745,7 @@ var render = function() {
         "jilsati-checkbox",
         {
           attrs: {
+            postfix: _vm.idPostfix,
             checked: _vm.properties["celebrations"],
             name: "celebrations"
           }
@@ -37689,13 +37755,25 @@ var render = function() {
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["jacuzzi"], name: "jacuzzi" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["jacuzzi"],
+            name: "jacuzzi"
+          }
+        },
         [_vm._v("جاكوزي")]
       ),
       _vm._v(" "),
       _c(
         "jilsati-checkbox",
-        { attrs: { checked: _vm.properties["kitchen"], name: "kitchen" } },
+        {
+          attrs: {
+            postfix: _vm.idPostfix,
+            checked: _vm.properties["kitchen"],
+            name: "kitchen"
+          }
+        },
         [_vm._v("مطبخ")]
       )
     ],

@@ -5,10 +5,12 @@
                 <span class="badge badge-success  shadow-sm">{{city}}</span>
             </div>
             <div class="col-4 d-inline text-center">
-                <span class="badge badge-info shadow-sm">{{(comments ?  comments + 'تقييم' : Math.floor(Math.random() * (+40 - +0)) + +0) + ' تقييم'}}</span>
+                <h5>
+                    <span class="badge badge-warning shadow-sm">{{(price ?  price + 'ر.س' : Math.floor(Math.random() * (+4000 - +150)) + +150) + ' ر.س'}}</span>
+                </h5>
             </div>
             <div class="col-4 d-inline text-left">
-                <span class="badge badge-warning  shadow-sm">{{(price ?  price + 'ر.س' : Math.floor(Math.random() * (+4000 - +150)) + +150) + ' ر.س'}}</span>
+                <span class="badge badge-info shadow-sm">{{(comments ?  comments + 'تقييم' : Math.floor(Math.random() * (+40 - +0)) + +0) + ' تقييم'}}</span>
             </div>
         </div>
         <img :src="imgSrc" class="card-img-top pt-1" style="cursor: pointer" alt="...">
