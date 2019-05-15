@@ -20,6 +20,7 @@
     <div class="row mb-5" dir="rtl">
         <div class="col-lg-3 col-0 d-lg-block d-md-none d-sm-none d-none">
             <form method="get" action="/search">
+                {{csrf_token()}}
                 <div class="accordion shadow text-right mb-2" id="accordionExample">
                     <div class="card">
                         <div class="card-header" id="headingOne">
@@ -71,6 +72,7 @@
                     </button>
                 </div>
                 <form method="get" action="/search">
+                    {{csrf_token()}}
                     <div class="accordion shadow text-right mb-2" id="accordionExample">
                         <div class="card">
                             <div class="card-header" id="headingOne">
