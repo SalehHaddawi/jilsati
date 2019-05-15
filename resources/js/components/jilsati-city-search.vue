@@ -1,12 +1,12 @@
 <template>
-    <div class="m-2">
+    <div class="m-2 ml-r">
         <select v-if="justSearch" v-model="selectedCity" name="city" dir="rtl" class="form-control">
             <option selected="selected" disabled="disabled">اختار المدينة....</option>
             <option v-for="c in cities" :key="c.id" :selected="c.name === current">{{c.name}}</option>
         </select>
 
         <form v-else method="get" action="/search" class="form-group input-group py-2 mb-3 row">
-            <input class="btn btn-success ml-2" type="submit" role="button" value="ابحث"/>
+            <input class="btn btn-success form-row" type="submit" role="button" value="ابحث"/>
             <select name="type" dir="rtl" class="form-control col-lg-2 col-4">
                 <option selected="selected">جلسات</option>
                 <option>استراحات</option>

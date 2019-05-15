@@ -1,5 +1,7 @@
 @extends('layouts.layout')
 
+@inject('input', '\Illuminate\Support\Facades\Input')
+
 @section('title','بحث')
 
 @section('body')
@@ -7,9 +9,7 @@
 <div id="app">
     <jilsati-navbar></jilsati-navbar>
 
-    <div class="alert alert-success text-center m-lg-6 m-xl-8 m-4" role="alert">
-        نتيجة البحث
-    </div>
+    <jilsati-alert type="success">نتيجة البحث</jilsati-alert>
 
     <div class="row" dir="rtl">
         <div class="col-lg-3">
@@ -18,7 +18,7 @@
                     <div class="card">
                         <div class="card-header" id="headingOne">
                             <jilsati-city-search just-search="true"
-                                                 current="{{\Illuminate\Support\Facades\Input::get('city')}}"
+                                                 current="{{$input::get('city')}}"
                                                  :cities="{{json_encode($cities)}}"
                                                  class="rounded-0">
                             </jilsati-city-search>
@@ -31,19 +31,7 @@
 
                         <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
                             <div class="card-body">
-                                <div>
-                                    <jilsati-checkbox name="families">عائلات</jilsati-checkbox>
-                                    <jilsati-checkbox name="guys">شباب</jilsati-checkbox>
-                                    <jilsati-checkbox name="pool">مسبح</jilsati-checkbox>
-                                    <jilsati-checkbox name="women-pool">مسبح نساء</jilsati-checkbox>
-                                    <jilsati-checkbox name="playground">ملعب</jilsati-checkbox>
-                                    <jilsati-checkbox name="women-section">قسم نساء منفصل</jilsati-checkbox>
-                                    <jilsati-checkbox name="tv">تلفزيون</jilsati-checkbox>
-                                    <jilsati-checkbox name="wifi">واي فاي</jilsati-checkbox>
-                                    <jilsati-checkbox name="garden">حديقة</jilsati-checkbox>
-                                    <jilsati-checkbox name="air-condition">مكيفة</jilsati-checkbox>
-                                    <jilsati-checkbox name="celebrations">مناسبات</jilsati-checkbox>
-                                </div>
+                                <jilsati-istraha-props :properties="{{ json_encode($input::all()) }}"></jilsati-istraha-props>
                             </div>
                         </div>
                         <input type="submit" value="ابحث مرة ثانية" class="btn btn-success input-group-append rounded-0">
@@ -52,18 +40,18 @@
             </form>
         </div>
 
-        <div class="rounded-0 shadow-sm bg-light col-lg-9 col-12">
+        <div class="rounded-0 shadow bg-light col-lg-9 col-12">
             <div class="row card-columns">
                 <jilsati-card v-for="istraha in istrahas"
                               :key="istraha.id"
                               :title="istraha.title"
                               :description="istraha.description"
                               :img-src="istraha.imgSrc"
+                              :city="istraha.city"
                               added-at="1997/08/03">
                 </jilsati-card>
             </div>
         </div>
-
     </div>
 </div>
 
