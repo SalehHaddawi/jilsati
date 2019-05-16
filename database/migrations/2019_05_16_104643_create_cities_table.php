@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJilsahsTable extends Migration
+class CreateCitiesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,9 @@ class CreateJilsahsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jilsahs', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('name');
             $table->timestamps();
         });
     }
@@ -26,6 +27,6 @@ class CreateJilsahsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jilsahs');
+        Schema::dropIfExists('cities');
     }
 }
