@@ -13,7 +13,7 @@
                 <span class="badge badge-info shadow-sm">{{(comments ?  comments + 'تقييم' : Math.floor(Math.random() * (+40 - +0)) + +0) + ' تقييم'}}</span>
             </div>
         </div>
-        <img :src="imgSrc" class="card-img-top pt-1" style="cursor: pointer" alt="...">
+        <a :href="'/jilsahs/'+id"><img :src="imgSrc" class="card-img-top pt-1" style="cursor: pointer" alt="..."></a>
         <div class="card-body">
             <h5 class="card-title text-right">{{title}}</h5>
             <p class="card-text text-right">{{ (description.length > 50 ? description.substring(0,50) + '...' : description) }}</p>
@@ -26,6 +26,6 @@
 
 <script>
     export default {
-        props : ['imgSrc','title', 'description','addedAt','city','price', 'comments']
+        props : ['id','imgSrc','title', 'description','addedAt','city','price', 'comments']
     }
 </script>

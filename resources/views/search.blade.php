@@ -50,6 +50,7 @@
             <div class="row card-columns">
                 <jilsati-card v-for="istraha in istrahas"
                               :key="istraha.id"
+                              :id="istraha.id"
                               :title="istraha.title"
                               :description="istraha.description"
                               :img-src="istraha.imgSrc"

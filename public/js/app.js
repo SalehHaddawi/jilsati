@@ -1815,7 +1815,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['imgSrc', 'title', 'description', 'addedAt', 'city', 'price', 'comments']
+  props: ['id', 'imgSrc', 'title', 'description', 'addedAt', 'city', 'price', 'comments']
 });
 
 /***/ }),
@@ -37362,11 +37362,13 @@ var render = function() {
         ])
       ]),
       _vm._v(" "),
-      _c("img", {
-        staticClass: "card-img-top pt-1",
-        staticStyle: { cursor: "pointer" },
-        attrs: { src: _vm.imgSrc, alt: "..." }
-      }),
+      _c("a", { attrs: { href: "/jilsahs/" + _vm.id } }, [
+        _c("img", {
+          staticClass: "card-img-top pt-1",
+          staticStyle: { cursor: "pointer" },
+          attrs: { src: _vm.imgSrc, alt: "..." }
+        })
+      ]),
       _vm._v(" "),
       _c("div", { staticClass: "card-body" }, [
         _c("h5", { staticClass: "card-title text-right" }, [
