@@ -85,27 +85,11 @@ class RegisterController extends Controller
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
             ]);
         } catch (ValidationException $e) {
+            dd($e->getMessage());
         }
 
         Auth::login($this->create($request->all()));
 
-        return redirect($this->redirectPath());
-    }
-
-    /**
-     * Handle a registration request for the application.
-     *
-     * @param  \Illuminate\Http\Request   $request
-     * @return \Illuminate\Http\Response
-     */
-    /*protected function register(Request $request)
-    {
-        $this->validator($request->all())->validate();
-
-        event(new Registered($user = $this->create($request->all())));
-
-        $this->guard()->login($user);
-
         return redirect('/');
-    }*/
+    }
 }

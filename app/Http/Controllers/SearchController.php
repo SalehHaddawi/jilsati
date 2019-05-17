@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Jilsah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Input;
 
 class SearchController extends Controller
 {
@@ -15,6 +16,10 @@ class SearchController extends Controller
      */
     public function index()
     {
+        if(Input::get('city',null) == null){
+            return redirect('/');
+        }
+
         $cities = DB::table('cities')->select('*')->get();
 
         return view('search',compact('cities'));

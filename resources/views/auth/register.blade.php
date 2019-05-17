@@ -6,6 +6,8 @@
 
     <jilsati-navbar active="login"></jilsati-navbar>
 
+    {{json_encode($errors->all())}}
+
     <div class="container">
         <div class="jumbotron justify-content-md-center shadow-sm bg-light">
             <div class="form-group">
