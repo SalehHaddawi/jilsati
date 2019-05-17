@@ -53,4 +53,10 @@ const app = new Vue({
             {id:10,city:'الأفلاج',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'images/istraha.jpg'},
         ]
     },
+
+    created : function () {
+        $(function () {
+            $('[data-toggle="popover"]').popover()
+        })
+    }
 });

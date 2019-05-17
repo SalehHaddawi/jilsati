@@ -1986,6 +1986,18 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['active', 'user', 'token', 'logoSrc'],
   methods: {
@@ -37893,26 +37905,76 @@ var render = function() {
               },
               [
                 _vm.user
-                  ? _c(
-                      "a",
-                      {
-                        staticClass: "nav-link",
-                        attrs: { href: "#" },
-                        on: {
-                          click: function($event) {
-                            return _vm.logout()
+                  ? _c("div", { staticClass: "dropdown nav-link" }, [
+                      _vm.active === "login"
+                        ? _c("span", { staticClass: "sr-only" }, [
+                            _vm._v("(الحالية)")
+                          ])
+                        : _vm._e(),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "text-reset dropdown-toggle",
+                          attrs: {
+                            href: "#",
+                            role: "button",
+                            id: "dropdownMenuLink",
+                            "data-toggle": "dropdown",
+                            "aria-haspopup": "true",
+                            "aria-expanded": "false"
                           }
-                        }
-                      },
-                      [
-                        _vm._v(_vm._s(_vm.user.name) + " مرحبا"),
-                        _vm.active === "login"
-                          ? _c("span", { staticClass: "sr-only" }, [
-                              _vm._v("(الحالية)")
-                            ])
-                          : _vm._e()
-                      ]
-                    )
+                        },
+                        [
+                          _vm._v(
+                            "\n                        هلا " +
+                              _vm._s(_vm.user.name) +
+                              "\n                    "
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        {
+                          staticClass: "dropdown-menu",
+                          attrs: { "aria-labelledby": "dropdownMenuLink" }
+                        },
+                        [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "dropdown-item",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("صفحتي")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "dropdown-item",
+                              attrs: { href: "#" }
+                            },
+                            [_vm._v("Another action")]
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "a",
+                            {
+                              staticClass: "dropdown-item",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  return _vm.logout()
+                                }
+                              }
+                            },
+                            [_vm._v("تسجيل خروج")]
+                          )
+                        ]
+                      )
+                    ])
                   : _c(
                       "a",
                       { staticClass: "nav-link", attrs: { href: "/login" } },
@@ -50251,6 +50313,11 @@ var app = new Vue({
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
       imgSrc: 'images/istraha.jpg'
     }]
+  },
+  created: function created() {
+    $(function () {
+      $('[data-toggle="popover"]').popover();
+    });
   }
 });
 

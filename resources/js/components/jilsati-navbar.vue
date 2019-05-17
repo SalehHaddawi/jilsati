@@ -18,7 +18,19 @@
                     <a class="nav-link" href="/about">عن جلستي<span v-if="active === 'about'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'login'}">
-                    <a v-if="user" class="nav-link" href="#" @click="logout()">{{user.name}} مرحبا<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
+                    <!--<a v-if="user" class="nav-link" href="#" @click="logout()">مرحبا {{user.name}}<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>-->
+                    <div v-if="user" class="dropdown nav-link">
+                        <span v-if="active === 'login'" class="sr-only">(الحالية)</span>
+                        <a class="text-reset dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            هلا {{user.name}}
+                        </a>
+
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="#">صفحتي</a>
+                            <a class="dropdown-item" href="#">Another action</a>
+                            <a @click="logout()" class="dropdown-item" href="#">تسجيل خروج</a>
+                        </div>
+                    </div>
                     <a v-else class="nav-link" href="/login">دخول/تسجيل<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'main'}">
