@@ -4,7 +4,7 @@
 
 @section('body')
 
-    <jilsati-navbar active="login"></jilsati-navbar>
+    <jilsati-navbar active="login" logo-src="{{asset('images/jilsati-logo.png')}}"></jilsati-navbar>
 
     {{json_encode($errors->all())}}
 

@@ -1987,7 +1987,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['active', 'user', 'token'],
+  props: ['active', 'user', 'token', 'logoSrc'],
   methods: {
     logout: function logout() {
       document.getElementById('logout-form').submit();
@@ -37821,7 +37821,15 @@ var render = function() {
     [
       _vm._m(0),
       _vm._v(" "),
-      _vm._m(1),
+      _c(
+        "a",
+        { staticClass: "navbar-brand text-lg-center", attrs: { href: "/" } },
+        [
+          _c("img", {
+            attrs: { src: _vm.logoSrc, alt: "jilsati-logo", height: "60" }
+          })
+        ]
+      ),
       _vm._v(" "),
       _c(
         "div",
@@ -37831,7 +37839,7 @@ var render = function() {
         },
         [
           _c("ul", { staticClass: "navbar-nav ml-auto mt-2 mt-lg-0" }, [
-            _vm._m(2),
+            _vm._m(1),
             _vm._v(" "),
             _c(
               "li",
@@ -37897,7 +37905,7 @@ var render = function() {
                         }
                       },
                       [
-                        _vm._v("تسجيل خروج"),
+                        _vm._v(_vm._s(_vm.user.name) + " مرحبا"),
                         _vm.active === "login"
                           ? _c("span", { staticClass: "sr-only" }, [
                               _vm._v("(الحالية)")
@@ -37979,31 +37987,13 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      { staticClass: "navbar-brand text-lg-center", attrs: { href: "/" } },
-      [
-        _c("img", {
-          attrs: {
-            src: "images/jilsati-logo.png",
-            alt: "jilsati-logo",
-            height: "60"
-          }
-        })
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
     return _c("li", { staticClass: "nav-item pl-2 pr-2" }, [
       _c(
         "a",
         {
           staticClass: "nav-link btn btn-success",
           staticStyle: { color: "#ffffff" },
-          attrs: { href: "#" }
+          attrs: { href: "/jilsahs/create" }
         },
         [_vm._v("اضف جلستك/استراحتك")]
       )
@@ -50190,6 +50180,7 @@ Vue.component('JilsatiIstrahaProps', __webpack_require__(/*! ./components/jilsat
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
+Vue.config.devtools = true;
 var app = new Vue({
   el: '#app',
   data: {

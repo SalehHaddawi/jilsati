@@ -4,12 +4,12 @@
             <span class="navbar-toggler-icon"></span>
         </button>
         <a class="navbar-brand text-lg-center" href="/">
-            <img src="images/jilsati-logo.png" alt="jilsati-logo" height="60">
+            <img :src="logoSrc" alt="jilsati-logo" height="60">
         </a>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item pl-2 pr-2">
-                    <a class="nav-link btn btn-success" style="color: #ffffff;" href="#">اضف جلستك/استراحتك</a>
+                    <a class="nav-link btn btn-success" style="color: #ffffff;" href="/jilsahs/create">اضف جلستك/استراحتك</a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'contact'}">
                     <a class="nav-link" href="/contact">تواصل معانا<span v-if="active === 'contact'" class="sr-only">(الحالية)</span></a>
@@ -18,7 +18,7 @@
                     <a class="nav-link" href="/about">عن جلستي<span v-if="active === 'about'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'login'}">
-                    <a v-if="user" class="nav-link" href="#" @click="logout()">تسجيل خروج<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
+                    <a v-if="user" class="nav-link" href="#" @click="logout()">{{user.name}} مرحبا<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
                     <a v-else class="nav-link" href="/login">دخول/تسجيل<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'main'}">
@@ -33,7 +33,7 @@
 
 <script>
     export default {
-        props : ['active', 'user','token'],
+        props : ['active', 'user','token','logoSrc'],
 
         methods : {
             logout : function () {

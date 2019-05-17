@@ -5,7 +5,7 @@
 @section('body')
 
 
-<jilsati-navbar user="{{Auth::check()}}" active="main" token="{{csrf_token()}}"></jilsati-navbar>
+<jilsati-navbar :user="{{json_encode(Auth::user())}}" active="main" logo-src="{{asset('images/jilsati-logo.png')}}" token="{{csrf_token()}}"></jilsati-navbar>
 
 <div class="container">
     <jilsati-city-search :cities="{{json_encode($cities)}}"></jilsati-city-search>

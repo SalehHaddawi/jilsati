@@ -23,4 +23,6 @@ Route::resource('jilsahs','JilsahController');
 
 Auth::routes(['verify' => true]);
 
+
+
 Route::get('/home', 'HomeController@index')->name('home');

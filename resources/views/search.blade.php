@@ -6,13 +6,13 @@
 
 @section('body')
 
-<jilsati-navbar user="{{Auth::check()}}" token="{{csrf_token()}}"></jilsati-navbar>
+<jilsati-navbar :user="{{json_encode(Auth::user())}}" logo-src="{{asset('images/jilsati-logo.png')}}" token="{{csrf_token()}}"></jilsati-navbar>
 
 <jilsati-alert type="success">نتيجة البحث</jilsati-alert>
 
 <div dir="rtl" class="fixed-bottom text-right m-4 d-md-block d-lg-none">
     <button class="btn btn-success rounded-circle shadow px-4 py-3" data-toggle="modal" data-target="#exampleModalCenter">
-        <img src="svg/filter-filled-tool-symbol.svg" alt="filter icon" width="15"/>
+        <img src="{{asset('svg/filter-filled-tool-symbol.svg')}}" alt="filter icon" width="15"/>
     </button>
 </div>
 

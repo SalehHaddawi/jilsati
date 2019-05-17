@@ -4,7 +4,7 @@
 
 @section('body')
 
-    <jilsati-navbar active="login"></jilsati-navbar>
+    <jilsati-navbar active="login" logo-src="{{asset('images/jilsati-logo.png')}}"></jilsati-navbar>
 
     {{json_encode($errors->all())}}
 
@@ -29,6 +29,12 @@
                         <label for="password" class="col-sm-2 col-form-label">كلمة السر</label>
                         <div class="col-sm-10">
                             <input required name="password" type="password" class="form-control" id="password" placeholder="كلمة السر">
+                        </div>
+                    </div>
+                    <div class="form-group row text-center">
+                        <label for="password_confirmation" class="col-sm-2 col-form-label">كلمة السر مرة ثانية</label>
+                        <div class="col-sm-10">
+                            <input required name="password_confirmation" type="password" class="form-control" id="password_confirmation" placeholder="كلمة السر مرة ثانية">
                         </div>
                     </div>
                     <!--

@@ -78,15 +78,12 @@ class RegisterController extends Controller
 
     public function register(Request $request)
     {
-        try {
-            $this->validate($request, [
-                'name' => ['required', 'string', 'max:255'],
-                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-                'password' => ['required', 'string', 'min:8', 'confirmed'],
-            ]);
-        } catch (ValidationException $e) {
-            dd($e->getMessage());
-        }
+        $this->validate($request, [
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+        ]);
+
 
         Auth::login($this->create($request->all()));
 
