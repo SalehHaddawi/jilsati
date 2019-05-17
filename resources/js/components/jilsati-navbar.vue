@@ -12,24 +12,33 @@
                     <a class="nav-link btn btn-success" style="color: #ffffff;" href="#">اضف جلستك/استراحتك</a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'contact'}">
-                    <a class="nav-link" href="#">تواصل معانا<span v-if="active === 'contact'" class="sr-only">(الحالية)</span></a>
+                    <a class="nav-link" href="/contact">تواصل معانا<span v-if="active === 'contact'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'about'}">
-                    <a class="nav-link" href="#">عن جلستي<span v-if="active === 'about'" class="sr-only">(الحالية)</span></a>
+                    <a class="nav-link" href="/about">عن جلستي<span v-if="active === 'about'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'login'}">
-                    <a class="nav-link" href="#">دخول/تسجيل<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
+                    <a v-if="user" class="nav-link" href="#" @click="logout()">تسجيل خروج<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
+                    <a v-else class="nav-link" href="/login">دخول/تسجيل<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'main'}">
                     <a class="nav-link" href="/">الصفحة الرئيسية<span v-if="active === 'main'" class="sr-only">(الحالية)</span></a>
                 </li>
             </ul>
         </div>
+
+        <form method="post" action="/logout" id="logout-form"><input type="hidden" name="_token" :value="token"></form>
     </nav>
 </template>
 
 <script>
     export default {
-        props : ['active']
+        props : ['active', 'user','token'],
+
+        methods : {
+            logout : function () {
+                document.getElementById('logout-form').submit();
+            }
+        }
     }
 </script>

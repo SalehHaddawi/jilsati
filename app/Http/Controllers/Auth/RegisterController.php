@@ -2,11 +2,17 @@
 
 namespace App\Http\Controllers\Auth;
 
+// DON'T FORGET TO ADD THESE TWO!
+use Illuminate\Http\Request;
+use Illuminate\Auth\Events\Registered;
+
 use App\User;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Validation\ValidationException;
 
 class RegisterController extends Controller
 {
@@ -28,7 +34,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/home';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -69,4 +75,37 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
     }
+
+    public function register(Request $request)
+    {
+        try {
+            $this->validate($request, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+            ]);
+        } catch (ValidationException $e) {
+        }
+
+        Auth::login($this->create($request->all()));
+
+        return redirect($this->redirectPath());
+    }
+
+    /**
+     * Handle a registration request for the application.
+     *
+     * @param  \Illuminate\Http\Request   $request
+     * @return \Illuminate\Http\Response
+     */
+    /*protected function register(Request $request)
+    {
+        $this->validator($request->all())->validate();
+
+        event(new Registered($user = $this->create($request->all())));
+
+        $this->guard()->login($user);
+
+        return redirect('/');
+    }*/
 }

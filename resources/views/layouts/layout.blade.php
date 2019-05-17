@@ -25,7 +25,13 @@
 
 <body class="fonts">
 
+<div id="app">
+
 @yield('body')
+
+</div>
+
+<script src="{{'js/app.js'}}"></script>
 
 </body>
 

@@ -1983,8 +1983,16 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['active']
+  props: ['active', 'user', 'token'],
+  methods: {
+    logout: function logout() {
+      document.getElementById('logout-form').submit();
+    }
+  }
 });
 
 /***/ }),
@@ -37832,14 +37840,18 @@ var render = function() {
                 class: { active: _vm.active === "contact" }
               },
               [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("تواصل معانا"),
-                  _vm.active === "contact"
-                    ? _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("(الحالية)")
-                      ])
-                    : _vm._e()
-                ])
+                _c(
+                  "a",
+                  { staticClass: "nav-link", attrs: { href: "/contact" } },
+                  [
+                    _vm._v("تواصل معانا"),
+                    _vm.active === "contact"
+                      ? _c("span", { staticClass: "sr-only" }, [
+                          _vm._v("(الحالية)")
+                        ])
+                      : _vm._e()
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
@@ -37850,14 +37862,18 @@ var render = function() {
                 class: { active: _vm.active === "about" }
               },
               [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("عن جلستي"),
-                  _vm.active === "about"
-                    ? _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("(الحالية)")
-                      ])
-                    : _vm._e()
-                ])
+                _c(
+                  "a",
+                  { staticClass: "nav-link", attrs: { href: "/about" } },
+                  [
+                    _vm._v("عن جلستي"),
+                    _vm.active === "about"
+                      ? _c("span", { staticClass: "sr-only" }, [
+                          _vm._v("(الحالية)")
+                        ])
+                      : _vm._e()
+                  ]
+                )
               ]
             ),
             _vm._v(" "),
@@ -37868,14 +37884,39 @@ var render = function() {
                 class: { active: _vm.active === "login" }
               },
               [
-                _c("a", { staticClass: "nav-link", attrs: { href: "#" } }, [
-                  _vm._v("دخول/تسجيل"),
-                  _vm.active === "login"
-                    ? _c("span", { staticClass: "sr-only" }, [
-                        _vm._v("(الحالية)")
-                      ])
-                    : _vm._e()
-                ])
+                _vm.user
+                  ? _c(
+                      "a",
+                      {
+                        staticClass: "nav-link",
+                        attrs: { href: "#" },
+                        on: {
+                          click: function($event) {
+                            return _vm.logout()
+                          }
+                        }
+                      },
+                      [
+                        _vm._v("تسجيل خروج"),
+                        _vm.active === "login"
+                          ? _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("(الحالية)")
+                            ])
+                          : _vm._e()
+                      ]
+                    )
+                  : _c(
+                      "a",
+                      { staticClass: "nav-link", attrs: { href: "/login" } },
+                      [
+                        _vm._v("دخول/تسجيل"),
+                        _vm.active === "login"
+                          ? _c("span", { staticClass: "sr-only" }, [
+                              _vm._v("(الحالية)")
+                            ])
+                          : _vm._e()
+                      ]
+                    )
               ]
             ),
             _vm._v(" "),
@@ -37897,6 +37938,17 @@ var render = function() {
               ]
             )
           ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "form",
+        { attrs: { method: "post", action: "/logout", id: "logout-form" } },
+        [
+          _c("input", {
+            attrs: { type: "hidden", name: "_token" },
+            domProps: { value: _vm.token }
+          })
         ]
       )
     ]
