@@ -25,6 +25,13 @@
 
 <div id="app">
 
+    <jilsati-navbar
+            user="{{Auth::check() ? Auth::user()->name : ''}}"
+            logo-src="{{asset('images/jilsati-logo.png')}}"
+            token="{{csrf_token()}}"
+            active="@yield('active')">
+    </jilsati-navbar>
+
 @yield('body')
 
 </div>

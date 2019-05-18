@@ -2,9 +2,9 @@
 
 @section('title','جلستي: تسجيل الدخول')
 
-@section('body')
+@section('active','login')
 
-    <jilsati-navbar active="login" logo-src="{{asset('images/jilsati-logo.png')}}"></jilsati-navbar>
+@section('body')
 
     {{json_encode($errors->all())}}
 

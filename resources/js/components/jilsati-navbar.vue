@@ -22,13 +22,13 @@
                     <div v-if="user" class="dropdown nav-link">
                         <span v-if="active === 'login'" class="sr-only">(الحالية)</span>
                         <a class="text-reset dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            هلا {{user.name}}
+                            هلا {{user}}
                         </a>
 
-                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
-                            <a class="dropdown-item" href="#">صفحتي</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a @click="logout()" class="dropdown-item" href="#">تسجيل خروج</a>
+                        <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item" href="/personal">الملف الشخصي</a>
+                            <a class="dropdown-item" href="/jilsahs">استراحاتي/جلساتي</a>
+                            <a class="dropdown-item" href="#" @click="logout()">تسجيل خروج</a>
                         </div>
                     </div>
                     <a v-else class="nav-link" href="/login">دخول/تسجيل<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>

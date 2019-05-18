@@ -1,10 +1,10 @@
 @extends('layouts.layout')
 
-@section('title','جلستي: تسجيل الدخول')
+@section('title','جلستي: تسجيل جديد')
+
+@section('active','login')
 
 @section('body')
-
-    <jilsati-navbar active="login" logo-src="{{asset('images/jilsati-logo.png')}}"></jilsati-navbar>
 
     {{json_encode($errors->all())}}
 
