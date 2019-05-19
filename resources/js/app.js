@@ -56,7 +56,27 @@ const app = new Vue({
             {id:8,city:'جدة',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha.jpg'},
             {id:9,city:'الدوادمي',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha.jpg'},
             {id:10,city:'الأفلاج',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha.jpg'},
+        ],
+
+        steps : [
+            {state : 'primary',disabled : false},
+            {state : 'secondary',disabled : true},
+            {state : 'secondary',disabled : true},
+            {state : 'secondary',disabled : true},
         ]
+    },
+
+    methods : {
+      check : function (step) {
+          // to make the reactivity works
+          Vue.set(this.steps[step],'state', 'success');
+
+          if(step + 1 < this.steps.length){
+              Vue.set(this.steps[step+1],'state', 'primary');
+
+              Vue.set(this.steps[step+1],'disabled', false);
+          }
+      }
     },
 
     created : function () {

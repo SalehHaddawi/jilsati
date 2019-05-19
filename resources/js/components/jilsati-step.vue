@@ -1,12 +1,12 @@
 <template>
     <div class="step">
         <div>
-            <div class="step-circle">{{number}}</div>
-            <div :class="rtl ? 'step-line-rtl' : 'step-line-ltr'" :style=""></div>
+            <div class="step-circle" :class="'bg-' + status.state">{{number}}</div>
+            <div :class="stepLineClasses"></div>
         </div>
         <div>
             <div class="step-title">
-                <a class="btn-link" data-toggle="collapse" :href="'#' + id" role="link" aria-expanded="false" :aria-controls="id">
+                <a style="text-decoration: none;" class="btn-link" :class="aTextClasses" data-toggle="collapse" :href="'#' + id" role="link" aria-expanded="false" :aria-controls="id">
                     {{title}}
                 </a>
             </div>
@@ -19,6 +19,16 @@
 
 <script>
     export default {
-        props : ['id','title','number', 'rtl']
+        props : ['id','title','number', 'rtl','status'],
+
+        computed : {
+            stepLineClasses : function () {
+                return this.rtl ? 'step-line-rtl' : 'step-line-ltr' + ' border-' + this.status.state;
+            },
+
+            aTextClasses : function () {
+                return 'text-' + this.status.state + (this.status.disabled ? ' disabled' : '');
+            }
+        },
     }
 </script>

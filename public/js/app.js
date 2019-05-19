@@ -2180,7 +2180,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'title', 'number', 'rtl']
+  props: ['id', 'title', 'number', 'rtl', 'status'],
+  computed: {
+    stepLineClasses: function stepLineClasses() {
+      return this.rtl ? 'step-line-rtl' : 'step-line-ltr' + ' border-' + this.status.state;
+    },
+    aTextClasses: function aTextClasses() {
+      return 'text-' + this.status.state + (this.status.disabled ? ' disabled' : '');
+    }
+  }
 });
 
 /***/ }),
@@ -38688,9 +38696,13 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "step" }, [
     _c("div", [
-      _c("div", { staticClass: "step-circle" }, [_vm._v(_vm._s(_vm.number))]),
+      _c(
+        "div",
+        { staticClass: "step-circle", class: "bg-" + _vm.status.state },
+        [_vm._v(_vm._s(_vm.number))]
+      ),
       _vm._v(" "),
-      _c("div", { class: _vm.rtl ? "step-line-rtl" : "step-line-ltr" })
+      _c("div", { class: _vm.stepLineClasses })
     ]),
     _vm._v(" "),
     _c("div", [
@@ -38699,6 +38711,8 @@ var render = function() {
           "a",
           {
             staticClass: "btn-link",
+            class: _vm.aTextClasses,
+            staticStyle: { "text-decoration": "none" },
             attrs: {
               "data-toggle": "collapse",
               href: "#" + _vm.id,
@@ -50975,7 +50989,31 @@ var app = new Vue({
       title: 'شاليهات نننن',
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
       imgSrc: '/images/istraha.jpg'
+    }],
+    steps: [{
+      state: 'primary',
+      disabled: false
+    }, {
+      state: 'secondary',
+      disabled: true
+    }, {
+      state: 'secondary',
+      disabled: true
+    }, {
+      state: 'secondary',
+      disabled: true
     }]
+  },
+  methods: {
+    check: function check(step) {
+      // to make the reactivity works
+      Vue.set(this.steps[step], 'state', 'success');
+
+      if (step + 1 < this.steps.length) {
+        Vue.set(this.steps[step + 1], 'state', 'primary');
+        Vue.set(this.steps[step + 1], 'disabled', false);
+      }
+    }
   },
   created: function created() {
     $(function () {
