@@ -2179,14 +2179,142 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'title', 'number', 'rtl', 'status'],
+  props: ['title', 'number', 'rtl', 'status'],
   computed: {
     stepLineClasses: function stepLineClasses() {
       return this.rtl ? 'step-line-rtl' : 'step-line-ltr' + ' border-' + this.status.state;
     },
     aTextClasses: function aTextClasses() {
       return 'text-' + this.status.state + (this.status.disabled ? ' disabled' : '');
+    }
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-stepper.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-stepper.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      stepsInfo: [{
+        id: 'jilsah-info',
+        state: 'primary',
+        disabled: false
+      }, {
+        id: 'jilsah-times',
+        state: 'secondary',
+        disabled: true
+      }, {
+        id: 'jilsah-options',
+        state: 'secondary',
+        disabled: true
+      }, {
+        id: 'jilsah-photos',
+        state: 'secondary',
+        disabled: true
+      }, {
+        id: 'jilsah-connect',
+        state: 'secondary',
+        disabled: true
+      }, {
+        id: 'jilsah-price',
+        state: 'secondary',
+        disabled: true
+      }]
+    };
+  },
+  methods: {
+    check: function check(step) {
+      // to make the reactivity works
+      Vue.set(this.stepsInfo[step], 'state', 'success');
+      var vue = this;
+      var jilsahStep = $('#' + this.stepsInfo[step].id);
+      jilsahStep.collapse('hide'); // execute the code after the collapse event has finished
+      // add the listener only once using -> one()
+
+      jilsahStep.one('hidden.bs.collapse', function () {
+        if (step + 1 < vue.stepsInfo.length) {
+          Vue.set(vue.stepsInfo[step + 1], 'state', 'primary');
+          Vue.set(vue.stepsInfo[step + 1], 'disabled', false);
+          $('#' + vue.stepsInfo[step + 1].id).collapse('show');
+        }
+      });
     }
   }
 });
@@ -38715,24 +38843,281 @@ var render = function() {
             staticStyle: { "text-decoration": "none" },
             attrs: {
               "data-toggle": "collapse",
-              href: "#" + _vm.id,
+              href: "#" + _vm.status.id,
               role: "link",
               "aria-expanded": "false",
-              "aria-controls": _vm.id
+              "aria-controls": _vm.status.id
             }
           },
           [_vm._v("\n                " + _vm._s(_vm.title) + "\n            ")]
         )
       ]),
       _vm._v(" "),
+      _c("br"),
+      _c("br"),
+      _vm._v(" "),
       _c(
         "div",
-        { staticClass: "collapse step-body", attrs: { id: _vm.id } },
+        { staticClass: "collapse step-body", attrs: { id: _vm.status.id } },
         [_vm._t("default")],
         2
       )
     ])
   ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-stepper.vue?vue&type=template&id=78f60259&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-stepper.vue?vue&type=template&id=78f60259& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _c(
+        "jilsati-step",
+        {
+          attrs: {
+            title: "معلومات الجلسة",
+            dir: "rtl",
+            rtl: "true",
+            number: "1",
+            status: _vm.stepsInfo[0]
+          }
+        },
+        [
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "jilsah-name" } }, [
+              _vm._v("اسم الجلسة")
+            ]),
+            _vm._v(" "),
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "text",
+                id: "jilsah-name",
+                placeholder: "اسم جلستك",
+                "aria-describedby": "jilsah-nameHelp"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "jilsah-nameHelp" }
+              },
+              [
+                _vm._v(
+                  "\n                هذا الاسم اللي الناس بيبحثوا عن جلستك بيه\n            "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-group" }, [
+            _c("label", { attrs: { for: "jilsah-description" } }, [
+              _vm._v("وصف الجلسة")
+            ]),
+            _vm._v(" "),
+            _c("textarea", {
+              staticClass: "form-control",
+              attrs: {
+                id: "jilsah-description",
+                placeholder: "الوصف",
+                rows: "5",
+                "aria-describedby": "descriptionHelp"
+              }
+            }),
+            _vm._v(" "),
+            _c(
+              "small",
+              {
+                staticClass: "form-text text-muted",
+                attrs: { id: "descriptionHelp" }
+              },
+              [
+                _vm._v(
+                  "\n                معلومات مفصلة عن جلستك عشان الناس يعرفوا اكثر عنها\n            "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.check(0)
+                }
+              }
+            },
+            [_vm._v("اللي بعدو")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "jilsati-step",
+        {
+          attrs: {
+            title: "اوقات الجلسة",
+            dir: "rtl",
+            rtl: "true",
+            number: "2",
+            status: _vm.stepsInfo[1]
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.check(1)
+                }
+              }
+            },
+            [_vm._v("اللي بعدو")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "jilsati-step",
+        {
+          attrs: {
+            title: "ايش تقدم الجلسة",
+            dir: "rtl",
+            rtl: "true",
+            number: "3",
+            status: _vm.stepsInfo[2]
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.check(2)
+                }
+              }
+            },
+            [_vm._v("اللي بعدو")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "jilsati-step",
+        {
+          attrs: {
+            title: "صور الجلسة",
+            dir: "rtl",
+            rtl: "true",
+            number: "4",
+            status: _vm.stepsInfo[3]
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.check(3)
+                }
+              }
+            },
+            [_vm._v("اللي بعدو")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "jilsati-step",
+        {
+          attrs: {
+            title: "معلومات التواصل",
+            dir: "rtl",
+            rtl: "true",
+            number: "5",
+            status: _vm.stepsInfo[4]
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.check(4)
+                }
+              }
+            },
+            [_vm._v("اللي بعدو")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "jilsati-step",
+        {
+          attrs: {
+            title: "اسعار الجلسة",
+            dir: "rtl",
+            rtl: "true",
+            number: "6",
+            status: _vm.stepsInfo[5]
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.check(5)
+                }
+              }
+            },
+            [_vm._v("اللي بعدو")]
+          )
+        ]
+      )
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -50914,6 +51299,7 @@ Vue.component('JilsatiAlert', __webpack_require__(/*! ./components/jilsati-alert
 Vue.component('JilsatiIstrahaProps', __webpack_require__(/*! ./components/jilsati-istraha-props */ "./resources/js/components/jilsati-istraha-props.vue")["default"]);
 Vue.component('JilsatiAddJilsahCollapse', __webpack_require__(/*! ./components/jilsati-add-jilsah-collapse */ "./resources/js/components/jilsati-add-jilsah-collapse.vue")["default"]);
 Vue.component('JilsatiStep', __webpack_require__(/*! ./components/jilsati-step */ "./resources/js/components/jilsati-step.vue")["default"]);
+Vue.component('JilsatiStepper', __webpack_require__(/*! ./components/jilsati-stepper */ "./resources/js/components/jilsati-stepper.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -50989,32 +51375,9 @@ var app = new Vue({
       title: 'شاليهات نننن',
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
       imgSrc: '/images/istraha.jpg'
-    }],
-    steps: [{
-      state: 'primary',
-      disabled: false
-    }, {
-      state: 'secondary',
-      disabled: true
-    }, {
-      state: 'secondary',
-      disabled: true
-    }, {
-      state: 'secondary',
-      disabled: true
     }]
   },
-  methods: {
-    check: function check(step) {
-      // to make the reactivity works
-      Vue.set(this.steps[step], 'state', 'success');
-
-      if (step + 1 < this.steps.length) {
-        Vue.set(this.steps[step + 1], 'state', 'primary');
-        Vue.set(this.steps[step + 1], 'disabled', false);
-      }
-    }
-  },
+  methods: {},
   created: function created() {
     $(function () {
       $('[data-toggle="popover"]').popover();
@@ -51836,6 +52199,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_step_vue_vue_type_template_id_4615eff4___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_step_vue_vue_type_template_id_4615eff4___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-stepper.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/jilsati-stepper.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_stepper_vue_vue_type_template_id_78f60259___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-stepper.vue?vue&type=template&id=78f60259& */ "./resources/js/components/jilsati-stepper.vue?vue&type=template&id=78f60259&");
+/* harmony import */ var _jilsati_stepper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-stepper.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-stepper.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_stepper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_stepper_vue_vue_type_template_id_78f60259___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_stepper_vue_vue_type_template_id_78f60259___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-stepper.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-stepper.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/jilsati-stepper.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_stepper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-stepper.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-stepper.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_stepper_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-stepper.vue?vue&type=template&id=78f60259&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-stepper.vue?vue&type=template&id=78f60259& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_stepper_vue_vue_type_template_id_78f60259___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-stepper.vue?vue&type=template&id=78f60259& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-stepper.vue?vue&type=template&id=78f60259&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_stepper_vue_vue_type_template_id_78f60259___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_stepper_vue_vue_type_template_id_78f60259___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

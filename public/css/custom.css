@@ -42,7 +42,7 @@ label.custom-control-label::before, label.custom-control-label::after{
 .step-line-rtl { position: absolute; border-left: 1px solid gainsboro; left: 98.4%; bottom: 10px; top: 42px; }
 .step:last-child .step-line-ltr { display: none; }
 .step-title { line-height: 32px; font-weight: bold; margin-right: 2.5rem; font-size: x-large;}
-.step-body {margin-right: 2.5rem;margin-top: 2rem;}
+.step-body {margin-right: 2.5rem;}
 /* -------------------------------------------------------------------------
 END VERTICAL STEPPERS
 -------------------------------------------------------------------------- */
