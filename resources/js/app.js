@@ -28,6 +28,10 @@ Vue.component('JilsatiCarousel', require('./components/jilsati-carousel').defaul
 Vue.component('JilsatiCheckbox',require('./components/jilsati-checkbox').default);
 Vue.component('JilsatiAlert',require('./components/jilsati-alert').default);
 Vue.component('JilsatiIstrahaProps',require('./components/jilsati-istraha-props').default);
+Vue.component('JilsatiAddJilsahCollapse',require('./components/jilsati-add-jilsah-collapse').default);
+Vue.component('JilsatiStep',require('./components/jilsati-step').default);
+
+
 
 
 /**

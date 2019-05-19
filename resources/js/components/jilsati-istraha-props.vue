@@ -18,11 +18,7 @@
 </template>
 
 <script>
-    import JilsatiCheckbox from './jilsati-checkbox'
-
     export default {
-        components : {JilsatiCheckbox},
-
         props : {
             properties : {
                 required : true,

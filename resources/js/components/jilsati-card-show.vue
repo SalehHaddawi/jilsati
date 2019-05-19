@@ -26,11 +26,7 @@
 
 <script>
 
-    import JilsatiCarousel from './jilsati-carousel';
-
     export default {
-        components : JilsatiCarousel,
-
         props : ['images']
     }
 </script>
