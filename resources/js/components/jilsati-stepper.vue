@@ -21,14 +21,21 @@
                 </small>
             </div>
 
-            <button type="button" class="btn btn-success" @click="check(0)">اللي بعدو</button>
+            <div class="mt-2">
+                <button type="button" class="btn btn-success" @click="check(0)">اللي بعدو</button>
+            </div>
         </jilsati-step>
         <jilsati-step title="اوقات الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="2"
                       :status="stepsInfo[1]">
-            <button type="button" class="btn btn-success" @click="check(1)">اللي بعدو</button>
+
+            <jilsati-time-picker></jilsati-time-picker>
+
+            <div class="mt-2">
+                <button type="button" class="btn btn-success" @click="check(1)">اللي بعدو</button>
+            </div>
         </jilsati-step>
         <jilsati-step title="ايش تقدم الجلسة"
                       dir="rtl"
@@ -36,7 +43,50 @@
                       number="3"
                       :status="stepsInfo[2]">
 
-            <button type="button" class="btn btn-success" @click="check(2)">اللي بعدو</button>
+            <p class="text-justify">
+                اختار الخدمات اللي جلستك بتقدمها
+            </p>
+
+            <fieldset class="border p-2">
+                <legend  class="w-auto">الجلسة تستقبل</legend>
+                <jilsati-radio postfix="1" name="client" inline="true" checked="selected">شباب</jilsati-radio>
+                <jilsati-radio postfix="2" name="client" inline="true">عائلات</jilsati-radio>
+                <jilsati-radio postfix="3" name="client" inline="true">الاثنين</jilsati-radio>
+            </fieldset>
+
+            <fieldset class="border p-2">
+                <legend  class="w-auto">نوع الجلسة</legend>
+                <jilsati-radio postfix="1" name="jilsah-type" inline="true" checked="checked">ارضية</jilsati-radio>
+                <jilsati-radio postfix="2" name="jilsah-type" inline="true">طاولات</jilsati-radio>
+                <jilsati-radio postfix="3" name="jilsah-type" inline="true">الاثنين</jilsati-radio>
+            </fieldset>
+
+            <fieldset class="border p-2">
+                <legend  class="w-auto">الجلسة تقدم مجانا</legend>
+                <jilsati-checkbox name="free-arabic-coffee-dates" inline="true">قهوة وتمر</jilsati-checkbox>
+                <jilsati-checkbox name="free-nuts" inline="true">مكسرات</jilsati-checkbox>
+                <jilsati-checkbox name="free-juices" inline="true">عصيرات</jilsati-checkbox>
+                <jilsati-checkbox name="free-tv-for-sports" inline="true">عرض المباريات</jilsati-checkbox>
+            </fieldset>
+
+            <fieldset class="border p-2">
+                <legend  class="w-auto">خدمات الجلسة</legend>
+                <jilsati-checkbox name="board-games" inline="true">العاب طاولة</jilsati-checkbox>
+                <jilsati-checkbox name="card-games" inline="true">العاب ورقية</jilsati-checkbox>
+                <jilsati-checkbox name="video-games" inline="true">العاب فيديو</jilsati-checkbox>
+                <jilsati-checkbox name="cafe" inline="true">كافيه</jilsati-checkbox>
+                <jilsati-checkbox name="restaurant" inline="true">مطعم</jilsati-checkbox>
+                <jilsati-checkbox name="tennis" inline="true">تنس طاولة</jilsati-checkbox>
+                <jilsati-checkbox name="billiard" inline="true">بلياردو</jilsati-checkbox>
+                <jilsati-checkbox name="soccer-table" inline="true">فرفيرة</jilsati-checkbox>
+                <jilsati-checkbox name="smoke" inline="true">شيشة ومعسل</jilsati-checkbox>
+                <jilsati-checkbox name="smoke-area" inline="true">منطقة للمدخنين</jilsati-checkbox>
+                <jilsati-checkbox name="tv-for-sports" inline="true">عرض المباريات</jilsati-checkbox>
+            </fieldset>
+
+            <div class="mt-2">
+                <button type="button" class="btn btn-success" @click="check(2)">اللي بعدو</button>
+            </div>
         </jilsati-step>
         <jilsati-step title="صور الجلسة"
                       dir="rtl"

@@ -26,11 +26,13 @@ Vue.component('JilsatiCard', require('./components/jilsati-card').default);
 Vue.component('JilsatiCardShow', require('./components/jilsati-card-show').default);
 Vue.component('JilsatiCarousel', require('./components/jilsati-carousel').default);
 Vue.component('JilsatiCheckbox',require('./components/jilsati-checkbox').default);
+Vue.component('JilsatiRadio',require('./components/jilsati-radio').default);
 Vue.component('JilsatiAlert',require('./components/jilsati-alert').default);
 Vue.component('JilsatiIstrahaProps',require('./components/jilsati-istraha-props').default);
 Vue.component('JilsatiAddJilsahCollapse',require('./components/jilsati-add-jilsah-collapse').default);
 Vue.component('JilsatiStep',require('./components/jilsati-step').default);
 Vue.component('JilsatiStepper',require('./components/jilsati-stepper').default);
+Vue.component('JilsatiTimePicker',require('./components/jilsati-time-picker').default);
 
 
 

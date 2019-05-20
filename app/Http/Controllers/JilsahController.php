@@ -29,7 +29,8 @@ class JilsahController extends Controller
      */
     public function create()
     {
-        return view('jilsah.create');
+        $heavy = true;
+        return view('jilsah.create',compact('heavy'));
     }
 
     /**
