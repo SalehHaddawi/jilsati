@@ -64,11 +64,11 @@
                             <div class="form-inline">
                                 <div class="form-group m-auto">
                                     <label class="form-check-label m-2">من</label>
-                                    <jilsati-time-picker time="10:00 AM" :name="'school-week-time-from'+index"></jilsati-time-picker>
+                                    <jilsati-time-picker time="10:00 AM" :name="'school-weekend-time-from'+index"></jilsati-time-picker>
                                 </div>
                                 <div class="form-group m-auto">
                                     <label class="form-check-label m-2">الى</label>
-                                    <jilsati-time-picker time="11:00 PM" :name="'school-week-time-to'+index"></jilsati-time-picker>
+                                    <jilsati-time-picker time="11:00 PM" :name="'school-weekend-time-to'+index"></jilsati-time-picker>
                                 </div>
                             </div>
                         </div>
@@ -189,6 +189,19 @@
                       rtl="true"
                       number="4"
                       :status="stepsInfo[3]">
+
+            <jilsati-file-chooser
+                    name="jilsah-main-img"
+                    browse="صورة الجلسة الاساسية"
+                    content="ارفع صورة الجلسة الاساسية">
+            </jilsati-file-chooser>
+
+            <!--
+            <div class="custom-file text-center">
+                <input type="file" class="custom-file-input" id="customFileLangHTML">
+                <label class="custom-file-label" for="customFileLangHTML" data-browse="صورة الجلسة الاساسية">صورة الجلسة الاساسية</label>
+            </div>
+            -->
 
             <button type="button" class="btn btn-success" @click="check(3)">اللي بعدو</button>
         </jilsati-step>
