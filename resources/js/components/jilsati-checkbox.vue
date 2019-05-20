@@ -1,6 +1,7 @@
 <template>
     <div class="custom-control custom-checkbox text-right mr-3 mb-2" :class="{'custom-control-inline' : inline}">
-        <input type="checkbox" class="custom-control-input" :id="name + postfix" :name="name" :checked="checked ? 'checked' : ''">
+        <input @change="onChange" type="checkbox" class="custom-control-input" :id="name + postfix" :name="name" :checked="checked ? 'checked' : ''">
+
         <label class="custom-control-label" :for="name + postfix"><slot></slot></label>
     </div>
 </template>
@@ -27,6 +28,12 @@
 
             inline : {
                 required : false
+            },
+        },
+
+        methods : {
+            onChange : function (event) {
+                this.$emit('checked-value-changed',this.name,event.target.checked);
             }
         }
     }

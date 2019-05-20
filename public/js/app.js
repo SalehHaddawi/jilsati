@@ -1948,6 +1948,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     name: {
@@ -1963,6 +1964,11 @@ __webpack_require__.r(__webpack_exports__);
     },
     inline: {
       required: false
+    }
+  },
+  methods: {
+    onChange: function onChange(event) {
+      this.$emit('checked-value-changed', this.name, event.target.checked);
     }
   }
 });
@@ -2010,6 +2016,28 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {
     if (this.current) this.selectedCity = this.current;
   }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-fieldset.vue?vue&type=script&lang=js&":
+/*!***************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-fieldset.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['legend', 'fontSize']
 });
 
 /***/ }),
@@ -2192,6 +2220,29 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-select.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-select.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['name', 'labelOption', 'options']
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-step.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-step.vue?vue&type=script&lang=js& ***!
@@ -2225,7 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
   props: ['title', 'number', 'rtl', 'status'],
   computed: {
     stepLineClasses: function stepLineClasses() {
-      return this.rtl ? 'step-line-rtl' : 'step-line-ltr' + ' border-' + this.status.state;
+      return (this.rtl ? 'step-line-rtl' : 'step-line-ltr') + ' border-' + this.status.state;
     },
     aTextClasses: function aTextClasses() {
       return 'text-' + this.status.state + (this.status.disabled ? ' disabled' : '');
@@ -2244,6 +2295,102 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2387,7 +2534,21 @@ __webpack_require__.r(__webpack_exports__);
         id: 'jilsah-price',
         state: 'secondary',
         disabled: true
-      }]
+      }],
+      timePeriods: ['فترة الدراسة', 'فترة الاجازة', 'الاعياد', 'رمضان'],
+      chosenTimePeriods: {
+        'school-time-period': false,
+        'vacation-time-period': false,
+        'eid-time-period': false,
+        'ramadan-time-period': false
+      },
+      jilsahShifts: {
+        schoolWeekShifts: 1,
+        schoolWeekendShifts: 1,
+        vacationShifts: 1,
+        eidShifts: 1,
+        ramadanShifts: 1
+      }
     };
   },
   methods: {
@@ -2406,6 +2567,9 @@ __webpack_require__.r(__webpack_exports__);
           $('#' + vue.stepsInfo[step + 1].id).collapse('show');
         }
       });
+    },
+    handleCheckedValueChanged: function handleCheckedValueChanged(name, value) {
+      Vue.set(this.chosenTimePeriods, name, value);
     }
   }
 });
@@ -2430,21 +2594,20 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  created: function created() {
+  props: ['name', 'time'],
+  mounted: function mounted() {
+    var vue = this;
     $(function () {
-      $('#datetimepicker3').datetimepicker({
+      $('#' + vue.name).datetimepicker({
         format: 'LT'
       });
     });
+  },
+  methods: {
+    showTimePicker: function showTimePicker() {
+      $('#' + this.name).datetimepicker('show');
+    }
   }
 });
 
@@ -38167,7 +38330,8 @@ var render = function() {
       _c("input", {
         staticClass: "custom-control-input",
         attrs: { type: "checkbox", id: _vm.name + _vm.postfix, name: _vm.name },
-        domProps: { checked: _vm.checked ? "checked" : "" }
+        domProps: { checked: _vm.checked ? "checked" : "" },
+        on: { change: _vm.onChange }
       }),
       _vm._v(" "),
       _c(
@@ -38331,6 +38495,43 @@ var staticRenderFns = [
     )
   }
 ]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-fieldset.vue?vue&type=template&id=7e735450&":
+/*!*******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-fieldset.vue?vue&type=template&id=7e735450& ***!
+  \*******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "fieldset",
+    { staticClass: "border p-2" },
+    [
+      _c(
+        "legend",
+        { staticClass: "w-auto", style: { "font-size": _vm.fontSize } },
+        [_vm._v(_vm._s(_vm.legend))]
+      ),
+      _vm._v(" "),
+      _vm._t("default")
+    ],
+    2
+  )
+}
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -38986,6 +39187,45 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-select.vue?vue&type=template&id=53cfa224&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-select.vue?vue&type=template&id=53cfa224& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "select",
+    { staticClass: "custom-select", attrs: { id: _vm.name, name: _vm.name } },
+    [
+      _vm.labelOption
+        ? _c("option", { attrs: { selected: "", disabled: "" } }, [
+            _vm._v(_vm._s(_vm.labelOption))
+          ])
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._l(_vm.options, function(option) {
+        return _c("option", [_vm._v(_vm._s(option))])
+      })
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-step.vue?vue&type=template&id=4615eff4&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-step.vue?vue&type=template&id=4615eff4& ***!
@@ -39169,7 +39409,447 @@ var render = function() {
           }
         },
         [
-          _c("jilsati-time-picker"),
+          _c("p", { staticClass: "text-justify" }, [
+            _vm._v(
+              "\n            اختار الاوقات الي الجلسة تكون شغالة\n        "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "jilsati-checkbox",
+            {
+              attrs: { name: "school-time-period" },
+              on: { "checked-value-changed": _vm.handleCheckedValueChanged }
+            },
+            [_vm._v("فترة الدراسة")]
+          ),
+          _vm._v(" "),
+          _c(
+            "jilsati-checkbox",
+            {
+              attrs: { name: "vacation-time-period" },
+              on: { "checked-value-changed": _vm.handleCheckedValueChanged }
+            },
+            [_vm._v("فترة الاجازة")]
+          ),
+          _vm._v(" "),
+          _c(
+            "jilsati-checkbox",
+            {
+              attrs: { name: "eid-time-period" },
+              on: { "checked-value-changed": _vm.handleCheckedValueChanged }
+            },
+            [_vm._v("الاعياد")]
+          ),
+          _vm._v(" "),
+          _c(
+            "jilsati-checkbox",
+            {
+              attrs: { name: "ramadan-time-period" },
+              on: { "checked-value-changed": _vm.handleCheckedValueChanged }
+            },
+            [_vm._v("رمضان")]
+          ),
+          _vm._v(" "),
+          _c(
+            "jilsati-fieldset",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.chosenTimePeriods["school-time-period"],
+                  expression: "chosenTimePeriods['school-time-period']"
+                }
+              ],
+              attrs: { "font-size": "1.4rem", legend: "فترة الدراسة" }
+            },
+            [
+              _c(
+                "jilsati-fieldset",
+                { attrs: { "font-size": "1.1rem", legend: "ايام الاسبوع" } },
+                [
+                  _vm._l(_vm.jilsahShifts.schoolWeekShifts, function(index) {
+                    return _c("div", [
+                      _c("p", { staticClass: "text-info" }, [
+                        _vm._v("فترة العمل رقم " + _vm._s(index))
+                      ]),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "form-inline" }, [
+                        _c(
+                          "div",
+                          { staticClass: "form-group m-auto" },
+                          [
+                            _c(
+                              "label",
+                              { staticClass: "form-check-label m-2" },
+                              [_vm._v("من")]
+                            ),
+                            _vm._v(" "),
+                            _c("jilsati-time-picker", {
+                              attrs: {
+                                time: "10:00 AM",
+                                name: "school-week-time-from" + index
+                              }
+                            })
+                          ],
+                          1
+                        ),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "form-group m-auto" },
+                          [
+                            _c(
+                              "label",
+                              { staticClass: "form-check-label m-2" },
+                              [_vm._v("الى")]
+                            ),
+                            _vm._v(" "),
+                            _c("jilsati-time-picker", {
+                              attrs: {
+                                time: "11:00 PM",
+                                name: "school-week-time-to" + index
+                              }
+                            })
+                          ],
+                          1
+                        )
+                      ])
+                    ])
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info mt-4 mr-2",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.jilsahShifts.schoolWeekShifts++
+                        }
+                      }
+                    },
+                    [_vm._v("ضيف فترة جديدة")]
+                  )
+                ],
+                2
+              ),
+              _vm._v(" "),
+              _c(
+                "jilsati-fieldset",
+                { attrs: { "font-size": "1.1rem", legend: "نهاية الاسبوع" } },
+                [
+                  _c(
+                    "div",
+                    {
+                      attrs: { "font-size": "1.1rem", legend: "ايام الاسبوع" }
+                    },
+                    [
+                      _vm._l(_vm.jilsahShifts.schoolWeekendShifts, function(
+                        index
+                      ) {
+                        return _c("div", [
+                          _c("p", { staticClass: "text-info" }, [
+                            _vm._v("فترة العمل رقم " + _vm._s(index))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-inline" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group m-auto" },
+                              [
+                                _c(
+                                  "label",
+                                  { staticClass: "form-check-label m-2" },
+                                  [_vm._v("من")]
+                                ),
+                                _vm._v(" "),
+                                _c("jilsati-time-picker", {
+                                  attrs: {
+                                    time: "10:00 AM",
+                                    name: "school-week-time-from" + index
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group m-auto" },
+                              [
+                                _c(
+                                  "label",
+                                  { staticClass: "form-check-label m-2" },
+                                  [_vm._v("الى")]
+                                ),
+                                _vm._v(" "),
+                                _c("jilsati-time-picker", {
+                                  attrs: {
+                                    time: "11:00 PM",
+                                    name: "school-week-time-to" + index
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info mt-4 mr-2",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.jilsahShifts.schoolWeekendShifts++
+                            }
+                          }
+                        },
+                        [_vm._v("ضيف فترة جديدة")]
+                      )
+                    ],
+                    2
+                  )
+                ]
+              )
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c(
+            "jilsati-fieldset",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.chosenTimePeriods["vacation-time-period"],
+                  expression: "chosenTimePeriods['vacation-time-period']"
+                }
+              ],
+              attrs: { legend: "فترة الاجازة" }
+            },
+            [
+              _vm._l(_vm.jilsahShifts.vacationShifts, function(index) {
+                return _c("div", [
+                  _c("p", { staticClass: "text-info" }, [
+                    _vm._v("فترة العمل رقم " + _vm._s(index))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-inline" }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group m-auto" },
+                      [
+                        _c("label", { staticClass: "form-check-label m-2" }, [
+                          _vm._v("من")
+                        ]),
+                        _vm._v(" "),
+                        _c("jilsati-time-picker", {
+                          attrs: {
+                            time: "10:00 AM",
+                            name: "vacation-time-from" + index
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group m-auto" },
+                      [
+                        _c("label", { staticClass: "form-check-label m-2" }, [
+                          _vm._v("الى")
+                        ]),
+                        _vm._v(" "),
+                        _c("jilsati-time-picker", {
+                          attrs: {
+                            time: "11:00 PM",
+                            name: "vacation-time-to" + index
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info mt-4 mr-2",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.jilsahShifts.vacationShifts++
+                    }
+                  }
+                },
+                [_vm._v("ضيف فترة جديدة")]
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "jilsati-fieldset",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.chosenTimePeriods["eid-time-period"],
+                  expression: "chosenTimePeriods['eid-time-period']"
+                }
+              ],
+              attrs: { legend: "الاعياد" }
+            },
+            [
+              _vm._l(_vm.jilsahShifts.eidShifts, function(index) {
+                return _c("div", [
+                  _c("p", { staticClass: "text-info" }, [
+                    _vm._v("فترة العمل رقم " + _vm._s(index))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-inline" }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group m-auto" },
+                      [
+                        _c("label", { staticClass: "form-check-label m-2" }, [
+                          _vm._v("من")
+                        ]),
+                        _vm._v(" "),
+                        _c("jilsati-time-picker", {
+                          attrs: {
+                            time: "10:00 AM",
+                            name: "eid-time-from" + index
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group m-auto" },
+                      [
+                        _c("label", { staticClass: "form-check-label m-2" }, [
+                          _vm._v("الى")
+                        ]),
+                        _vm._v(" "),
+                        _c("jilsati-time-picker", {
+                          attrs: {
+                            time: "11:00 PM",
+                            name: "eid-time-to" + index
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info mt-4 mr-2",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.jilsahShifts.eidShifts++
+                    }
+                  }
+                },
+                [_vm._v("ضيف فترة جديدة")]
+              )
+            ],
+            2
+          ),
+          _vm._v(" "),
+          _c(
+            "jilsati-fieldset",
+            {
+              directives: [
+                {
+                  name: "show",
+                  rawName: "v-show",
+                  value: _vm.chosenTimePeriods["ramadan-time-period"],
+                  expression: "chosenTimePeriods['ramadan-time-period']"
+                }
+              ],
+              attrs: { legend: "رمضان" }
+            },
+            [
+              _vm._l(_vm.jilsahShifts.ramadanShifts, function(index) {
+                return _c("div", [
+                  _c("p", { staticClass: "text-info" }, [
+                    _vm._v("فترة العمل رقم " + _vm._s(index))
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-inline" }, [
+                    _c(
+                      "div",
+                      { staticClass: "form-group m-auto" },
+                      [
+                        _c("label", { staticClass: "form-check-label m-2" }, [
+                          _vm._v("من")
+                        ]),
+                        _vm._v(" "),
+                        _c("jilsati-time-picker", {
+                          attrs: {
+                            time: "10:00 AM",
+                            name: "ramadan-time-from" + index
+                          }
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group m-auto" },
+                      [
+                        _c("label", { staticClass: "form-check-label m-2" }, [
+                          _vm._v("الى")
+                        ]),
+                        _vm._v(" "),
+                        _c("jilsati-time-picker", {
+                          attrs: {
+                            time: "11:00 PM",
+                            name: "ramadan-time-to" + index
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ])
+                ])
+              }),
+              _vm._v(" "),
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-info mt-4 mr-2",
+                  attrs: { type: "button" },
+                  on: {
+                    click: function($event) {
+                      _vm.jilsahShifts.ramadanShifts++
+                    }
+                  }
+                },
+                [_vm._v("ضيف فترة جديدة")]
+              )
+            ],
+            2
+          ),
           _vm._v(" "),
           _c("div", { staticClass: "mt-2" }, [
             _c(
@@ -39203,7 +39883,9 @@ var render = function() {
         },
         [
           _c("p", { staticClass: "text-justify" }, [
-            _vm._v("\n            اختار الخدمات اللي جلستك بتقدمها\n        ")
+            _vm._v(
+              "\n            اختار الخدمات/المميزات اللي جلستك بتقدمها/تحتويها\n        "
+            )
           ]),
           _vm._v(" "),
           _c(
@@ -39517,56 +40199,42 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _vm._m(0)
+  return _c(
+    "div",
+    {
+      staticClass: "input-group date",
+      staticStyle: { direction: "ltr" },
+      attrs: { id: _vm.name, "data-target-input": "nearest" }
+    },
+    [
+      _c("input", {
+        staticClass: "form-control datetimepicker-input",
+        attrs: { type: "text", name: _vm.name, "data-target": "#" + _vm.name },
+        domProps: { value: _vm.time },
+        on: { focus: _vm.showTimePicker }
+      }),
+      _vm._v(" "),
+      _c(
+        "div",
+        {
+          staticClass: "input-group-append",
+          attrs: {
+            "data-target": "#" + _vm.name,
+            "data-toggle": "datetimepicker"
+          }
+        },
+        [_vm._m(0)]
+      )
+    ]
+  )
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "container" }, [
-      _c("div", { staticClass: "row" }, [
-        _c("div", { staticClass: "col-sm-6" }, [
-          _c("div", { staticClass: "form-group" }, [
-            _c(
-              "div",
-              {
-                staticClass: "input-group date",
-                staticStyle: { direction: "ltr" },
-                attrs: { id: "datetimepicker3", "data-target-input": "nearest" }
-              },
-              [
-                _c("input", {
-                  staticClass: "form-control datetimepicker-input",
-                  attrs: { type: "text", "data-target": "#datetimepicker3" }
-                }),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    staticClass: "input-group-append",
-                    attrs: {
-                      "data-target": "#datetimepicker3",
-                      "data-toggle": "datetimepicker"
-                    }
-                  },
-                  [
-                    _c("div", { staticClass: "input-group-text" }, [
-                      _c("img", {
-                        attrs: {
-                          src: "/svg/clock.svg",
-                          alt: "clock",
-                          width: "20"
-                        }
-                      })
-                    ])
-                  ]
-                )
-              ]
-            )
-          ])
-        ])
-      ])
+    return _c("div", { staticClass: "input-group-text" }, [
+      _c("img", { attrs: { src: "/svg/clock.svg", alt: "clock", width: "20" } })
     ])
   }
 ]
@@ -51752,6 +52420,8 @@ Vue.component('JilsatiAddJilsahCollapse', __webpack_require__(/*! ./components/j
 Vue.component('JilsatiStep', __webpack_require__(/*! ./components/jilsati-step */ "./resources/js/components/jilsati-step.vue")["default"]);
 Vue.component('JilsatiStepper', __webpack_require__(/*! ./components/jilsati-stepper */ "./resources/js/components/jilsati-stepper.vue")["default"]);
 Vue.component('JilsatiTimePicker', __webpack_require__(/*! ./components/jilsati-time-picker */ "./resources/js/components/jilsati-time-picker.vue")["default"]);
+Vue.component('JilsatiSelect', __webpack_require__(/*! ./components/jilsati-select */ "./resources/js/components/jilsati-select.vue")["default"]);
+Vue.component('JilsatiFieldset', __webpack_require__(/*! ./components/jilsati-fieldset */ "./resources/js/components/jilsati-fieldset.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -52380,6 +53050,75 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./resources/js/components/jilsati-fieldset.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/jilsati-fieldset.vue ***!
+  \******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_fieldset_vue_vue_type_template_id_7e735450___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-fieldset.vue?vue&type=template&id=7e735450& */ "./resources/js/components/jilsati-fieldset.vue?vue&type=template&id=7e735450&");
+/* harmony import */ var _jilsati_fieldset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-fieldset.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-fieldset.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_fieldset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_fieldset_vue_vue_type_template_id_7e735450___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_fieldset_vue_vue_type_template_id_7e735450___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-fieldset.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-fieldset.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/jilsati-fieldset.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_fieldset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-fieldset.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-fieldset.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_fieldset_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-fieldset.vue?vue&type=template&id=7e735450&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-fieldset.vue?vue&type=template&id=7e735450& ***!
+  \*************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_fieldset_vue_vue_type_template_id_7e735450___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-fieldset.vue?vue&type=template&id=7e735450& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-fieldset.vue?vue&type=template&id=7e735450&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_fieldset_vue_vue_type_template_id_7e735450___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_fieldset_vue_vue_type_template_id_7e735450___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
 /***/ "./resources/js/components/jilsati-istraha-props.vue":
 /*!***********************************************************!*\
   !*** ./resources/js/components/jilsati-istraha-props.vue ***!
@@ -52651,6 +53390,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_radio_vue_vue_type_template_id_156f32fa___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_radio_vue_vue_type_template_id_156f32fa___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-select.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/jilsati-select.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_select_vue_vue_type_template_id_53cfa224___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-select.vue?vue&type=template&id=53cfa224& */ "./resources/js/components/jilsati-select.vue?vue&type=template&id=53cfa224&");
+/* harmony import */ var _jilsati_select_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-select.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-select.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_select_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_select_vue_vue_type_template_id_53cfa224___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_select_vue_vue_type_template_id_53cfa224___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-select.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-select.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/jilsati-select.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_select_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-select.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-select.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_select_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-select.vue?vue&type=template&id=53cfa224&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/jilsati-select.vue?vue&type=template&id=53cfa224& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_select_vue_vue_type_template_id_53cfa224___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-select.vue?vue&type=template&id=53cfa224& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-select.vue?vue&type=template&id=53cfa224&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_select_vue_vue_type_template_id_53cfa224___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_select_vue_vue_type_template_id_53cfa224___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

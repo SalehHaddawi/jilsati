@@ -12,9 +12,10 @@
     <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/tempusdominus-bootstrap-4.min.css')}}">
+
+    @yield('stylesheets')
+
     <link rel="stylesheet" href="{{asset('css/custom.css')}}">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 
     <style>
         .fonts{
@@ -39,10 +40,8 @@
 </div>
 
 <script src="{{asset('js/app.js')}}"></script>
-@if($heavy)
-<script src="{{asset('js/moment.js')}}"></script>
-<script src="{{asset('js/tempusdominus-bootstrap-4.min.js')}}"></script>
-@endif
+
+@yield('scripts')
 
 </body>
 

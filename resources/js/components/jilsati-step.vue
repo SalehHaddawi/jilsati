@@ -24,7 +24,7 @@
 
         computed : {
             stepLineClasses : function () {
-                return this.rtl ? 'step-line-rtl' : 'step-line-ltr' + ' border-' + this.status.state;
+                return (this.rtl ? 'step-line-rtl' : 'step-line-ltr') + ' border-' + this.status.state;
             },
 
             aTextClasses : function () {

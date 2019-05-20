@@ -33,6 +33,8 @@ Vue.component('JilsatiAddJilsahCollapse',require('./components/jilsati-add-jilsa
 Vue.component('JilsatiStep',require('./components/jilsati-step').default);
 Vue.component('JilsatiStepper',require('./components/jilsati-stepper').default);
 Vue.component('JilsatiTimePicker',require('./components/jilsati-time-picker').default);
+Vue.component('JilsatiSelect',require('./components/jilsati-select').default);
+Vue.component('JilsatiFieldset',require('./components/jilsati-fieldset').default);
 
 
 

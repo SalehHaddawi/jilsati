@@ -31,8 +31,104 @@
                       number="2"
                       :status="stepsInfo[1]">
 
-            <jilsati-time-picker></jilsati-time-picker>
+            <p class="text-justify">
+                اختار الاوقات الي الجلسة تكون شغالة
+            </p>
 
+            <jilsati-checkbox @checked-value-changed="handleCheckedValueChanged" name="school-time-period">فترة الدراسة</jilsati-checkbox>
+            <jilsati-checkbox @checked-value-changed="handleCheckedValueChanged" name="vacation-time-period">فترة الاجازة</jilsati-checkbox>
+            <jilsati-checkbox @checked-value-changed="handleCheckedValueChanged" name="eid-time-period">الاعياد</jilsati-checkbox>
+            <jilsati-checkbox @checked-value-changed="handleCheckedValueChanged" name="ramadan-time-period">رمضان</jilsati-checkbox>
+
+            <jilsati-fieldset v-show="chosenTimePeriods['school-time-period']" font-size="1.4rem" legend="فترة الدراسة">
+                <jilsati-fieldset font-size="1.1rem" legend="ايام الاسبوع">
+                    <div v-for="index in jilsahShifts.schoolWeekShifts">
+                        <p class="text-info">فترة العمل رقم {{index}}</p>
+                        <div class="form-inline">
+                            <div class="form-group m-auto">
+                                <label class="form-check-label m-2">من</label>
+                                <jilsati-time-picker time="10:00 AM" :name="'school-week-time-from'+index"></jilsati-time-picker>
+                            </div>
+                            <div class="form-group m-auto">
+                                <label class="form-check-label m-2">الى</label>
+                                <jilsati-time-picker time="11:00 PM" :name="'school-week-time-to'+index"></jilsati-time-picker>
+                            </div>
+                        </div>
+                    </div>
+                    <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.schoolWeekShifts++">ضيف فترة جديدة</button>
+                </jilsati-fieldset>
+                <jilsati-fieldset font-size="1.1rem" legend="نهاية الاسبوع">
+                    <div font-size="1.1rem" legend="ايام الاسبوع">
+                        <div v-for="index in jilsahShifts.schoolWeekendShifts">
+                            <p class="text-info">فترة العمل رقم {{index}}</p>
+                            <div class="form-inline">
+                                <div class="form-group m-auto">
+                                    <label class="form-check-label m-2">من</label>
+                                    <jilsati-time-picker time="10:00 AM" :name="'school-week-time-from'+index"></jilsati-time-picker>
+                                </div>
+                                <div class="form-group m-auto">
+                                    <label class="form-check-label m-2">الى</label>
+                                    <jilsati-time-picker time="11:00 PM" :name="'school-week-time-to'+index"></jilsati-time-picker>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.schoolWeekendShifts++">ضيف فترة جديدة</button>
+                    </div>
+                </jilsati-fieldset>
+            </jilsati-fieldset>
+
+            <jilsati-fieldset v-show="chosenTimePeriods['vacation-time-period']" legend="فترة الاجازة">
+                <div v-for="index in jilsahShifts.vacationShifts">
+                    <p class="text-info">فترة العمل رقم {{index}}</p>
+                    <div class="form-inline">
+                        <div class="form-group m-auto">
+                            <label class="form-check-label m-2">من</label>
+                            <jilsati-time-picker time="10:00 AM" :name="'vacation-time-from'+index"></jilsati-time-picker>
+                        </div>
+                        <div class="form-group m-auto">
+                            <label class="form-check-label m-2">الى</label>
+                            <jilsati-time-picker time="11:00 PM" :name="'vacation-time-to'+index"></jilsati-time-picker>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.vacationShifts++">ضيف فترة جديدة</button>
+            </jilsati-fieldset>
+
+            <jilsati-fieldset v-show="chosenTimePeriods['eid-time-period']" legend="الاعياد">
+                <div v-for="index in jilsahShifts.eidShifts">
+                    <p class="text-info">فترة العمل رقم {{index}}</p>
+                    <div class="form-inline">
+                        <div class="form-group m-auto">
+                            <label class="form-check-label m-2">من</label>
+                            <jilsati-time-picker time="10:00 AM" :name="'eid-time-from'+index"></jilsati-time-picker>
+                        </div>
+                        <div class="form-group m-auto">
+                            <label class="form-check-label m-2">الى</label>
+                            <jilsati-time-picker time="11:00 PM" :name="'eid-time-to'+index"></jilsati-time-picker>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.eidShifts++">ضيف فترة جديدة</button>
+            </jilsati-fieldset>
+
+            <jilsati-fieldset v-show="chosenTimePeriods['ramadan-time-period']" legend="رمضان">
+                <div v-for="index in jilsahShifts.ramadanShifts">
+                    <p class="text-info">فترة العمل رقم {{index}}</p>
+                    <div class="form-inline">
+                        <div class="form-group m-auto">
+                            <label class="form-check-label m-2">من</label>
+                            <jilsati-time-picker time="10:00 AM" :name="'ramadan-time-from'+index"></jilsati-time-picker>
+                        </div>
+                        <div class="form-group m-auto">
+                            <label class="form-check-label m-2">الى</label>
+                            <jilsati-time-picker time="11:00 PM" :name="'ramadan-time-to'+index"></jilsati-time-picker>
+                        </div>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.ramadanShifts++">ضيف فترة جديدة</button>
+            </jilsati-fieldset>
+
+            <!-- next step button -->
             <div class="mt-2">
                 <button type="button" class="btn btn-success" @click="check(1)">اللي بعدو</button>
             </div>
@@ -44,7 +140,7 @@
                       :status="stepsInfo[2]">
 
             <p class="text-justify">
-                اختار الخدمات اللي جلستك بتقدمها
+                اختار الخدمات/المميزات اللي جلستك بتقدمها/تحتويها
             </p>
 
             <fieldset class="border p-2">
@@ -125,7 +221,32 @@
                     {id: 'jilsah-photos', state : 'secondary', disabled : true},
                     {id: 'jilsah-connect', state : 'secondary', disabled : true},
                     {id: 'jilsah-price', state : 'secondary', disabled : true},
-                ]
+                ],
+
+                timePeriods : [
+                    'فترة الدراسة',
+                    'فترة الاجازة',
+                    'الاعياد',
+                    'رمضان'
+                ],
+
+                chosenTimePeriods : {
+                    'school-time-period' : false,
+                    'vacation-time-period' : false,
+                    'eid-time-period' : false,
+                    'ramadan-time-period' : false
+                },
+
+                jilsahShifts : {
+                    schoolWeekShifts : 1,
+                    schoolWeekendShifts : 1,
+
+                    vacationShifts : 1,
+
+                    eidShifts : 1,
+
+                    ramadanShifts : 1
+                }
             }
         },
 
@@ -151,6 +272,10 @@
                         $('#'+vue.stepsInfo[step+1].id).collapse('show');
                     }
                 });
+            },
+
+            handleCheckedValueChanged : function (name,value) {
+                Vue.set(this.chosenTimePeriods,name,value);
             }
         }
     }
