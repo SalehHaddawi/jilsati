@@ -2064,15 +2064,21 @@ __webpack_require__.r(__webpack_exports__);
   props: ['name', 'browse', 'content'],
   data: function data() {
     return {
-      cont: this.content,
-      file: null
+      cont: this.content
     };
   },
   methods: {
     onChange: function onChange(event) {
       if (event.target.files && event.target.files[0] && event.target.files[0].type.startsWith('image/')) {
         this.cont = event.target.files[0].name;
-        this.file = event.target.files[0];
+        var vue = this;
+        var reader = new FileReader();
+
+        reader.onload = function (e) {
+          vue.$emit('main-image-changed', e.target.result);
+        };
+
+        reader.readAsDataURL(event.target.files[0]);
       }
     }
   }
@@ -2559,6 +2565,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2575,19 +2597,19 @@ __webpack_require__.r(__webpack_exports__);
         state: 'secondary',
         disabled: true
       }, {
+        id: 'jilsah-location',
+        state: 'secondary',
+        disabled: true
+      }, {
+        id: 'jilsah-price',
+        state: 'secondary',
+        disabled: true
+      }, {
         id: 'jilsah-photos',
         state: 'secondary',
         disabled: true
       }, {
         id: 'jilsah-connect',
-        state: 'secondary',
-        disabled: true
-      }, {
-        id: 'jilsah-مخؤشفهخى',
-        state: 'secondary',
-        disabled: true
-      }, {
-        id: 'jilsah-price',
         state: 'secondary',
         disabled: true
       }],
@@ -2604,6 +2626,12 @@ __webpack_require__.r(__webpack_exports__);
         vacationShifts: 1,
         eidShifts: 1,
         ramadanShifts: 1
+      },
+      models: {
+        name: '',
+        description: '',
+        city: '',
+        mainImage: null
       }
     };
   },
@@ -2626,6 +2654,10 @@ __webpack_require__.r(__webpack_exports__);
     },
     handleCheckedValueChanged: function handleCheckedValueChanged(name, value) {
       Vue.set(this.chosenTimePeriods, name, value);
+    },
+    handleMainImageChanged: function handleMainImageChanged(src) {
+      this.models.mainImage = src;
+      console.log('main image changed');
     }
   }
 });
@@ -38484,8 +38516,6 @@ var render = function() {
               attrs: { type: "submit", role: "button", value: "ابحث" }
             }),
             _vm._v(" "),
-            _vm._m(0),
-            _vm._v(" "),
             _c(
               "select",
               {
@@ -38532,25 +38562,7 @@ var render = function() {
         )
   ])
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "select",
-      {
-        staticClass: "form-control col-lg-2 col-4",
-        attrs: { name: "type", dir: "rtl" }
-      },
-      [
-        _c("option", { attrs: { selected: "selected" } }, [_vm._v("جلسات")]),
-        _vm._v(" "),
-        _c("option", [_vm._v("استراحات")])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -39426,12 +39438,29 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("input", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.models.name,
+                  expression: "models.name"
+                }
+              ],
               staticClass: "form-control",
               attrs: {
                 type: "text",
                 id: "jilsah-name",
                 placeholder: "اسم جلستك",
                 "aria-describedby": "jilsah-nameHelp"
+              },
+              domProps: { value: _vm.models.name },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.models, "name", $event.target.value)
+                }
               }
             }),
             _vm._v(" "),
@@ -39455,12 +39484,29 @@ var render = function() {
             ]),
             _vm._v(" "),
             _c("textarea", {
+              directives: [
+                {
+                  name: "model",
+                  rawName: "v-model",
+                  value: _vm.models.description,
+                  expression: "models.description"
+                }
+              ],
               staticClass: "form-control",
               attrs: {
                 id: "jilsah-description",
                 placeholder: "الوصف",
                 rows: "5",
                 "aria-describedby": "descriptionHelp"
+              },
+              domProps: { value: _vm.models.description },
+              on: {
+                input: function($event) {
+                  if ($event.target.composing) {
+                    return
+                  }
+                  _vm.$set(_vm.models, "description", $event.target.value)
+                }
               }
             }),
             _vm._v(" "),
@@ -39629,8 +39675,24 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("ضيف فترة جديدة")]
-                  )
+                    [_vm._v("ضيف فترة عمل")]
+                  ),
+                  _vm._v(" "),
+                  _vm.jilsahShifts.schoolWeekShifts > 1
+                    ? _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-danger mt-4 mr-2",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.jilsahShifts.schoolWeekShifts--
+                            }
+                          }
+                        },
+                        [_vm._v("حذف فترة عمل")]
+                      )
+                    : _vm._e()
                 ],
                 2
               ),
@@ -39709,7 +39771,23 @@ var render = function() {
                           }
                         },
                         [_vm._v("ضيف فترة جديدة")]
-                      )
+                      ),
+                      _vm._v(" "),
+                      _vm.jilsahShifts.schoolWeekendShifts > 1
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.jilsahShifts.schoolWeekendShifts--
+                                }
+                              }
+                            },
+                            [_vm._v("حذف فترة عمل")]
+                          )
+                        : _vm._e()
                     ],
                     2
                   )
@@ -39791,7 +39869,23 @@ var render = function() {
                   }
                 },
                 [_vm._v("ضيف فترة جديدة")]
-              )
+              ),
+              _vm._v(" "),
+              _vm.jilsahShifts.vacationShifts > 1
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger mt-4 mr-2",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.jilsahShifts.vacationShifts--
+                        }
+                      }
+                    },
+                    [_vm._v("حذف فترة عمل")]
+                  )
+                : _vm._e()
             ],
             2
           ),
@@ -39868,7 +39962,23 @@ var render = function() {
                   }
                 },
                 [_vm._v("ضيف فترة جديدة")]
-              )
+              ),
+              _vm._v(" "),
+              _vm.jilsahShifts.eidShifts > 1
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger mt-4 mr-2",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.jilsahShifts.eidShifts--
+                        }
+                      }
+                    },
+                    [_vm._v("حذف فترة عمل")]
+                  )
+                : _vm._e()
             ],
             2
           ),
@@ -39945,7 +40055,23 @@ var render = function() {
                   }
                 },
                 [_vm._v("ضيف فترة جديدة")]
-              )
+              ),
+              _vm._v(" "),
+              _vm.jilsahShifts.ramadanShifts > 1
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger mt-4 mr-2",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          _vm.jilsahShifts.ramadanShifts--
+                        }
+                      }
+                    },
+                    [_vm._v("حذف فترة عمل")]
+                  )
+                : _vm._e()
             ],
             2
           ),
@@ -39988,13 +40114,9 @@ var render = function() {
           ]),
           _vm._v(" "),
           _c(
-            "fieldset",
-            { staticClass: "border p-2" },
+            "jilsati-fieldset",
+            { attrs: { legend: "الجلسة تستقبل", "font-size": "1.1rem" } },
             [
-              _c("legend", { staticClass: "w-auto" }, [
-                _vm._v("الجلسة تستقبل")
-              ]),
-              _vm._v(" "),
               _c(
                 "jilsati-radio",
                 {
@@ -40024,11 +40146,9 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "fieldset",
-            { staticClass: "border p-2" },
+            "jilsati-fieldset",
+            { attrs: { legend: "نوع الجلسة", "font-size": "1.1rem" } },
             [
-              _c("legend", { staticClass: "w-auto" }, [_vm._v("نوع الجلسة")]),
-              _vm._v(" "),
               _c(
                 "jilsati-radio",
                 {
@@ -40062,45 +40182,20 @@ var render = function() {
           ),
           _vm._v(" "),
           _c(
-            "fieldset",
-            { staticClass: "border p-2" },
+            "jilsati-fieldset",
+            { attrs: { legend: "خدمات/مميزات الجلسة", "font-size": "1.1rem" } },
             [
-              _c("legend", { staticClass: "w-auto" }, [
-                _vm._v("الجلسة تقدم مجانا")
-              ]),
-              _vm._v(" "),
               _c(
                 "jilsati-checkbox",
-                { attrs: { name: "free-arabic-coffee-dates", inline: "true" } },
+                { attrs: { name: "arabic-coffee-dates", inline: "true" } },
                 [_vm._v("قهوة وتمر")]
               ),
               _vm._v(" "),
               _c(
                 "jilsati-checkbox",
-                { attrs: { name: "free-nuts", inline: "true" } },
+                { attrs: { name: "nuts", inline: "true" } },
                 [_vm._v("مكسرات")]
               ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "free-juices", inline: "true" } },
-                [_vm._v("عصيرات")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "free-tv-for-sports", inline: "true" } },
-                [_vm._v("عرض المباريات")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "fieldset",
-            { staticClass: "border p-2" },
-            [
-              _c("legend", { staticClass: "w-auto" }, [_vm._v("خدمات الجلسة")]),
               _vm._v(" "),
               _c(
                 "jilsati-checkbox",
@@ -40152,13 +40247,25 @@ var render = function() {
               _vm._v(" "),
               _c(
                 "jilsati-checkbox",
+                { attrs: { name: "air-condition", inline: "true" } },
+                [_vm._v("مكيفة")]
+              ),
+              _vm._v(" "),
+              _c(
+                "jilsati-checkbox",
+                { attrs: { name: "open-air", inline: "true" } },
+                [_vm._v("مفتوحة")]
+              ),
+              _vm._v(" "),
+              _c(
+                "jilsati-checkbox",
                 { attrs: { name: "smoke", inline: "true" } },
                 [_vm._v("شيشة ومعسل")]
               ),
               _vm._v(" "),
               _c(
                 "jilsati-checkbox",
-                { attrs: { name: "smoke-area", inline: "true" } },
+                { attrs: { name: "smoking-area", inline: "true" } },
                 [_vm._v("منطقة للمدخنين")]
               ),
               _vm._v(" "),
@@ -40186,42 +40293,6 @@ var render = function() {
               [_vm._v("اللي بعدو")]
             )
           ])
-        ]
-      ),
-      _vm._v(" "),
-      _c(
-        "jilsati-step",
-        {
-          attrs: {
-            title: "صور الجلسة",
-            dir: "rtl",
-            rtl: "true",
-            number: "4",
-            status: _vm.stepsInfo[3]
-          }
-        },
-        [
-          _c("jilsati-file-chooser", {
-            attrs: {
-              name: "jilsah-main-img",
-              browse: "صورة الجلسة الاساسية",
-              content: "ارفع صورة الجلسة الاساسية"
-            }
-          }),
-          _vm._v(" "),
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  return _vm.check(3)
-                }
-              }
-            },
-            [_vm._v("اللي بعدو")]
-          )
         ],
         1
       ),
@@ -40230,7 +40301,37 @@ var render = function() {
         "jilsati-step",
         {
           attrs: {
-            title: "معلومات التواصل",
+            title: "موقع الجلسة",
+            dir: "rtl",
+            rtl: "true",
+            number: "4",
+            status: _vm.stepsInfo[3]
+          }
+        },
+        [
+          _c("div", [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.check(3)
+                  }
+                }
+              },
+              [_vm._v("اللي بعدو")]
+            )
+          ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "jilsati-step",
+        {
+          attrs: {
+            title: "اسعار الجلسة",
             dir: "rtl",
             rtl: "true",
             number: "5",
@@ -40258,7 +40359,7 @@ var render = function() {
         "jilsati-step",
         {
           attrs: {
-            title: "موقع الجلسة",
+            title: "صور الجلسة",
             dir: "rtl",
             rtl: "true",
             number: "6",
@@ -40266,27 +40367,59 @@ var render = function() {
           }
         },
         [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  return _vm.check(5)
-                }
-              }
+          _c("jilsati-file-chooser", {
+            attrs: {
+              name: "jilsah-main-img",
+              browse: "صورة الجلسة",
+              content: "ارفع الصورة"
             },
-            [_vm._v("اللي بعدو")]
-          )
-        ]
+            on: { "main-image-changed": _vm.handleMainImageChanged }
+          }),
+          _vm._v(" "),
+          _c(
+            "div",
+            [
+              _c("jilsati-alert", { attrs: { type: "info" } }, [
+                _vm._v("\n                عرض لشكل الجلسة\n            ")
+              ]),
+              _vm._v(" "),
+              _c("jilsati-card", {
+                staticClass: "mx-auto mt-4",
+                attrs: {
+                  title: _vm.models.name,
+                  description: _vm.models.description,
+                  city: _vm.models.city,
+                  "img-src": _vm.models.mainImage
+                }
+              })
+            ],
+            1
+          ),
+          _vm._v(" "),
+          _c("div", { staticClass: "mt-4" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success",
+                attrs: { type: "button" },
+                on: {
+                  click: function($event) {
+                    return _vm.check(5)
+                  }
+                }
+              },
+              [_vm._v("اللي بعدو")]
+            )
+          ])
+        ],
+        1
       ),
       _vm._v(" "),
       _c(
         "jilsati-step",
         {
           attrs: {
-            title: "اسعار الجلسة",
+            title: "معلومات التواصل",
             dir: "rtl",
             rtl: "true",
             number: "7",
@@ -52568,72 +52701,72 @@ Vue.component('JilsatiFileChooser', __webpack_require__(/*! ./components/jilsati
 var app = new Vue({
   el: '#app',
   data: {
-    istrahas: [{
+    jilsahs: [{
       id: 0,
       city: 'الرياض',
       title: 'شاليهات الواحة',
       description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىمكبنورحيكثقونبلثبيقنخةولخثقبةلثسيبةتثيقبهةتنبقثهةتخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 1,
       city: 'مكة المكرمة',
       title: 'شاليهات جدة',
       description: 'نةنةشنسىةنهىسنهشةىسنشىةشسمنثقبي ةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقبهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 2,
       city: 'ينبع البحر',
       title: 'شاليهات هدر',
       description: 'نةنةشنسىةنهىسةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقنهشةىسنشىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 3,
       city: 'الطائف',
       title: 'شاليهات ابها',
       description: 'نةنةشنسىةنهىسنهشةىسنةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقشىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 4,
       city: 'راس تنورة',
       title: 'شاليهات دبي',
       description: 'نةنةشنسىةنهىسنهشةىةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقسنشىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 5,
       city: 'الخبر',
       title: 'شاليهات نننن',
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 6,
       city: 'المدينة المنورة',
       title: 'شاليهات نننن',
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 7,
       city: 'الرياض',
       title: 'شاليهات نننن',
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 8,
       city: 'جدة',
       title: 'شاليهات نننن',
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 9,
       city: 'الدوادمي',
       title: 'شاليهات نننن',
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }, {
       id: 10,
       city: 'الأفلاج',
       title: 'شاليهات نننن',
       description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha.jpg'
+      imgSrc: '/images/istraha-1.jpg'
     }]
   },
   methods: {},

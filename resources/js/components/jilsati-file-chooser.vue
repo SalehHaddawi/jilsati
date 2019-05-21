@@ -14,7 +14,6 @@
         data : function(){
           return {
               cont : this.content,
-              file : null
           }
         },
 
@@ -22,7 +21,12 @@
             onChange : function (event) {
                 if(event.target.files && event.target.files[0] && event.target.files[0].type.startsWith('image/')) {
                     this.cont = event.target.files[0].name;
-                    this.file = event.target.files[0];
+
+                    let vue = this;
+
+                    const reader = new FileReader();
+                    reader.onload = function(e){vue.$emit('main-image-changed',e.target.result)}
+                    reader.readAsDataURL(event.target.files[0]);
                 }
             }
         }

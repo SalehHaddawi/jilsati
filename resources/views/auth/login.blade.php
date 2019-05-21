@@ -9,6 +9,13 @@
     {{json_encode($errors->all())}}
 
     <div class="container">
+
+        @if(\Illuminate\Support\Facades\Session::has('login-error'))
+            <jilsati-alert type="warning">
+                لازم نكون مسجل عشان تشوف الصفحة
+            </jilsati-alert>
+        @endif
+
         <div class="jumbotron justify-content-md-center shadow-sm bg-light">
             <div class="form-group">
                 <form dir="rtl" method="post" action="/login">

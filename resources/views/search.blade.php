@@ -46,13 +46,13 @@
 
     <div class="rounded-0 shadow bg-light col-lg-9 col-12">
         <div class="row card-columns">
-            <jilsati-card v-for="istraha in istrahas"
-                          :key="istraha.id"
-                          :id="istraha.id"
-                          :title="istraha.title"
-                          :description="istraha.description"
-                          :img-src="istraha.imgSrc"
-                          :city="istraha.city"
+            <jilsati-card v-for="jilsah in jilsahs"
+                          :key="jilsah.id"
+                          :id="jilsah.id"
+                          :title="jilsah.title"
+                          :description="jilsah.description"
+                          :img-src="jilsah.imgSrc"
+                          :city="jilsah.city"
                           added-at="1997/08/03">
             </jilsati-card>
         </div>

@@ -8,14 +8,14 @@
 
             <div class="form-group">
                 <label for="jilsah-name">اسم الجلسة</label>
-                <input type="text" class="form-control" id="jilsah-name" placeholder="اسم جلستك" aria-describedby="jilsah-nameHelp">
+                <input v-model="models.name" type="text" class="form-control" id="jilsah-name" placeholder="اسم جلستك" aria-describedby="jilsah-nameHelp">
                 <small id="jilsah-nameHelp" class="form-text text-muted">
                     هذا الاسم اللي الناس بيبحثوا عن جلستك بيه
                 </small>
             </div>
             <div class="form-group">
                 <label for="jilsah-description">وصف الجلسة</label>
-                <textarea class="form-control" id="jilsah-description" placeholder="الوصف" rows="5" aria-describedby="descriptionHelp"></textarea>
+                <textarea v-model="models.description" class="form-control" id="jilsah-description" placeholder="الوصف" rows="5" aria-describedby="descriptionHelp"></textarea>
                 <small id="descriptionHelp" class="form-text text-muted">
                     معلومات مفصلة عن جلستك عشان الناس يعرفوا اكثر عنها
                 </small>
@@ -55,7 +55,8 @@
                             </div>
                         </div>
                     </div>
-                    <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.schoolWeekShifts++">ضيف فترة جديدة</button>
+                    <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.schoolWeekShifts++">ضيف فترة عمل</button>
+                    <button v-if="jilsahShifts.schoolWeekShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.schoolWeekShifts--">حذف فترة عمل</button>
                 </jilsati-fieldset>
                 <jilsati-fieldset font-size="1.1rem" legend="نهاية الاسبوع">
                     <div font-size="1.1rem" legend="ايام الاسبوع">
@@ -73,6 +74,7 @@
                             </div>
                         </div>
                         <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.schoolWeekendShifts++">ضيف فترة جديدة</button>
+                        <button v-if="jilsahShifts.schoolWeekendShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.schoolWeekendShifts--">حذف فترة عمل</button>
                     </div>
                 </jilsati-fieldset>
             </jilsati-fieldset>
@@ -92,6 +94,7 @@
                     </div>
                 </div>
                 <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.vacationShifts++">ضيف فترة جديدة</button>
+                <button v-if="jilsahShifts.vacationShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.vacationShifts--">حذف فترة عمل</button>
             </jilsati-fieldset>
 
             <jilsati-fieldset v-show="chosenTimePeriods['eid-time-period']" legend="الاعياد">
@@ -109,6 +112,7 @@
                     </div>
                 </div>
                 <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.eidShifts++">ضيف فترة جديدة</button>
+                <button v-if="jilsahShifts.eidShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.eidShifts--">حذف فترة عمل</button>
             </jilsati-fieldset>
 
             <jilsati-fieldset v-show="chosenTimePeriods['ramadan-time-period']" legend="رمضان">
@@ -126,6 +130,7 @@
                     </div>
                 </div>
                 <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.ramadanShifts++">ضيف فترة جديدة</button>
+                <button v-if="jilsahShifts.ramadanShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.ramadanShifts--">حذف فترة عمل</button>
             </jilsati-fieldset>
 
             <!-- next step button -->
@@ -143,30 +148,21 @@
                 اختار الخدمات/المميزات اللي جلستك بتقدمها/تحتويها
             </p>
 
-            <fieldset class="border p-2">
-                <legend  class="w-auto">الجلسة تستقبل</legend>
+            <jilsati-fieldset legend="الجلسة تستقبل" font-size="1.1rem">
                 <jilsati-radio postfix="1" name="client" inline="true" checked="selected">شباب</jilsati-radio>
                 <jilsati-radio postfix="2" name="client" inline="true">عائلات</jilsati-radio>
                 <jilsati-radio postfix="3" name="client" inline="true">الاثنين</jilsati-radio>
-            </fieldset>
+            </jilsati-fieldset>
 
-            <fieldset class="border p-2">
-                <legend  class="w-auto">نوع الجلسة</legend>
+            <jilsati-fieldset legend="نوع الجلسة" font-size="1.1rem">
                 <jilsati-radio postfix="1" name="jilsah-type" inline="true" checked="checked">ارضية</jilsati-radio>
                 <jilsati-radio postfix="2" name="jilsah-type" inline="true">طاولات</jilsati-radio>
                 <jilsati-radio postfix="3" name="jilsah-type" inline="true">الاثنين</jilsati-radio>
-            </fieldset>
+            </jilsati-fieldset>
 
-            <fieldset class="border p-2">
-                <legend  class="w-auto">الجلسة تقدم مجانا</legend>
-                <jilsati-checkbox name="free-arabic-coffee-dates" inline="true">قهوة وتمر</jilsati-checkbox>
-                <jilsati-checkbox name="free-nuts" inline="true">مكسرات</jilsati-checkbox>
-                <jilsati-checkbox name="free-juices" inline="true">عصيرات</jilsati-checkbox>
-                <jilsati-checkbox name="free-tv-for-sports" inline="true">عرض المباريات</jilsati-checkbox>
-            </fieldset>
-
-            <fieldset class="border p-2">
-                <legend  class="w-auto">خدمات الجلسة</legend>
+            <jilsati-fieldset legend="خدمات/مميزات الجلسة" font-size="1.1rem">
+                <jilsati-checkbox name="arabic-coffee-dates" inline="true">قهوة وتمر</jilsati-checkbox>
+                <jilsati-checkbox name="nuts" inline="true">مكسرات</jilsati-checkbox>
                 <jilsati-checkbox name="board-games" inline="true">العاب طاولة</jilsati-checkbox>
                 <jilsati-checkbox name="card-games" inline="true">العاب ورقية</jilsati-checkbox>
                 <jilsati-checkbox name="video-games" inline="true">العاب فيديو</jilsati-checkbox>
@@ -175,50 +171,70 @@
                 <jilsati-checkbox name="tennis" inline="true">تنس طاولة</jilsati-checkbox>
                 <jilsati-checkbox name="billiard" inline="true">بلياردو</jilsati-checkbox>
                 <jilsati-checkbox name="soccer-table" inline="true">فرفيرة</jilsati-checkbox>
+                <jilsati-checkbox name="air-condition" inline="true">مكيفة</jilsati-checkbox>
+                <jilsati-checkbox name="open-air" inline="true">مفتوحة</jilsati-checkbox>
                 <jilsati-checkbox name="smoke" inline="true">شيشة ومعسل</jilsati-checkbox>
-                <jilsati-checkbox name="smoke-area" inline="true">منطقة للمدخنين</jilsati-checkbox>
+                <jilsati-checkbox name="smoking-area" inline="true">منطقة للمدخنين</jilsati-checkbox>
                 <jilsati-checkbox name="tv-for-sports" inline="true">عرض المباريات</jilsati-checkbox>
-            </fieldset>
+            </jilsati-fieldset>
 
             <div class="mt-2">
                 <button type="button" class="btn btn-success" @click="check(2)">اللي بعدو</button>
             </div>
         </jilsati-step>
-        <jilsati-step title="صور الجلسة"
+        <jilsati-step title="موقع الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="4"
                       :status="stepsInfo[3]">
-
-            <jilsati-file-chooser
-                    name="jilsah-main-img"
-                    browse="صورة الجلسة الاساسية"
-                    content="ارفع صورة الجلسة الاساسية">
-            </jilsati-file-chooser>
-
-
-            <button type="button" class="btn btn-success" @click="check(3)">اللي بعدو</button>
-        </jilsati-step>
-        <jilsati-step title="معلومات التواصل"
-                      dir="rtl"
-                      rtl="true"
-                      number="5"
-                      :status="stepsInfo[4]">
-            <button type="button" class="btn btn-success" @click="check(4)">اللي بعدو</button>
-        </jilsati-step>
-        <jilsati-step title="موقع الجلسة"
-                      dir="rtl"
-                      rtl="true"
-                      number="6"
-                      :status="stepsInfo[5]">
-            <button type="button" class="btn btn-success" @click="check(5)">اللي بعدو</button>
+            <div>
+                <button type="button" class="btn btn-success" @click="check(3)">اللي بعدو</button>
+            </div>
         </jilsati-step>
         <jilsati-step title="اسعار الجلسة"
                       dir="rtl"
                       rtl="true"
+                      number="5"
+                      :status="stepsInfo[4]">
+
+            <button type="button" class="btn btn-success" @click="check(4)">اللي بعدو</button>
+        </jilsati-step>
+        <jilsati-step title="صور الجلسة"
+                      dir="rtl"
+                      rtl="true"
+                      number="6"
+                      :status="stepsInfo[5]">
+
+            <jilsati-file-chooser
+                    name="jilsah-main-img"
+                    browse="صورة الجلسة"
+                    content="ارفع الصورة"
+                    @main-image-changed="handleMainImageChanged">
+            </jilsati-file-chooser>
+
+            <div>
+
+                <jilsati-alert type="info">
+                    عرض لشكل الجلسة
+                </jilsati-alert>
+
+                <jilsati-card class="mx-auto mt-4"
+                              :title="models.name"
+                              :description="models.description"
+                              :city="models.city"
+                              :img-src="models.mainImage">
+                </jilsati-card>
+            </div>
+
+            <div class="mt-4">
+                <button type="button" class="btn btn-success" @click="check(5)">اللي بعدو</button>
+            </div>
+        </jilsati-step>
+        <jilsati-step title="معلومات التواصل"
+                      dir="rtl"
+                      rtl="true"
                       number="7"
                       :status="stepsInfo[6]">
-
             <button type="button" class="btn btn-success" @click="check(6)">اللي بعدو</button>
         </jilsati-step>
     </div>
@@ -232,10 +248,10 @@
                     {id: 'jilsah-info', state : 'primary', disabled : false},
                     {id: 'jilsah-times', state : 'secondary', disabled : true},
                     {id: 'jilsah-options', state : 'secondary', disabled : true},
+                    {id: 'jilsah-location', state : 'secondary', disabled : true},
+                    {id: 'jilsah-price', state : 'secondary', disabled : true},
                     {id: 'jilsah-photos', state : 'secondary', disabled : true},
                     {id: 'jilsah-connect', state : 'secondary', disabled : true},
-                    {id: 'jilsah-مخؤشفهخى', state : 'secondary', disabled : true},
-                    {id: 'jilsah-price', state : 'secondary', disabled : true},
                 ],
 
                 timePeriods : [
@@ -261,6 +277,13 @@
                     eidShifts : 1,
 
                     ramadanShifts : 1
+                },
+
+                models : {
+                    name : '',
+                    description : '',
+                    city : '',
+                    mainImage : null
                 }
             }
         },
@@ -291,6 +314,12 @@
 
             handleCheckedValueChanged : function (name,value) {
                 Vue.set(this.chosenTimePeriods,name,value);
+            },
+
+            handleMainImageChanged : function (src) {
+                this.models.mainImage = src;
+
+                console.log('main image changed')
             }
         }
     }
