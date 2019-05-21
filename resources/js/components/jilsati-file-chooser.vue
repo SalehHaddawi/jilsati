@@ -13,14 +13,17 @@
 
         data : function(){
           return {
-              cont : this.content
+              cont : this.content,
+              file : null
           }
         },
 
         methods : {
             onChange : function (event) {
-                if(event.target.files && event.target.files[0])
+                if(event.target.files && event.target.files[0] && event.target.files[0].type.startsWith('image/')) {
                     this.cont = event.target.files[0].name;
+                    this.file = event.target.files[0];
+                }
             }
         }
     }

@@ -2,11 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863277c5-237f-4abb-b85c-41037fadc229" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,17 +33,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/jilsah/create.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="512">
-              <caret line="29" selection-start-line="29" selection-end-line="29" />
+            <state relative-caret-position="196">
+              <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="264">
-              <caret line="195" column="54" selection-start-line="195" selection-start-column="54" selection-end-line="195" selection-end-column="54" />
+            <state relative-caret-position="550">
+              <caret line="236" column="41" selection-start-line="236" selection-start-column="41" selection-end-line="236" selection-end-column="41" />
               <folding>
                 <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
@@ -52,18 +51,18 @@
                 <element signature="n#jilsati-fieldset#2;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#jilsati-fieldset#3;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="462">
-              <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+            <state relative-caret-position="528">
+              <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
             </state>
           </provider>
         </entry>
@@ -161,10 +160,10 @@
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-step.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-filechooser.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" />
         <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" />
+        <option value="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" />
+        <option value="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" />
       </list>
     </option>
   </component>
@@ -412,7 +411,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="206855000" />
+    <option name="totallyTimeSpent" value="208432000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -425,7 +424,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16778524" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -833,17 +831,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="528">
+          <caret line="24" column="53" selection-start-line="24" selection-start-column="53" selection-end-line="24" selection-end-column="53" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/jilsah/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="512">
-          <caret line="29" selection-start-line="29" selection-end-line="29" />
+        <state relative-caret-position="196">
+          <caret line="14" column="55" selection-start-line="14" selection-start-column="55" selection-end-line="14" selection-end-column="55" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="195" column="54" selection-start-line="195" selection-start-column="54" selection-end-line="195" selection-end-column="54" />
+        <state relative-caret-position="550">
+          <caret line="236" column="41" selection-start-line="236" selection-start-column="41" selection-end-line="236" selection-end-column="41" />
           <folding>
             <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
@@ -851,16 +856,9 @@
             <element signature="n#jilsati-fieldset#2;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-fieldset#3;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="462">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
         </state>
       </provider>
     </entry>

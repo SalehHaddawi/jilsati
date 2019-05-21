@@ -196,12 +196,6 @@
                     content="ارفع صورة الجلسة الاساسية">
             </jilsati-file-chooser>
 
-            <!--
-            <div class="custom-file text-center">
-                <input type="file" class="custom-file-input" id="customFileLangHTML">
-                <label class="custom-file-label" for="customFileLangHTML" data-browse="صورة الجلسة الاساسية">صورة الجلسة الاساسية</label>
-            </div>
-            -->
 
             <button type="button" class="btn btn-success" @click="check(3)">اللي بعدو</button>
         </jilsati-step>
@@ -212,13 +206,20 @@
                       :status="stepsInfo[4]">
             <button type="button" class="btn btn-success" @click="check(4)">اللي بعدو</button>
         </jilsati-step>
-        <jilsati-step title="اسعار الجلسة"
+        <jilsati-step title="موقع الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="6"
                       :status="stepsInfo[5]">
-
             <button type="button" class="btn btn-success" @click="check(5)">اللي بعدو</button>
+        </jilsati-step>
+        <jilsati-step title="اسعار الجلسة"
+                      dir="rtl"
+                      rtl="true"
+                      number="7"
+                      :status="stepsInfo[6]">
+
+            <button type="button" class="btn btn-success" @click="check(6)">اللي بعدو</button>
         </jilsati-step>
     </div>
 </template>
@@ -233,6 +234,7 @@
                     {id: 'jilsah-options', state : 'secondary', disabled : true},
                     {id: 'jilsah-photos', state : 'secondary', disabled : true},
                     {id: 'jilsah-connect', state : 'secondary', disabled : true},
+                    {id: 'jilsah-مخؤشفهخى', state : 'secondary', disabled : true},
                     {id: 'jilsah-price', state : 'secondary', disabled : true},
                 ],
 

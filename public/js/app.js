@@ -2064,12 +2064,16 @@ __webpack_require__.r(__webpack_exports__);
   props: ['name', 'browse', 'content'],
   data: function data() {
     return {
-      cont: this.content
+      cont: this.content,
+      file: null
     };
   },
   methods: {
     onChange: function onChange(event) {
-      if (event.target.files && event.target.files[0]) this.cont = event.target.files[0].name;
+      if (event.target.files && event.target.files[0] && event.target.files[0].type.startsWith('image/')) {
+        this.cont = event.target.files[0].name;
+        this.file = event.target.files[0];
+      }
     }
   }
 });
@@ -2554,6 +2558,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2575,6 +2580,10 @@ __webpack_require__.r(__webpack_exports__);
         disabled: true
       }, {
         id: 'jilsah-connect',
+        state: 'secondary',
+        disabled: true
+      }, {
+        id: 'jilsah-مخؤشفهخى',
         state: 'secondary',
         disabled: true
       }, {
@@ -40249,7 +40258,7 @@ var render = function() {
         "jilsati-step",
         {
           attrs: {
-            title: "اسعار الجلسة",
+            title: "موقع الجلسة",
             dir: "rtl",
             rtl: "true",
             number: "6",
@@ -40265,6 +40274,34 @@ var render = function() {
               on: {
                 click: function($event) {
                   return _vm.check(5)
+                }
+              }
+            },
+            [_vm._v("اللي بعدو")]
+          )
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "jilsati-step",
+        {
+          attrs: {
+            title: "اسعار الجلسة",
+            dir: "rtl",
+            rtl: "true",
+            number: "7",
+            status: _vm.stepsInfo[6]
+          }
+        },
+        [
+          _c(
+            "button",
+            {
+              staticClass: "btn btn-success",
+              attrs: { type: "button" },
+              on: {
+                click: function($event) {
+                  return _vm.check(6)
                 }
               }
             },
