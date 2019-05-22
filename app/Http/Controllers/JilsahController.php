@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jilsah;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class JilsahController extends Controller
 {
@@ -87,5 +88,11 @@ class JilsahController extends Controller
     public function destroy(Jilsah $jilsah)
     {
         //
+    }
+
+    public function getCities(){
+        $cities = \App\City::all()->map->name;
+
+        return json_encode($cities);
     }
 }

@@ -1964,11 +1964,16 @@ __webpack_require__.r(__webpack_exports__);
     },
     inline: {
       required: false
-    }
+    },
+    value: ''
+  },
+  model: {
+    prop: 'value',
+    event: 'change'
   },
   methods: {
     onChange: function onChange(event) {
-      this.$emit('checked-value-changed', this.name, event.target.checked);
+      this.$emit('change', event.target.checked);
     }
   }
 });
@@ -2282,7 +2287,23 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['name', 'labelOption', 'options']
+  props: ['value', 'name', 'optionsLabel', 'options'],
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
+  data: function data() {
+    return {
+      content: this.value
+    };
+  },
+  methods: {
+    onChange: function onChange(e) {
+      if (e.target.options.selectedIndex > -1) {
+        this.$emit('change', e.target.options[e.target.options.selectedIndex].innerText);
+      }
+    }
+  }
 });
 
 /***/ }),
@@ -2581,6 +2602,51 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2615,10 +2681,10 @@ __webpack_require__.r(__webpack_exports__);
       }],
       timePeriods: ['فترة الدراسة', 'فترة الاجازة', 'الاعياد', 'رمضان'],
       chosenTimePeriods: {
-        'school-time-period': false,
-        'vacation-time-period': false,
-        'eid-time-period': false,
-        'ramadan-time-period': false
+        school: false,
+        vacation: false,
+        eid: false,
+        ramadan: false
       },
       jilsahShifts: {
         schoolWeekShifts: 1,
@@ -2631,8 +2697,11 @@ __webpack_require__.r(__webpack_exports__);
         name: '',
         description: '',
         city: '',
-        mainImage: null
-      }
+        mainImage: null,
+        address: '',
+        googleMapAddress: ''
+      },
+      cities: []
     };
   },
   methods: {
@@ -2641,24 +2710,35 @@ __webpack_require__.r(__webpack_exports__);
       Vue.set(this.stepsInfo[step], 'state', 'success');
       var vue = this;
       var jilsahStep = $('#' + this.stepsInfo[step].id);
-      jilsahStep.collapse('hide'); // execute the code after the collapse event has finished
+      jilsahStep.collapse('hide'); // make disabled to false so 'v-if' will be true
+      // and step body content will appear
+      // so the collapse show animation will be good
+
+      if (step + 1 < vue.stepsInfo.length) {
+        Vue.set(vue.stepsInfo[step + 1], 'disabled', false);
+      } // execute the code after the collapse event has finished
       // add the listener only once using -> one()
+
 
       jilsahStep.one('hidden.bs.collapse', function () {
         if (step + 1 < vue.stepsInfo.length) {
           Vue.set(vue.stepsInfo[step + 1], 'state', 'primary');
-          Vue.set(vue.stepsInfo[step + 1], 'disabled', false);
           $('#' + vue.stepsInfo[step + 1].id).collapse('show');
         }
       });
     },
-    handleCheckedValueChanged: function handleCheckedValueChanged(name, value) {
-      Vue.set(this.chosenTimePeriods, name, value);
-    },
     handleMainImageChanged: function handleMainImageChanged(src) {
       this.models.mainImage = src;
-      console.log('main image changed');
     }
+  },
+  created: function created() {
+    var _this = this;
+
+    axios.post('/jilsahs/cities').then(function (res) {
+      _this.cities = res.data;
+    })["catch"](function (err) {
+      console.log(err);
+    });
   }
 });
 
@@ -39315,11 +39395,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c(
     "select",
-    { staticClass: "custom-select", attrs: { id: _vm.name, name: _vm.name } },
+    {
+      staticClass: "custom-select",
+      attrs: { id: _vm.name, name: _vm.name },
+      on: { change: _vm.onChange }
+    },
     [
-      _vm.labelOption
+      _vm.optionsLabel
         ? _c("option", { attrs: { selected: "", disabled: "" } }, [
-            _vm._v(_vm._s(_vm.labelOption))
+            _vm._v(_vm._s(_vm.optionsLabel))
           ])
         : _vm._e(),
       _vm._v(" "),
@@ -39554,162 +39638,317 @@ var render = function() {
           }
         },
         [
-          _c("p", { staticClass: "text-justify" }, [
-            _vm._v(
-              "\n            اختار الاوقات الي الجلسة تكون شغالة\n        "
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "jilsati-checkbox",
-            {
-              attrs: { name: "school-time-period" },
-              on: { "checked-value-changed": _vm.handleCheckedValueChanged }
-            },
-            [_vm._v("فترة الدراسة")]
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-checkbox",
-            {
-              attrs: { name: "vacation-time-period" },
-              on: { "checked-value-changed": _vm.handleCheckedValueChanged }
-            },
-            [_vm._v("فترة الاجازة")]
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-checkbox",
-            {
-              attrs: { name: "eid-time-period" },
-              on: { "checked-value-changed": _vm.handleCheckedValueChanged }
-            },
-            [_vm._v("الاعياد")]
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-checkbox",
-            {
-              attrs: { name: "ramadan-time-period" },
-              on: { "checked-value-changed": _vm.handleCheckedValueChanged }
-            },
-            [_vm._v("رمضان")]
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-fieldset",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.chosenTimePeriods["school-time-period"],
-                  expression: "chosenTimePeriods['school-time-period']"
-                }
-              ],
-              attrs: { "font-size": "1.4rem", legend: "فترة الدراسة" }
-            },
-            [
-              _c(
-                "jilsati-fieldset",
-                { attrs: { "font-size": "1.1rem", legend: "ايام الاسبوع" } },
+          !_vm.stepsInfo[1].disabled
+            ? _c(
+                "div",
                 [
-                  _vm._l(_vm.jilsahShifts.schoolWeekShifts, function(index) {
-                    return _c("div", [
-                      _c("p", { staticClass: "text-info" }, [
-                        _vm._v("فترة العمل رقم " + _vm._s(index))
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "form-inline" }, [
-                        _c(
-                          "div",
-                          { staticClass: "form-group m-auto" },
-                          [
-                            _c(
-                              "label",
-                              { staticClass: "form-check-label m-2" },
-                              [_vm._v("من")]
-                            ),
-                            _vm._v(" "),
-                            _c("jilsati-time-picker", {
-                              attrs: {
-                                time: "10:00 AM",
-                                name: "school-week-time-from" + index
-                              }
-                            })
-                          ],
-                          1
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "div",
-                          { staticClass: "form-group m-auto" },
-                          [
-                            _c(
-                              "label",
-                              { staticClass: "form-check-label m-2" },
-                              [_vm._v("الى")]
-                            ),
-                            _vm._v(" "),
-                            _c("jilsati-time-picker", {
-                              attrs: {
-                                time: "11:00 PM",
-                                name: "school-week-time-to" + index
-                              }
-                            })
-                          ],
-                          1
-                        )
-                      ])
-                    ])
-                  }),
+                  _c("p", { staticClass: "text-justify" }, [
+                    _vm._v(
+                      "\n                اختار الاوقات الي الجلسة تكون شغالة\n            "
+                    )
+                  ]),
                   _vm._v(" "),
                   _c(
-                    "button",
+                    "jilsati-checkbox",
                     {
-                      staticClass: "btn btn-info mt-4 mr-2",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.jilsahShifts.schoolWeekShifts++
-                        }
+                      attrs: { name: "school-time-period" },
+                      model: {
+                        value: _vm.chosenTimePeriods.school,
+                        callback: function($$v) {
+                          _vm.$set(_vm.chosenTimePeriods, "school", $$v)
+                        },
+                        expression: "chosenTimePeriods.school"
                       }
                     },
-                    [_vm._v("ضيف فترة عمل")]
+                    [_vm._v("فترة الدراسة")]
                   ),
                   _vm._v(" "),
-                  _vm.jilsahShifts.schoolWeekShifts > 1
-                    ? _c(
-                        "button",
-                        {
-                          staticClass: "btn btn-danger mt-4 mr-2",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.jilsahShifts.schoolWeekShifts--
-                            }
-                          }
-                        },
-                        [_vm._v("حذف فترة عمل")]
-                      )
-                    : _vm._e()
-                ],
-                2
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-fieldset",
-                { attrs: { "font-size": "1.1rem", legend: "نهاية الاسبوع" } },
-                [
                   _c(
-                    "div",
+                    "jilsati-checkbox",
                     {
-                      attrs: { "font-size": "1.1rem", legend: "ايام الاسبوع" }
+                      attrs: { name: "vacation-time-period" },
+                      model: {
+                        value: _vm.chosenTimePeriods.vacation,
+                        callback: function($$v) {
+                          _vm.$set(_vm.chosenTimePeriods, "vacation", $$v)
+                        },
+                        expression: "chosenTimePeriods.vacation"
+                      }
+                    },
+                    [_vm._v("فترة الاجازة")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-checkbox",
+                    {
+                      attrs: { name: "eid-time-period" },
+                      model: {
+                        value: _vm.chosenTimePeriods.eid,
+                        callback: function($$v) {
+                          _vm.$set(_vm.chosenTimePeriods, "eid", $$v)
+                        },
+                        expression: "chosenTimePeriods.eid"
+                      }
+                    },
+                    [_vm._v("الاعياد")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-checkbox",
+                    {
+                      attrs: { name: "ramadan-time-period" },
+                      model: {
+                        value: _vm.chosenTimePeriods.ramadan,
+                        callback: function($$v) {
+                          _vm.$set(_vm.chosenTimePeriods, "ramadan", $$v)
+                        },
+                        expression: "chosenTimePeriods.ramadan"
+                      }
+                    },
+                    [_vm._v("رمضان")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.chosenTimePeriods.school,
+                          expression: "chosenTimePeriods.school"
+                        }
+                      ],
+                      attrs: { "font-size": "1.4rem", legend: "فترة الدراسة" }
                     },
                     [
-                      _vm._l(_vm.jilsahShifts.schoolWeekendShifts, function(
-                        index
-                      ) {
+                      _c(
+                        "jilsati-fieldset",
+                        {
+                          attrs: {
+                            "font-size": "1.1rem",
+                            legend: "ايام الاسبوع"
+                          }
+                        },
+                        [
+                          _vm._l(_vm.jilsahShifts.schoolWeekShifts, function(
+                            index
+                          ) {
+                            return _c("div", [
+                              _c("p", { staticClass: "text-info" }, [
+                                _vm._v("فترة العمل رقم " + _vm._s(index))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-inline" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group m-auto" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { staticClass: "form-check-label m-2" },
+                                      [_vm._v("من")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("jilsati-time-picker", {
+                                      attrs: {
+                                        time: "10:00 AM",
+                                        name: "school-week-time-from" + index
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group m-auto" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { staticClass: "form-check-label m-2" },
+                                      [_vm._v("الى")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("jilsati-time-picker", {
+                                      attrs: {
+                                        time: "11:00 PM",
+                                        name: "school-week-time-to" + index
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            ])
+                          }),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-info mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.jilsahShifts.schoolWeekShifts++
+                                }
+                              }
+                            },
+                            [_vm._v("ضيف فترة عمل")]
+                          ),
+                          _vm._v(" "),
+                          _vm.jilsahShifts.schoolWeekShifts > 1
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger mt-4 mr-2",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.jilsahShifts.schoolWeekShifts--
+                                    }
+                                  }
+                                },
+                                [_vm._v("حذف فترة عمل")]
+                              )
+                            : _vm._e()
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-fieldset",
+                        {
+                          attrs: {
+                            "font-size": "1.1rem",
+                            legend: "نهاية الاسبوع"
+                          }
+                        },
+                        [
+                          _c(
+                            "div",
+                            {
+                              attrs: {
+                                "font-size": "1.1rem",
+                                legend: "ايام الاسبوع"
+                              }
+                            },
+                            [
+                              _vm._l(
+                                _vm.jilsahShifts.schoolWeekendShifts,
+                                function(index) {
+                                  return _c("div", [
+                                    _c("p", { staticClass: "text-info" }, [
+                                      _vm._v("فترة العمل رقم " + _vm._s(index))
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("div", { staticClass: "form-inline" }, [
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group m-auto" },
+                                        [
+                                          _c(
+                                            "label",
+                                            {
+                                              staticClass:
+                                                "form-check-label m-2"
+                                            },
+                                            [_vm._v("من")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("jilsati-time-picker", {
+                                            attrs: {
+                                              time: "10:00 AM",
+                                              name:
+                                                "school-weekend-time-from" +
+                                                index
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "div",
+                                        { staticClass: "form-group m-auto" },
+                                        [
+                                          _c(
+                                            "label",
+                                            {
+                                              staticClass:
+                                                "form-check-label m-2"
+                                            },
+                                            [_vm._v("الى")]
+                                          ),
+                                          _vm._v(" "),
+                                          _c("jilsati-time-picker", {
+                                            attrs: {
+                                              time: "11:00 PM",
+                                              name:
+                                                "school-weekend-time-to" + index
+                                            }
+                                          })
+                                        ],
+                                        1
+                                      )
+                                    ])
+                                  ])
+                                }
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-info mt-4 mr-2",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.jilsahShifts.schoolWeekendShifts++
+                                    }
+                                  }
+                                },
+                                [_vm._v("ضيف فترة جديدة")]
+                              ),
+                              _vm._v(" "),
+                              _vm.jilsahShifts.schoolWeekendShifts > 1
+                                ? _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-danger mt-4 mr-2",
+                                      attrs: { type: "button" },
+                                      on: {
+                                        click: function($event) {
+                                          _vm.jilsahShifts.schoolWeekendShifts--
+                                        }
+                                      }
+                                    },
+                                    [_vm._v("حذف فترة عمل")]
+                                  )
+                                : _vm._e()
+                            ],
+                            2
+                          )
+                        ]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.chosenTimePeriods.vacation,
+                          expression: "chosenTimePeriods.vacation"
+                        }
+                      ],
+                      attrs: { legend: "فترة الاجازة" }
+                    },
+                    [
+                      _vm._l(_vm.jilsahShifts.vacationShifts, function(index) {
                         return _c("div", [
                           _c("p", { staticClass: "text-info" }, [
                             _vm._v("فترة العمل رقم " + _vm._s(index))
@@ -39729,7 +39968,7 @@ var render = function() {
                                 _c("jilsati-time-picker", {
                                   attrs: {
                                     time: "10:00 AM",
-                                    name: "school-weekend-time-from" + index
+                                    name: "vacation-time-from" + index
                                   }
                                 })
                               ],
@@ -39749,7 +39988,7 @@ var render = function() {
                                 _c("jilsati-time-picker", {
                                   attrs: {
                                     time: "11:00 PM",
-                                    name: "school-weekend-time-to" + index
+                                    name: "vacation-time-to" + index
                                   }
                                 })
                               ],
@@ -39766,14 +40005,14 @@ var render = function() {
                           attrs: { type: "button" },
                           on: {
                             click: function($event) {
-                              _vm.jilsahShifts.schoolWeekendShifts++
+                              _vm.jilsahShifts.vacationShifts++
                             }
                           }
                         },
                         [_vm._v("ضيف فترة جديدة")]
                       ),
                       _vm._v(" "),
-                      _vm.jilsahShifts.schoolWeekendShifts > 1
+                      _vm.jilsahShifts.vacationShifts > 1
                         ? _c(
                             "button",
                             {
@@ -39781,7 +40020,7 @@ var render = function() {
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
-                                  _vm.jilsahShifts.schoolWeekendShifts--
+                                  _vm.jilsahShifts.vacationShifts--
                                 }
                               }
                             },
@@ -39790,309 +40029,222 @@ var render = function() {
                         : _vm._e()
                     ],
                     2
-                  )
-                ]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.chosenTimePeriods.eid,
+                          expression: "chosenTimePeriods.eid"
+                        }
+                      ],
+                      attrs: { legend: "الاعياد" }
+                    },
+                    [
+                      _vm._l(_vm.jilsahShifts.eidShifts, function(index) {
+                        return _c("div", [
+                          _c("p", { staticClass: "text-info" }, [
+                            _vm._v("فترة العمل رقم " + _vm._s(index))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-inline" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group m-auto" },
+                              [
+                                _c(
+                                  "label",
+                                  { staticClass: "form-check-label m-2" },
+                                  [_vm._v("من")]
+                                ),
+                                _vm._v(" "),
+                                _c("jilsati-time-picker", {
+                                  attrs: {
+                                    time: "10:00 AM",
+                                    name: "eid-time-from" + index
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group m-auto" },
+                              [
+                                _c(
+                                  "label",
+                                  { staticClass: "form-check-label m-2" },
+                                  [_vm._v("الى")]
+                                ),
+                                _vm._v(" "),
+                                _c("jilsati-time-picker", {
+                                  attrs: {
+                                    time: "11:00 PM",
+                                    name: "eid-time-to" + index
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info mt-4 mr-2",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.jilsahShifts.eidShifts++
+                            }
+                          }
+                        },
+                        [_vm._v("ضيف فترة جديدة")]
+                      ),
+                      _vm._v(" "),
+                      _vm.jilsahShifts.eidShifts > 1
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.jilsahShifts.eidShifts--
+                                }
+                              }
+                            },
+                            [_vm._v("حذف فترة عمل")]
+                          )
+                        : _vm._e()
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: _vm.chosenTimePeriods.ramadan,
+                          expression: "chosenTimePeriods.ramadan"
+                        }
+                      ],
+                      attrs: { legend: "رمضان" }
+                    },
+                    [
+                      _vm._l(_vm.jilsahShifts.ramadanShifts, function(index) {
+                        return _c("div", [
+                          _c("p", { staticClass: "text-info" }, [
+                            _vm._v("فترة العمل رقم " + _vm._s(index))
+                          ]),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "form-inline" }, [
+                            _c(
+                              "div",
+                              { staticClass: "form-group m-auto" },
+                              [
+                                _c(
+                                  "label",
+                                  { staticClass: "form-check-label m-2" },
+                                  [_vm._v("من")]
+                                ),
+                                _vm._v(" "),
+                                _c("jilsati-time-picker", {
+                                  attrs: {
+                                    time: "10:00 AM",
+                                    name: "ramadan-time-from" + index
+                                  }
+                                })
+                              ],
+                              1
+                            ),
+                            _vm._v(" "),
+                            _c(
+                              "div",
+                              { staticClass: "form-group m-auto" },
+                              [
+                                _c(
+                                  "label",
+                                  { staticClass: "form-check-label m-2" },
+                                  [_vm._v("الى")]
+                                ),
+                                _vm._v(" "),
+                                _c("jilsati-time-picker", {
+                                  attrs: {
+                                    time: "11:00 PM",
+                                    name: "ramadan-time-to" + index
+                                  }
+                                })
+                              ],
+                              1
+                            )
+                          ])
+                        ])
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "btn btn-info mt-4 mr-2",
+                          attrs: { type: "button" },
+                          on: {
+                            click: function($event) {
+                              _vm.jilsahShifts.ramadanShifts++
+                            }
+                          }
+                        },
+                        [_vm._v("ضيف فترة جديدة")]
+                      ),
+                      _vm._v(" "),
+                      _vm.jilsahShifts.ramadanShifts > 1
+                        ? _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-danger mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.jilsahShifts.ramadanShifts--
+                                }
+                              }
+                            },
+                            [_vm._v("حذف فترة عمل")]
+                          )
+                        : _vm._e()
+                    ],
+                    2
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mt-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.check(1)
+                          }
+                        }
+                      },
+                      [_vm._v("اللي بعدو")]
+                    )
+                  ])
+                ],
+                1
               )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-fieldset",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.chosenTimePeriods["vacation-time-period"],
-                  expression: "chosenTimePeriods['vacation-time-period']"
-                }
-              ],
-              attrs: { legend: "فترة الاجازة" }
-            },
-            [
-              _vm._l(_vm.jilsahShifts.vacationShifts, function(index) {
-                return _c("div", [
-                  _c("p", { staticClass: "text-info" }, [
-                    _vm._v("فترة العمل رقم " + _vm._s(index))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-inline" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group m-auto" },
-                      [
-                        _c("label", { staticClass: "form-check-label m-2" }, [
-                          _vm._v("من")
-                        ]),
-                        _vm._v(" "),
-                        _c("jilsati-time-picker", {
-                          attrs: {
-                            time: "10:00 AM",
-                            name: "vacation-time-from" + index
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group m-auto" },
-                      [
-                        _c("label", { staticClass: "form-check-label m-2" }, [
-                          _vm._v("الى")
-                        ]),
-                        _vm._v(" "),
-                        _c("jilsati-time-picker", {
-                          attrs: {
-                            time: "11:00 PM",
-                            name: "vacation-time-to" + index
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ])
-                ])
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-info mt-4 mr-2",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.jilsahShifts.vacationShifts++
-                    }
-                  }
-                },
-                [_vm._v("ضيف فترة جديدة")]
-              ),
-              _vm._v(" "),
-              _vm.jilsahShifts.vacationShifts > 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger mt-4 mr-2",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.jilsahShifts.vacationShifts--
-                        }
-                      }
-                    },
-                    [_vm._v("حذف فترة عمل")]
-                  )
-                : _vm._e()
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-fieldset",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.chosenTimePeriods["eid-time-period"],
-                  expression: "chosenTimePeriods['eid-time-period']"
-                }
-              ],
-              attrs: { legend: "الاعياد" }
-            },
-            [
-              _vm._l(_vm.jilsahShifts.eidShifts, function(index) {
-                return _c("div", [
-                  _c("p", { staticClass: "text-info" }, [
-                    _vm._v("فترة العمل رقم " + _vm._s(index))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-inline" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group m-auto" },
-                      [
-                        _c("label", { staticClass: "form-check-label m-2" }, [
-                          _vm._v("من")
-                        ]),
-                        _vm._v(" "),
-                        _c("jilsati-time-picker", {
-                          attrs: {
-                            time: "10:00 AM",
-                            name: "eid-time-from" + index
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group m-auto" },
-                      [
-                        _c("label", { staticClass: "form-check-label m-2" }, [
-                          _vm._v("الى")
-                        ]),
-                        _vm._v(" "),
-                        _c("jilsati-time-picker", {
-                          attrs: {
-                            time: "11:00 PM",
-                            name: "eid-time-to" + index
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ])
-                ])
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-info mt-4 mr-2",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.jilsahShifts.eidShifts++
-                    }
-                  }
-                },
-                [_vm._v("ضيف فترة جديدة")]
-              ),
-              _vm._v(" "),
-              _vm.jilsahShifts.eidShifts > 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger mt-4 mr-2",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.jilsahShifts.eidShifts--
-                        }
-                      }
-                    },
-                    [_vm._v("حذف فترة عمل")]
-                  )
-                : _vm._e()
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-fieldset",
-            {
-              directives: [
-                {
-                  name: "show",
-                  rawName: "v-show",
-                  value: _vm.chosenTimePeriods["ramadan-time-period"],
-                  expression: "chosenTimePeriods['ramadan-time-period']"
-                }
-              ],
-              attrs: { legend: "رمضان" }
-            },
-            [
-              _vm._l(_vm.jilsahShifts.ramadanShifts, function(index) {
-                return _c("div", [
-                  _c("p", { staticClass: "text-info" }, [
-                    _vm._v("فترة العمل رقم " + _vm._s(index))
-                  ]),
-                  _vm._v(" "),
-                  _c("div", { staticClass: "form-inline" }, [
-                    _c(
-                      "div",
-                      { staticClass: "form-group m-auto" },
-                      [
-                        _c("label", { staticClass: "form-check-label m-2" }, [
-                          _vm._v("من")
-                        ]),
-                        _vm._v(" "),
-                        _c("jilsati-time-picker", {
-                          attrs: {
-                            time: "10:00 AM",
-                            name: "ramadan-time-from" + index
-                          }
-                        })
-                      ],
-                      1
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "div",
-                      { staticClass: "form-group m-auto" },
-                      [
-                        _c("label", { staticClass: "form-check-label m-2" }, [
-                          _vm._v("الى")
-                        ]),
-                        _vm._v(" "),
-                        _c("jilsati-time-picker", {
-                          attrs: {
-                            time: "11:00 PM",
-                            name: "ramadan-time-to" + index
-                          }
-                        })
-                      ],
-                      1
-                    )
-                  ])
-                ])
-              }),
-              _vm._v(" "),
-              _c(
-                "button",
-                {
-                  staticClass: "btn btn-info mt-4 mr-2",
-                  attrs: { type: "button" },
-                  on: {
-                    click: function($event) {
-                      _vm.jilsahShifts.ramadanShifts++
-                    }
-                  }
-                },
-                [_vm._v("ضيف فترة جديدة")]
-              ),
-              _vm._v(" "),
-              _vm.jilsahShifts.ramadanShifts > 1
-                ? _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger mt-4 mr-2",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          _vm.jilsahShifts.ramadanShifts--
-                        }
-                      }
-                    },
-                    [_vm._v("حذف فترة عمل")]
-                  )
-                : _vm._e()
-            ],
-            2
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-2" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.check(1)
-                  }
-                }
-              },
-              [_vm._v("اللي بعدو")]
-            )
-          ])
-        ],
-        1
+            : _vm._e()
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -40107,194 +40259,230 @@ var render = function() {
           }
         },
         [
-          _c("p", { staticClass: "text-justify" }, [
-            _vm._v(
-              "\n            اختار الخدمات/المميزات اللي جلستك بتقدمها/تحتويها\n        "
-            )
-          ]),
-          _vm._v(" "),
-          _c(
-            "jilsati-fieldset",
-            { attrs: { legend: "الجلسة تستقبل", "font-size": "1.1rem" } },
-            [
-              _c(
-                "jilsati-radio",
-                {
-                  attrs: {
-                    postfix: "1",
-                    name: "client",
-                    inline: "true",
-                    checked: "selected"
-                  }
-                },
-                [_vm._v("شباب")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-radio",
-                { attrs: { postfix: "2", name: "client", inline: "true" } },
-                [_vm._v("عائلات")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-radio",
-                { attrs: { postfix: "3", name: "client", inline: "true" } },
-                [_vm._v("الاثنين")]
+          !_vm.stepsInfo[2].disabled
+            ? _c(
+                "div",
+                [
+                  _c("p", { staticClass: "text-justify" }, [
+                    _vm._v(
+                      "\n                اختار الخدمات/المميزات اللي جلستك بتقدمها/تحتويها\n            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    {
+                      attrs: { legend: "الجلسة تستقبل", "font-size": "1.1rem" }
+                    },
+                    [
+                      _c(
+                        "jilsati-radio",
+                        {
+                          attrs: {
+                            postfix: "1",
+                            name: "client",
+                            inline: "true",
+                            checked: "selected"
+                          }
+                        },
+                        [_vm._v("شباب")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-radio",
+                        {
+                          attrs: {
+                            postfix: "2",
+                            name: "client",
+                            inline: "true"
+                          }
+                        },
+                        [_vm._v("عائلات")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-radio",
+                        {
+                          attrs: {
+                            postfix: "3",
+                            name: "client",
+                            inline: "true"
+                          }
+                        },
+                        [_vm._v("الاثنين")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    { attrs: { legend: "نوع الجلسة", "font-size": "1.1rem" } },
+                    [
+                      _c(
+                        "jilsati-radio",
+                        {
+                          attrs: {
+                            postfix: "1",
+                            name: "jilsah-type",
+                            inline: "true",
+                            checked: "checked"
+                          }
+                        },
+                        [_vm._v("ارضية")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-radio",
+                        {
+                          attrs: {
+                            postfix: "2",
+                            name: "jilsah-type",
+                            inline: "true"
+                          }
+                        },
+                        [_vm._v("طاولات")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-radio",
+                        {
+                          attrs: {
+                            postfix: "3",
+                            name: "jilsah-type",
+                            inline: "true"
+                          }
+                        },
+                        [_vm._v("الاثنين")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    {
+                      attrs: {
+                        legend: "خدمات/مميزات الجلسة",
+                        "font-size": "1.1rem"
+                      }
+                    },
+                    [
+                      _c(
+                        "jilsati-checkbox",
+                        {
+                          attrs: { name: "arabic-coffee-dates", inline: "true" }
+                        },
+                        [_vm._v("قهوة وتمر")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "nuts", inline: "true" } },
+                        [_vm._v("مكسرات")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "board-games", inline: "true" } },
+                        [_vm._v("العاب طاولة")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "card-games", inline: "true" } },
+                        [_vm._v("العاب ورقية")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "video-games", inline: "true" } },
+                        [_vm._v("العاب فيديو")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "cafe", inline: "true" } },
+                        [_vm._v("كافيه")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "restaurant", inline: "true" } },
+                        [_vm._v("مطعم")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "tennis", inline: "true" } },
+                        [_vm._v("تنس طاولة")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "billiard", inline: "true" } },
+                        [_vm._v("بلياردو")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "soccer-table", inline: "true" } },
+                        [_vm._v("فرفيرة")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "air-condition", inline: "true" } },
+                        [_vm._v("مكيفة")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "open-air", inline: "true" } },
+                        [_vm._v("مفتوحة")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "smoke", inline: "true" } },
+                        [_vm._v("شيشة ومعسل")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "smoking-area", inline: "true" } },
+                        [_vm._v("منطقة للمدخنين")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-checkbox",
+                        { attrs: { name: "tv-for-sports", inline: "true" } },
+                        [_vm._v("عرض المباريات")]
+                      )
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mt-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.check(2)
+                          }
+                        }
+                      },
+                      [_vm._v("اللي بعدو")]
+                    )
+                  ])
+                ],
+                1
               )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-fieldset",
-            { attrs: { legend: "نوع الجلسة", "font-size": "1.1rem" } },
-            [
-              _c(
-                "jilsati-radio",
-                {
-                  attrs: {
-                    postfix: "1",
-                    name: "jilsah-type",
-                    inline: "true",
-                    checked: "checked"
-                  }
-                },
-                [_vm._v("ارضية")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-radio",
-                {
-                  attrs: { postfix: "2", name: "jilsah-type", inline: "true" }
-                },
-                [_vm._v("طاولات")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-radio",
-                {
-                  attrs: { postfix: "3", name: "jilsah-type", inline: "true" }
-                },
-                [_vm._v("الاثنين")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c(
-            "jilsati-fieldset",
-            { attrs: { legend: "خدمات/مميزات الجلسة", "font-size": "1.1rem" } },
-            [
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "arabic-coffee-dates", inline: "true" } },
-                [_vm._v("قهوة وتمر")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "nuts", inline: "true" } },
-                [_vm._v("مكسرات")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "board-games", inline: "true" } },
-                [_vm._v("العاب طاولة")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "card-games", inline: "true" } },
-                [_vm._v("العاب ورقية")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "video-games", inline: "true" } },
-                [_vm._v("العاب فيديو")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "cafe", inline: "true" } },
-                [_vm._v("كافيه")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "restaurant", inline: "true" } },
-                [_vm._v("مطعم")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "tennis", inline: "true" } },
-                [_vm._v("تنس طاولة")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "billiard", inline: "true" } },
-                [_vm._v("بلياردو")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "soccer-table", inline: "true" } },
-                [_vm._v("فرفيرة")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "air-condition", inline: "true" } },
-                [_vm._v("مكيفة")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "open-air", inline: "true" } },
-                [_vm._v("مفتوحة")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "smoke", inline: "true" } },
-                [_vm._v("شيشة ومعسل")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "smoking-area", inline: "true" } },
-                [_vm._v("منطقة للمدخنين")]
-              ),
-              _vm._v(" "),
-              _c(
-                "jilsati-checkbox",
-                { attrs: { name: "tv-for-sports", inline: "true" } },
-                [_vm._v("عرض المباريات")]
-              )
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-2" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.check(2)
-                  }
-                }
-              },
-              [_vm._v("اللي بعدو")]
-            )
-          ])
-        ],
-        1
+            : _vm._e()
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -40309,21 +40497,150 @@ var render = function() {
           }
         },
         [
-          _c("div", [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.check(3)
-                  }
-                }
-              },
-              [_vm._v("اللي بعدو")]
-            )
-          ])
+          !_vm.stepsInfo[3].disabled
+            ? _c(
+                "div",
+                [
+                  _c("jilsati-select", {
+                    attrs: {
+                      name: "city",
+                      optionsLabel: "اختار المدينة اللي فيها الجلسة...",
+                      options: _vm.cities
+                    },
+                    model: {
+                      value: _vm.models.city,
+                      callback: function($$v) {
+                        _vm.$set(_vm.models, "city", $$v)
+                      },
+                      expression: "models.city"
+                    }
+                  }),
+                  _vm._v(" "),
+                  _vm.models.city
+                    ? _c("div", { staticClass: "form-group mt-4" }, [
+                        _c("label", { attrs: { for: "jilsah-location" } }, [
+                          _vm._v("موقع الجلسة")
+                        ]),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.models.address,
+                              expression: "models.address"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "jilsah-location",
+                            placeholder: "مثال: حي الستين بجوار مول الحجاز",
+                            "aria-describedby": "jilsah-locationHelp"
+                          },
+                          domProps: { value: _vm.models.address },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.models,
+                                "address",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            staticClass: "form-text text-muted",
+                            attrs: { id: "jilsah-locationHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    وصف لموقع الجلسة, الحي واي علامة مميزة\n                "
+                            )
+                          ]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _vm.models.city
+                    ? _c("div", { staticClass: "form-group mt-4" }, [
+                        _c(
+                          "label",
+                          { attrs: { for: "jilsah-google-location" } },
+                          [_vm._v("رابط قوقل ماب")]
+                        ),
+                        _vm._v(" "),
+                        _c("input", {
+                          directives: [
+                            {
+                              name: "model",
+                              rawName: "v-model",
+                              value: _vm.models.googleMapAddress,
+                              expression: "models.googleMapAddress"
+                            }
+                          ],
+                          staticClass: "form-control",
+                          attrs: {
+                            type: "text",
+                            id: "jilsah-google-location",
+                            placeholder: "رابط موقع الجلسة في قوقل ماب",
+                            "aria-describedby": "jilsah-google-locationHelp"
+                          },
+                          domProps: { value: _vm.models.googleMapAddress },
+                          on: {
+                            input: function($event) {
+                              if ($event.target.composing) {
+                                return
+                              }
+                              _vm.$set(
+                                _vm.models,
+                                "googleMapAddress",
+                                $event.target.value
+                              )
+                            }
+                          }
+                        }),
+                        _vm._v(" "),
+                        _c(
+                          "small",
+                          {
+                            staticClass: "form-text text-muted",
+                            attrs: { id: "jilsah-google-locationHelp" }
+                          },
+                          [
+                            _vm._v(
+                              "\n                    رابط موقع الجلسة في قوقل ماب عشان تسهل وصول الناس للجلسة\n                "
+                            )
+                          ]
+                        )
+                      ])
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mt-4" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.check(3)
+                          }
+                        }
+                      },
+                      [_vm._v("اللي بعدو")]
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
@@ -40339,19 +40656,25 @@ var render = function() {
           }
         },
         [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  return _vm.check(4)
-                }
-              }
-            },
-            [_vm._v("اللي بعدو")]
-          )
+          !_vm.stepsInfo[4].disabled
+            ? _c("div", [
+                _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.check(4)
+                        }
+                      }
+                    },
+                    [_vm._v("اللي بعدو")]
+                  )
+                ])
+              ])
+            : _vm._e()
         ]
       ),
       _vm._v(" "),
@@ -40367,52 +40690,61 @@ var render = function() {
           }
         },
         [
-          _c("jilsati-file-chooser", {
-            attrs: {
-              name: "jilsah-main-img",
-              browse: "صورة الجلسة",
-              content: "ارفع الصورة"
-            },
-            on: { "main-image-changed": _vm.handleMainImageChanged }
-          }),
-          _vm._v(" "),
-          _c(
-            "div",
-            [
-              _c("jilsati-alert", { attrs: { type: "info" } }, [
-                _vm._v("\n                عرض لشكل الجلسة\n            ")
-              ]),
-              _vm._v(" "),
-              _c("jilsati-card", {
-                staticClass: "mx-auto mt-4",
-                attrs: {
-                  title: _vm.models.name,
-                  description: _vm.models.description,
-                  city: _vm.models.city,
-                  "img-src": _vm.models.mainImage
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-4" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success",
-                attrs: { type: "button" },
-                on: {
-                  click: function($event) {
-                    return _vm.check(5)
-                  }
-                }
-              },
-              [_vm._v("اللي بعدو")]
-            )
-          ])
-        ],
-        1
+          !_vm.stepsInfo[5].disabled
+            ? _c(
+                "div",
+                [
+                  _c("jilsati-file-chooser", {
+                    attrs: {
+                      name: "jilsah-main-img",
+                      browse: "صورة الجلسة",
+                      content: "ارفع الصورة"
+                    },
+                    on: { "main-image-changed": _vm.handleMainImageChanged }
+                  }),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    [
+                      _c("jilsati-alert", { attrs: { type: "info" } }, [
+                        _vm._v(
+                          "\n                    عرض لشكل الجلسة\n                "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("jilsati-card", {
+                        staticClass: "mx-auto mt-4",
+                        attrs: {
+                          title: _vm.models.name,
+                          description: _vm.models.description,
+                          city: _vm.models.city,
+                          "img-src": _vm.models.mainImage
+                        }
+                      })
+                    ],
+                    1
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mt-4" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.check(5)
+                          }
+                        }
+                      },
+                      [_vm._v("اللي بعدو")]
+                    )
+                  ])
+                ],
+                1
+              )
+            : _vm._e()
+        ]
       ),
       _vm._v(" "),
       _c(
@@ -40427,19 +40759,25 @@ var render = function() {
           }
         },
         [
-          _c(
-            "button",
-            {
-              staticClass: "btn btn-success",
-              attrs: { type: "button" },
-              on: {
-                click: function($event) {
-                  return _vm.check(6)
-                }
-              }
-            },
-            [_vm._v("اللي بعدو")]
-          )
+          !_vm.stepsInfo[6].disabled
+            ? _c("div", [
+                _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.check(6)
+                        }
+                      }
+                    },
+                    [_vm._v("اللي بعدو")]
+                  )
+                ])
+              ])
+            : _vm._e()
         ]
       )
     ],

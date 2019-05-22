@@ -29,11 +29,18 @@
             inline : {
                 required : false
             },
+
+            value : ''
+        },
+
+        model : {
+            prop : 'value',
+            event : 'change'
         },
 
         methods : {
             onChange : function (event) {
-                this.$emit('checked-value-changed',this.name,event.target.checked);
+                this.$emit('change',event.target.checked);
             }
         }
     }

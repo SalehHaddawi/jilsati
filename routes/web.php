@@ -21,6 +21,8 @@ Route::get('/search','SearchController@index');
 
 Route::resource('jilsahs','JilsahController');
 
+Route::post('/jilsahs/cities','JilsahController@getCities');
+
 Auth::routes(['verify' => true]);
 
 

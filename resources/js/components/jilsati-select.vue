@@ -1,6 +1,6 @@
 <template>
-    <select class="custom-select" :id="name" :name="name">
-        <option v-if="labelOption" selected disabled>{{labelOption}}</option>
+    <select @change="onChange" class="custom-select" :id="name" :name="name">
+        <option v-if="optionsLabel" selected disabled>{{optionsLabel}}</option>
 
         <option v-for="option in options">{{option}}</option>
     </select>
@@ -8,6 +8,26 @@
 
 <script>
     export default {
-        props : ['name','labelOption','options']
+        props : ['value','name','optionsLabel','options'],
+
+        model: {
+            prop: 'value',
+            event: 'change'
+        },
+
+        data : function () {
+            return {
+                content : this.value
+            }
+        },
+
+        methods : {
+            onChange : function (e) {
+                if(e.target.options.selectedIndex > -1) {
+                    this.$emit('change', e.target.options[e.target.options.selectedIndex].innerText);
+                }
+
+            }
+        }
     }
 </script>
