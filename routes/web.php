@@ -17,14 +17,14 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/','IndexController@index');
 
-Route::get('/search','SearchController@index');
+Route::get('/search','SearchController@index')->name('search');
 
 Route::resource('jilsahs','JilsahController');
 
 Route::post('/jilsahs/cities','JilsahController@getCities');
 
-Auth::routes(['verify' => true]);
+Auth::routes();
 
 
 
-Route::get('/home', 'HomeController@index')->name('home');
+//Route::get('/home', 'HomeController@index')->name('home');

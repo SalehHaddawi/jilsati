@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Route;
 class IndexController extends Controller
 {
     public function index(){
-        $cities = DB::table('cities')->select('*')->get();
+        $cities = \App\City::all()->map->name;
 
         return view('index',compact('cities'));
     }

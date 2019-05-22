@@ -16,7 +16,7 @@
         <a :href="'/jilsahs/' + id"><img :src="imgSrc" class="card-img-top pt-1" style="cursor: pointer" alt="..."></a>
         <div class="card-body">
             <h5 class="card-title text-right">{{title}}</h5>
-            <p class="card-text text-right">{{ (description.length > 50 ? description.substring(0,50) + '...' : description) }}</p>
+            <p class="card-text text-right text-justify">{{ (description.length > maxSize ? description.substring(0,maxSize) + '...' : description) }}</p>
         </div>
         <div class="card-footer text-right">
             <small class="text-muted">{{addedAt}}</small>
@@ -26,6 +26,6 @@
 
 <script>
     export default {
-        props : ['id','imgSrc','title', 'description','addedAt','city','price', 'comments']
+        props : ['id','imgSrc','title', 'description','addedAt','city','price', 'comments','maxSize']
     }
 </script>

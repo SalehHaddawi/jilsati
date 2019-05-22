@@ -1848,8 +1848,39 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['images']
+  props: {
+    imgSrc: '',
+    title: '',
+    city: '',
+    address: '',
+    description: '',
+    options: '',
+    clients: '',
+    types: '',
+
+    /***************/
+    maxDescriptionLength: {
+      type: Number
+    }
+  }
 });
 
 /***/ }),
@@ -1890,7 +1921,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['id', 'imgSrc', 'title', 'description', 'addedAt', 'city', 'price', 'comments']
+  props: ['id', 'imgSrc', 'title', 'description', 'addedAt', 'city', 'price', 'comments', 'maxSize']
 });
 
 /***/ }),
@@ -1949,6 +1980,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     name: {
@@ -1956,14 +1989,16 @@ __webpack_require__.r(__webpack_exports__);
       type: String
     },
     checked: {
-      required: false
+      required: false,
+      type: Boolean
     },
     postfix: {
       required: false,
       "default": ''
     },
     inline: {
-      required: false
+      required: false,
+      type: Boolean
     },
     value: ''
   },
@@ -1972,8 +2007,24 @@ __webpack_require__.r(__webpack_exports__);
     event: 'change'
   },
   methods: {
-    onChange: function onChange(event) {
-      this.$emit('change', event.target.checked);
+    onChange: function onChange() {
+      if (this.value.includes(this.name)) {
+        this.value.splice(this.value.indexOf(this.name), 1);
+      } else {
+        this.value.push(this.name);
+      }
+    },
+    onChangeNotArray: function onChangeNotArray(event) {
+      this.$emit('change', this.checked ? this.checked : event.target.checked);
+    }
+  },
+  created: function created() {
+    if (this.checked) {
+      if (Array.isArray(this.value)) {
+        this.onChange();
+      } else {
+        this.onChangeNotArray(null);
+      }
     }
   }
 });
@@ -2248,21 +2299,42 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     name: {
       required: true,
       type: String
     },
+    val: {
+      required: true
+    },
     checked: {
-      required: false
+      required: false,
+      type: Boolean
     },
     postfix: {
       required: false,
       "default": ''
     },
     inline: {
-      required: false
+      required: false,
+      type: Boolean
+    },
+    value: ''
+  },
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
+  methods: {
+    onChange: function onChange(event) {
+      this.$emit('change', this.val);
+    }
+  },
+  created: function created() {
+    if (this.checked) {
+      this.$emit('change', this.val);
     }
   }
 });
@@ -2647,6 +2719,159 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2689,17 +2914,30 @@ __webpack_require__.r(__webpack_exports__);
       jilsahShifts: {
         schoolWeekShifts: 1,
         schoolWeekendShifts: 1,
-        vacationShifts: 1,
+        vacationWeekShifts: 1,
+        vacationWeekendShifts: 1,
         eidShifts: 1,
         ramadanShifts: 1
       },
       models: {
         name: '',
         description: '',
+        jilsahClients: [],
+        jilsahType: [],
+        options: [],
         city: '',
-        mainImage: null,
+        mainImage: '/images/upload-your-jilsah.png',
         address: '',
-        googleMapAddress: ''
+        addressDetails: '',
+        googleMapAddress: '',
+        prices: {
+          schoolWeek: 0,
+          schoolWeekend: 0,
+          vacationWeek: 0,
+          vacationWeekend: 0,
+          eid: 0,
+          ramadan: 0
+        }
       },
       cities: []
     };
@@ -2729,6 +2967,9 @@ __webpack_require__.r(__webpack_exports__);
     },
     handleMainImageChanged: function handleMainImageChanged(src) {
       this.models.mainImage = src;
+    },
+    log: function log(val) {
+      console.log('helo ', val);
     }
   },
   created: function created() {
@@ -2739,6 +2980,32 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (err) {
       console.log(err);
     });
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-test.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-test.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    black: {
+      type: Boolean
+    },
+    todo: {
+      type: 0
+    }
   }
 });
 
@@ -38180,70 +38447,94 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    { staticClass: "card shadow-sm rounded-0" },
-    [
-      _vm._m(0),
+  return _c("div", { staticClass: "card mb-3 w-100" }, [
+    _c("div", { staticClass: "row no-gutters" }, [
+      _c("div", { staticClass: "col-md-4" }, [
+        _c("img", {
+          staticClass: "card-img rounded-0",
+          attrs: { src: _vm.imgSrc, alt: "..." }
+        })
+      ]),
       _vm._v(" "),
-      _c("jilsati-carousel", { attrs: { images: _vm.images } }),
-      _vm._v(" "),
-      _vm._m(1),
-      _vm._v(" "),
-      _vm._m(2)
-    ],
-    1
-  )
+      _c("div", { staticClass: "col-md-8" }, [
+        _c("div", { staticClass: "card-body" }, [
+          _c("h2", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
+          _vm._v(" "),
+          _c("small", { staticClass: "text-success" }, [
+            _vm._v(_vm._s(_vm.city + ", " + _vm.address))
+          ]),
+          _vm._v(" "),
+          _c("p", { staticClass: "card-text text-muted" }, [
+            _vm._v(
+              "\n                    " +
+                _vm._s(
+                  _vm.description.length > _vm.maxDescriptionLength
+                    ? _vm.description.substring(0, _vm.maxDescriptionLength) +
+                        "..."
+                    : _vm.description
+                ) +
+                "\n                "
+            )
+          ]),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-2" },
+            _vm._l(_vm.clients, function(client) {
+              return _c("h5", { staticClass: "d-inline-block" }, [
+                _c(
+                  "span",
+                  { staticClass: "badge badge-light text-success m-2" },
+                  [_vm._v(_vm._s(client))]
+                )
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-2" },
+            _vm._l(_vm.types, function(type) {
+              return _c("h5", { staticClass: "d-inline-block" }, [
+                _c("span", { staticClass: "badge badge-info text-light m-2" }, [
+                  _vm._v(_vm._s(type))
+                ])
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _c(
+            "div",
+            { staticClass: "mt-2" },
+            _vm._l(_vm.options, function(option) {
+              return _c("h5", { staticClass: "d-inline-block" }, [
+                _c(
+                  "span",
+                  { staticClass: "badge badge-success text-light m-1" },
+                  [_vm._v(_vm._s(option))]
+                )
+              ])
+            }),
+            0
+          ),
+          _vm._v(" "),
+          _vm._m(0)
+        ])
+      ])
+    ])
+  ])
 }
 var staticRenderFns = [
   function() {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-header text-info row" }, [
-      _c("div", { staticClass: "col-4 d-inline text-right" }, [
-        _c("span", { staticClass: "badge badge-success  shadow-sm" }, [
-          _vm._v("مكة")
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-4 d-inline text-center" }, [
-        _c("h5", [
-          _c("span", { staticClass: "badge badge-warning shadow-sm" }, [
-            _vm._v("150 ر.س")
-          ])
-        ])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-4 d-inline text-left" }, [
-        _c("span", { staticClass: "badge badge-info shadow-sm" }, [
-          _vm._v("ثلاث نجوم")
-        ])
+    return _c("p", { staticClass: "card-text" }, [
+      _c("small", { staticClass: "text-muted" }, [
+        _vm._v("Last updated 3 mins ago")
       ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-body" }, [
-      _c("h5", { staticClass: "card-title text-right" }, [
-        _vm._v("شاليهات الواحة")
-      ]),
-      _vm._v(" "),
-      _c("p", { staticClass: "card-text text-right" }, [
-        _vm._v(
-          "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, debitis delectus dolore doloremque enim id, inventore laudantium minus numquam quisquam, quos recusandae voluptatem voluptates! Aspernatur blanditiis doloremque est libero tempore?"
-        )
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "card-footer text-right" }, [
-      _c("small", { staticClass: "text-muted" }, [_vm._v("1999/05/23")])
     ])
   }
 ]
@@ -38322,11 +38613,11 @@ var render = function() {
           _vm._v(_vm._s(_vm.title))
         ]),
         _vm._v(" "),
-        _c("p", { staticClass: "card-text text-right" }, [
+        _c("p", { staticClass: "card-text text-right text-justify" }, [
           _vm._v(
             _vm._s(
-              _vm.description.length > 50
-                ? _vm.description.substring(0, 50) + "..."
+              _vm.description.length > _vm.maxSize
+                ? _vm.description.substring(0, _vm.maxSize) + "..."
                 : _vm.description
             )
           )
@@ -38495,12 +38786,31 @@ var render = function() {
       class: { "custom-control-inline": _vm.inline }
     },
     [
-      _c("input", {
-        staticClass: "custom-control-input",
-        attrs: { type: "checkbox", id: _vm.name + _vm.postfix, name: _vm.name },
-        domProps: { checked: _vm.checked ? "checked" : "" },
-        on: { change: _vm.onChange }
-      }),
+      Array.isArray(_vm.value)
+        ? _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: _vm.name + _vm.postfix,
+              name: _vm.name
+            },
+            domProps: { checked: _vm.checked ? "checked" : "" },
+            on: { change: _vm.onChange }
+          })
+        : _c("input", {
+            staticClass: "custom-control-input",
+            attrs: {
+              type: "checkbox",
+              id: _vm.name + _vm.postfix,
+              name: _vm.name
+            },
+            domProps: { checked: _vm.checked ? "checked" : "" },
+            on: {
+              change: function($event) {
+                return _vm.onChangeNotArray($event)
+              }
+            }
+          }),
       _vm._v(" "),
       _c(
         "label",
@@ -39219,7 +39529,7 @@ var render = function() {
                               staticClass: "dropdown-item",
                               attrs: { href: "/jilsahs" }
                             },
-                            [_vm._v("استراحاتي/جلساتي")]
+                            [_vm._v("جلساتي")]
                           ),
                           _vm._v(" "),
                           _c(
@@ -39320,7 +39630,7 @@ var staticRenderFns = [
           staticStyle: { color: "#ffffff" },
           attrs: { href: "/jilsahs/create" }
         },
-        [_vm._v("اضف جلستك/استراحتك")]
+        [_vm._v("اضف جلستك")]
       )
     ])
   }
@@ -39356,7 +39666,8 @@ var render = function() {
       _c("input", {
         staticClass: "custom-control-input",
         attrs: { type: "radio", id: _vm.name + _vm.postfix, name: _vm.name },
-        domProps: { checked: _vm.checked ? "checked" : "" }
+        domProps: { checked: _vm.checked ? "checked" : "" },
+        on: { change: _vm.onChange }
       }),
       _vm._v(" "),
       _c(
@@ -39365,8 +39676,7 @@ var render = function() {
           staticClass: "custom-control-label",
           attrs: { for: _vm.name + _vm.postfix }
         },
-        [_vm._t("default")],
-        2
+        [_vm._v(_vm._s(_vm.val))]
       )
     ]
   )
@@ -39508,7 +39818,7 @@ var render = function() {
         "jilsati-step",
         {
           attrs: {
-            title: "معلومات الجلسة",
+            title: "معلومات الجلسة الاساسية",
             dir: "rtl",
             rtl: "true",
             number: "1",
@@ -39525,9 +39835,10 @@ var render = function() {
               directives: [
                 {
                   name: "model",
-                  rawName: "v-model",
+                  rawName: "v-model.trim",
                   value: _vm.models.name,
-                  expression: "models.name"
+                  expression: "models.name",
+                  modifiers: { trim: true }
                 }
               ],
               staticClass: "form-control",
@@ -39543,7 +39854,10 @@ var render = function() {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.models, "name", $event.target.value)
+                  _vm.$set(_vm.models, "name", $event.target.value.trim())
+                },
+                blur: function($event) {
+                  return _vm.$forceUpdate()
                 }
               }
             }),
@@ -39571,9 +39885,10 @@ var render = function() {
               directives: [
                 {
                   name: "model",
-                  rawName: "v-model",
+                  rawName: "v-model.trim",
                   value: _vm.models.description,
-                  expression: "models.description"
+                  expression: "models.description",
+                  modifiers: { trim: true }
                 }
               ],
               staticClass: "form-control",
@@ -39589,7 +39904,14 @@ var render = function() {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.models, "description", $event.target.value)
+                  _vm.$set(
+                    _vm.models,
+                    "description",
+                    $event.target.value.trim()
+                  )
+                },
+                blur: function($event) {
+                  return _vm.$forceUpdate()
                 }
               }
             }),
@@ -39945,90 +40267,209 @@ var render = function() {
                           expression: "chosenTimePeriods.vacation"
                         }
                       ],
-                      attrs: { legend: "فترة الاجازة" }
+                      attrs: { legend: "ايام الاجازة", "font-size": "1.4rem" }
                     },
                     [
-                      _vm._l(_vm.jilsahShifts.vacationShifts, function(index) {
-                        return _c("div", [
-                          _c("p", { staticClass: "text-info" }, [
-                            _vm._v("فترة العمل رقم " + _vm._s(index))
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-inline" }, [
-                            _c(
-                              "div",
-                              { staticClass: "form-group m-auto" },
-                              [
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label m-2" },
-                                  [_vm._v("من")]
-                                ),
-                                _vm._v(" "),
-                                _c("jilsati-time-picker", {
-                                  attrs: {
-                                    time: "10:00 AM",
-                                    name: "vacation-time-from" + index
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group m-auto" },
-                              [
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label m-2" },
-                                  [_vm._v("الى")]
-                                ),
-                                _vm._v(" "),
-                                _c("jilsati-time-picker", {
-                                  attrs: {
-                                    time: "11:00 PM",
-                                    name: "vacation-time-to" + index
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ])
-                      }),
-                      _vm._v(" "),
                       _c(
-                        "button",
+                        "jilsati-fieldset",
                         {
-                          staticClass: "btn btn-info mt-4 mr-2",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.jilsahShifts.vacationShifts++
-                            }
+                          attrs: {
+                            legend: "ايام الاسبوع",
+                            "font-size": "1.1rem"
                           }
                         },
-                        [_vm._v("ضيف فترة جديدة")]
-                      ),
-                      _vm._v(" "),
-                      _vm.jilsahShifts.vacationShifts > 1
-                        ? _c(
+                        [
+                          _vm._l(_vm.jilsahShifts.vacationWeekShifts, function(
+                            index
+                          ) {
+                            return _c("div", [
+                              _c("p", { staticClass: "text-info" }, [
+                                _vm._v("فترة العمل رقم " + _vm._s(index))
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "form-inline" }, [
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group m-auto" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { staticClass: "form-check-label m-2" },
+                                      [_vm._v("من")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("jilsati-time-picker", {
+                                      attrs: {
+                                        time: "10:00 AM",
+                                        name: "vacation-week-time-from" + index
+                                      }
+                                    })
+                                  ],
+                                  1
+                                ),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  { staticClass: "form-group m-auto" },
+                                  [
+                                    _c(
+                                      "label",
+                                      { staticClass: "form-check-label m-2" },
+                                      [_vm._v("الى")]
+                                    ),
+                                    _vm._v(" "),
+                                    _c("jilsati-time-picker", {
+                                      attrs: {
+                                        time: "11:00 PM",
+                                        name: "vacation-week-time-to" + index
+                                      }
+                                    })
+                                  ],
+                                  1
+                                )
+                              ])
+                            ])
+                          }),
+                          _vm._v(" "),
+                          _c(
                             "button",
                             {
-                              staticClass: "btn btn-danger mt-4 mr-2",
+                              staticClass: "btn btn-info mt-4 mr-2",
                               attrs: { type: "button" },
                               on: {
                                 click: function($event) {
-                                  _vm.jilsahShifts.vacationShifts--
+                                  _vm.jilsahShifts.vacationShifts++
                                 }
                               }
                             },
-                            [_vm._v("حذف فترة عمل")]
-                          )
-                        : _vm._e()
+                            [_vm._v("ضيف فترة جديدة")]
+                          ),
+                          _vm._v(" "),
+                          _vm.jilsahShifts.vacationWeekShifts > 1
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger mt-4 mr-2",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.jilsahShifts.vacationShifts--
+                                    }
+                                  }
+                                },
+                                [_vm._v("حذف فترة عمل")]
+                              )
+                            : _vm._e()
+                        ],
+                        2
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "jilsati-fieldset",
+                        {
+                          directives: [
+                            {
+                              name: "show",
+                              rawName: "v-show",
+                              value: _vm.chosenTimePeriods.vacation,
+                              expression: "chosenTimePeriods.vacation"
+                            }
+                          ],
+                          attrs: {
+                            legend: "نهاية الاسبوع",
+                            "font-size": "1.1rem"
+                          }
+                        },
+                        [
+                          _vm._l(
+                            _vm.jilsahShifts.vacationWeekendShifts,
+                            function(index) {
+                              return _c("div", [
+                                _c("p", { staticClass: "text-info" }, [
+                                  _vm._v("فترة العمل رقم " + _vm._s(index))
+                                ]),
+                                _vm._v(" "),
+                                _c("div", { staticClass: "form-inline" }, [
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group m-auto" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "form-check-label m-2" },
+                                        [_vm._v("من")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("jilsati-time-picker", {
+                                        attrs: {
+                                          time: "10:00 AM",
+                                          name:
+                                            "vacation-weekend-time-from" + index
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "div",
+                                    { staticClass: "form-group m-auto" },
+                                    [
+                                      _c(
+                                        "label",
+                                        { staticClass: "form-check-label m-2" },
+                                        [_vm._v("الى")]
+                                      ),
+                                      _vm._v(" "),
+                                      _c("jilsati-time-picker", {
+                                        attrs: {
+                                          time: "11:00 PM",
+                                          name:
+                                            "vacation-weekend-time-to" + index
+                                        }
+                                      })
+                                    ],
+                                    1
+                                  )
+                                ])
+                              ])
+                            }
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-info mt-4 mr-2",
+                              attrs: { type: "button" },
+                              on: {
+                                click: function($event) {
+                                  _vm.jilsahShifts.vacationShifts++
+                                }
+                              }
+                            },
+                            [_vm._v("ضيف فترة جديدة")]
+                          ),
+                          _vm._v(" "),
+                          _vm.jilsahShifts.vacationWeekendShifts > 1
+                            ? _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-danger mt-4 mr-2",
+                                  attrs: { type: "button" },
+                                  on: {
+                                    click: function($event) {
+                                      _vm.jilsahShifts.vacationShifts--
+                                    }
+                                  }
+                                },
+                                [_vm._v("حذف فترة عمل")]
+                              )
+                            : _vm._e()
+                        ],
+                        2
+                      )
                     ],
-                    2
+                    1
                   ),
                   _vm._v(" "),
                   _c(
@@ -40251,7 +40692,7 @@ var render = function() {
         "jilsati-step",
         {
           attrs: {
-            title: "ايش تقدم الجلسة",
+            title: "عن الجلسة",
             dir: "rtl",
             rtl: "true",
             number: "3",
@@ -40276,40 +40717,48 @@ var render = function() {
                     },
                     [
                       _c(
-                        "jilsati-radio",
+                        "jilsati-checkbox",
                         {
-                          attrs: {
-                            postfix: "1",
-                            name: "client",
-                            inline: "true",
-                            checked: "selected"
+                          attrs: { name: "شباب", inline: "", checked: "" },
+                          model: {
+                            value: _vm.models.jilsahClients,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "jilsahClients", $$v)
+                            },
+                            expression: "models.jilsahClients"
                           }
                         },
                         [_vm._v("شباب")]
                       ),
                       _vm._v(" "),
                       _c(
-                        "jilsati-radio",
+                        "jilsati-checkbox",
                         {
-                          attrs: {
-                            postfix: "2",
-                            name: "client",
-                            inline: "true"
+                          attrs: { name: "سيدات", inline: "" },
+                          model: {
+                            value: _vm.models.jilsahClients,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "jilsahClients", $$v)
+                            },
+                            expression: "models.jilsahClients"
                           }
                         },
-                        [_vm._v("عائلات")]
+                        [_vm._v("سيدات")]
                       ),
                       _vm._v(" "),
                       _c(
-                        "jilsati-radio",
+                        "jilsati-checkbox",
                         {
-                          attrs: {
-                            postfix: "3",
-                            name: "client",
-                            inline: "true"
+                          attrs: { name: "عائلات", inline: "" },
+                          model: {
+                            value: _vm.models.jilsahClients,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "jilsahClients", $$v)
+                            },
+                            expression: "models.jilsahClients"
                           }
                         },
-                        [_vm._v("الاثنين")]
+                        [_vm._v("عائلات")]
                       )
                     ],
                     1
@@ -40320,40 +40769,37 @@ var render = function() {
                     { attrs: { legend: "نوع الجلسة", "font-size": "1.1rem" } },
                     [
                       _c(
-                        "jilsati-radio",
+                        "jilsati-checkbox",
                         {
                           attrs: {
-                            postfix: "1",
-                            name: "jilsah-type",
-                            inline: "true",
-                            checked: "checked"
+                            name: "جلسات ارضية",
+                            inline: "",
+                            checked: ""
+                          },
+                          model: {
+                            value: _vm.models.jilsahType,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "jilsahType", $$v)
+                            },
+                            expression: "models.jilsahType"
                           }
                         },
-                        [_vm._v("ارضية")]
+                        [_vm._v("جلسات ارضية")]
                       ),
                       _vm._v(" "),
                       _c(
-                        "jilsati-radio",
+                        "jilsati-checkbox",
                         {
-                          attrs: {
-                            postfix: "2",
-                            name: "jilsah-type",
-                            inline: "true"
+                          attrs: { name: "جلسات طاولة", inline: "" },
+                          model: {
+                            value: _vm.models.jilsahType,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "jilsahType", $$v)
+                            },
+                            expression: "models.jilsahType"
                           }
                         },
-                        [_vm._v("طاولات")]
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "jilsati-radio",
-                        {
-                          attrs: {
-                            postfix: "3",
-                            name: "jilsah-type",
-                            inline: "true"
-                          }
-                        },
-                        [_vm._v("الاثنين")]
+                        [_vm._v("جلسات طاولة")]
                       )
                     ],
                     1
@@ -40371,92 +40817,225 @@ var render = function() {
                       _c(
                         "jilsati-checkbox",
                         {
-                          attrs: { name: "arabic-coffee-dates", inline: "true" }
+                          attrs: { name: "قهوة عربية وتمر", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
                         },
                         [_vm._v("قهوة وتمر")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "nuts", inline: "true" } },
+                        {
+                          attrs: { name: "مكسرات", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("مكسرات")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "board-games", inline: "true" } },
+                        {
+                          attrs: { name: "العاب طاولة", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("العاب طاولة")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "card-games", inline: "true" } },
+                        {
+                          attrs: { name: "العاب ورق", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("العاب ورقية")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "video-games", inline: "true" } },
+                        {
+                          attrs: { name: "العاب فيديو", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("العاب فيديو")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "cafe", inline: "true" } },
+                        {
+                          attrs: { name: "كافيه", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("كافيه")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "restaurant", inline: "true" } },
+                        {
+                          attrs: { name: "مطعم", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("مطعم")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "tennis", inline: "true" } },
+                        {
+                          attrs: { name: "تنس طاولة", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("تنس طاولة")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "billiard", inline: "true" } },
+                        {
+                          attrs: { name: "بلياردو", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("بلياردو")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "soccer-table", inline: "true" } },
+                        {
+                          attrs: { name: "فرفيرة", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("فرفيرة")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "air-condition", inline: "true" } },
+                        {
+                          attrs: { name: "مكيفة", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("مكيفة")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "open-air", inline: "true" } },
+                        {
+                          attrs: { name: "مفتوحة", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("مفتوحة")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "smoke", inline: "true" } },
+                        {
+                          attrs: { name: "شيشة ومعسل", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("شيشة ومعسل")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "smoking-area", inline: "true" } },
+                        {
+                          attrs: { name: "منطقة مدخنين", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("منطقة للمدخنين")]
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-checkbox",
-                        { attrs: { name: "tv-for-sports", inline: "true" } },
+                        {
+                          attrs: { name: "عرض مباريات", inline: "" },
+                          model: {
+                            value: _vm.models.options,
+                            callback: function($$v) {
+                              _vm.$set(_vm.models, "options", $$v)
+                            },
+                            expression: "models.options"
+                          }
+                        },
                         [_vm._v("عرض المباريات")]
                       )
                     ],
@@ -40516,111 +41095,167 @@ var render = function() {
                     }
                   }),
                   _vm._v(" "),
-                  _vm.models.city
-                    ? _c("div", { staticClass: "form-group mt-4" }, [
-                        _c("label", { attrs: { for: "jilsah-location" } }, [
-                          _vm._v("موقع الجلسة")
-                        ]),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.models.address,
-                              expression: "models.address"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "jilsah-location",
-                            placeholder: "مثال: حي الستين بجوار مول الحجاز",
-                            "aria-describedby": "jilsah-locationHelp"
-                          },
-                          domProps: { value: _vm.models.address },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.models,
-                                "address",
-                                $event.target.value
-                              )
-                            }
+                  _c("div", { staticClass: "form-group mt-4" }, [
+                    _c("label", { attrs: { for: "jilsah-location" } }, [
+                      _vm._v("الحي")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.models.address,
+                          expression: "models.address",
+                          modifiers: { trim: true }
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "jilsah-location",
+                        placeholder: "الحي",
+                        "aria-describedby": "jilsah-locationHelp"
+                      },
+                      domProps: { value: _vm.models.address },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "small",
-                          {
-                            staticClass: "form-text text-muted",
-                            attrs: { id: "jilsah-locationHelp" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                    وصف لموقع الجلسة, الحي واي علامة مميزة\n                "
-                            )
-                          ]
+                          _vm.$set(
+                            _vm.models,
+                            "address",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "small",
+                      {
+                        staticClass: "form-text text-muted",
+                        attrs: { id: "jilsah-locationHelp" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    الحي اللي فيه الجلسة\n                "
                         )
-                      ])
-                    : _vm._e(),
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
-                  _vm.models.city
-                    ? _c("div", { staticClass: "form-group mt-4" }, [
-                        _c(
-                          "label",
-                          { attrs: { for: "jilsah-google-location" } },
-                          [_vm._v("رابط قوقل ماب")]
-                        ),
-                        _vm._v(" "),
-                        _c("input", {
-                          directives: [
-                            {
-                              name: "model",
-                              rawName: "v-model",
-                              value: _vm.models.googleMapAddress,
-                              expression: "models.googleMapAddress"
-                            }
-                          ],
-                          staticClass: "form-control",
-                          attrs: {
-                            type: "text",
-                            id: "jilsah-google-location",
-                            placeholder: "رابط موقع الجلسة في قوقل ماب",
-                            "aria-describedby": "jilsah-google-locationHelp"
-                          },
-                          domProps: { value: _vm.models.googleMapAddress },
-                          on: {
-                            input: function($event) {
-                              if ($event.target.composing) {
-                                return
-                              }
-                              _vm.$set(
-                                _vm.models,
-                                "googleMapAddress",
-                                $event.target.value
-                              )
-                            }
+                  _c("div", { staticClass: "form-group mt-4" }, [
+                    _c("label", { attrs: { for: "jilsah-location-details" } }, [
+                      _vm._v("موقع الجلسة")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.models.addressDetails,
+                          expression: "models.addressDetails",
+                          modifiers: { trim: true }
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "jilsah-location-details",
+                        placeholder: "مثال: بجوار مسجد التقوى على اليمين",
+                        "aria-describedby": "jilsah-location-detailsHelp"
+                      },
+                      domProps: { value: _vm.models.addressDetails },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
                           }
-                        }),
-                        _vm._v(" "),
-                        _c(
-                          "small",
-                          {
-                            staticClass: "form-text text-muted",
-                            attrs: { id: "jilsah-google-locationHelp" }
-                          },
-                          [
-                            _vm._v(
-                              "\n                    رابط موقع الجلسة في قوقل ماب عشان تسهل وصول الناس للجلسة\n                "
-                            )
-                          ]
+                          _vm.$set(
+                            _vm.models,
+                            "addressDetails",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "small",
+                      {
+                        staticClass: "form-text text-muted",
+                        attrs: { id: "jilsah-location-detailsHelp" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    وصف لموقع الجلسة واي علامة مميزة\n                "
                         )
-                      ])
-                    : _vm._e(),
+                      ]
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "form-group mt-4" }, [
+                    _c("label", { attrs: { for: "jilsah-google-location" } }, [
+                      _vm._v("رابط قوقل ماب")
+                    ]),
+                    _vm._v(" "),
+                    _c("input", {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model.trim",
+                          value: _vm.models.googleMapAddress,
+                          expression: "models.googleMapAddress",
+                          modifiers: { trim: true }
+                        }
+                      ],
+                      staticClass: "form-control",
+                      attrs: {
+                        type: "text",
+                        id: "jilsah-google-location",
+                        placeholder: "رابط موقع الجلسة في قوقل ماب",
+                        "aria-describedby": "jilsah-google-locationHelp"
+                      },
+                      domProps: { value: _vm.models.googleMapAddress },
+                      on: {
+                        input: function($event) {
+                          if ($event.target.composing) {
+                            return
+                          }
+                          _vm.$set(
+                            _vm.models,
+                            "googleMapAddress",
+                            $event.target.value.trim()
+                          )
+                        },
+                        blur: function($event) {
+                          return _vm.$forceUpdate()
+                        }
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c(
+                      "small",
+                      {
+                        staticClass: "form-text text-muted",
+                        attrs: { id: "jilsah-google-locationHelp" }
+                      },
+                      [
+                        _vm._v(
+                          "\n                    رابط موقع الجلسة في قوقل ماب عشان تسهل وصول الناس للجلسة\n                "
+                        )
+                      ]
+                    )
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "mt-4" }, [
                     _c(
@@ -40658,7 +41293,668 @@ var render = function() {
         [
           !_vm.stepsInfo[4].disabled
             ? _c("div", [
-                _c("div", [
+                _c("p", { staticClass: "text-justify" }, [
+                  _vm._v(
+                    '\n                اسعار الجلسة للفترات اللي اخترتها في الخطوة "اوقات الجلسة"\n            '
+                  )
+                ]),
+                _vm._v(" "),
+                _c(
+                  "div",
+                  { staticClass: "mt-2" },
+                  [
+                    _c(
+                      "jilsati-radio",
+                      {
+                        attrs: {
+                          name: "price-per",
+                          postfix: "jilsah",
+                          val: "للجلسة",
+                          checked: ""
+                        }
+                      },
+                      [_vm._v("السعر للجلسة")]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "jilsati-radio",
+                      {
+                        attrs: {
+                          name: "price-per",
+                          postfix: "person",
+                          val: "للشخص"
+                        }
+                      },
+                      [_vm._v("السعر للشخص")]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _vm.chosenTimePeriods.school
+                  ? _c(
+                      "div",
+                      { staticClass: "mt-2" },
+                      [
+                        _c(
+                          "jilsati-fieldset",
+                          {
+                            attrs: {
+                              legend: "السعر لفترة الدراسة",
+                              "font-size": "1.1rem"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "mt-2" }, [
+                              _c("div", { staticClass: "input-group" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("ايام الاسبوع")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.models.prices.schoolWeek,
+                                      expression: "models.prices.schoolWeek"
+                                    }
+                                  ],
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "number",
+                                    "aria-label":
+                                      "سعر الجلسة في فترة الدراسة ايام الاسبوع"
+                                  },
+                                  domProps: {
+                                    value: _vm.models.prices.schoolWeek
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.models.prices,
+                                        "schoolWeek",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("ملاحظة")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-label":
+                                      "ملاحظة عن سعر الجلسة في فترة الدراسة ايام الاسبوع",
+                                    placeholder:
+                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                { staticClass: "form-text text-muted" },
+                                [
+                                  _vm._v(
+                                    "\n                            الملاحظة اختيارية\n                        "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "mt-2" }, [
+                              _c("div", { staticClass: "input-group" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("نهاية الاسبوع")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.models.prices.schoolWeekend,
+                                      expression: "models.prices.schoolWeekend"
+                                    }
+                                  ],
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "number",
+                                    "aria-label":
+                                      "سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع"
+                                  },
+                                  domProps: {
+                                    value: _vm.models.prices.schoolWeekend
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.models.prices,
+                                        "schoolWeekend",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("ملاحظة")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-label":
+                                      "ملاحظة عن سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع",
+                                    placeholder:
+                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                { staticClass: "form-text text-muted" },
+                                [
+                                  _vm._v(
+                                    "\n                            الملاحظة اختيارية\n                        "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.chosenTimePeriods.vacation
+                  ? _c(
+                      "div",
+                      { staticClass: "mt-2" },
+                      [
+                        _c(
+                          "jilsati-fieldset",
+                          {
+                            attrs: {
+                              legend: "السعر لفترة الاجازة",
+                              "font-size": "1.1rem"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "mt-2" }, [
+                              _c("div", { staticClass: "input-group" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("ايام الاسبوع")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.models.prices.vacationWeek,
+                                      expression: "models.prices.vacationWeek"
+                                    }
+                                  ],
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "number",
+                                    "aria-label":
+                                      "سعر الجلسة في فترة الدراسة ايام الاسبوع"
+                                  },
+                                  domProps: {
+                                    value: _vm.models.prices.vacationWeek
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.models.prices,
+                                        "vacationWeek",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("ملاحظة")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-label":
+                                      "ملاحظة عن سعر الجلسة في فترة الاجازة ايام الاسبوع",
+                                    placeholder:
+                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                { staticClass: "form-text text-muted" },
+                                [
+                                  _vm._v(
+                                    "\n                            الملاحظة اختيارية\n                        "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "mt-2" }, [
+                              _c("div", { staticClass: "input-group" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("نهاية الاسبوع")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.models.prices.vacationWeekend,
+                                      expression:
+                                        "models.prices.vacationWeekend"
+                                    }
+                                  ],
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "number",
+                                    "aria-label":
+                                      "سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع"
+                                  },
+                                  domProps: {
+                                    value: _vm.models.prices.vacationWeekend
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.models.prices,
+                                        "vacationWeekend",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("ملاحظة")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-label":
+                                      "ملاحظة عن سعر الجلسة في فترة الاجازة ايام نهاية الاسبوع",
+                                    placeholder:
+                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                { staticClass: "form-text text-muted" },
+                                [
+                                  _vm._v(
+                                    "\n                            الملاحظة اختيارية\n                        "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.chosenTimePeriods.eid
+                  ? _c(
+                      "div",
+                      { staticClass: "mt-2" },
+                      [
+                        _c(
+                          "jilsati-fieldset",
+                          {
+                            attrs: {
+                              legend: "السعر لفترة الاعياد",
+                              "font-size": "1.1rem"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "mt-2" }, [
+                              _c("div", { staticClass: "input-group" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("خلال الاسبوع")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.models.prices.eid,
+                                      expression: "models.prices.eid"
+                                    }
+                                  ],
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "number",
+                                    "aria-label": "سعر الجلسة في فترة الاعياد"
+                                  },
+                                  domProps: { value: _vm.models.prices.eid },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.models.prices,
+                                        "eid",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("ملاحظة")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-label":
+                                      "ملاحظة عن سعر الجلسة في فترة الاعياد",
+                                    placeholder:
+                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                { staticClass: "form-text text-muted" },
+                                [
+                                  _vm._v(
+                                    "\n                            الملاحظة اختيارية\n                        "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _vm.chosenTimePeriods.ramadan
+                  ? _c(
+                      "div",
+                      { staticClass: "mt-2" },
+                      [
+                        _c(
+                          "jilsati-fieldset",
+                          {
+                            attrs: {
+                              legend: "السعر لفترة رمضان",
+                              "font-size": "1.1rem"
+                            }
+                          },
+                          [
+                            _c("div", { staticClass: "mt-2" }, [
+                              _c("div", { staticClass: "input-group" }, [
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("خلال الاسبوع")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  directives: [
+                                    {
+                                      name: "model",
+                                      rawName: "v-model",
+                                      value: _vm.models.prices.ramadan,
+                                      expression: "models.prices.ramadan"
+                                    }
+                                  ],
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "number",
+                                    "aria-label": "سعر الجلسة في فترة رمضان"
+                                  },
+                                  domProps: {
+                                    value: _vm.models.prices.ramadan
+                                  },
+                                  on: {
+                                    input: function($event) {
+                                      if ($event.target.composing) {
+                                        return
+                                      }
+                                      _vm.$set(
+                                        _vm.models.prices,
+                                        "ramadan",
+                                        $event.target.value
+                                      )
+                                    }
+                                  }
+                                }),
+                                _vm._v(" "),
+                                _c(
+                                  "div",
+                                  {
+                                    staticClass: "input-group-prepend rounded-0"
+                                  },
+                                  [
+                                    _c(
+                                      "span",
+                                      {
+                                        staticClass:
+                                          "input-group-text rounded-0"
+                                      },
+                                      [_vm._v("ملاحظة")]
+                                    )
+                                  ]
+                                ),
+                                _vm._v(" "),
+                                _c("input", {
+                                  staticClass: "form-control rounded-0",
+                                  attrs: {
+                                    type: "text",
+                                    "aria-label":
+                                      "ملاحظة عن سعر الجلسة في فترة رمضان",
+                                    placeholder:
+                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                  }
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c(
+                                "small",
+                                { staticClass: "form-text text-muted" },
+                                [
+                                  _vm._v(
+                                    "\n                            الملاحظة اختيارية\n                        "
+                                  )
+                                ]
+                              )
+                            ])
+                          ]
+                        )
+                      ],
+                      1
+                    )
+                  : _vm._e(),
+                _vm._v(" "),
+                _c("div", { staticClass: "mt-2" }, [
                   _c(
                     "button",
                     {
@@ -40712,13 +42008,17 @@ var render = function() {
                         )
                       ]),
                       _vm._v(" "),
-                      _c("jilsati-card", {
-                        staticClass: "mx-auto mt-4",
+                      _c("jilsati-card-show", {
                         attrs: {
                           title: _vm.models.name,
-                          description: _vm.models.description,
                           city: _vm.models.city,
-                          "img-src": _vm.models.mainImage
+                          address: _vm.models.address,
+                          description: _vm.models.description,
+                          "img-src": _vm.models.mainImage,
+                          "max-description-length": 200,
+                          options: _vm.models.options,
+                          clients: _vm.models.jilsahClients,
+                          types: _vm.models.jilsahType
                         }
                       })
                     ],
@@ -40783,6 +42083,34 @@ var render = function() {
     ],
     1
   )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-test.vue?vue&type=template&id=a6d44a8c&":
+/*!***************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-test.vue?vue&type=template&id=a6d44a8c& ***!
+  \***************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", {
+    style:
+      "width:100px;height:100px;background-color:" +
+      (_vm.black ? "black;" : "red;")
+  })
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -53030,6 +54358,7 @@ Vue.component('JilsatiTimePicker', __webpack_require__(/*! ./components/jilsati-
 Vue.component('JilsatiSelect', __webpack_require__(/*! ./components/jilsati-select */ "./resources/js/components/jilsati-select.vue")["default"]);
 Vue.component('JilsatiFieldset', __webpack_require__(/*! ./components/jilsati-fieldset */ "./resources/js/components/jilsati-fieldset.vue")["default"]);
 Vue.component('JilsatiFileChooser', __webpack_require__(/*! ./components/jilsati-file-chooser */ "./resources/js/components/jilsati-file-chooser.vue")["default"]);
+Vue.component('JilsatiTest', __webpack_require__(/*! ./components/jilsati-test */ "./resources/js/components/jilsati-test.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -54274,6 +55603,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_stepper_vue_vue_type_template_id_78f60259___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_stepper_vue_vue_type_template_id_78f60259___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-test.vue":
+/*!**************************************************!*\
+  !*** ./resources/js/components/jilsati-test.vue ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_test_vue_vue_type_template_id_a6d44a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-test.vue?vue&type=template&id=a6d44a8c& */ "./resources/js/components/jilsati-test.vue?vue&type=template&id=a6d44a8c&");
+/* harmony import */ var _jilsati_test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-test.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-test.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_test_vue_vue_type_template_id_a6d44a8c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_test_vue_vue_type_template_id_a6d44a8c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-test.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-test.vue?vue&type=script&lang=js&":
+/*!***************************************************************************!*\
+  !*** ./resources/js/components/jilsati-test.vue?vue&type=script&lang=js& ***!
+  \***************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-test.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-test.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_test_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-test.vue?vue&type=template&id=a6d44a8c&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/jilsati-test.vue?vue&type=template&id=a6d44a8c& ***!
+  \*********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_test_vue_vue_type_template_id_a6d44a8c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-test.vue?vue&type=template&id=a6d44a8c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-test.vue?vue&type=template&id=a6d44a8c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_test_vue_vue_type_template_id_a6d44a8c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_test_vue_vue_type_template_id_a6d44a8c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

@@ -9,7 +9,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
             <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
                 <li class="nav-item pl-2 pr-2">
-                    <a class="nav-link btn btn-success" style="color: #ffffff;" href="/jilsahs/create">اضف جلستك/استراحتك</a>
+                    <a class="nav-link btn btn-success" style="color: #ffffff;" href="/jilsahs/create">اضف جلستك</a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'contact'}">
                     <a class="nav-link" href="/contact">تواصل معانا<span v-if="active === 'contact'" class="sr-only">(الحالية)</span></a>
@@ -27,7 +27,7 @@
 
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
                             <a class="dropdown-item" href="/personal">الملف الشخصي</a>
-                            <a class="dropdown-item" href="/jilsahs">استراحاتي/جلساتي</a>
+                            <a class="dropdown-item" href="/jilsahs">جلساتي</a>
                             <a class="dropdown-item" href="#" @click="logout()">تسجيل خروج</a>
                         </div>
                     </div>

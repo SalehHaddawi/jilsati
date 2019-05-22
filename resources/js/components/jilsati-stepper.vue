@@ -1,6 +1,6 @@
 <template>
     <div>
-        <jilsati-step title="معلومات الجلسة"
+        <jilsati-step title="معلومات الجلسة الاساسية"
                       dir="rtl"
                       rtl="true"
                       number="1"
@@ -8,14 +8,14 @@
 
             <div class="form-group">
                 <label for="jilsah-name">اسم الجلسة</label>
-                <input v-model="models.name" type="text" class="form-control" id="jilsah-name" placeholder="اسم جلستك" aria-describedby="jilsah-nameHelp">
+                <input v-model.trim="models.name" type="text" class="form-control" id="jilsah-name" placeholder="اسم جلستك" aria-describedby="jilsah-nameHelp">
                 <small id="jilsah-nameHelp" class="form-text text-muted">
                     هذا الاسم اللي الناس بيبحثوا عن جلستك بيه
                 </small>
             </div>
             <div class="form-group">
                 <label for="jilsah-description">وصف الجلسة</label>
-                <textarea v-model="models.description" class="form-control" id="jilsah-description" placeholder="الوصف" rows="5" aria-describedby="descriptionHelp"></textarea>
+                <textarea v-model.trim="models.description" class="form-control" id="jilsah-description" placeholder="الوصف" rows="5" aria-describedby="descriptionHelp"></textarea>
                 <small id="descriptionHelp" class="form-text text-muted">
                     معلومات مفصلة عن جلستك عشان الناس يعرفوا اكثر عنها
                 </small>
@@ -80,22 +80,41 @@
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
-                <jilsati-fieldset v-show="chosenTimePeriods.vacation" legend="فترة الاجازة">
-                    <div v-for="index in jilsahShifts.vacationShifts">
-                        <p class="text-info">فترة العمل رقم {{index}}</p>
-                        <div class="form-inline">
-                            <div class="form-group m-auto">
-                                <label class="form-check-label m-2">من</label>
-                                <jilsati-time-picker time="10:00 AM" :name="'vacation-time-from'+index"></jilsati-time-picker>
-                            </div>
-                            <div class="form-group m-auto">
-                                <label class="form-check-label m-2">الى</label>
-                                <jilsati-time-picker time="11:00 PM" :name="'vacation-time-to'+index"></jilsati-time-picker>
+                <jilsati-fieldset v-show="chosenTimePeriods.vacation" legend="ايام الاجازة" font-size="1.4rem">
+                    <jilsati-fieldset legend="ايام الاسبوع" font-size="1.1rem">
+                        <div v-for="index in jilsahShifts.vacationWeekShifts">
+                            <p class="text-info">فترة العمل رقم {{index}}</p>
+                            <div class="form-inline">
+                                <div class="form-group m-auto">
+                                    <label class="form-check-label m-2">من</label>
+                                    <jilsati-time-picker time="10:00 AM" :name="'vacation-week-time-from'+index"></jilsati-time-picker>
+                                </div>
+                                <div class="form-group m-auto">
+                                    <label class="form-check-label m-2">الى</label>
+                                    <jilsati-time-picker time="11:00 PM" :name="'vacation-week-time-to'+index"></jilsati-time-picker>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.vacationShifts++">ضيف فترة جديدة</button>
-                    <button v-if="jilsahShifts.vacationShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.vacationShifts--">حذف فترة عمل</button>
+                        <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.vacationShifts++">ضيف فترة جديدة</button>
+                        <button v-if="jilsahShifts.vacationWeekShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.vacationShifts--">حذف فترة عمل</button>
+                    </jilsati-fieldset>
+                    <jilsati-fieldset v-show="chosenTimePeriods.vacation" legend="نهاية الاسبوع" font-size="1.1rem">
+                        <div v-for="index in jilsahShifts.vacationWeekendShifts">
+                            <p class="text-info">فترة العمل رقم {{index}}</p>
+                            <div class="form-inline">
+                                <div class="form-group m-auto">
+                                    <label class="form-check-label m-2">من</label>
+                                    <jilsati-time-picker time="10:00 AM" :name="'vacation-weekend-time-from'+index"></jilsati-time-picker>
+                                </div>
+                                <div class="form-group m-auto">
+                                    <label class="form-check-label m-2">الى</label>
+                                    <jilsati-time-picker time="11:00 PM" :name="'vacation-weekend-time-to'+index"></jilsati-time-picker>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.vacationShifts++">ضيف فترة جديدة</button>
+                        <button v-if="jilsahShifts.vacationWeekendShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.vacationShifts--">حذف فترة عمل</button>
+                    </jilsati-fieldset>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset v-show="chosenTimePeriods.eid" legend="الاعياد">
@@ -140,7 +159,7 @@
                 </div>
             </div>
         </jilsati-step>
-        <jilsati-step title="ايش تقدم الجلسة"
+        <jilsati-step title="عن الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="3"
@@ -152,33 +171,32 @@
                 </p>
 
                 <jilsati-fieldset legend="الجلسة تستقبل" font-size="1.1rem">
-                    <jilsati-radio postfix="1" name="client" inline="true" checked="selected">شباب</jilsati-radio>
-                    <jilsati-radio postfix="2" name="client" inline="true">عائلات</jilsati-radio>
-                    <jilsati-radio postfix="3" name="client" inline="true">الاثنين</jilsati-radio>
+                    <jilsati-checkbox v-model="models.jilsahClients" name="شباب" inline checked>شباب</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.jilsahClients" name="سيدات" inline>سيدات</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.jilsahClients" name="عائلات" inline>عائلات</jilsati-checkbox>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset legend="نوع الجلسة" font-size="1.1rem">
-                    <jilsati-radio postfix="1" name="jilsah-type" inline="true" checked="checked">ارضية</jilsati-radio>
-                    <jilsati-radio postfix="2" name="jilsah-type" inline="true">طاولات</jilsati-radio>
-                    <jilsati-radio postfix="3" name="jilsah-type" inline="true">الاثنين</jilsati-radio>
+                    <jilsati-checkbox v-model="models.jilsahType" name="جلسات ارضية" inline checked>جلسات ارضية</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.jilsahType" name="جلسات طاولة" inline>جلسات طاولة</jilsati-checkbox>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset legend="خدمات/مميزات الجلسة" font-size="1.1rem">
-                    <jilsati-checkbox name="arabic-coffee-dates" inline="true">قهوة وتمر</jilsati-checkbox>
-                    <jilsati-checkbox name="nuts" inline="true">مكسرات</jilsati-checkbox>
-                    <jilsati-checkbox name="board-games" inline="true">العاب طاولة</jilsati-checkbox>
-                    <jilsati-checkbox name="card-games" inline="true">العاب ورقية</jilsati-checkbox>
-                    <jilsati-checkbox name="video-games" inline="true">العاب فيديو</jilsati-checkbox>
-                    <jilsati-checkbox name="cafe" inline="true">كافيه</jilsati-checkbox>
-                    <jilsati-checkbox name="restaurant" inline="true">مطعم</jilsati-checkbox>
-                    <jilsati-checkbox name="tennis" inline="true">تنس طاولة</jilsati-checkbox>
-                    <jilsati-checkbox name="billiard" inline="true">بلياردو</jilsati-checkbox>
-                    <jilsati-checkbox name="soccer-table" inline="true">فرفيرة</jilsati-checkbox>
-                    <jilsati-checkbox name="air-condition" inline="true">مكيفة</jilsati-checkbox>
-                    <jilsati-checkbox name="open-air" inline="true">مفتوحة</jilsati-checkbox>
-                    <jilsati-checkbox name="smoke" inline="true">شيشة ومعسل</jilsati-checkbox>
-                    <jilsati-checkbox name="smoking-area" inline="true">منطقة للمدخنين</jilsati-checkbox>
-                    <jilsati-checkbox name="tv-for-sports" inline="true">عرض المباريات</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="قهوة عربية وتمر" inline>قهوة وتمر</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="مكسرات" inline>مكسرات</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="العاب طاولة" inline>العاب طاولة</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="العاب ورق" inline>العاب ورقية</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="العاب فيديو" inline>العاب فيديو</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="كافيه" inline>كافيه</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="مطعم" inline>مطعم</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="تنس طاولة" inline>تنس طاولة</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="بلياردو" inline>بلياردو</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="فرفيرة" inline>فرفيرة</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="مكيفة" inline>مكيفة</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="مفتوحة" inline>مفتوحة</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="شيشة ومعسل" inline>شيشة ومعسل</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="منطقة مدخنين" inline>منطقة للمدخنين</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="عرض مباريات" inline>عرض المباريات</jilsati-checkbox>
                 </jilsati-fieldset>
 
                 <div class="mt-2">
@@ -201,17 +219,25 @@
                         v-model="models.city">
                 </jilsati-select>
 
-                <div v-if="models.city" class="form-group mt-4">
-                    <label for="jilsah-location">موقع الجلسة</label>
-                    <input v-model="models.address" type="text" class="form-control" id="jilsah-location" placeholder="مثال: حي الستين بجوار مول الحجاز" aria-describedby="jilsah-locationHelp">
+                <div class="form-group mt-4">
+                    <label for="jilsah-location">الحي</label>
+                    <input v-model.trim="models.address" type="text" class="form-control" id="jilsah-location" placeholder="الحي" aria-describedby="jilsah-locationHelp">
                     <small id="jilsah-locationHelp" class="form-text text-muted">
-                        وصف لموقع الجلسة, الحي واي علامة مميزة
+                        الحي اللي فيه الجلسة
                     </small>
                 </div>
 
-                <div v-if="models.city" class="form-group mt-4">
+                <div class="form-group mt-4">
+                    <label for="jilsah-location-details">موقع الجلسة</label>
+                    <input v-model.trim="models.addressDetails" type="text" class="form-control" id="jilsah-location-details" placeholder="مثال: بجوار مسجد التقوى على اليمين" aria-describedby="jilsah-location-detailsHelp">
+                    <small id="jilsah-location-detailsHelp" class="form-text text-muted">
+                        وصف لموقع الجلسة واي علامة مميزة
+                    </small>
+                </div>
+
+                <div class="form-group mt-4">
                     <label for="jilsah-google-location">رابط قوقل ماب</label>
-                    <input v-model="models.googleMapAddress" type="text" class="form-control" id="jilsah-google-location" placeholder="رابط موقع الجلسة في قوقل ماب" aria-describedby="jilsah-google-locationHelp">
+                    <input v-model.trim="models.googleMapAddress" type="text" class="form-control" id="jilsah-google-location" placeholder="رابط موقع الجلسة في قوقل ماب" aria-describedby="jilsah-google-locationHelp">
                     <small id="jilsah-google-locationHelp" class="form-text text-muted">
                         رابط موقع الجلسة في قوقل ماب عشان تسهل وصول الناس للجلسة
                     </small>
@@ -230,7 +256,130 @@
 
             <div v-if="!stepsInfo[4].disabled">
 
-                <div>
+                <p class="text-justify">
+                    اسعار الجلسة للفترات اللي اخترتها في الخطوة "اوقات الجلسة"
+                </p>
+
+                <div class="mt-2">
+                    <jilsati-radio name="price-per" postfix="jilsah" val="للجلسة" checked>السعر للجلسة</jilsati-radio>
+                    <jilsati-radio name="price-per" postfix="person" val="للشخص">السعر للشخص</jilsati-radio>
+                </div>
+
+                <div v-if="chosenTimePeriods.school" class="mt-2">
+                    <jilsati-fieldset legend="السعر لفترة الدراسة" font-size="1.1rem">
+
+                        <div class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">ايام الاسبوع</span>
+                                </div>
+                                <input v-model="models.prices.schoolWeek" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">ملاحظة</span>
+                                </div>
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                            </div>
+                            <small class="form-text text-muted">
+                                الملاحظة اختيارية
+                            </small>
+                        </div>
+
+                        <div class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">نهاية الاسبوع</span>
+                                </div>
+                                <input v-model="models.prices.schoolWeekend" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">ملاحظة</span>
+                                </div>
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                            </div>
+                            <small class="form-text text-muted">
+                                الملاحظة اختيارية
+                            </small>
+                        </div>
+                    </jilsati-fieldset>
+                </div>
+
+                <div v-if="chosenTimePeriods.vacation" class="mt-2">
+                    <jilsati-fieldset legend="السعر لفترة الاجازة" font-size="1.1rem">
+
+                        <div class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">ايام الاسبوع</span>
+                                </div>
+                                <input v-model="models.prices.vacationWeek" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">ملاحظة</span>
+                                </div>
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاجازة ايام الاسبوع" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                            </div>
+                            <small class="form-text text-muted">
+                                الملاحظة اختيارية
+                            </small>
+                        </div>
+
+                        <div class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">نهاية الاسبوع</span>
+                                </div>
+                                <input v-model="models.prices.vacationWeekend" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">ملاحظة</span>
+                                </div>
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاجازة ايام نهاية الاسبوع" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                            </div>
+                            <small class="form-text text-muted">
+                                الملاحظة اختيارية
+                            </small>
+                        </div>
+                    </jilsati-fieldset>
+                </div>
+
+                <div v-if="chosenTimePeriods.eid" class="mt-2">
+                    <jilsati-fieldset legend="السعر لفترة الاعياد" font-size="1.1rem">
+                        <div class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">خلال الاسبوع</span>
+                                </div>
+                                <input v-model="models.prices.eid" type="number" aria-label="سعر الجلسة في فترة الاعياد" class="form-control rounded-0">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">ملاحظة</span>
+                                </div>
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاعياد" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                            </div>
+                            <small class="form-text text-muted">
+                                الملاحظة اختيارية
+                            </small>
+                        </div>
+                    </jilsati-fieldset>
+                </div>
+
+                <div v-if="chosenTimePeriods.ramadan" class="mt-2">
+                    <jilsati-fieldset legend="السعر لفترة رمضان" font-size="1.1rem">
+                        <div class="mt-2">
+                            <div class="input-group">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">خلال الاسبوع</span>
+                                </div>
+                                <input v-model="models.prices.ramadan" type="number" aria-label="سعر الجلسة في فترة رمضان" class="form-control rounded-0">
+                                <div class="input-group-prepend rounded-0">
+                                    <span class="input-group-text rounded-0">ملاحظة</span>
+                                </div>
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة رمضان" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                            </div>
+                            <small class="form-text text-muted">
+                                الملاحظة اختيارية
+                            </small>
+                        </div>
+                    </jilsati-fieldset>
+                </div>
+
+                <div class="mt-2">
                     <button type="button" class="btn btn-success" @click="check(4)">اللي بعدو</button>
                 </div>
             </div>
@@ -256,12 +405,16 @@
                         عرض لشكل الجلسة
                     </jilsati-alert>
 
-                    <jilsati-card class="mx-auto mt-4"
-                                  :title="models.name"
-                                  :description="models.description"
-                                  :city="models.city"
-                                  :img-src="models.mainImage">
-                    </jilsati-card>
+                    <jilsati-card-show :title="models.name"
+                                        :city="models.city"
+                                        :address="models.address"
+                                        :description="models.description"
+                                        :img-src="models.mainImage"
+                                        :max-description-length="200"
+                                        :options="models.options"
+                                        :clients="models.jilsahClients"
+                                        :types="models.jilsahType">
+                    </jilsati-card-show>
                 </div>
 
                 <div class="mt-4">
@@ -317,7 +470,8 @@
                     schoolWeekShifts : 1,
                     schoolWeekendShifts : 1,
 
-                    vacationShifts : 1,
+                    vacationWeekShifts : 1,
+                    vacationWeekendShifts : 1,
 
                     eidShifts : 1,
 
@@ -327,10 +481,22 @@
                 models : {
                     name : '',
                     description : '',
+                    jilsahClients : [],
+                    jilsahType : [],
+                    options : [],
                     city : '',
-                    mainImage : null,
+                    mainImage : '/images/upload-your-jilsah.png',
                     address : '',
-                    googleMapAddress : ''
+                    addressDetails : '',
+                    googleMapAddress : '',
+                    prices : {
+                        schoolWeek : 0,
+                        schoolWeekend : 0,
+                        vacationWeek : 0,
+                        vacationWeekend : 0,
+                        eid : 0,
+                        ramadan : 0
+                    }
                 },
 
                 cities : [],
@@ -369,6 +535,10 @@
             handleMainImageChanged : function (src) {
                 this.models.mainImage = src;
             },
+
+            log : function (val) {
+                console.log('helo ',val);
+            }
         },
 
         created() {

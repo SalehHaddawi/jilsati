@@ -1,32 +1,71 @@
 <template>
-    <div class="card shadow-sm rounded-0">
-        <div class="card-header text-info row">
-            <div class="col-4 d-inline text-right">
-                <span class="badge badge-success  shadow-sm">مكة</span>
+    <div class="card mb-3 w-100">
+        <div class="row no-gutters">
+            <div class="col-md-4">
+                <img :src="imgSrc" class="card-img rounded-0" alt="...">
             </div>
-            <div class="col-4 d-inline text-center">
-                <h5>
-                    <span class="badge badge-warning shadow-sm">150 ر.س</span>
-                </h5>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h2 class="card-title">{{title}}</h2>
+                    <small class="text-success">{{ city + ', ' + address}}</small>
+                    <p class="card-text text-muted">
+                        {{description.length > maxDescriptionLength ?
+                        description.substring(0,maxDescriptionLength)+'...' :
+                        description}}
+                    </p>
+
+                    <div class="mt-2">
+                        <h5 v-for="client in clients" class="d-inline-block">
+                            <span class="badge badge-light text-success m-2">{{client}}</span>
+                        </h5>
+                    </div>
+
+                    <div class="mt-2">
+                        <h5 v-for="type in types" class="d-inline-block">
+                            <span class="badge badge-info text-light m-2">{{type}}</span>
+                        </h5>
+                    </div>
+
+                    <div class="mt-2">
+                        <h5 v-for="option in options" class="d-inline-block">
+                            <span class="badge badge-success text-light m-1">{{option}}</span>
+                        </h5>
+                    </div>
+
+                    <p class="card-text">
+                        <small class="text-muted">Last updated 3 mins ago</small>
+                    </p>
+                </div>
             </div>
-            <div class="col-4 d-inline text-left">
-                <span class="badge badge-info shadow-sm">ثلاث نجوم</span>
-            </div>
-        </div>
-        <jilsati-carousel :images="images"></jilsati-carousel>
-        <div class="card-body">
-            <h5 class="card-title text-right">شاليهات الواحة</h5>
-            <p class="card-text text-right">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, debitis delectus dolore doloremque enim id, inventore laudantium minus numquam quisquam, quos recusandae voluptatem voluptates! Aspernatur blanditiis doloremque est libero tempore?</p>
-        </div>
-        <div class="card-footer text-right">
-            <small class="text-muted">1999/05/23</small>
         </div>
     </div>
 </template>
 
 <script>
-
     export default {
-        props : ['images']
+        props : {
+            imgSrc : '',
+
+            title : '',
+
+            city: '',
+
+            address : '',
+
+            description: '',
+
+            options : '',
+
+            clients : '',
+
+            types : '',
+
+            /***************/
+
+            maxDescriptionLength : {
+                type : Number
+            }
+
+        }
     }
 </script>

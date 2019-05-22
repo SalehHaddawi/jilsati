@@ -36,6 +36,7 @@ Vue.component('JilsatiTimePicker',require('./components/jilsati-time-picker').de
 Vue.component('JilsatiSelect',require('./components/jilsati-select').default);
 Vue.component('JilsatiFieldset',require('./components/jilsati-fieldset').default);
 Vue.component('JilsatiFileChooser',require('./components/jilsati-file-chooser').default);
+Vue.component('JilsatiTest',require('./components/jilsati-test').default);
 
 
 
