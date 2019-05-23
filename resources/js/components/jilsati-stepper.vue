@@ -36,7 +36,7 @@
                     اختار الاوقات الي الجلسة تكون شغالة
                 </p>
 
-                <jilsati-checkbox v-model="chosenTimePeriods.school" name="school-time-period">فترة الدراسة</jilsati-checkbox>
+                <jilsati-checkbox v-model="chosenTimePeriods.school" name="school-time-period" checked>فترة الدراسة</jilsati-checkbox>
                 <jilsati-checkbox v-model="chosenTimePeriods.vacation" name="vacation-time-period">فترة الاجازة</jilsati-checkbox>
                 <jilsati-checkbox v-model="chosenTimePeriods.eid" name="eid-time-period">الاعياد</jilsati-checkbox>
                 <jilsati-checkbox v-model="chosenTimePeriods.ramadan" name="ramadan-time-period">رمضان</jilsati-checkbox>
@@ -261,8 +261,8 @@
                 </p>
 
                 <div class="mt-2">
-                    <jilsati-radio name="price-per" postfix="jilsah" val="للجلسة" checked>السعر للجلسة</jilsati-radio>
-                    <jilsati-radio name="price-per" postfix="person" val="للشخص">السعر للشخص</jilsati-radio>
+                    <jilsati-radio v-model="models.pricePer" name="price-per" postfix="jilsah" val="للجلسة" checked>السعر للجلسة</jilsati-radio>
+                    <jilsati-radio v-model="models.pricePer" name="price-per" postfix="person" val="للشخص">السعر للشخص</jilsati-radio>
                 </div>
 
                 <div v-if="chosenTimePeriods.school" class="mt-2">
@@ -410,10 +410,13 @@
                                         :address="models.address"
                                         :description="models.description"
                                         :img-src="models.mainImage"
-                                        :max-description-length="200"
+                                        :max-description-length="180"
                                         :options="models.options"
                                         :clients="models.jilsahClients"
-                                        :types="models.jilsahType">
+                                        :types="models.jilsahType"
+                                        :rating="5"
+                                        :price="25"
+                                        :price-per="models.pricePer">
                     </jilsati-card-show>
                 </div>
 
@@ -489,6 +492,7 @@
                     address : '',
                     addressDetails : '',
                     googleMapAddress : '',
+                    pricePer : '',
                     prices : {
                         schoolWeek : 0,
                         schoolWeekend : 0,

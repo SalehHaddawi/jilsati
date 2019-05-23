@@ -1,7 +1,7 @@
 <template>
     <div class="custom-file text-center">
         <input @change="onChange($event)" type="file" class="custom-file-input" :id="name">
-        <label class="custom-file-label" :for="name" :data-browse="browse">
+        <label v-if="!noLabel" class="custom-file-label" :for="name" :data-browse="browse">
             {{cont}}
         </label>
     </div>
@@ -9,7 +9,7 @@
 
 <script>
     export default {
-        props : ['name','browse','content'],
+        props : ['name','browse','content','noLabel'],
 
         data : function(){
           return {
