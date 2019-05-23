@@ -1,7 +1,7 @@
 <template>
     <div class="card shadow mb-3 w-100">
         <div class="row no-gutters">
-            <div class="col-md-5 my-auto">
+            <div class="col-md-5">
                 <img :src="imgSrc" class="card-img rounded-0" alt="...">
             </div>
             <div class="col-md-7">

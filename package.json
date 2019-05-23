@@ -23,5 +23,8 @@
         "vue": "^2.5.17",
         "vue-template-compiler": "^2.6.10"
     },
-    "dependencies": {}
+    "dependencies": {
+        "ekko-lightbox": "^5.3.0",
+        "vue-tiny-lazyload-img": "^0.1.0"
+    }
 }

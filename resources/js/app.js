@@ -6,6 +6,9 @@
 
 window.Vue = require('vue');
 
+import VueTinyLazyloadImg from 'vue-tiny-lazyload-img'
+Vue.use(VueTinyLazyloadImg);
+
 require('./bootstrap');
 
 /**
@@ -39,7 +42,6 @@ Vue.component('JilsatiFileChooser',require('./components/jilsati-file-chooser').
 Vue.component('JilsatiTest',require('./components/jilsati-test').default);
 Vue.component('star', require('./components/star').default);
 Vue.component('star-rating', require('./components/star-rating').default);
-
 
 
 

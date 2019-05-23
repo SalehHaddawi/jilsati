@@ -1,6 +1,6 @@
 <template>
     <div class="custom-file text-center">
-        <input @change="onChange($event)" type="file" class="custom-file-input" :id="name">
+        <input @change="onChange($event)" type="file" class="custom-file-input" :id="name" :multiple="multiple">
         <label v-if="!noLabel" class="custom-file-label" :for="name" :data-browse="browse">
             {{cont}}
         </label>
@@ -9,7 +9,23 @@
 
 <script>
     export default {
-        props : ['name','browse','content','noLabel'],
+        props : {
+            name : {
+                required : true
+            },
+
+            browse : '',
+
+            content : '',
+
+            noLabel : {
+                type : Boolean
+            },
+
+            multiple : {
+                type : Boolean
+            }
+        },
 
         data : function(){
           return {
@@ -19,14 +35,20 @@
 
         methods : {
             onChange : function (event) {
-                if(event.target.files && event.target.files[0] && event.target.files[0].type.startsWith('image/')) {
-                    this.cont = event.target.files[0].name;
+                if(event.target.files) {
+                    for (let i=0;i<event.target.files.length;i++){
+                        if(event.target.files[i].type.startsWith('image/')) {
+                            this.cont = event.target.files[i].name;
 
-                    let vue = this;
+                            let vue = this;
 
-                    const reader = new FileReader();
-                    reader.onload = function(e){vue.$emit('main-image-changed',e.target.result)}
-                    reader.readAsDataURL(event.target.files[0]);
+                            const reader = new FileReader();
+                            reader.onload = function (e) {
+                                vue.$emit('image-changed', {name:event.target.files[i].name,src:e.target.result});
+                            };
+                            reader.readAsDataURL(event.target.files[i]);
+                        }
+                    }
                 }
             }
         }

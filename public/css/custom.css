@@ -31,6 +31,14 @@ label.custom-control-label::before, label.custom-control-label::after{
     -webkit-align-items: baseline;
 }
 
+.close-jilsah-image{
+    position: absolute;
+    top: 5%;
+    left: 95%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+}
+
 /* -------------------------------------------------------------------------
   VERTICAL STEPPERS
 -------------------------------------------------------------------------- */

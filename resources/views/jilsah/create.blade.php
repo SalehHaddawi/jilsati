@@ -6,6 +6,7 @@
 
 @section('stylesheets')
     <link rel="stylesheet" href="{{asset('css/tempusdominus-bootstrap-4.min.css')}}">
+    <link rel="stylesheet" href="{{asset('css/ekko-lightbox.css')}}">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
 @endsection
 
@@ -27,4 +28,11 @@
 @section('scripts')
     <script src="{{asset('js/moment.js')}}"></script>
     <script src="{{asset('js/tempusdominus-bootstrap-4.min.js')}}"></script>
+    <script src="{{asset('js/ekko-lightbox.js')}}"></script>
+    <script>
+        $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+            event.preventDefault();
+            $(this).ekkoLightbox();
+        });
+    </script>
 @endsection

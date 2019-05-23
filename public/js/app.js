@@ -2128,7 +2128,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['name', 'browse', 'content', 'noLabel'],
+  props: {
+    name: {
+      required: true
+    },
+    browse: '',
+    content: '',
+    noLabel: {
+      type: Boolean
+    },
+    multiple: {
+      type: Boolean
+    }
+  },
   data: function data() {
     return {
       cont: this.content
@@ -2136,16 +2148,29 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onChange: function onChange(event) {
-      if (event.target.files && event.target.files[0] && event.target.files[0].type.startsWith('image/')) {
-        this.cont = event.target.files[0].name;
-        var vue = this;
-        var reader = new FileReader();
+      var _this = this;
 
-        reader.onload = function (e) {
-          vue.$emit('main-image-changed', e.target.result);
+      if (event.target.files) {
+        var _loop = function _loop(i) {
+          if (event.target.files[i].type.startsWith('image/')) {
+            _this.cont = event.target.files[i].name;
+            var vue = _this;
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+              vue.$emit('image-changed', {
+                name: event.target.files[i].name,
+                src: e.target.result
+              });
+            };
+
+            reader.readAsDataURL(event.target.files[i]);
+          }
         };
 
-        reader.readAsDataURL(event.target.files[0]);
+        for (var i = 0; i < event.target.files.length; i++) {
+          _loop(i);
+        }
       }
     }
   }
@@ -2886,6 +2911,38 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2912,7 +2969,7 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         id: 'jilsah-photos',
         state: 'secondary',
-        disabled: true
+        disabled: false
       }, {
         id: 'jilsah-connect',
         state: 'secondary',
@@ -2952,9 +3009,13 @@ __webpack_require__.r(__webpack_exports__);
           vacationWeekend: 0,
           eid: 0,
           ramadan: 0
-        }
+        },
+        jilsahImages: []
       },
-      cities: []
+      cities: [],
+
+      /*****************/
+      jilsahImagesCounter: 0
     };
   },
   methods: {
@@ -2980,11 +3041,22 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
-    handleMainImageChanged: function handleMainImageChanged(src) {
-      this.models.mainImage = src;
+    handleMainImageChanged: function handleMainImageChanged(file) {
+      this.models.mainImage = file.src;
     },
-    log: function log(val) {
-      console.log('helo ', val);
+    handleAddNewJilsahImage: function handleAddNewJilsahImage(file) {
+      this.models.jilsahImages.push({
+        index: this.jilsahImagesCounter,
+        name: file.name,
+        src: file.src
+      });
+      this.jilsahImagesCounter++;
+    },
+    removeJilsahImage: function removeJilsahImage(index) {
+      this.models.jilsahImages = this.models.jilsahImages.filter(function (img) {
+        return img.index !== index;
+      });
+      console.log(index);
     }
   },
   created: function created() {
@@ -39518,7 +39590,7 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card shadow mb-3 w-100" }, [
     _c("div", { staticClass: "row no-gutters" }, [
-      _c("div", { staticClass: "col-md-5 my-auto" }, [
+      _c("div", { staticClass: "col-md-5" }, [
         _c("img", {
           staticClass: "card-img rounded-0",
           attrs: { src: _vm.imgSrc, alt: "..." }
@@ -40103,7 +40175,7 @@ var render = function() {
   return _c("div", { staticClass: "custom-file text-center" }, [
     _c("input", {
       staticClass: "custom-file-input",
-      attrs: { type: "file", id: _vm.name },
+      attrs: { type: "file", id: _vm.name, multiple: _vm.multiple },
       on: {
         change: function($event) {
           return _vm.onChange($event)
@@ -41033,7 +41105,7 @@ var render = function() {
                   }
                 }
               },
-              [_vm._v("اللي بعدو")]
+              [_vm._v("حفظ ومتابعة")]
             )
           ])
         ]
@@ -41769,7 +41841,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("اللي بعدو")]
+                      [_vm._v("حفظ ومتابعة")]
                     )
                   ])
                 ],
@@ -42145,7 +42217,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("اللي بعدو")]
+                      [_vm._v("حفظ ومتابعة")]
                     )
                   ])
                 ],
@@ -42360,7 +42432,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("اللي بعدو")]
+                      [_vm._v("حفظ ومتابعة")]
                     )
                   ])
                 ],
@@ -43071,7 +43143,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("اللي بعدو")]
+                    [_vm._v("حفظ ومتابعة")]
                   )
                 ])
               ])
@@ -43095,42 +43167,147 @@ var render = function() {
             ? _c(
                 "div",
                 [
-                  _c("jilsati-file-chooser", {
-                    attrs: {
-                      name: "jilsah-main-img",
-                      browse: "صورة الجلسة",
-                      content: "ارفع الصورة"
-                    },
-                    on: { "main-image-changed": _vm.handleMainImageChanged }
-                  }),
-                  _vm._v(" "),
                   _c(
-                    "div",
+                    "jilsati-fieldset",
+                    {
+                      attrs: {
+                        legend: "نظرة سريعة على شكل الجلسة النهائي",
+                        "font-size": "1.1rem"
+                      }
+                    },
                     [
-                      _c("jilsati-alert", { attrs: { type: "info" } }, [
-                        _vm._v(
-                          "\n                    عرض لشكل الجلسة\n                "
-                        )
-                      ]),
-                      _vm._v(" "),
-                      _c("jilsati-card-show", {
+                      _c("jilsati-file-chooser", {
                         attrs: {
-                          title: _vm.models.name,
-                          city: _vm.models.city,
-                          address: _vm.models.address,
-                          description: _vm.models.description,
-                          "img-src": _vm.models.mainImage,
-                          "max-description-length": 180,
-                          options: _vm.models.options,
-                          clients: _vm.models.jilsahClients,
-                          types: _vm.models.jilsahType,
-                          rating: 5,
-                          price: 25,
-                          "price-per": _vm.models.pricePer
-                        }
-                      })
+                          name: "jilsah-main-img",
+                          browse: "صورة الجلسة",
+                          content: "ارفع الصورة"
+                        },
+                        on: { "image-changed": _vm.handleMainImageChanged }
+                      }),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        [
+                          _c("jilsati-alert", { attrs: { type: "info" } }, [
+                            _vm._v(
+                              "\n                        عرض لشكل الجلسة\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("jilsati-card-show", {
+                            attrs: {
+                              title: _vm.models.name,
+                              city: _vm.models.city,
+                              address: _vm.models.address,
+                              description: _vm.models.description,
+                              "img-src": _vm.models.mainImage,
+                              "max-description-length": 180,
+                              options: _vm.models.options,
+                              clients: _vm.models.jilsahClients,
+                              types: _vm.models.jilsahType,
+                              rating: 5,
+                              price: 25,
+                              "price-per": _vm.models.pricePer
+                            }
+                          })
+                        ],
+                        1
+                      )
                     ],
                     1
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    { attrs: { legend: "صور الجلسة", "font-size": "1.3rem" } },
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "mt-2" },
+                        [
+                          _c("jilsati-alert", { attrs: { type: "info" } }, [
+                            _vm._v(
+                              "\n                        اضيف صور الجلسة الباقية\n                    "
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("jilsati-file-chooser", {
+                            attrs: {
+                              name: "jilsah-imgs",
+                              browse: "صور الجلسة",
+                              content: "ارفع الصور",
+                              multiple: ""
+                            },
+                            on: { "image-changed": _vm.handleAddNewJilsahImage }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "row justify-content-start mt-2" },
+                        _vm._l(_vm.models.jilsahImages, function(img) {
+                          return _c(
+                            "div",
+                            {
+                              staticClass:
+                                "card shadow-sm mb-2 col-lg-2 col-md-3 col-6",
+                              staticStyle: { "max-width": "150px" }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  attrs: {
+                                    href: img.src,
+                                    "data-toggle": "lightbox",
+                                    "data-gallery": "jilsah-images"
+                                  }
+                                },
+                                [
+                                  _c("img", {
+                                    staticClass: "card-img",
+                                    attrs: {
+                                      src: img.src,
+                                      alt: "صورة للجلسة",
+                                      width: "100"
+                                    }
+                                  })
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "close close-jilsah-image",
+                                  attrs: {
+                                    type: "button",
+                                    "aria-label": "Close"
+                                  },
+                                  on: {
+                                    click: function($event) {
+                                      return _vm.removeJilsahImage(img.index)
+                                    }
+                                  }
+                                },
+                                [
+                                  _c(
+                                    "span",
+                                    {
+                                      staticClass: "text-right text-danger",
+                                      attrs: { "aria-hidden": "true" }
+                                    },
+                                    [_vm._v("×")]
+                                  )
+                                ]
+                              )
+                            ]
+                          )
+                        }),
+                        0
+                      )
+                    ]
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "mt-4" }, [
@@ -43145,7 +43322,7 @@ var render = function() {
                           }
                         }
                       },
-                      [_vm._v("اللي بعدو")]
+                      [_vm._v("حفظ ومتابعة")]
                     )
                   ])
                 ],
@@ -43181,7 +43358,7 @@ var render = function() {
                         }
                       }
                     },
-                    [_vm._v("اللي بعدو")]
+                    [_vm._v("حفظ ومتابعة")]
                   )
                 ])
               ])
@@ -43592,6 +43769,20 @@ function normalizeComponent (
     options: options
   }
 }
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-tiny-lazyload-img/dist/vue-tiny-lazyload-img.cjs.min.js":
+/*!**********************************************************************************!*\
+  !*** ./node_modules/vue-tiny-lazyload-img/dist/vue-tiny-lazyload-img.cjs.min.js ***!
+  \**********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+var _V_LOADING="v-lazy-loading",_V_LOADED="v-lazy-loaded",_V_ERROR="v-lazy-error",constant={_V_LOADING:_V_LOADING,_V_LOADED:_V_LOADED,_V_ERROR:_V_ERROR},lazyImageObserver=null,clearDataSrc=function(e,r){e.classList.add(r),e.removeAttribute("data-src"),e.removeAttribute("data-err")};"IntersectionObserver"in window&&(lazyImageObserver=new IntersectionObserver(function(e,r){e.forEach(function(e){if(e.isIntersecting){var r=e.target;r.classList.add(constant._V_LOADING);var a=r.dataset.src,t=r.dataset.err,n=new Image;n.src=a,n.onload=function(){r.classList.remove(constant._V_LOADING),a&&(r.src=a,clearDataSrc(r,constant._V_LOADED))},n.onerror=function(){r.classList.remove(constant._V_LOADING),t&&(r.src=t,clearDataSrc(r,constant._V_ERROR))},lazyImageObserver.unobserve(r)}})}));var lazyImageObserver$1=lazyImageObserver,plugin={install:function(e){e.directive("lazyload",{bind:function(e){"IntersectionObserver"in window&&lazyImageObserver$1.observe(e)},componentUpdated:function(e){"IntersectionObserver"in window&&e.classList.contains(constant._V_LOADED)&&lazyImageObserver$1.observe(e)}})}};module.exports=plugin;
+//# sourceMappingURL=vue-tiny-lazyload-img.cjs.min.js.map
 
 
 /***/ }),
@@ -55629,15 +55820,21 @@ module.exports = function(module) {
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-/*! no static exports found */
-/***/ (function(module, exports, __webpack_require__) {
+/*! no exports provided */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var vue_tiny_lazyload_img__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-tiny-lazyload-img */ "./node_modules/vue-tiny-lazyload-img/dist/vue-tiny-lazyload-img.cjs.min.js");
+/* harmony import */ var vue_tiny_lazyload_img__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue_tiny_lazyload_img__WEBPACK_IMPORTED_MODULE_0__);
 /**
  * First we will load all of this project's JavaScript dependencies which
  * includes Vue and other libraries. It is a great starting point when
  * building robust, powerful web applications using Vue and Laravel.
  */
 window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.js");
+
+Vue.use(vue_tiny_lazyload_img__WEBPACK_IMPORTED_MODULE_0___default.a);
 
 __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 /**

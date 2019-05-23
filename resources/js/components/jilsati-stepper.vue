@@ -22,7 +22,7 @@
             </div>
 
             <div class="mt-2">
-                <button type="button" class="btn btn-success" @click="check(0)">اللي بعدو</button>
+                <button type="button" class="btn btn-success" @click="check(0)">حفظ ومتابعة</button>
             </div>
         </jilsati-step>
         <jilsati-step title="اوقات الجلسة"
@@ -155,7 +155,7 @@
 
                 <!-- next step button -->
                 <div class="mt-2">
-                    <button type="button" class="btn btn-success" @click="check(1)">اللي بعدو</button>
+                    <button type="button" class="btn btn-success" @click="check(1)">حفظ ومتابعة</button>
                 </div>
             </div>
         </jilsati-step>
@@ -200,7 +200,7 @@
                 </jilsati-fieldset>
 
                 <div class="mt-2">
-                    <button type="button" class="btn btn-success" @click="check(2)">اللي بعدو</button>
+                    <button type="button" class="btn btn-success" @click="check(2)">حفظ ومتابعة</button>
                 </div>
             </div>
         </jilsati-step>
@@ -244,7 +244,7 @@
                 </div>
 
                 <div class="mt-4">
-                    <button type="button" class="btn btn-success" @click="check(3)">اللي بعدو</button>
+                    <button type="button" class="btn btn-success" @click="check(3)">حفظ ومتابعة</button>
                 </div>
             </div>
         </jilsati-step>
@@ -380,7 +380,7 @@
                 </div>
 
                 <div class="mt-2">
-                    <button type="button" class="btn btn-success" @click="check(4)">اللي بعدو</button>
+                    <button type="button" class="btn btn-success" @click="check(4)">حفظ ومتابعة</button>
                 </div>
             </div>
         </jilsati-step>
@@ -392,36 +392,68 @@
 
             <div v-if="!stepsInfo[5].disabled">
 
-                <jilsati-file-chooser
-                        name="jilsah-main-img"
-                        browse="صورة الجلسة"
-                        content="ارفع الصورة"
-                        @main-image-changed="handleMainImageChanged">
-                </jilsati-file-chooser>
+                <jilsati-fieldset legend="نظرة سريعة على شكل الجلسة النهائي" font-size="1.1rem">
 
-                <div>
+                    <jilsati-file-chooser
+                            name="jilsah-main-img"
+                            browse="صورة الجلسة"
+                            content="ارفع الصورة"
+                            @image-changed="handleMainImageChanged">
+                    </jilsati-file-chooser>
 
-                    <jilsati-alert type="info">
-                        عرض لشكل الجلسة
-                    </jilsati-alert>
+                    <div>
 
-                    <jilsati-card-show :title="models.name"
-                                        :city="models.city"
-                                        :address="models.address"
-                                        :description="models.description"
-                                        :img-src="models.mainImage"
-                                        :max-description-length="180"
-                                        :options="models.options"
-                                        :clients="models.jilsahClients"
-                                        :types="models.jilsahType"
-                                        :rating="5"
-                                        :price="25"
-                                        :price-per="models.pricePer">
-                    </jilsati-card-show>
-                </div>
+                        <jilsati-alert type="info">
+                            عرض لشكل الجلسة
+                        </jilsati-alert>
+
+                        <jilsati-card-show :title="models.name"
+                                            :city="models.city"
+                                            :address="models.address"
+                                            :description="models.description"
+                                            :img-src="models.mainImage"
+                                            :max-description-length="180"
+                                            :options="models.options"
+                                            :clients="models.jilsahClients"
+                                            :types="models.jilsahType"
+                                            :rating="5"
+                                            :price="25"
+                                            :price-per="models.pricePer">
+                        </jilsati-card-show>
+                    </div>
+                </jilsati-fieldset>
+
+                <jilsati-fieldset legend="صور الجلسة" font-size="1.3rem">
+                    <div class="mt-2">
+                        <jilsati-alert type="info">
+                            اضيف صور الجلسة الباقية
+                        </jilsati-alert>
+
+                        <jilsati-file-chooser
+                                name="jilsah-imgs"
+                                browse="صور الجلسة"
+                                content="ارفع الصور"
+                                multiple
+                                @image-changed="handleAddNewJilsahImage">
+                        </jilsati-file-chooser>
+                    </div>
+
+                    <div class="row justify-content-start mt-2">
+                        <div v-for="img in models.jilsahImages" class="card shadow-sm mb-2 col-lg-2 col-md-3 col-6" style="max-width: 150px;">
+
+                            <a :href="img.src" data-toggle="lightbox" data-gallery="jilsah-images">
+                                <img :src="img.src" class="card-img" alt="صورة للجلسة" width="100">
+                            </a>
+
+                            <button @click="removeJilsahImage(img.index)" type="button" class="close close-jilsah-image" aria-label="Close">
+                                <span class="text-right text-danger" aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                    </div>
+                </jilsati-fieldset>
 
                 <div class="mt-4">
-                    <button type="button" class="btn btn-success" @click="check(5)">اللي بعدو</button>
+                    <button type="button" class="btn btn-success" @click="check(5)">حفظ ومتابعة</button>
                 </div>
 
             </div>
@@ -434,7 +466,7 @@
 
             <div v-if="!stepsInfo[6].disabled">
                 <div>
-                    <button type="button" class="btn btn-success" @click="check(6)">اللي بعدو</button>
+                    <button type="button" class="btn btn-success" @click="check(6)">حفظ ومتابعة</button>
                 </div>
             </div>
         </jilsati-step>
@@ -451,7 +483,7 @@
                     {id: 'jilsah-options', state : 'secondary', disabled : true},
                     {id: 'jilsah-location', state : 'secondary', disabled : true},
                     {id: 'jilsah-price', state : 'secondary', disabled : true},
-                    {id: 'jilsah-photos', state : 'secondary', disabled : true},
+                    {id: 'jilsah-photos', state : 'secondary', disabled : false},
                     {id: 'jilsah-connect', state : 'secondary', disabled : true},
                 ],
 
@@ -500,10 +532,15 @@
                         vacationWeekend : 0,
                         eid : 0,
                         ramadan : 0
-                    }
+                    },
+                    jilsahImages : []
                 },
 
                 cities : [],
+
+                /*****************/
+
+                jilsahImagesCounter : 0
             }
         },
 
@@ -536,12 +573,20 @@
                 });
             },
 
-            handleMainImageChanged : function (src) {
-                this.models.mainImage = src;
+            handleMainImageChanged : function (file) {
+                this.models.mainImage = file.src;
             },
 
-            log : function (val) {
-                console.log('helo ',val);
+            handleAddNewJilsahImage : function(file){
+                this.models.jilsahImages.push({index : this.jilsahImagesCounter,name:file.name,src: file.src});
+
+                this.jilsahImagesCounter++;
+            },
+
+            removeJilsahImage : function (index) {
+                this.models.jilsahImages = this.models.jilsahImages.filter(img => img.index !== index);
+
+                console.log(index)
             }
         },
 
