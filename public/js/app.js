@@ -2943,6 +2943,50 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2965,15 +3009,15 @@ __webpack_require__.r(__webpack_exports__);
       }, {
         id: 'jilsah-price',
         state: 'secondary',
-        disabled: true
+        disabled: false
       }, {
         id: 'jilsah-photos',
         state: 'secondary',
-        disabled: false
+        disabled: true
       }, {
         id: 'jilsah-connect',
         state: 'secondary',
-        disabled: true
+        disabled: false
       }],
       timePeriods: ['فترة الدراسة', 'فترة الاجازة', 'الاعياد', 'رمضان'],
       chosenTimePeriods: {
@@ -3010,7 +3054,14 @@ __webpack_require__.r(__webpack_exports__);
           eid: 0,
           ramadan: 0
         },
-        jilsahImages: []
+        jilsahImages: [],
+        social: {
+          phone: '',
+          instagram: '',
+          facebook: '',
+          twitter: '',
+          snapchat: ''
+        }
       },
       cities: [],
 
@@ -42571,8 +42622,10 @@ var render = function() {
                                       )
                                     }
                                   }
-                                }),
-                                _vm._v(" "),
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "input-group" }, [
                                 _c(
                                   "div",
                                   {
@@ -42596,21 +42649,10 @@ var render = function() {
                                     type: "text",
                                     "aria-label":
                                       "ملاحظة عن سعر الجلسة في فترة الدراسة ايام الاسبوع",
-                                    placeholder:
-                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                    placeholder: "مثال: سعر خاص للمجموعات"
                                   }
                                 })
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [
-                                  _vm._v(
-                                    "\n                            الملاحظة اختيارية\n                        "
-                                  )
-                                ]
-                              )
+                              ])
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "mt-2" }, [
@@ -42662,8 +42704,10 @@ var render = function() {
                                       )
                                     }
                                   }
-                                }),
-                                _vm._v(" "),
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "input-group" }, [
                                 _c(
                                   "div",
                                   {
@@ -42687,21 +42731,10 @@ var render = function() {
                                     type: "text",
                                     "aria-label":
                                       "ملاحظة عن سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع",
-                                    placeholder:
-                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                    placeholder: "مثال: سعر خاص للمجموعات"
                                   }
                                 })
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [
-                                  _vm._v(
-                                    "\n                            الملاحظة اختيارية\n                        "
-                                  )
-                                ]
-                              )
+                              ])
                             ])
                           ]
                         )
@@ -42773,8 +42806,10 @@ var render = function() {
                                       )
                                     }
                                   }
-                                }),
-                                _vm._v(" "),
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "input-group" }, [
                                 _c(
                                   "div",
                                   {
@@ -42798,21 +42833,10 @@ var render = function() {
                                     type: "text",
                                     "aria-label":
                                       "ملاحظة عن سعر الجلسة في فترة الاجازة ايام الاسبوع",
-                                    placeholder:
-                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                    placeholder: "مثال: سعر خاص للمجموعات"
                                   }
                                 })
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [
-                                  _vm._v(
-                                    "\n                            الملاحظة اختيارية\n                        "
-                                  )
-                                ]
-                              )
+                              ])
                             ]),
                             _vm._v(" "),
                             _c("div", { staticClass: "mt-2" }, [
@@ -42865,8 +42889,10 @@ var render = function() {
                                       )
                                     }
                                   }
-                                }),
-                                _vm._v(" "),
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "input-group" }, [
                                 _c(
                                   "div",
                                   {
@@ -42890,21 +42916,10 @@ var render = function() {
                                     type: "text",
                                     "aria-label":
                                       "ملاحظة عن سعر الجلسة في فترة الاجازة ايام نهاية الاسبوع",
-                                    placeholder:
-                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                    placeholder: "مثال: سعر خاص للمجموعات"
                                   }
                                 })
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [
-                                  _vm._v(
-                                    "\n                            الملاحظة اختيارية\n                        "
-                                  )
-                                ]
-                              )
+                              ])
                             ])
                           ]
                         )
@@ -42973,8 +42988,10 @@ var render = function() {
                                       )
                                     }
                                   }
-                                }),
-                                _vm._v(" "),
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "input-group" }, [
                                 _c(
                                   "div",
                                   {
@@ -42998,21 +43015,10 @@ var render = function() {
                                     type: "text",
                                     "aria-label":
                                       "ملاحظة عن سعر الجلسة في فترة الاعياد",
-                                    placeholder:
-                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                    placeholder: "مثال: سعر خاص للمجموعات"
                                   }
                                 })
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [
-                                  _vm._v(
-                                    "\n                            الملاحظة اختيارية\n                        "
-                                  )
-                                ]
-                              )
+                              ])
                             ])
                           ]
                         )
@@ -43083,8 +43089,10 @@ var render = function() {
                                       )
                                     }
                                   }
-                                }),
-                                _vm._v(" "),
+                                })
+                              ]),
+                              _vm._v(" "),
+                              _c("div", { staticClass: "input-group" }, [
                                 _c(
                                   "div",
                                   {
@@ -43108,21 +43116,10 @@ var render = function() {
                                     type: "text",
                                     "aria-label":
                                       "ملاحظة عن سعر الجلسة في فترة رمضان",
-                                    placeholder:
-                                      "مثال: يخفض السعر لاكثر من 6 اشخاص"
+                                    placeholder: "مثال: سعر خاص للمجموعات"
                                   }
                                 })
-                              ]),
-                              _vm._v(" "),
-                              _c(
-                                "small",
-                                { staticClass: "form-text text-muted" },
-                                [
-                                  _vm._v(
-                                    "\n                            الملاحظة اختيارية\n                        "
-                                  )
-                                ]
-                              )
+                              ])
                             ])
                           ]
                         )
@@ -43206,7 +43203,7 @@ var render = function() {
                               clients: _vm.models.jilsahClients,
                               types: _vm.models.jilsahType,
                               rating: 5,
-                              price: 25,
+                              price: _vm.models.prices.schoolWeek,
                               "price-per": _vm.models.pricePer
                             }
                           })
@@ -43345,23 +43342,319 @@ var render = function() {
         },
         [
           !_vm.stepsInfo[6].disabled
-            ? _c("div", [
-                _c("div", [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-success",
-                      attrs: { type: "button" },
-                      on: {
-                        click: function($event) {
-                          return _vm.check(6)
+            ? _c(
+                "div",
+                [
+                  _c("div", { staticClass: "mt-2" }, [
+                    _c("div", { staticClass: "input-group" }, [
+                      _c(
+                        "div",
+                        { staticClass: "input-group-prepend rounded-0" },
+                        [
+                          _c(
+                            "span",
+                            { staticClass: "input-group-text rounded-0" },
+                            [_vm._v("الجوال")]
+                          )
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.models.social.phone,
+                            expression: "models.social.phone"
+                          }
+                        ],
+                        staticClass: "form-control rounded-0",
+                        attrs: {
+                          placeholder: "05xxxxxxxx",
+                          type: "tel",
+                          "aria-label": "جوال التواصل"
+                        },
+                        domProps: { value: _vm.models.social.phone },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.models.social,
+                              "phone",
+                              $event.target.value
+                            )
+                          }
                         }
+                      })
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c(
+                    "jilsati-fieldset",
+                    {
+                      staticClass: "mt-2",
+                      attrs: {
+                        legend: "روابط حسابات التواصل الاجتماعي",
+                        "font-size": "1.2rem"
                       }
                     },
-                    [_vm._v("حفظ ومتابعة")]
-                  )
-                ])
-              ])
+                    [
+                      _c(
+                        "div",
+                        { staticClass: "mt-2", attrs: { dir: "ltr" } },
+                        [
+                          _c("div", { staticClass: "input-group" }, [
+                            _c(
+                              "div",
+                              { staticClass: "input-group-prepend rounded-0" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "input-group-text rounded-0",
+                                    staticStyle: { width: "40px" }
+                                  },
+                                  [_c("i", { staticClass: "fab fa-instagram" })]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.models.social.instagram,
+                                  expression: "models.social.instagram",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control rounded-0",
+                              attrs: {
+                                placeholder:
+                                  "http://www.Instagram.com/username",
+                                type: "url",
+                                "aria-label": "رابط حساب انستقرام"
+                              },
+                              domProps: { value: _vm.models.social.instagram },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.models.social,
+                                    "instagram",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mt-2", attrs: { dir: "ltr" } },
+                        [
+                          _c("div", { staticClass: "input-group" }, [
+                            _c(
+                              "div",
+                              { staticClass: "input-group-prepend rounded-0" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "input-group-text rounded-0",
+                                    staticStyle: { width: "40px" }
+                                  },
+                                  [
+                                    _c("i", {
+                                      staticClass: "fab fa-facebook-f"
+                                    })
+                                  ]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.models.social.facebook,
+                                  expression: "models.social.facebook",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control rounded-0",
+                              attrs: {
+                                placeholder: "http://www.facebook.com/username",
+                                type: "url",
+                                "aria-label": "رابط حساب فيسبوك"
+                              },
+                              domProps: { value: _vm.models.social.facebook },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.models.social,
+                                    "facebook",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mt-2", attrs: { dir: "ltr" } },
+                        [
+                          _c("div", { staticClass: "input-group" }, [
+                            _c(
+                              "div",
+                              { staticClass: "input-group-prepend rounded-0" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "input-group-text rounded-0",
+                                    staticStyle: { width: "40px" }
+                                  },
+                                  [_c("i", { staticClass: "fab fa-twitter" })]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.models.social.twitter,
+                                  expression: "models.social.twitter",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control rounded-0",
+                              attrs: {
+                                placeholder: "http://www.twitter.com/username",
+                                type: "url",
+                                "aria-label": "رابط حساب تويتر"
+                              },
+                              domProps: { value: _vm.models.social.twitter },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.models.social,
+                                    "twitter",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "div",
+                        { staticClass: "mt-2", attrs: { dir: "ltr" } },
+                        [
+                          _c("div", { staticClass: "input-group" }, [
+                            _c(
+                              "div",
+                              { staticClass: "input-group-prepend rounded-0" },
+                              [
+                                _c(
+                                  "span",
+                                  {
+                                    staticClass: "input-group-text rounded-0",
+                                    staticStyle: { width: "40px" }
+                                  },
+                                  [_c("i", { staticClass: "fab fa-snapchat" })]
+                                )
+                              ]
+                            ),
+                            _vm._v(" "),
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model.trim",
+                                  value: _vm.models.social.snapchat,
+                                  expression: "models.social.snapchat",
+                                  modifiers: { trim: true }
+                                }
+                              ],
+                              staticClass: "form-control rounded-0",
+                              attrs: {
+                                placeholder:
+                                  "http://www.snapchat.com/add/username",
+                                type: "url",
+                                "aria-label": "رابط حساب سناب شات"
+                              },
+                              domProps: { value: _vm.models.social.snapchat },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.models.social,
+                                    "snapchat",
+                                    $event.target.value.trim()
+                                  )
+                                },
+                                blur: function($event) {
+                                  return _vm.$forceUpdate()
+                                }
+                              }
+                            })
+                          ])
+                        ]
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("div", { staticClass: "mt-2" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-success",
+                        attrs: { type: "button" },
+                        on: {
+                          click: function($event) {
+                            return _vm.check(6)
+                          }
+                        }
+                      },
+                      [_vm._v("حفظ ومتابعة")]
+                    )
+                  ])
+                ],
+                1
+              )
             : _vm._e()
         ]
       )

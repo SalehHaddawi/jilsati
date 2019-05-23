@@ -274,14 +274,13 @@
                                     <span class="input-group-text rounded-0">ايام الاسبوع</span>
                                 </div>
                                 <input v-model="models.prices.schoolWeek" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0">
+                            </div>
+                            <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
                                     <span class="input-group-text rounded-0">ملاحظة</span>
                                 </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
                             </div>
-                            <small class="form-text text-muted">
-                                الملاحظة اختيارية
-                            </small>
                         </div>
 
                         <div class="mt-2">
@@ -290,14 +289,13 @@
                                     <span class="input-group-text rounded-0">نهاية الاسبوع</span>
                                 </div>
                                 <input v-model="models.prices.schoolWeekend" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0">
+                            </div>
+                            <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
                                     <span class="input-group-text rounded-0">ملاحظة</span>
                                 </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
                             </div>
-                            <small class="form-text text-muted">
-                                الملاحظة اختيارية
-                            </small>
                         </div>
                     </jilsati-fieldset>
                 </div>
@@ -311,14 +309,13 @@
                                     <span class="input-group-text rounded-0">ايام الاسبوع</span>
                                 </div>
                                 <input v-model="models.prices.vacationWeek" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0">
+                            </div>
+                            <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
                                     <span class="input-group-text rounded-0">ملاحظة</span>
                                 </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاجازة ايام الاسبوع" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاجازة ايام الاسبوع" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
                             </div>
-                            <small class="form-text text-muted">
-                                الملاحظة اختيارية
-                            </small>
                         </div>
 
                         <div class="mt-2">
@@ -327,14 +324,13 @@
                                     <span class="input-group-text rounded-0">نهاية الاسبوع</span>
                                 </div>
                                 <input v-model="models.prices.vacationWeekend" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0">
+                            </div>
+                            <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
                                     <span class="input-group-text rounded-0">ملاحظة</span>
                                 </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاجازة ايام نهاية الاسبوع" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاجازة ايام نهاية الاسبوع" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
                             </div>
-                            <small class="form-text text-muted">
-                                الملاحظة اختيارية
-                            </small>
                         </div>
                     </jilsati-fieldset>
                 </div>
@@ -347,14 +343,13 @@
                                     <span class="input-group-text rounded-0">خلال الاسبوع</span>
                                 </div>
                                 <input v-model="models.prices.eid" type="number" aria-label="سعر الجلسة في فترة الاعياد" class="form-control rounded-0">
+                            </div>
+                            <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
                                     <span class="input-group-text rounded-0">ملاحظة</span>
                                 </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاعياد" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاعياد" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
                             </div>
-                            <small class="form-text text-muted">
-                                الملاحظة اختيارية
-                            </small>
                         </div>
                     </jilsati-fieldset>
                 </div>
@@ -367,14 +362,13 @@
                                     <span class="input-group-text rounded-0">خلال الاسبوع</span>
                                 </div>
                                 <input v-model="models.prices.ramadan" type="number" aria-label="سعر الجلسة في فترة رمضان" class="form-control rounded-0">
+                            </div>
+                            <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
                                     <span class="input-group-text rounded-0">ملاحظة</span>
                                 </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة رمضان" class="form-control rounded-0" placeholder="مثال: يخفض السعر لاكثر من 6 اشخاص">
+                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة رمضان" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
                             </div>
-                            <small class="form-text text-muted">
-                                الملاحظة اختيارية
-                            </small>
                         </div>
                     </jilsati-fieldset>
                 </div>
@@ -417,7 +411,7 @@
                                             :clients="models.jilsahClients"
                                             :types="models.jilsahType"
                                             :rating="5"
-                                            :price="25"
+                                            :price="models.prices.schoolWeek"
                                             :price-per="models.pricePer">
                         </jilsati-card-show>
                     </div>
@@ -465,7 +459,57 @@
                       :status="stepsInfo[6]">
 
             <div v-if="!stepsInfo[6].disabled">
-                <div>
+
+                <div class="mt-2">
+                    <div class="input-group">
+                        <div class="input-group-prepend rounded-0">
+                            <span class="input-group-text rounded-0">الجوال</span>
+                        </div>
+                        <input v-model="models.social.phone" placeholder="05xxxxxxxx" type="tel" aria-label="جوال التواصل" class="form-control rounded-0">
+                    </div>
+                </div>
+
+                <jilsati-fieldset class="mt-2" legend="روابط حسابات التواصل الاجتماعي" font-size="1.2rem">
+
+                    <div class="mt-2" dir="ltr">
+                        <div class="input-group">
+                            <div class="input-group-prepend rounded-0">
+                                <span style="width:40px;" class="input-group-text rounded-0"><i class="fab fa-instagram"></i></span>
+                            </div>
+                            <input v-model.trim="models.social.instagram" placeholder="http://www.Instagram.com/username" type="url" aria-label="رابط حساب انستقرام" class="form-control rounded-0">
+                        </div>
+                    </div>
+
+                    <div class="mt-2" dir="ltr">
+                        <div class="input-group">
+                            <div class="input-group-prepend rounded-0">
+                                <span style="width:40px;" class="input-group-text rounded-0"><i class="fab fa-facebook-f"></i></span>
+                            </div>
+                            <input v-model.trim="models.social.facebook" placeholder="http://www.facebook.com/username" type="url" aria-label="رابط حساب فيسبوك" class="form-control rounded-0">
+                        </div>
+                    </div>
+
+                    <div class="mt-2" dir="ltr">
+                        <div class="input-group">
+                            <div class="input-group-prepend rounded-0">
+                                <span style="width:40px;" class="input-group-text rounded-0"><i class="fab fa-twitter"></i></span>
+                            </div>
+                            <input v-model.trim="models.social.twitter" placeholder="http://www.twitter.com/username" type="url" aria-label="رابط حساب تويتر" class="form-control rounded-0">
+                        </div>
+                    </div>
+
+                    <div class="mt-2" dir="ltr">
+                        <div class="input-group">
+                            <div class="input-group-prepend rounded-0">
+                                <span style="width:40px;" class="input-group-text rounded-0"><i class="fab fa-snapchat"></i></span>
+                            </div>
+                            <input v-model.trim="models.social.snapchat" placeholder="http://www.snapchat.com/add/username" type="url" aria-label="رابط حساب سناب شات" class="form-control rounded-0">
+                        </div>
+                    </div>
+
+                </jilsati-fieldset>
+
+                <div class="mt-2">
                     <button type="button" class="btn btn-success" @click="check(6)">حفظ ومتابعة</button>
                 </div>
             </div>
@@ -482,9 +526,9 @@
                     {id: 'jilsah-times', state : 'secondary', disabled : true},
                     {id: 'jilsah-options', state : 'secondary', disabled : true},
                     {id: 'jilsah-location', state : 'secondary', disabled : true},
-                    {id: 'jilsah-price', state : 'secondary', disabled : true},
-                    {id: 'jilsah-photos', state : 'secondary', disabled : false},
-                    {id: 'jilsah-connect', state : 'secondary', disabled : true},
+                    {id: 'jilsah-price', state : 'secondary', disabled : false},
+                    {id: 'jilsah-photos', state : 'secondary', disabled : true},
+                    {id: 'jilsah-connect', state : 'secondary', disabled : false},
                 ],
 
                 timePeriods : [
@@ -533,7 +577,14 @@
                         eid : 0,
                         ramadan : 0
                     },
-                    jilsahImages : []
+                    jilsahImages : [],
+                    social : {
+                        phone : '',
+                        instagram : '',
+                        facebook : '',
+                        twitter : '',
+                        snapchat : ''
+                    }
                 },
 
                 cities : [],

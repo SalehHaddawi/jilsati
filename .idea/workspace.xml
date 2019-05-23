@@ -2,21 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863277c5-237f-4abb-b85c-41037fadc229" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/css/ekko-lightbox.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/error.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/small.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/success.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/js/ekko-lightbox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -50,15 +37,29 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="812">
-              <caret line="400" column="29" selection-start-line="400" selection-start-column="29" selection-end-line="400" selection-end-column="29" />
+            <state relative-caret-position="85">
+              <caret line="250" column="42" selection-start-line="250" selection-start-column="42" selection-end-line="250" selection-end-column="42" />
               <folding>
                 <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#style#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="e#27874#27881#1" expanded="true" />
+                <element signature="n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
                 <element signature="e#27695#27845#0" />
                 <element signature="e#27884#28046#0" />
                 <element signature="e#28080#28353#0" />
@@ -97,18 +98,6 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="2" column="51" selection-start-line="2" selection-start-column="51" selection-end-line="2" selection-end-column="51" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="66">
@@ -154,12 +143,14 @@
       <find>istraha.jpg</find>
       <find>jilsah-مخؤشفهخى</find>
       <find>اللي بعدو</find>
+      <find>مثال: يخفض السعر لاكثر من 6 اشخاص</find>
     </findStrings>
     <replaceStrings>
       <replace>istraha</replace>
       <replace>/images</replace>
       <replace>istraha-1.jpg</replace>
       <replace>حفظ ومتابعة</replace>
+      <replace>مثال: سعر خاص للمجموعات</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -217,8 +208,8 @@
         <option value="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" />
         <option value="$PROJECT_DIR$/public/css/custom.css" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" />
       </list>
     </option>
   </component>
@@ -326,30 +317,6 @@
             <path>
               <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
               <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="views" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -459,12 +426,12 @@
       <workItem from="1558435252579" duration="9565000" />
       <workItem from="1558469141929" duration="11351000" />
       <workItem from="1558523131246" duration="34553000" />
-      <workItem from="1558606548757" duration="12157000" />
+      <workItem from="1558606548757" duration="17821000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="276058000" />
+    <option name="totallyTimeSpent" value="281722000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -546,24 +513,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-step.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bootstrap/app.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-486" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/sass/app.scss">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/sass/_variables.scss">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -855,27 +804,54 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env.example">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-419" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/artisan">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-640" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="812">
-          <caret line="400" column="29" selection-start-line="400" selection-start-column="29" selection-end-line="400" selection-end-column="29" />
+        <state relative-caret-position="85">
+          <caret line="250" column="42" selection-start-line="250" selection-start-column="42" selection-end-line="250" selection-end-column="42" />
           <folding>
             <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
             <element signature="n#style#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" expanded="true" />
             <element signature="e#27874#27881#1" expanded="true" />
+            <element signature="n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
             <element signature="e#27695#27845#0" />
             <element signature="e#27884#28046#0" />
             <element signature="e#28080#28353#0" />
             <element signature="e#28842#29104#0" />
             <element signature="e#29236#30288#0" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
         </state>
       </provider>
     </entry>
