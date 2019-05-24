@@ -2416,6 +2416,99 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-shifts.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-shifts.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    name: {
+      required: true
+    },
+    value: ''
+  },
+  data: function data() {
+    return {
+      shifts: 1,
+      fromTimes: [{
+        hour: 8,
+        minute: 0
+      }],
+      toTimes: [{
+        hour: 23,
+        minute: 0
+      }]
+    };
+  },
+  methods: {
+    addNewShift: function addNewShift() {
+      var m = this.toTimes[this.shifts - 1];
+      var mom = moment().hours(m.hour).minutes(m.minute);
+      this.$set(this.fromTimes, this.shifts, m);
+      this.$set(this.toTimes, this.shifts, {
+        hour: mom.hours(),
+        minute: mom.minutes()
+      });
+      this.shifts++;
+    },
+    deleteShift: function deleteShift() {
+      delete this.toTimes[this.shifts - 1];
+      delete this.fromTimes[this.shifts - 1];
+      this.shifts--;
+    },
+    updateTimeFrom: function updateTimeFrom(index, val) {
+      if (val) {
+        this.$set(this.fromTimes, index, {
+          hour: val.hours(),
+          minute: val.minutes()
+        });
+      }
+    },
+    updateTimeTo: function updateTimeTo(index, val) {
+      if (val) {
+        this.$set(this.toTimes, index, {
+          hour: val.hours(),
+          minute: val.minutes()
+        });
+      }
+    },
+    setTime: function setTime(time) {
+      return moment().hours(time.hour).minutes(time.minute);
+    }
+  },
+  model: {
+    prop: 'value',
+    event: 'change'
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-step.vue?vue&type=script&lang=js&":
 /*!***********************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-step.vue?vue&type=script&lang=js& ***!
@@ -2468,88 +2561,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 //
 //
 //
@@ -3167,15 +3178,60 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['name', 'time'],
-  mounted: function mounted() {
+  props: ['name', 'time', 'minTime'],
+  data: function data() {
+    return {
+      timePicker: undefined
+    };
+  },
+  created: function created() {
     var vue = this;
     $(function () {
-      $('#' + vue.name).datetimepicker({
-        format: 'LT'
+      var s = $('#' + vue.name);
+      vue.timePicker = s;
+      s.datetimepicker({
+        format: 'LT',
+        date: vue.time,
+        stepping: 30
+      });
+      s.on('change.datetimepicker', function () {
+        var time = s.datetimepicker('date');
+
+        if (vue.minTime) {
+          if (time.hours() < vue.minTime.hour) {
+            time.hours(vue.minTime.hour);
+            time.minutes(vue.minTime.minute);
+          } else if (time.hours() === vue.minTime.hour && time.minutes() < vue.minTime.minute) {
+            time.hours(vue.minTime.hour);
+            time.minutes(vue.minTime.minute);
+          }
+
+          s.datetimepicker('date', time);
+        }
+
+        vue.$emit('on-time-change', time);
       });
     });
+  },
+  watch: {
+    minTime: function minTime() {
+      if (this.minTime) {
+        var time = this.timePicker.datetimepicker('date');
+
+        if (this.time.hours() < this.minTime.hour) {
+          time.hours(this.minTime.hour);
+          time.minutes(this.minTime.minute);
+          this.timePicker.datetimepicker('date', time);
+        } else if (time.hours() === this.minTime.hour && time.minutes() < this.minTime.minute) {
+          time.hours(this.minTime.hour);
+          time.minutes(this.minTime.minute);
+          this.timePicker.datetimepicker('date', time);
+        }
+      }
+    }
   },
   methods: {
     showTimePicker: function showTimePicker() {
@@ -40945,6 +41001,114 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-shifts.vue?vue&type=template&id=2ad3eed9&":
+/*!*****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-shifts.vue?vue&type=template&id=2ad3eed9& ***!
+  \*****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    [
+      _vm._l(_vm.shifts, function(index) {
+        return _c("div", [
+          _c("p", { staticClass: "text-info" }, [
+            _vm._v("فترة العمل رقم " + _vm._s(index))
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "form-inline" }, [
+            _c(
+              "div",
+              { staticClass: "form-group m-auto" },
+              [
+                _c("label", { staticClass: "form-check-label m-2" }, [
+                  _vm._v("من")
+                ]),
+                _vm._v(" "),
+                _c("jilsati-time-picker", {
+                  attrs: {
+                    "min-time": _vm.toTimes[index - 2],
+                    name: _vm.name + "-from-" + (index - 1),
+                    time: _vm.setTime(_vm.fromTimes[index - 1])
+                  },
+                  on: {
+                    "on-time-change": function($event) {
+                      return _vm.updateTimeFrom(index - 1, $event)
+                    }
+                  }
+                })
+              ],
+              1
+            ),
+            _vm._v(" "),
+            _c(
+              "div",
+              { staticClass: "form-group m-auto" },
+              [
+                _c("label", { staticClass: "form-check-label m-2" }, [
+                  _vm._v("الى")
+                ]),
+                _vm._v(" "),
+                _c("jilsati-time-picker", {
+                  attrs: {
+                    "min-time": _vm.fromTimes[index - 1],
+                    name: _vm.name + "-to-" + (index - 1),
+                    time: _vm.setTime(_vm.toTimes[index - 1])
+                  },
+                  on: {
+                    "on-time-change": function($event) {
+                      return _vm.updateTimeTo(index - 1, $event)
+                    }
+                  }
+                })
+              ],
+              1
+            )
+          ])
+        ])
+      }),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-info mt-4 mr-2",
+          attrs: { type: "button" },
+          on: { click: _vm.addNewShift }
+        },
+        [_vm._v("ضيف فترة عمل")]
+      ),
+      _vm._v(" "),
+      _vm.shifts > 1
+        ? _c(
+            "button",
+            {
+              staticClass: "btn btn-danger mt-4 mr-2",
+              attrs: { type: "button" },
+              on: { click: _vm.deleteShift }
+            },
+            [_vm._v("حذف فترة عمل")]
+          )
+        : _vm._e()
+    ],
+    2
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-step.vue?vue&type=template&id=4615eff4&":
 /*!***************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-step.vue?vue&type=template&id=4615eff4& ***!
@@ -41267,89 +41431,11 @@ var render = function() {
                           }
                         },
                         [
-                          _vm._l(_vm.jilsahShifts.schoolWeekShifts, function(
-                            index
-                          ) {
-                            return _c("div", [
-                              _c("p", { staticClass: "text-info" }, [
-                                _vm._v("فترة العمل رقم " + _vm._s(index))
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "form-inline" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "form-group m-auto" },
-                                  [
-                                    _c(
-                                      "label",
-                                      { staticClass: "form-check-label m-2" },
-                                      [_vm._v("من")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("jilsati-time-picker", {
-                                      attrs: {
-                                        time: "10:00 AM",
-                                        name: "school-week-time-from" + index
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "form-group m-auto" },
-                                  [
-                                    _c(
-                                      "label",
-                                      { staticClass: "form-check-label m-2" },
-                                      [_vm._v("الى")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("jilsati-time-picker", {
-                                      attrs: {
-                                        time: "11:00 PM",
-                                        name: "school-week-time-to" + index
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ])
-                            ])
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-info mt-4 mr-2",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.jilsahShifts.schoolWeekShifts++
-                                }
-                              }
-                            },
-                            [_vm._v("ضيف فترة عمل")]
-                          ),
-                          _vm._v(" "),
-                          _vm.jilsahShifts.schoolWeekShifts > 1
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger mt-4 mr-2",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.jilsahShifts.schoolWeekShifts--
-                                    }
-                                  }
-                                },
-                                [_vm._v("حذف فترة عمل")]
-                              )
-                            : _vm._e()
+                          _c("jilsati-shifts", {
+                            attrs: { name: "school-week" }
+                          })
                         ],
-                        2
+                        1
                       ),
                       _vm._v(" "),
                       _c(
@@ -41361,110 +41447,11 @@ var render = function() {
                           }
                         },
                         [
-                          _c(
-                            "div",
-                            {
-                              attrs: {
-                                "font-size": "1.1rem",
-                                legend: "ايام الاسبوع"
-                              }
-                            },
-                            [
-                              _vm._l(
-                                _vm.jilsahShifts.schoolWeekendShifts,
-                                function(index) {
-                                  return _c("div", [
-                                    _c("p", { staticClass: "text-info" }, [
-                                      _vm._v("فترة العمل رقم " + _vm._s(index))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("div", { staticClass: "form-inline" }, [
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group m-auto" },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticClass:
-                                                "form-check-label m-2"
-                                            },
-                                            [_vm._v("من")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("jilsati-time-picker", {
-                                            attrs: {
-                                              time: "10:00 AM",
-                                              name:
-                                                "school-weekend-time-from" +
-                                                index
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      ),
-                                      _vm._v(" "),
-                                      _c(
-                                        "div",
-                                        { staticClass: "form-group m-auto" },
-                                        [
-                                          _c(
-                                            "label",
-                                            {
-                                              staticClass:
-                                                "form-check-label m-2"
-                                            },
-                                            [_vm._v("الى")]
-                                          ),
-                                          _vm._v(" "),
-                                          _c("jilsati-time-picker", {
-                                            attrs: {
-                                              time: "11:00 PM",
-                                              name:
-                                                "school-weekend-time-to" + index
-                                            }
-                                          })
-                                        ],
-                                        1
-                                      )
-                                    ])
-                                  ])
-                                }
-                              ),
-                              _vm._v(" "),
-                              _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-info mt-4 mr-2",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.jilsahShifts.schoolWeekendShifts++
-                                    }
-                                  }
-                                },
-                                [_vm._v("ضيف فترة جديدة")]
-                              ),
-                              _vm._v(" "),
-                              _vm.jilsahShifts.schoolWeekendShifts > 1
-                                ? _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-danger mt-4 mr-2",
-                                      attrs: { type: "button" },
-                                      on: {
-                                        click: function($event) {
-                                          _vm.jilsahShifts.schoolWeekendShifts--
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("حذف فترة عمل")]
-                                  )
-                                : _vm._e()
-                            ],
-                            2
-                          )
-                        ]
+                          _c("jilsati-shifts", {
+                            attrs: { name: "school-weekend" }
+                          })
+                        ],
+                        1
                       )
                     ],
                     1
@@ -41488,199 +41475,32 @@ var render = function() {
                         "jilsati-fieldset",
                         {
                           attrs: {
-                            legend: "ايام الاسبوع",
-                            "font-size": "1.1rem"
+                            "font-size": "1.1rem",
+                            legend: "ايام الاسبوع"
                           }
                         },
                         [
-                          _vm._l(_vm.jilsahShifts.vacationWeekShifts, function(
-                            index
-                          ) {
-                            return _c("div", [
-                              _c("p", { staticClass: "text-info" }, [
-                                _vm._v("فترة العمل رقم " + _vm._s(index))
-                              ]),
-                              _vm._v(" "),
-                              _c("div", { staticClass: "form-inline" }, [
-                                _c(
-                                  "div",
-                                  { staticClass: "form-group m-auto" },
-                                  [
-                                    _c(
-                                      "label",
-                                      { staticClass: "form-check-label m-2" },
-                                      [_vm._v("من")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("jilsati-time-picker", {
-                                      attrs: {
-                                        time: "10:00 AM",
-                                        name: "vacation-week-time-from" + index
-                                      }
-                                    })
-                                  ],
-                                  1
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "div",
-                                  { staticClass: "form-group m-auto" },
-                                  [
-                                    _c(
-                                      "label",
-                                      { staticClass: "form-check-label m-2" },
-                                      [_vm._v("الى")]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("jilsati-time-picker", {
-                                      attrs: {
-                                        time: "11:00 PM",
-                                        name: "vacation-week-time-to" + index
-                                      }
-                                    })
-                                  ],
-                                  1
-                                )
-                              ])
-                            ])
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-info mt-4 mr-2",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.jilsahShifts.vacationShifts++
-                                }
-                              }
-                            },
-                            [_vm._v("ضيف فترة جديدة")]
-                          ),
-                          _vm._v(" "),
-                          _vm.jilsahShifts.vacationWeekShifts > 1
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger mt-4 mr-2",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.jilsahShifts.vacationShifts--
-                                    }
-                                  }
-                                },
-                                [_vm._v("حذف فترة عمل")]
-                              )
-                            : _vm._e()
+                          _c("jilsati-shifts", {
+                            attrs: { name: "vacation-week" }
+                          })
                         ],
-                        2
+                        1
                       ),
                       _vm._v(" "),
                       _c(
                         "jilsati-fieldset",
                         {
-                          directives: [
-                            {
-                              name: "show",
-                              rawName: "v-show",
-                              value: _vm.chosenTimePeriods.vacation,
-                              expression: "chosenTimePeriods.vacation"
-                            }
-                          ],
                           attrs: {
-                            legend: "نهاية الاسبوع",
-                            "font-size": "1.1rem"
+                            "font-size": "1.1rem",
+                            legend: "نهاية الاسبوع"
                           }
                         },
                         [
-                          _vm._l(
-                            _vm.jilsahShifts.vacationWeekendShifts,
-                            function(index) {
-                              return _c("div", [
-                                _c("p", { staticClass: "text-info" }, [
-                                  _vm._v("فترة العمل رقم " + _vm._s(index))
-                                ]),
-                                _vm._v(" "),
-                                _c("div", { staticClass: "form-inline" }, [
-                                  _c(
-                                    "div",
-                                    { staticClass: "form-group m-auto" },
-                                    [
-                                      _c(
-                                        "label",
-                                        { staticClass: "form-check-label m-2" },
-                                        [_vm._v("من")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("jilsati-time-picker", {
-                                        attrs: {
-                                          time: "10:00 AM",
-                                          name:
-                                            "vacation-weekend-time-from" + index
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c(
-                                    "div",
-                                    { staticClass: "form-group m-auto" },
-                                    [
-                                      _c(
-                                        "label",
-                                        { staticClass: "form-check-label m-2" },
-                                        [_vm._v("الى")]
-                                      ),
-                                      _vm._v(" "),
-                                      _c("jilsati-time-picker", {
-                                        attrs: {
-                                          time: "11:00 PM",
-                                          name:
-                                            "vacation-weekend-time-to" + index
-                                        }
-                                      })
-                                    ],
-                                    1
-                                  )
-                                ])
-                              ])
-                            }
-                          ),
-                          _vm._v(" "),
-                          _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-info mt-4 mr-2",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.jilsahShifts.vacationShifts++
-                                }
-                              }
-                            },
-                            [_vm._v("ضيف فترة جديدة")]
-                          ),
-                          _vm._v(" "),
-                          _vm.jilsahShifts.vacationWeekendShifts > 1
-                            ? _c(
-                                "button",
-                                {
-                                  staticClass: "btn btn-danger mt-4 mr-2",
-                                  attrs: { type: "button" },
-                                  on: {
-                                    click: function($event) {
-                                      _vm.jilsahShifts.vacationShifts--
-                                    }
-                                  }
-                                },
-                                [_vm._v("حذف فترة عمل")]
-                              )
-                            : _vm._e()
+                          _c("jilsati-shifts", {
+                            attrs: { name: "vacation-weekend" }
+                          })
                         ],
-                        2
+                        1
                       )
                     ],
                     1
@@ -41700,87 +41520,19 @@ var render = function() {
                       attrs: { legend: "الاعياد" }
                     },
                     [
-                      _vm._l(_vm.jilsahShifts.eidShifts, function(index) {
-                        return _c("div", [
-                          _c("p", { staticClass: "text-info" }, [
-                            _vm._v("فترة العمل رقم " + _vm._s(index))
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-inline" }, [
-                            _c(
-                              "div",
-                              { staticClass: "form-group m-auto" },
-                              [
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label m-2" },
-                                  [_vm._v("من")]
-                                ),
-                                _vm._v(" "),
-                                _c("jilsati-time-picker", {
-                                  attrs: {
-                                    time: "10:00 AM",
-                                    name: "eid-time-from" + index
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group m-auto" },
-                              [
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label m-2" },
-                                  [_vm._v("الى")]
-                                ),
-                                _vm._v(" "),
-                                _c("jilsati-time-picker", {
-                                  attrs: {
-                                    time: "11:00 PM",
-                                    name: "eid-time-to" + index
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ])
-                      }),
-                      _vm._v(" "),
                       _c(
-                        "button",
+                        "jilsati-fieldset",
                         {
-                          staticClass: "btn btn-info mt-4 mr-2",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.jilsahShifts.eidShifts++
-                            }
+                          attrs: {
+                            "font-size": "1.1rem",
+                            legend: "خلال الاسبوع"
                           }
                         },
-                        [_vm._v("ضيف فترة جديدة")]
-                      ),
-                      _vm._v(" "),
-                      _vm.jilsahShifts.eidShifts > 1
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger mt-4 mr-2",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.jilsahShifts.eidShifts--
-                                }
-                              }
-                            },
-                            [_vm._v("حذف فترة عمل")]
-                          )
-                        : _vm._e()
+                        [_c("jilsati-shifts", { attrs: { name: "eid-week" } })],
+                        1
+                      )
                     ],
-                    2
+                    1
                   ),
                   _vm._v(" "),
                   _c(
@@ -41797,87 +41549,23 @@ var render = function() {
                       attrs: { legend: "رمضان" }
                     },
                     [
-                      _vm._l(_vm.jilsahShifts.ramadanShifts, function(index) {
-                        return _c("div", [
-                          _c("p", { staticClass: "text-info" }, [
-                            _vm._v("فترة العمل رقم " + _vm._s(index))
-                          ]),
-                          _vm._v(" "),
-                          _c("div", { staticClass: "form-inline" }, [
-                            _c(
-                              "div",
-                              { staticClass: "form-group m-auto" },
-                              [
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label m-2" },
-                                  [_vm._v("من")]
-                                ),
-                                _vm._v(" "),
-                                _c("jilsati-time-picker", {
-                                  attrs: {
-                                    time: "10:00 AM",
-                                    name: "ramadan-time-from" + index
-                                  }
-                                })
-                              ],
-                              1
-                            ),
-                            _vm._v(" "),
-                            _c(
-                              "div",
-                              { staticClass: "form-group m-auto" },
-                              [
-                                _c(
-                                  "label",
-                                  { staticClass: "form-check-label m-2" },
-                                  [_vm._v("الى")]
-                                ),
-                                _vm._v(" "),
-                                _c("jilsati-time-picker", {
-                                  attrs: {
-                                    time: "11:00 PM",
-                                    name: "ramadan-time-to" + index
-                                  }
-                                })
-                              ],
-                              1
-                            )
-                          ])
-                        ])
-                      }),
-                      _vm._v(" "),
                       _c(
-                        "button",
+                        "jilsati-fieldset",
                         {
-                          staticClass: "btn btn-info mt-4 mr-2",
-                          attrs: { type: "button" },
-                          on: {
-                            click: function($event) {
-                              _vm.jilsahShifts.ramadanShifts++
-                            }
+                          attrs: {
+                            "font-size": "1.1rem",
+                            legend: "خلال الاسبوع"
                           }
                         },
-                        [_vm._v("ضيف فترة جديدة")]
-                      ),
-                      _vm._v(" "),
-                      _vm.jilsahShifts.ramadanShifts > 1
-                        ? _c(
-                            "button",
-                            {
-                              staticClass: "btn btn-danger mt-4 mr-2",
-                              attrs: { type: "button" },
-                              on: {
-                                click: function($event) {
-                                  _vm.jilsahShifts.ramadanShifts--
-                                }
-                              }
-                            },
-                            [_vm._v("حذف فترة عمل")]
-                          )
-                        : _vm._e()
+                        [
+                          _c("jilsati-shifts", {
+                            attrs: { name: "ramadan-week" }
+                          })
+                        ],
+                        1
+                      )
                     ],
-                    2
+                    1
                   ),
                   _vm._v(" "),
                   _c("div", { staticClass: "mt-2" }, [
@@ -43723,7 +43411,6 @@ var render = function() {
       _c("input", {
         staticClass: "form-control datetimepicker-input",
         attrs: { type: "text", name: _vm.name, "data-target": "#" + _vm.name },
-        domProps: { value: _vm.time },
         on: { focus: _vm.showTimePicker }
       }),
       _vm._v(" "),
@@ -56159,8 +55846,9 @@ Vue.component('JilsatiSelect', __webpack_require__(/*! ./components/jilsati-sele
 Vue.component('JilsatiFieldset', __webpack_require__(/*! ./components/jilsati-fieldset */ "./resources/js/components/jilsati-fieldset.vue")["default"]);
 Vue.component('JilsatiFileChooser', __webpack_require__(/*! ./components/jilsati-file-chooser */ "./resources/js/components/jilsati-file-chooser.vue")["default"]);
 Vue.component('JilsatiTest', __webpack_require__(/*! ./components/jilsati-test */ "./resources/js/components/jilsati-test.vue")["default"]);
-Vue.component('star', __webpack_require__(/*! ./components/star */ "./resources/js/components/star.vue")["default"]);
-Vue.component('star-rating', __webpack_require__(/*! ./components/star-rating */ "./resources/js/components/star-rating.vue")["default"]);
+Vue.component('Start', __webpack_require__(/*! ./components/star */ "./resources/js/components/star.vue")["default"]);
+Vue.component('StarRating', __webpack_require__(/*! ./components/star-rating */ "./resources/js/components/star-rating.vue")["default"]);
+Vue.component('JilsatiShifts', __webpack_require__(/*! ./components/jilsati-shifts */ "./resources/js/components/jilsati-shifts.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -57267,6 +56955,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_select_vue_vue_type_template_id_53cfa224___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_select_vue_vue_type_template_id_53cfa224___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-shifts.vue":
+/*!****************************************************!*\
+  !*** ./resources/js/components/jilsati-shifts.vue ***!
+  \****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_shifts_vue_vue_type_template_id_2ad3eed9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-shifts.vue?vue&type=template&id=2ad3eed9& */ "./resources/js/components/jilsati-shifts.vue?vue&type=template&id=2ad3eed9&");
+/* harmony import */ var _jilsati_shifts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-shifts.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-shifts.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_shifts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_shifts_vue_vue_type_template_id_2ad3eed9___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_shifts_vue_vue_type_template_id_2ad3eed9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-shifts.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-shifts.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************!*\
+  !*** ./resources/js/components/jilsati-shifts.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_shifts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-shifts.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-shifts.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_shifts_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-shifts.vue?vue&type=template&id=2ad3eed9&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/jilsati-shifts.vue?vue&type=template&id=2ad3eed9& ***!
+  \***********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_shifts_vue_vue_type_template_id_2ad3eed9___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-shifts.vue?vue&type=template&id=2ad3eed9& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-shifts.vue?vue&type=template&id=2ad3eed9&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_shifts_vue_vue_type_template_id_2ad3eed9___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_shifts_vue_vue_type_template_id_2ad3eed9___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

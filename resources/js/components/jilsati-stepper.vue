@@ -43,114 +43,32 @@
 
                 <jilsati-fieldset v-show="chosenTimePeriods.school" font-size="1.4rem" legend="فترة الدراسة">
                     <jilsati-fieldset font-size="1.1rem" legend="ايام الاسبوع">
-                        <div v-for="index in jilsahShifts.schoolWeekShifts">
-                            <p class="text-info">فترة العمل رقم {{index}}</p>
-                            <div class="form-inline">
-                                <div class="form-group m-auto">
-                                    <label class="form-check-label m-2">من</label>
-                                    <jilsati-time-picker time="10:00 AM" :name="'school-week-time-from'+index"></jilsati-time-picker>
-                                </div>
-                                <div class="form-group m-auto">
-                                    <label class="form-check-label m-2">الى</label>
-                                    <jilsati-time-picker time="11:00 PM" :name="'school-week-time-to'+index"></jilsati-time-picker>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.schoolWeekShifts++">ضيف فترة عمل</button>
-                        <button v-if="jilsahShifts.schoolWeekShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.schoolWeekShifts--">حذف فترة عمل</button>
+                        <jilsati-shifts name="school-week"></jilsati-shifts>
                     </jilsati-fieldset>
                     <jilsati-fieldset font-size="1.1rem" legend="نهاية الاسبوع">
-                        <div font-size="1.1rem" legend="ايام الاسبوع">
-                            <div v-for="index in jilsahShifts.schoolWeekendShifts">
-                                <p class="text-info">فترة العمل رقم {{index}}</p>
-                                <div class="form-inline">
-                                    <div class="form-group m-auto">
-                                        <label class="form-check-label m-2">من</label>
-                                        <jilsati-time-picker time="10:00 AM" :name="'school-weekend-time-from'+index"></jilsati-time-picker>
-                                    </div>
-                                    <div class="form-group m-auto">
-                                        <label class="form-check-label m-2">الى</label>
-                                        <jilsati-time-picker time="11:00 PM" :name="'school-weekend-time-to'+index"></jilsati-time-picker>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.schoolWeekendShifts++">ضيف فترة جديدة</button>
-                            <button v-if="jilsahShifts.schoolWeekendShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.schoolWeekendShifts--">حذف فترة عمل</button>
-                        </div>
+                        <jilsati-shifts name="school-weekend"></jilsati-shifts>
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset v-show="chosenTimePeriods.vacation" legend="ايام الاجازة" font-size="1.4rem">
-                    <jilsati-fieldset legend="ايام الاسبوع" font-size="1.1rem">
-                        <div v-for="index in jilsahShifts.vacationWeekShifts">
-                            <p class="text-info">فترة العمل رقم {{index}}</p>
-                            <div class="form-inline">
-                                <div class="form-group m-auto">
-                                    <label class="form-check-label m-2">من</label>
-                                    <jilsati-time-picker time="10:00 AM" :name="'vacation-week-time-from'+index"></jilsati-time-picker>
-                                </div>
-                                <div class="form-group m-auto">
-                                    <label class="form-check-label m-2">الى</label>
-                                    <jilsati-time-picker time="11:00 PM" :name="'vacation-week-time-to'+index"></jilsati-time-picker>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.vacationShifts++">ضيف فترة جديدة</button>
-                        <button v-if="jilsahShifts.vacationWeekShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.vacationShifts--">حذف فترة عمل</button>
+                    <jilsati-fieldset font-size="1.1rem" legend="ايام الاسبوع">
+                        <jilsati-shifts name="vacation-week"></jilsati-shifts>
                     </jilsati-fieldset>
-                    <jilsati-fieldset v-show="chosenTimePeriods.vacation" legend="نهاية الاسبوع" font-size="1.1rem">
-                        <div v-for="index in jilsahShifts.vacationWeekendShifts">
-                            <p class="text-info">فترة العمل رقم {{index}}</p>
-                            <div class="form-inline">
-                                <div class="form-group m-auto">
-                                    <label class="form-check-label m-2">من</label>
-                                    <jilsati-time-picker time="10:00 AM" :name="'vacation-weekend-time-from'+index"></jilsati-time-picker>
-                                </div>
-                                <div class="form-group m-auto">
-                                    <label class="form-check-label m-2">الى</label>
-                                    <jilsati-time-picker time="11:00 PM" :name="'vacation-weekend-time-to'+index"></jilsati-time-picker>
-                                </div>
-                            </div>
-                        </div>
-                        <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.vacationShifts++">ضيف فترة جديدة</button>
-                        <button v-if="jilsahShifts.vacationWeekendShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.vacationShifts--">حذف فترة عمل</button>
+                    <jilsati-fieldset font-size="1.1rem" legend="نهاية الاسبوع">
+                        <jilsati-shifts name="vacation-weekend"></jilsati-shifts>
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset v-show="chosenTimePeriods.eid" legend="الاعياد">
-                    <div v-for="index in jilsahShifts.eidShifts">
-                        <p class="text-info">فترة العمل رقم {{index}}</p>
-                        <div class="form-inline">
-                            <div class="form-group m-auto">
-                                <label class="form-check-label m-2">من</label>
-                                <jilsati-time-picker time="10:00 AM" :name="'eid-time-from'+index"></jilsati-time-picker>
-                            </div>
-                            <div class="form-group m-auto">
-                                <label class="form-check-label m-2">الى</label>
-                                <jilsati-time-picker time="11:00 PM" :name="'eid-time-to'+index"></jilsati-time-picker>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.eidShifts++">ضيف فترة جديدة</button>
-                    <button v-if="jilsahShifts.eidShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.eidShifts--">حذف فترة عمل</button>
+                    <jilsati-fieldset font-size="1.1rem" legend="خلال الاسبوع">
+                        <jilsati-shifts name="eid-week"></jilsati-shifts>
+                    </jilsati-fieldset>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset v-show="chosenTimePeriods.ramadan" legend="رمضان">
-                    <div v-for="index in jilsahShifts.ramadanShifts">
-                        <p class="text-info">فترة العمل رقم {{index}}</p>
-                        <div class="form-inline">
-                            <div class="form-group m-auto">
-                                <label class="form-check-label m-2">من</label>
-                                <jilsati-time-picker time="10:00 AM" :name="'ramadan-time-from'+index"></jilsati-time-picker>
-                            </div>
-                            <div class="form-group m-auto">
-                                <label class="form-check-label m-2">الى</label>
-                                <jilsati-time-picker time="11:00 PM" :name="'ramadan-time-to'+index"></jilsati-time-picker>
-                            </div>
-                        </div>
-                    </div>
-                    <button type="button" class="btn btn-info mt-4 mr-2" @click="jilsahShifts.ramadanShifts++">ضيف فترة جديدة</button>
-                    <button v-if="jilsahShifts.ramadanShifts > 1" type="button" class="btn btn-danger mt-4 mr-2" @click="jilsahShifts.ramadanShifts--">حذف فترة عمل</button>
+                    <jilsati-fieldset font-size="1.1rem" legend="خلال الاسبوع">
+                        <jilsati-shifts name="ramadan-week"></jilsati-shifts>
+                    </jilsati-fieldset>
                 </jilsati-fieldset>
 
                 <!-- next step button -->
