@@ -24,7 +24,7 @@
 
             multiple : {
                 type : Boolean
-            }
+            },
         },
 
         data : function(){

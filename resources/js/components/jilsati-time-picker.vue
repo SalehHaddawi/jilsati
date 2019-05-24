@@ -11,7 +11,24 @@
 
 <script>
     export default {
-        props : ['name','time','minTime'],
+        props : {
+            name : {
+                type : String,
+                required : true
+            },
+
+            time : {
+                type : Object,
+            },
+
+            minTime : {
+                type : Object
+            },
+
+            fromTimePicker : {
+                type : Boolean
+            }
+        },
 
         data : function(){
           return {
@@ -30,26 +47,14 @@
                 s.datetimepicker({
                     format: 'LT',
 
-                    date : vue.time,
+                    date : vue.time ? vue.time : moment.hours(8).minutes(0),
 
                     stepping : 30,
                 });
 
                 s.on('change.datetimepicker',function(){
 
-                    let time = s.datetimepicker('date');
-
-                    if(vue.minTime){
-                        if(time.hours() < vue.minTime.hour){
-                            time.hours(vue.minTime.hour);
-                            time.minutes(vue.minTime.minute);
-                        }else if(time.hours() === vue.minTime.hour && time.minutes() < vue.minTime.minute){
-                            time.hours(vue.minTime.hour);
-                            time.minutes(vue.minTime.minute);
-                        }
-
-                        s.datetimepicker('date',time);
-                    }
+                    let time = vue.resetTimeToRange();
 
                     vue.$emit('on-time-change',time);
                 });
@@ -59,18 +64,7 @@
         watch : {
           minTime : function () {
               if(this.minTime){
-                  let time = this.timePicker.datetimepicker('date');
-                  if(this.time.hours() < this.minTime.hour){
-                      time.hours(this.minTime.hour);
-                      time.minutes(this.minTime.minute);
-
-                      this.timePicker.datetimepicker('date',time);
-                  }else if(time.hours() === this.minTime.hour && time.minutes() < this.minTime.minute){
-                      time.hours(this.minTime.hour);
-                      time.minutes(this.minTime.minute);
-
-                      this.timePicker.datetimepicker('date',time);
-                  }
+                  this.resetTimeToRange();
               }
           }
         },
@@ -79,6 +73,30 @@
             showTimePicker : function () {
                 $('#'+this.name).datetimepicker('show');
             },
+
+            resetTimeToRange : function () {
+                let time = this.timePicker.datetimepicker('date');
+                let vue = this;
+
+                if(vue.minTime) {
+
+                    if (time.hours() < vue.minTime.hour) {
+                        time.hours(vue.minTime.hour);
+                        time.minutes(vue.minTime.minute);
+                    } else if (time.hours() === vue.minTime.hour && time.minutes() <= vue.minTime.minute) {
+                        time.hours(vue.minTime.hour);
+                        time.minutes(vue.minTime.minute);
+
+                        if(!vue.fromTimePicker) {
+                            time.add(30,'minutes');
+                        }
+                    }
+
+                    this.timePicker.datetimepicker('date', time);
+                }
+
+                return time;
+            }
         },
     }
 </script>

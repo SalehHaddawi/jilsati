@@ -40,7 +40,7 @@ Vue.component('JilsatiSelect',require('./components/jilsati-select').default);
 Vue.component('JilsatiFieldset',require('./components/jilsati-fieldset').default);
 Vue.component('JilsatiFileChooser',require('./components/jilsati-file-chooser').default);
 Vue.component('JilsatiTest',require('./components/jilsati-test').default);
-Vue.component('Start', require('./components/star').default);
+Vue.component('Star', require('./components/star').default);
 Vue.component('StarRating', require('./components/star-rating').default);
 Vue.component('JilsatiShifts', require('./components/jilsati-shifts').default);
 

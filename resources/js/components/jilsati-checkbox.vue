@@ -1,8 +1,8 @@
 <template>
     <div class="custom-control custom-checkbox text-right mr-3 mb-2" :class="{'custom-control-inline' : inline}">
-        <input v-if="Array.isArray(value)" @change="onChange" type="checkbox" class="custom-control-input" :id="name + postfix" :name="name" :checked="checked ? 'checked' : ''">
+        <input v-if="Array.isArray(value)" @change="onChange" type="checkbox" class="custom-control-input" :id="name + postfix" :name="name" :checked="checked">
 
-        <input v-else @change="onChangeNotArray($event)" type="checkbox" class="custom-control-input" :id="name + postfix" :name="name" :checked="checked ? 'checked' : ''">
+        <input v-else @change="onChangeNotArray($event)" type="checkbox" class="custom-control-input" :id="name + postfix" :name="name" :checked="checked">
 
         <label class="custom-control-label" :for="name + postfix"><slot></slot></label>
     </div>
@@ -54,7 +54,7 @@
             },
 
             onChangeNotArray : function (event) {
-                this.$emit('change',this.checked ? this.checked : event.target.checked);
+                this.$emit('change',!event ? this.checked : event.target.checked);
             }
         },
 

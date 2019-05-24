@@ -2,10 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863277c5-237f-4abb-b85c-41037fadc229" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/slooh.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/slooh.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-checkbox.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-checkbox.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue" afterDir="false" />
     </list>
@@ -24,54 +27,289 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/jilsah/create.blade.php">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="660">
-              <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
+            <state relative-caret-position="154">
+              <caret line="552" lean-forward="true" selection-start-line="552" selection-end-line="552" />
+              <folding>
+                <element signature="n#template#0;n#!!top" />
+                <element signature="n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#small#0;n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#textarea#0;n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#small#0;n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#button#0;n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#p#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-checkbox#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-checkbox#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-checkbox#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#2;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#p#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-checkbox#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-checkbox#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-checkbox#0;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-checkbox#13;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-checkbox#14;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-select#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#small#0;n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#small#0;n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#small#0;n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#3;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#button#0;n#div#3;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#p#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-radio#0;n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-radio#1;n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#5;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#button#0;n#div#5;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-file-chooser#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-alert#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-card-show#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-alert#0;n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-file-chooser#0;n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#a#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#input#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="n#div#1;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#25231#27876#0" />
+                <element signature="e#27261#30296#0" />
+                <element signature="e#25282#25867#0" />
+                <element signature="e#25900#26050#0" />
+                <element signature="e#26089#26251#0" />
+                <element signature="e#26285#26558#0" />
+                <element signature="e#26586#27743#0" />
+                <element signature="e#27131#27441#0" />
+                <element signature="e#29471#29687#0" />
+                <element signature="e#27792#27811#0" />
+                <element signature="e#28213#28261#0" />
+                <element signature="e#28430#28522#0" />
+                <element signature="e#28540#28597#0" />
+                <element signature="e#28723#28971#0" />
+                <element signature="e#28780#28953#0" />
+                <element signature="e#29043#29104#0" />
+                <element signature="e#29159#29331#0" />
+                <element signature="e#29383#29502#0" />
+                <element signature="e#29554#29793#0" />
+                <element signature="e#29595#29644#0" />
+                <element signature="e#29659#29718#0" />
+                <element signature="e#29722#29779#0" />
+                <element signature="e#29847#30115#0" />
+                <element signature="e#29888#29937#0" />
+                <element signature="e#29981#30040#0" />
+                <element signature="e#30044#30101#0" />
+                <element signature="e#29539#35830#0" />
+                <element signature="e#30161#30180#0" />
+                <element signature="e#30216#30296#0" />
+                <element signature="e#30338#30425#0" />
+                <element signature="e#30471#30793#0" />
+                <element signature="e#30808#30828#0" />
+                <element signature="e#30875#31043#0" />
+                <element signature="e#31058#31080#0" />
+                <element signature="e#31125#31339#0" />
+                <element signature="e#31179#31245#0" />
+                <element signature="e#31250#31325#0" />
+                <element signature="e#31382#31593#0" />
+                <element signature="e#31433#31499#0" />
+                <element signature="e#31504#31579#0" />
+                <element signature="e#31643#31995#0" />
+                <element signature="e#32010#32033#0" />
+                <element signature="e#32069#32149#0" />
+                <element signature="e#32189#32272#0" />
+                <element signature="e#32323#32637#0" />
+                <element signature="e#32652#32673#0" />
+                <element signature="e#32720#32950#0" />
+                <element signature="e#32772#32829#0" />
+                <element signature="e#32833#32936#0" />
+                <element signature="e#33001#33234#0" />
+                <element signature="e#33053#33110#0" />
+                <element signature="e#33114#33220#0" />
+                <element signature="e#33284#33518#0" />
+                <element signature="e#33338#33395#0" />
+                <element signature="e#33399#33504#0" />
+                <element signature="e#33571#33808#0" />
+                <element signature="e#33625#33682#0" />
+                <element signature="e#33686#33794#0" />
+                <element signature="e#33849#34069#0" />
+                <element signature="e#33898#33955#0" />
+                <element signature="e#33959#34055#0" />
+                <element signature="e#34114#34342#0" />
+                <element signature="e#34167#34224#0" />
+                <element signature="e#34228#34328#0" />
+                <element signature="e#34389#35285#0" />
+                <element signature="e#35300#35321#0" />
+                <element signature="e#35362#35544#0" />
+                <element signature="e#35409#35468#0" />
+                <element signature="e#35473#35530#0" />
+                <element signature="e#35585#35657#0" />
+                <element signature="e#35690#35711#0" />
+                <element signature="e#35155#35501#0" />
+                <element signature="e#35809#35849#0" />
+                <element signature="e#35364#35421#0" />
+                <element signature="e#35427#35487#0" />
+                <element signature="e#35551#35820#0" />
+                <element signature="e#35601#35653#0" />
+                <element signature="e#35692#35745#0" />
+                <element signature="e#35749#35806#0" />
+                <element signature="e#35848#38344#0" />
+                <element signature="e#35894#36249#0" />
+                <element signature="e#35933#36153#0" />
+                <element signature="e#35962#36046#0" />
+                <element signature="e#36052#36135#0" />
+                <element signature="e#35877#35953#0" />
+                <element signature="e#36016#36208#0" />
+                <element signature="e#36039#36115#0" />
+                <element signature="e#36119#36194#0" />
+                <element signature="e#36259#36606#0" />
+                <element signature="e#36296#36512#0" />
+                <element signature="e#36323#36407#0" />
+                <element signature="e#36411#36494#0" />
+                <element signature="e#36516#36592#0" />
+                <element signature="e#36658#37005#0" />
+                <element signature="e#36695#36911#0" />
+                <element signature="e#36722#36806#0" />
+                <element signature="e#36810#36893#0" />
+                <element signature="e#36915#36991#0" />
+                <element signature="e#37055#37510#0" />
+                <element signature="e#37549#37604#0" />
+                <element signature="e#37092#37416#0" />
+                <element signature="e#37227#37311#0" />
+                <element signature="e#37315#37398#0" />
+                <element signature="e#37420#37496#0" />
+                <element signature="e#40217#40249#0" />
+                <element signature="e#38053#38108#0" />
+                <element signature="e#40257#40587#0" />
+                <element signature="e#40396#40480#0" />
+                <element signature="e#40486#40569#0" />
+                <element signature="e#40593#40669#0" />
+                <element signature="e#37542#37761#0" />
+                <element signature="e#37615#37678#0" />
+                <element signature="e#37693#37749#0" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="572">
-              <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
-              <folding>
-                <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="e#27874#27881#1" expanded="true" />
-                <element signature="n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#27695#27845#0" />
-                <element signature="e#27884#28046#0" />
-                <element signature="e#28080#28353#0" />
-                <element signature="e#28842#29104#0" />
-                <element signature="e#29236#30288#0" />
-              </folding>
+            <state relative-caret-position="88">
+              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue">
+        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
-              <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="550">
+              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
             </state>
           </provider>
         </entry>
@@ -79,26 +317,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="108">
-              <caret line="48" selection-start-line="48" selection-end-line="48" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-radio.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="36" selection-start-line="36" selection-end-line="36" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/views/search.blade.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="438">
-              <caret line="63" column="41" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
+            <state relative-caret-position="-126">
+              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
             </state>
           </provider>
         </entry>
@@ -106,8 +326,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="352">
-              <caret line="44" column="67" selection-start-line="44" selection-start-column="67" selection-end-line="44" selection-end-column="67" />
+            <state relative-caret-position="946">
+              <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -115,8 +335,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="66">
-              <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
+            <state relative-caret-position="88">
+              <caret line="4" column="71" selection-start-line="4" selection-start-column="71" selection-end-line="4" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -151,6 +371,10 @@
       <find>اللي بعدو</find>
       <find>مثال: يخفض السعر لاكثر من 6 اشخاص</find>
       <find>value</find>
+      <find>سعر</find>
+      <find>مثال: سعر خاص للمجموعات</find>
+      <find>serial</find>
+      <find>ايــام الاسبوع</find>
     </findStrings>
     <replaceStrings>
       <replace>istraha</replace>
@@ -158,6 +382,8 @@
       <replace>istraha-1.jpg</replace>
       <replace>حفظ ومتابعة</replace>
       <replace>مثال: سعر خاص للمجموعات</replace>
+      <replace>مثال: السعر لساعة واحدة</replace>
+      <replace>ايـــام الاسبوع</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -204,18 +430,18 @@
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-test.vue" />
         <option value="$PROJECT_DIR$/resources/views/search.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-radio.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-checkbox.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/star.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/star-rating.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/vue-easy-lightbox.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/easy-lightbox.vue" />
         <option value="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" />
         <option value="$PROJECT_DIR$/public/css/custom.css" />
+        <option value="$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/jilsati-checkbox.vue" />
+        <option value="$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" />
       </list>
     </option>
@@ -328,31 +554,13 @@
             <path>
               <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
               <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
               <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-              <item name="js" type="462c0819:PsiDirectoryNode" />
-              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="database" type="462c0819:PsiDirectoryNode" />
+              <item name="migrations" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -462,12 +670,14 @@
       <workItem from="1558435252579" duration="9565000" />
       <workItem from="1558469141929" duration="11351000" />
       <workItem from="1558523131246" duration="34553000" />
-      <workItem from="1558606548757" duration="37208000" />
+      <workItem from="1558606548757" duration="37328000" />
+      <workItem from="1558692498237" duration="20201000" />
+      <workItem from="1558725679019" duration="10422000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="301109000" />
+    <option name="totallyTimeSpent" value="331852000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -482,7 +692,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17583893" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18120806" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -549,13 +759,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/Exceptions/Handler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="482">
-          <caret line="51" column="40" selection-start-line="51" selection-start-column="40" selection-end-line="51" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="308">
@@ -695,16 +898,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/vue-star-rating/dist/star-rating.min.js" />
-    <entry file="file://$PROJECT_DIR$/public/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1022">
-          <caret line="54379" selection-start-line="54379" selection-end-line="54379" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/node_modules/vue-star-rating/src/index.js" />
     <entry file="file://$PROJECT_DIR$/node_modules/vue-star-rating/src/star.vue" />
     <entry file="file://$PROJECT_DIR$/node_modules/vue-star-rating/src/star-rating.vue" />
@@ -729,20 +922,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/star-rating.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/easy-lightbox.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="988">
-          <caret line="49" column="40" selection-start-line="49" selection-start-column="40" selection-end-line="49" selection-end-column="40" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/easy-lightbox.vue" />
     <entry file="file://$PROJECT_DIR$/node_modules/ekko-lightbox/examples/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5104" />
@@ -778,13 +958,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/search.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="438">
-          <caret line="63" column="41" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.env.example">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-419" />
@@ -806,30 +979,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="352">
-          <caret line="44" column="67" selection-start-line="44" selection-start-column="67" selection-end-line="44" selection-end-column="67" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="3" column="32" selection-start-line="3" selection-start-column="32" selection-end-line="3" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-checkbox.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-104">
-          <caret line="42" column="25" selection-start-line="42" selection-start-column="25" selection-end-line="42" selection-end-column="25" />
-          <folding>
-            <element signature="e#637#1086#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/jilsah/create.blade.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="660">
@@ -837,64 +986,354 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="484">
-          <caret line="46" column="114" selection-start-line="46" selection-start-column="114" selection-end-line="46" selection-end-column="114" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-radio.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
+        <state relative-caret-position="792">
           <caret line="36" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="39" column="56" selection-start-line="39" selection-start-column="56" selection-end-line="39" selection-end-column="56" />
+        <state relative-caret-position="1854">
+          <caret line="90" column="49" selection-start-line="90" selection-start-column="49" selection-end-line="90" selection-end-column="49" />
           <folding>
             <element signature="n#style#0;n#div#0;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/star-rating.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="614">
+          <caret line="3142" column="4" selection-start-line="3142" selection-start-column="4" selection-end-line="3142" selection-end-column="4" />
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-checkbox.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="688">
+          <caret line="56" column="37" selection-start-line="56" selection-start-column="37" selection-end-line="56" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="946">
+          <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/search.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="63" column="41" selection-start-line="63" selection-start-column="41" selection-end-line="63" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="48" selection-start-line="48" selection-end-line="48" />
+        <state relative-caret-position="-126">
+          <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="4" column="71" selection-start-line="4" selection-start-column="71" selection-end-line="4" selection-end-column="71" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="69" column="53" selection-start-line="69" selection-start-column="53" selection-end-line="69" selection-end-column="53" />
+        <state relative-caret-position="154">
+          <caret line="552" lean-forward="true" selection-start-line="552" selection-end-line="552" />
           <folding>
+            <element signature="n#template#0;n#!!top" />
+            <element signature="n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#small#0;n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#textarea#0;n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#small#0;n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#button#0;n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#p#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-checkbox#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-checkbox#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-checkbox#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#2;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#p#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-checkbox#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-checkbox#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-checkbox#0;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-checkbox#13;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-checkbox#14;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-select#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#small#0;n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#small#0;n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#small#0;n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#3;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#button#0;n#div#3;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#p#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-radio#0;n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-radio#1;n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#5;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#button#0;n#div#5;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="e#27874#27881#1" expanded="true" />
+            <element signature="n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-file-chooser#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-alert#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-card-show#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-alert#0;n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#jilsati-file-chooser#0;n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#a#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-            <element signature="e#27695#27845#0" />
-            <element signature="e#27884#28046#0" />
-            <element signature="e#28080#28353#0" />
-            <element signature="e#28842#29104#0" />
-            <element signature="e#29236#30288#0" />
+            <element signature="n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#input#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="n#div#1;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#25231#27876#0" />
+            <element signature="e#27261#30296#0" />
+            <element signature="e#25282#25867#0" />
+            <element signature="e#25900#26050#0" />
+            <element signature="e#26089#26251#0" />
+            <element signature="e#26285#26558#0" />
+            <element signature="e#26586#27743#0" />
+            <element signature="e#27131#27441#0" />
+            <element signature="e#29471#29687#0" />
+            <element signature="e#27792#27811#0" />
+            <element signature="e#28213#28261#0" />
+            <element signature="e#28430#28522#0" />
+            <element signature="e#28540#28597#0" />
+            <element signature="e#28723#28971#0" />
+            <element signature="e#28780#28953#0" />
+            <element signature="e#29043#29104#0" />
+            <element signature="e#29159#29331#0" />
+            <element signature="e#29383#29502#0" />
+            <element signature="e#29554#29793#0" />
+            <element signature="e#29595#29644#0" />
+            <element signature="e#29659#29718#0" />
+            <element signature="e#29722#29779#0" />
+            <element signature="e#29847#30115#0" />
+            <element signature="e#29888#29937#0" />
+            <element signature="e#29981#30040#0" />
+            <element signature="e#30044#30101#0" />
+            <element signature="e#29539#35830#0" />
+            <element signature="e#30161#30180#0" />
+            <element signature="e#30216#30296#0" />
+            <element signature="e#30338#30425#0" />
+            <element signature="e#30471#30793#0" />
+            <element signature="e#30808#30828#0" />
+            <element signature="e#30875#31043#0" />
+            <element signature="e#31058#31080#0" />
+            <element signature="e#31125#31339#0" />
+            <element signature="e#31179#31245#0" />
+            <element signature="e#31250#31325#0" />
+            <element signature="e#31382#31593#0" />
+            <element signature="e#31433#31499#0" />
+            <element signature="e#31504#31579#0" />
+            <element signature="e#31643#31995#0" />
+            <element signature="e#32010#32033#0" />
+            <element signature="e#32069#32149#0" />
+            <element signature="e#32189#32272#0" />
+            <element signature="e#32323#32637#0" />
+            <element signature="e#32652#32673#0" />
+            <element signature="e#32720#32950#0" />
+            <element signature="e#32772#32829#0" />
+            <element signature="e#32833#32936#0" />
+            <element signature="e#33001#33234#0" />
+            <element signature="e#33053#33110#0" />
+            <element signature="e#33114#33220#0" />
+            <element signature="e#33284#33518#0" />
+            <element signature="e#33338#33395#0" />
+            <element signature="e#33399#33504#0" />
+            <element signature="e#33571#33808#0" />
+            <element signature="e#33625#33682#0" />
+            <element signature="e#33686#33794#0" />
+            <element signature="e#33849#34069#0" />
+            <element signature="e#33898#33955#0" />
+            <element signature="e#33959#34055#0" />
+            <element signature="e#34114#34342#0" />
+            <element signature="e#34167#34224#0" />
+            <element signature="e#34228#34328#0" />
+            <element signature="e#34389#35285#0" />
+            <element signature="e#35300#35321#0" />
+            <element signature="e#35362#35544#0" />
+            <element signature="e#35409#35468#0" />
+            <element signature="e#35473#35530#0" />
+            <element signature="e#35585#35657#0" />
+            <element signature="e#35690#35711#0" />
+            <element signature="e#35155#35501#0" />
+            <element signature="e#35809#35849#0" />
+            <element signature="e#35364#35421#0" />
+            <element signature="e#35427#35487#0" />
+            <element signature="e#35551#35820#0" />
+            <element signature="e#35601#35653#0" />
+            <element signature="e#35692#35745#0" />
+            <element signature="e#35749#35806#0" />
+            <element signature="e#35848#38344#0" />
+            <element signature="e#35894#36249#0" />
+            <element signature="e#35933#36153#0" />
+            <element signature="e#35962#36046#0" />
+            <element signature="e#36052#36135#0" />
+            <element signature="e#35877#35953#0" />
+            <element signature="e#36016#36208#0" />
+            <element signature="e#36039#36115#0" />
+            <element signature="e#36119#36194#0" />
+            <element signature="e#36259#36606#0" />
+            <element signature="e#36296#36512#0" />
+            <element signature="e#36323#36407#0" />
+            <element signature="e#36411#36494#0" />
+            <element signature="e#36516#36592#0" />
+            <element signature="e#36658#37005#0" />
+            <element signature="e#36695#36911#0" />
+            <element signature="e#36722#36806#0" />
+            <element signature="e#36810#36893#0" />
+            <element signature="e#36915#36991#0" />
+            <element signature="e#37055#37510#0" />
+            <element signature="e#37549#37604#0" />
+            <element signature="e#37092#37416#0" />
+            <element signature="e#37227#37311#0" />
+            <element signature="e#37315#37398#0" />
+            <element signature="e#37420#37496#0" />
+            <element signature="e#40217#40249#0" />
+            <element signature="e#38053#38108#0" />
+            <element signature="e#40257#40587#0" />
+            <element signature="e#40396#40480#0" />
+            <element signature="e#40486#40569#0" />
+            <element signature="e#40593#40669#0" />
+            <element signature="e#37542#37761#0" />
+            <element signature="e#37615#37678#0" />
+            <element signature="e#37693#37749#0" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="88">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
         </state>
       </provider>
     </entry>

@@ -8,21 +8,26 @@
 
             <div class="form-group">
                 <label for="jilsah-name">اسم الجلسة</label>
-                <input v-model.trim="models.name" type="text" class="form-control" id="jilsah-name" placeholder="اسم جلستك" aria-describedby="jilsah-nameHelp">
+                <input v-model.trim="models.name" type="text" class="form-control" :class="nameErr" id="jilsah-name"
+                       placeholder="اسم جلستك" aria-describedby="jilsah-nameHelp">
                 <small id="jilsah-nameHelp" class="form-text text-muted">
                     هذا الاسم اللي الناس بيبحثوا عن جلستك بيه
                 </small>
             </div>
             <div class="form-group">
                 <label for="jilsah-description">وصف الجلسة</label>
-                <textarea v-model.trim="models.description" class="form-control" id="jilsah-description" placeholder="الوصف" rows="5" aria-describedby="descriptionHelp"></textarea>
+                <textarea v-model.trim="models.description" class="form-control" :class="descriptionErr"
+                          id="jilsah-description" placeholder="الوصف" rows="5"
+                          aria-describedby="descriptionHelp"></textarea>
                 <small id="descriptionHelp" class="form-text text-muted">
                     معلومات مفصلة عن جلستك عشان الناس يعرفوا اكثر عنها
                 </small>
             </div>
 
             <div class="mt-2">
-                <button type="button" class="btn btn-success" @click="check(0)">حفظ ومتابعة</button>
+                <button type="button" class="btn btn-success" @click="check(0)" :disabled="!stepJilsahInfoErr">حفظ
+                    ومتابعة
+                </button>
             </div>
         </jilsati-step>
         <jilsati-step title="اوقات الجلسة"
@@ -36,10 +41,13 @@
                     اختار الاوقات الي الجلسة تكون شغالة
                 </p>
 
-                <jilsati-checkbox v-model="chosenTimePeriods.school" name="school-time-period" checked>فترة الدراسة</jilsati-checkbox>
-                <jilsati-checkbox v-model="chosenTimePeriods.vacation" name="vacation-time-period">فترة الاجازة</jilsati-checkbox>
+                <jilsati-checkbox v-model="chosenTimePeriods.school" name="school-time-period">فترة الدراسة
+                </jilsati-checkbox>
+                <jilsati-checkbox v-model="chosenTimePeriods.vacation" name="vacation-time-period">فترة الاجازة
+                </jilsati-checkbox>
                 <jilsati-checkbox v-model="chosenTimePeriods.eid" name="eid-time-period">الاعياد</jilsati-checkbox>
-                <jilsati-checkbox v-model="chosenTimePeriods.ramadan" name="ramadan-time-period">رمضان</jilsati-checkbox>
+                <jilsati-checkbox v-model="chosenTimePeriods.ramadan" name="ramadan-time-period">رمضان
+                </jilsati-checkbox>
 
                 <jilsati-fieldset v-show="chosenTimePeriods.school" font-size="1.4rem" legend="فترة الدراسة">
                     <jilsati-fieldset font-size="1.1rem" legend="ايام الاسبوع">
@@ -73,7 +81,9 @@
 
                 <!-- next step button -->
                 <div class="mt-2">
-                    <button type="button" class="btn btn-success" @click="check(1)">حفظ ومتابعة</button>
+                    <button type="button" class="btn btn-success" @click="check(1)" :disabled="!stepJilsahTimesErr">حفظ
+                        ومتابعة
+                    </button>
                 </div>
             </div>
         </jilsati-step>
@@ -88,19 +98,22 @@
                     اختار الخدمات/المميزات اللي جلستك بتقدمها/تحتويها
                 </p>
 
-                <jilsati-fieldset legend="الجلسة تستقبل" font-size="1.1rem">
-                    <jilsati-checkbox v-model="models.jilsahClients" name="شباب" inline checked>شباب</jilsati-checkbox>
+                <jilsati-fieldset legend="الجلسة تستقبل" font-size="1.1rem" :class="jilsahClientsErr">
+                    <jilsati-checkbox v-model="models.jilsahClients" name="شباب" inline>شباب</jilsati-checkbox>
                     <jilsati-checkbox v-model="models.jilsahClients" name="سيدات" inline>سيدات</jilsati-checkbox>
                     <jilsati-checkbox v-model="models.jilsahClients" name="عائلات" inline>عائلات</jilsati-checkbox>
                 </jilsati-fieldset>
 
-                <jilsati-fieldset legend="نوع الجلسة" font-size="1.1rem">
-                    <jilsati-checkbox v-model="models.jilsahType" name="جلسات ارضية" inline checked>جلسات ارضية</jilsati-checkbox>
-                    <jilsati-checkbox v-model="models.jilsahType" name="جلسات طاولة" inline>جلسات طاولة</jilsati-checkbox>
+                <jilsati-fieldset legend="نوع الجلسة" font-size="1.1rem" :class="jilsahTypeErr">
+                    <jilsati-checkbox v-model="models.jilsahType" name="جلسات ارضية" inline>جلسات ارضية
+                    </jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.jilsahType" name="جلسات طاولة" inline>جلسات طاولة
+                    </jilsati-checkbox>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset legend="خدمات/مميزات الجلسة" font-size="1.1rem">
-                    <jilsati-checkbox v-model="models.options" name="قهوة عربية وتمر" inline>قهوة وتمر</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="قهوة عربية وتمر" inline>قهوة وتمر
+                    </jilsati-checkbox>
                     <jilsati-checkbox v-model="models.options" name="مكسرات" inline>مكسرات</jilsati-checkbox>
                     <jilsati-checkbox v-model="models.options" name="العاب طاولة" inline>العاب طاولة</jilsati-checkbox>
                     <jilsati-checkbox v-model="models.options" name="العاب ورق" inline>العاب ورقية</jilsati-checkbox>
@@ -113,12 +126,16 @@
                     <jilsati-checkbox v-model="models.options" name="مكيفة" inline>مكيفة</jilsati-checkbox>
                     <jilsati-checkbox v-model="models.options" name="مفتوحة" inline>مفتوحة</jilsati-checkbox>
                     <jilsati-checkbox v-model="models.options" name="شيشة ومعسل" inline>شيشة ومعسل</jilsati-checkbox>
-                    <jilsati-checkbox v-model="models.options" name="منطقة مدخنين" inline>منطقة للمدخنين</jilsati-checkbox>
-                    <jilsati-checkbox v-model="models.options" name="عرض مباريات" inline>عرض المباريات</jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="منطقة مدخنين" inline>منطقة للمدخنين
+                    </jilsati-checkbox>
+                    <jilsati-checkbox v-model="models.options" name="عرض مباريات" inline>عرض المباريات
+                    </jilsati-checkbox>
                 </jilsati-fieldset>
 
                 <div class="mt-2">
-                    <button type="button" class="btn btn-success" @click="check(2)">حفظ ومتابعة</button>
+                    <button type="button" class="btn btn-success" @click="check(2)" :disabled="!stepJilsahOptionsErr">
+                        حفظ ومتابعة
+                    </button>
                 </div>
             </div>
         </jilsati-step>
@@ -134,35 +151,43 @@
                         name="city"
                         optionsLabel="اختار المدينة اللي فيها الجلسة..."
                         :options="cities"
+                        :class="cityErr"
                         v-model="models.city">
                 </jilsati-select>
 
                 <div class="form-group mt-4">
                     <label for="jilsah-location">الحي</label>
-                    <input v-model.trim="models.address" type="text" class="form-control" id="jilsah-location" placeholder="الحي" aria-describedby="jilsah-locationHelp">
+                    <input v-model.trim="models.address" type="text" class="form-control" :class="addressErr"
+                           id="jilsah-location" placeholder="الحي" aria-describedby="jilsah-locationHelp">
                     <small id="jilsah-locationHelp" class="form-text text-muted">
                         الحي اللي فيه الجلسة
                     </small>
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="jilsah-location-details">موقع الجلسة</label>
-                    <input v-model.trim="models.addressDetails" type="text" class="form-control" id="jilsah-location-details" placeholder="مثال: بجوار مسجد التقوى على اليمين" aria-describedby="jilsah-location-detailsHelp">
+                    <label for="jilsah-location-details">وصف لموقع الجلسة (اختياري)</label>
+                    <input v-model.trim="models.addressDetails" type="text" class="form-control"
+                           id="jilsah-location-details" placeholder="مثال: بجوار مسجد التقوى على اليمين"
+                           aria-describedby="jilsah-location-detailsHelp">
                     <small id="jilsah-location-detailsHelp" class="form-text text-muted">
                         وصف لموقع الجلسة واي علامة مميزة
                     </small>
                 </div>
 
                 <div class="form-group mt-4">
-                    <label for="jilsah-google-location">رابط قوقل ماب</label>
-                    <input v-model.trim="models.googleMapAddress" type="text" class="form-control" id="jilsah-google-location" placeholder="رابط موقع الجلسة في قوقل ماب" aria-describedby="jilsah-google-locationHelp">
+                    <label for="jilsah-google-location">رابط قوقل ماب (اختياري)</label>
+                    <input v-model.trim="models.googleMapAddress" type="text" class="form-control"
+                           id="jilsah-google-location" placeholder="رابط موقع الجلسة في قوقل ماب"
+                           aria-describedby="jilsah-google-locationHelp">
                     <small id="jilsah-google-locationHelp" class="form-text text-muted">
                         رابط موقع الجلسة في قوقل ماب عشان تسهل وصول الناس للجلسة
                     </small>
                 </div>
 
                 <div class="mt-4">
-                    <button type="button" class="btn btn-success" @click="check(3)">حفظ ومتابعة</button>
+                    <button type="button" class="btn btn-success" @click="check(3)" :disabled="!stepJilsahLocationErr">
+                        حفظ ومتابعة
+                    </button>
                 </div>
             </div>
         </jilsati-step>
@@ -179,8 +204,11 @@
                 </p>
 
                 <div class="mt-2">
-                    <jilsati-radio v-model="models.pricePer" name="price-per" postfix="jilsah" val="للجلسة" checked>السعر للجلسة</jilsati-radio>
-                    <jilsati-radio v-model="models.pricePer" name="price-per" postfix="person" val="للشخص">السعر للشخص</jilsati-radio>
+                    <jilsati-radio v-model="models.pricePer" name="price-per" postfix="jilsah" val="للجلسة" checked>
+                        السعر للجلسة
+                    </jilsati-radio>
+                    <jilsati-radio v-model="models.pricePer" name="price-per" postfix="person" val="للشخص">السعر للشخص
+                    </jilsati-radio>
                 </div>
 
                 <div v-if="chosenTimePeriods.school" class="mt-2">
@@ -189,15 +217,12 @@
                         <div class="mt-2">
                             <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">ايام الاسبوع</span>
+                                    <span class="input-group-text rounded-0">ايـــام الاسبوع</span>
                                 </div>
-                                <input v-model="models.prices.schoolWeek" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">ملاحظة</span>
-                                </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
+                                <input placeholder="السعر" :class="schoolWeekPriceErr"
+                                       v-model.trim="models.prices.schoolWeek" type="text"
+                                       aria-label="سعر الجلسة في فترة الدراسة ايام الاسبوع"
+                                       class="form-control rounded-0">
                             </div>
                         </div>
 
@@ -206,13 +231,10 @@
                                 <div class="input-group-prepend rounded-0">
                                     <span class="input-group-text rounded-0">نهاية الاسبوع</span>
                                 </div>
-                                <input v-model="models.prices.schoolWeekend" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">ملاحظة</span>
-                                </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
+                                <input placeholder="السعر" :class="schoolWeekendPriceErr"
+                                       v-model.trim="models.prices.schoolWeekend" type="text"
+                                       aria-label="سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع"
+                                       class="form-control rounded-0">
                             </div>
                         </div>
                     </jilsati-fieldset>
@@ -224,15 +246,12 @@
                         <div class="mt-2">
                             <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">ايام الاسبوع</span>
+                                    <span class="input-group-text rounded-0">ايـــام الاسبوع</span>
                                 </div>
-                                <input v-model="models.prices.vacationWeek" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام الاسبوع" class="form-control rounded-0">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">ملاحظة</span>
-                                </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاجازة ايام الاسبوع" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
+                                <input placeholder="السعر" :class="vacationWeekPriceErr"
+                                       v-model.trim="models.prices.vacationWeek" type="text"
+                                       aria-label="سعر الجلسة في فترة الدراسة ايام الاسبوع"
+                                       class="form-control rounded-0">
                             </div>
                         </div>
 
@@ -241,13 +260,10 @@
                                 <div class="input-group-prepend rounded-0">
                                     <span class="input-group-text rounded-0">نهاية الاسبوع</span>
                                 </div>
-                                <input v-model="models.prices.vacationWeekend" type="number" aria-label="سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع" class="form-control rounded-0">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">ملاحظة</span>
-                                </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاجازة ايام نهاية الاسبوع" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
+                                <input placeholder="السعر" :class="vacationWeekendPriceErr"
+                                       v-model.trim="models.prices.vacationWeekend" type="text"
+                                       aria-label="سعر الجلسة في فترة الدراسة ايام نهاية الاسبوع"
+                                       class="form-control rounded-0">
                             </div>
                         </div>
                     </jilsati-fieldset>
@@ -258,15 +274,11 @@
                         <div class="mt-2">
                             <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">خلال الاسبوع</span>
+                                    <span class="input-group-text rounded-0">خــلال الاسبوع</span>
                                 </div>
-                                <input v-model="models.prices.eid" type="number" aria-label="سعر الجلسة في فترة الاعياد" class="form-control rounded-0">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">ملاحظة</span>
-                                </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة الاعياد" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
+                                <input placeholder="السعر" :class="eidPriceErr" v-model.trim="models.prices.eid"
+                                       type="text" aria-label="سعر الجلسة في فترة الاعياد"
+                                       class="form-control rounded-0">
                             </div>
                         </div>
                     </jilsati-fieldset>
@@ -277,22 +289,19 @@
                         <div class="mt-2">
                             <div class="input-group">
                                 <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">خلال الاسبوع</span>
+                                    <span class="input-group-text rounded-0">خــلال الاسبوع</span>
                                 </div>
-                                <input v-model="models.prices.ramadan" type="number" aria-label="سعر الجلسة في فترة رمضان" class="form-control rounded-0">
-                            </div>
-                            <div class="input-group">
-                                <div class="input-group-prepend rounded-0">
-                                    <span class="input-group-text rounded-0">ملاحظة</span>
-                                </div>
-                                <input type="text" aria-label="ملاحظة عن سعر الجلسة في فترة رمضان" class="form-control rounded-0" placeholder="مثال: سعر خاص للمجموعات">
+                                <input placeholder="السعر" :class="ramadanPriceErr" v-model.trim="models.prices.ramadan"
+                                       type="text" aria-label="سعر الجلسة في فترة رمضان" class="form-control rounded-0">
                             </div>
                         </div>
                     </jilsati-fieldset>
                 </div>
 
                 <div class="mt-2">
-                    <button type="button" class="btn btn-success" @click="check(4)">حفظ ومتابعة</button>
+                    <button type="button" class="btn btn-success" @click="check(4)" :disabled="! stepJilsahPricesErr">
+                        حفظ ومتابعة
+                    </button>
                 </div>
             </div>
         </jilsati-step>
@@ -320,17 +329,17 @@
                         </jilsati-alert>
 
                         <jilsati-card-show :title="models.name"
-                                            :city="models.city"
-                                            :address="models.address"
-                                            :description="models.description"
-                                            :img-src="models.mainImage"
-                                            :max-description-length="180"
-                                            :options="models.options"
-                                            :clients="models.jilsahClients"
-                                            :types="models.jilsahType"
-                                            :rating="5"
-                                            :price="models.prices.schoolWeek"
-                                            :price-per="models.pricePer">
+                                           :city="models.city"
+                                           :address="models.address"
+                                           :description="models.description"
+                                           :img-src="models.mainImage.src"
+                                           :max-description-length="180"
+                                           :options="models.options"
+                                           :clients="models.jilsahClients"
+                                           :types="models.jilsahType"
+                                           :rating="5"
+                                           :price="models.prices.schoolWeek"
+                                           :price-per="models.pricePer">
                         </jilsati-card-show>
                     </div>
                 </jilsati-fieldset>
@@ -338,7 +347,7 @@
                 <jilsati-fieldset legend="صور الجلسة" font-size="1.3rem">
                     <div class="mt-2">
                         <jilsati-alert type="info">
-                            اضيف صور الجلسة الباقية
+                            اضيف صور الجلسة الاخرى
                         </jilsati-alert>
 
                         <jilsati-file-chooser
@@ -351,13 +360,15 @@
                     </div>
 
                     <div class="row justify-content-start mt-2">
-                        <div v-for="img in models.jilsahImages" class="card shadow-sm mb-2 col-lg-2 col-md-3 col-6" style="max-width: 150px;">
+                        <div v-for="img in models.jilsahImages" class="card shadow-sm mb-2 col-lg-2 col-md-3 col-6"
+                             style="max-width: 150px;">
 
                             <a :href="img.src" data-toggle="lightbox" data-gallery="jilsah-images">
-                                <img :src="img.src" class="card-img" alt="صورة للجلسة" width="100">
+                                <img :src="img.src" class="card-img" alt="صورة للجلسة" width="100" :title="img.name">
                             </a>
 
-                            <button @click="removeJilsahImage(img.index)" type="button" class="close close-jilsah-image" aria-label="Close">
+                            <button @click="removeJilsahImage(img.index)" type="button" class="close close-jilsah-image"
+                                    aria-label="Close">
                                 <span class="text-right text-danger" aria-hidden="true">&times;</span>
                             </button>
                         </div>
@@ -365,7 +376,9 @@
                 </jilsati-fieldset>
 
                 <div class="mt-4">
-                    <button type="button" class="btn btn-success" @click="check(5)">حفظ ومتابعة</button>
+                    <button type="button" class="btn btn-success" @click="check(5)" :disabled="!stepJilsahImagesErr">حفظ
+                        ومتابعة
+                    </button>
                 </div>
 
             </div>
@@ -383,7 +396,8 @@
                         <div class="input-group-prepend rounded-0">
                             <span class="input-group-text rounded-0">الجوال</span>
                         </div>
-                        <input v-model="models.social.phone" placeholder="05xxxxxxxx" type="tel" aria-label="جوال التواصل" class="form-control rounded-0">
+                        <input size="10" v-model.trim="models.social.phone" placeholder="05xxxxxxxx" type="tel"
+                               aria-label="جوال التواصل" class="form-control rounded-0" :class="phoneErr">
                     </div>
                 </div>
 
@@ -392,43 +406,53 @@
                     <div class="mt-2" dir="ltr">
                         <div class="input-group">
                             <div class="input-group-prepend rounded-0">
-                                <span style="width:40px;" class="input-group-text rounded-0"><i class="fab fa-instagram"></i></span>
+                                <span style="width:40px;" class="input-group-text rounded-0"><i
+                                        class="fab fa-instagram"></i></span>
                             </div>
-                            <input v-model.trim="models.social.instagram" placeholder="http://www.Instagram.com/username" type="url" aria-label="رابط حساب انستقرام" class="form-control rounded-0">
+                            <input v-model.trim="models.social.instagram"
+                                   placeholder="http://www.Instagram.com/username" type="url"
+                                   aria-label="رابط حساب انستقرام" class="form-control rounded-0">
                         </div>
                     </div>
 
                     <div class="mt-2" dir="ltr">
                         <div class="input-group">
                             <div class="input-group-prepend rounded-0">
-                                <span style="width:40px;" class="input-group-text rounded-0"><i class="fab fa-facebook-f"></i></span>
+                                <span style="width:40px;" class="input-group-text rounded-0"><i
+                                        class="fab fa-facebook-f"></i></span>
                             </div>
-                            <input v-model.trim="models.social.facebook" placeholder="http://www.facebook.com/username" type="url" aria-label="رابط حساب فيسبوك" class="form-control rounded-0">
+                            <input v-model.trim="models.social.facebook" placeholder="http://www.facebook.com/username"
+                                   type="url" aria-label="رابط حساب فيسبوك" class="form-control rounded-0">
                         </div>
                     </div>
 
                     <div class="mt-2" dir="ltr">
                         <div class="input-group">
                             <div class="input-group-prepend rounded-0">
-                                <span style="width:40px;" class="input-group-text rounded-0"><i class="fab fa-twitter"></i></span>
+                                <span style="width:40px;" class="input-group-text rounded-0"><i
+                                        class="fab fa-twitter"></i></span>
                             </div>
-                            <input v-model.trim="models.social.twitter" placeholder="http://www.twitter.com/username" type="url" aria-label="رابط حساب تويتر" class="form-control rounded-0">
+                            <input v-model.trim="models.social.twitter" placeholder="http://www.twitter.com/username"
+                                   type="url" aria-label="رابط حساب تويتر" class="form-control rounded-0">
                         </div>
                     </div>
 
                     <div class="mt-2" dir="ltr">
                         <div class="input-group">
                             <div class="input-group-prepend rounded-0">
-                                <span style="width:40px;" class="input-group-text rounded-0"><i class="fab fa-snapchat"></i></span>
+                                <span style="width:40px;" class="input-group-text rounded-0"><i
+                                        class="fab fa-snapchat"></i></span>
                             </div>
-                            <input v-model.trim="models.social.snapchat" placeholder="http://www.snapchat.com/add/username" type="url" aria-label="رابط حساب سناب شات" class="form-control rounded-0">
+                            <input v-model.trim="models.social.snapchat"
+                                   placeholder="http://www.snapchat.com/add/username" type="url"
+                                   aria-label="رابط حساب سناب شات" class="form-control rounded-0">
                         </div>
                     </div>
 
                 </jilsati-fieldset>
 
                 <div class="mt-2">
-                    <button type="button" class="btn btn-success" @click="check(6)">حفظ ومتابعة</button>
+                    <button type="button" class="btn btn-success" @click="check(6)" :disabled="!stepJilsahConnectErr">حفظ ومتابعة</button>
                 </div>
             </div>
         </jilsati-step>
@@ -437,125 +461,409 @@
 
 <script>
     export default {
-        data : function () {
+        data: function () {
             return {
-                stepsInfo : [
-                    {id: 'jilsah-info', state : 'primary', disabled : false},
-                    {id: 'jilsah-times', state : 'secondary', disabled : true},
-                    {id: 'jilsah-options', state : 'secondary', disabled : true},
-                    {id: 'jilsah-location', state : 'secondary', disabled : true},
-                    {id: 'jilsah-price', state : 'secondary', disabled : false},
-                    {id: 'jilsah-photos', state : 'secondary', disabled : true},
-                    {id: 'jilsah-connect', state : 'secondary', disabled : false},
+                stepsInfo: [
+                    {id: 'jilsah-info', state: 'primary', disabled: false},
+                    {id: 'jilsah-times', state: 'secondary', disabled: true},
+                    {id: 'jilsah-options', state: 'secondary', disabled: true},
+                    {id: 'jilsah-location', state: 'secondary', disabled: true},
+                    {id: 'jilsah-price', state: 'secondary', disabled: true},
+                    {id: 'jilsah-photos', state: 'secondary', disabled: true},
+                    {id: 'jilsah-connect', state: 'secondary', disabled: true},
                 ],
 
-                timePeriods : [
+                timePeriods: [
                     'فترة الدراسة',
                     'فترة الاجازة',
                     'الاعياد',
                     'رمضان'
                 ],
 
-                chosenTimePeriods : {
-                    school : false,
-                    vacation : false,
-                    eid : false,
-                    ramadan : false
+                chosenTimePeriods: {
+                    school: false,
+                    vacation: false,
+                    eid: false,
+                    ramadan: false
                 },
 
-                jilsahShifts : {
-                    schoolWeekShifts : 1,
-                    schoolWeekendShifts : 1,
+                jilsahShifts: {
+                    schoolWeekShifts: 1,
+                    schoolWeekendShifts: 1,
 
-                    vacationWeekShifts : 1,
-                    vacationWeekendShifts : 1,
+                    vacationWeekShifts: 1,
+                    vacationWeekendShifts: 1,
 
-                    eidShifts : 1,
+                    eidShifts: 1,
 
-                    ramadanShifts : 1
+                    ramadanShifts: 1
                 },
 
-                models : {
-                    name : '',
-                    description : '',
-                    jilsahClients : [],
-                    jilsahType : [],
-                    options : [],
-                    city : '',
-                    mainImage : '/images/upload-your-jilsah.png',
-                    address : '',
-                    addressDetails : '',
-                    googleMapAddress : '',
-                    pricePer : '',
-                    prices : {
-                        schoolWeek : 0,
-                        schoolWeekend : 0,
-                        vacationWeek : 0,
-                        vacationWeekend : 0,
-                        eid : 0,
-                        ramadan : 0
+                models: {
+                    name: undefined,
+                    description: undefined,
+                    jilsahClients: [],
+                    jilsahType: [],
+                    options: [],
+                    city: undefined,
+                    mainImage: {name: 'upload-jilsah-image', src: '/images/upload-your-jilsah.png', org: true},
+                    address: undefined,
+                    addressDetails: undefined,
+                    googleMapAddress: undefined,
+                    pricePer: '',
+                    prices: {
+                        schoolWeek: undefined,
+                        schoolWeekend: undefined,
+                        vacationWeek: undefined,
+                        vacationWeekend: undefined,
+                        eid: undefined,
+                        ramadan: undefined
                     },
-                    jilsahImages : [],
-                    social : {
-                        phone : '',
-                        instagram : '',
-                        facebook : '',
-                        twitter : '',
-                        snapchat : ''
+                    jilsahImages: [],
+                    social: {
+                        phone: undefined,
+                        instagram: undefined,
+                        facebook: undefined,
+                        twitter: undefined,
+                        snapchat: undefined
                     }
                 },
 
-                cities : [],
+                cities: [],
 
                 /*****************/
 
-                jilsahImagesCounter : 0
+                jilsahImagesCounter: 0,
+
+                urlPattern : new RegExp('^(https?:\\/\\/)?'+ // protocol
+                    '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
+                    '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
+                    '(\\:\\d+)?(\\/[-a-z\\d%_.~+]*)*'+ // port and path
+                    '(\\?[;&a-z\\d%_.~+=-]*)?'+ // query string
+                    '(\\#[-a-z\\d_]*)?$','i') // fragment locator
             }
         },
 
-        methods : {
-            check : function (step) {
+        methods: {
+            check: function (step) {
                 // to make the reactivity works
-                Vue.set(this.stepsInfo[step],'state', 'success');
+                Vue.set(this.stepsInfo[step], 'state', 'success');
 
                 let vue = this;
 
-                let jilsahStep = $('#'+this.stepsInfo[step].id);
+                let jilsahStep = $('#' + this.stepsInfo[step].id);
 
                 jilsahStep.collapse('hide');
 
                 // make disabled to false so 'v-if' will be true
                 // and step body content will appear
                 // so the collapse show animation will be good
-                if(step + 1 < vue.stepsInfo.length) {
+                if (step + 1 < vue.stepsInfo.length) {
                     Vue.set(vue.stepsInfo[step + 1], 'disabled', false);
                 }
 
                 // execute the code after the collapse event has finished
                 // add the listener only once using -> one()
-                jilsahStep.one('hidden.bs.collapse',function () {
-                    if(step + 1 < vue.stepsInfo.length){
-                        Vue.set(vue.stepsInfo[step+1],'state', 'primary');
+                jilsahStep.one('hidden.bs.collapse', function () {
+                    if (step + 1 < vue.stepsInfo.length) {
+                        Vue.set(vue.stepsInfo[step + 1], 'state', 'primary');
 
-                        $('#'+vue.stepsInfo[step+1].id).collapse('show');
+                        $('#' + vue.stepsInfo[step + 1].id).collapse('show');
                     }
                 });
             },
 
-            handleMainImageChanged : function (file) {
-                this.models.mainImage = file.src;
+            handleMainImageChanged: function (file) {
+                this.models.mainImage = file;
             },
 
-            handleAddNewJilsahImage : function(file){
-                this.models.jilsahImages.push({index : this.jilsahImagesCounter,name:file.name,src: file.src});
+            handleAddNewJilsahImage: function (file) {
+                this.models.jilsahImages.push({index: this.jilsahImagesCounter, name: file.name, src: file.src});
 
                 this.jilsahImagesCounter++;
             },
 
-            removeJilsahImage : function (index) {
+            removeJilsahImage: function (index) {
                 this.models.jilsahImages = this.models.jilsahImages.filter(img => img.index !== index);
+            },
 
-                console.log(index)
+            validateModelText: function (model) {
+                if (model === undefined) {
+                    return ''
+                } else if (!model) {
+                    return 'is-invalid'
+                } else {
+                    return 'is-valid'
+                }
+            },
+
+            validateModelNumber: function (model) {
+                if (model === undefined) {
+                    return ''
+                } else if (!model || isNaN(model) || model < 0) {
+                    return 'is-invalid'
+                } else {
+                    return 'is-valid'
+                }
+            }
+        },
+
+        computed: {
+            /****INFO STEP****/
+
+            nameErr: function () {
+                return this.validateModelText(this.models.name);
+            },
+            descriptionErr: function () {
+                return this.validateModelText(this.models.description);
+            },
+            stepJilsahInfoErr: function () {
+                if (this.nameErr === 'is-valid' && this.descriptionErr === 'is-valid')
+                    return true;
+                else if (this.nameErr === 'is-invalid' || this.descriptionErr === 'is-invalid')
+                    return false;
+                else
+                    return undefined;
+            },
+
+            /****TIMES STEP****/
+
+            stepJilsahTimesErr: function () {
+                return this.chosenTimePeriods.school || this.chosenTimePeriods.vacation || this.chosenTimePeriods.eid || this.chosenTimePeriods.ramadan;
+            },
+
+            /****OPTIONS STEP****/
+
+            jilsahClientsErr: function () {
+                if (this.models.jilsahClients.length) { // if not empty
+                    return '';
+                } else {
+                    return 'border-danger text-danger';
+                }
+            },
+
+            jilsahTypeErr: function () {
+                if (this.models.jilsahType.length) { // if not empty
+                    return '';
+                } else {
+                    return 'border-danger text-danger';
+                }
+            },
+
+            stepJilsahOptionsErr: function () {
+                if (this.jilsahClientsErr === '' && this.jilsahTypeErr === '')
+                    return true;
+                else if (this.jilsahClientsErr === 'border-danger text-danger' || this.jilsahTypeErr === 'border-danger text-danger')
+                    return false;
+                else
+                    return undefined;
+            },
+
+            /****LOCATION STEP****/
+
+            cityErr: function () {
+                return this.validateModelText(this.models.city);
+            },
+
+            addressErr: function () {
+                return this.validateModelText(this.models.address);
+            },
+
+            stepJilsahLocationErr: function () {
+                if (this.cityErr === 'is-valid' && this.addressErr === 'is-valid')
+                    return true;
+                else if (this.cityErr === 'is-invalid' || this.addressErr === 'is-invalid')
+                    return false;
+                else
+                    return undefined;
+            },
+
+            /****PRICES STEP****/
+
+            schoolWeekPriceErr: function () {
+                if (!this.chosenTimePeriods.school) {
+                    return 'is-valid'
+                } else {
+                    return this.validateModelNumber(this.models.prices.schoolWeek);
+                }
+            },
+
+            schoolWeekendPriceErr: function () {
+                if (!this.chosenTimePeriods.school) {
+                    return 'is-valid'
+                } else {
+                    return this.validateModelNumber(this.models.prices.schoolWeekend);
+                }
+            },
+
+            vacationWeekPriceErr: function () {
+                if (!this.chosenTimePeriods.vacation) {
+                    return 'is-valid'
+                } else {
+                    return this.validateModelNumber(this.models.prices.vacationWeek);
+                }
+            },
+
+            vacationWeekendPriceErr: function () {
+                if (!this.chosenTimePeriods.vacation) {
+                    return 'is-valid'
+                } else {
+                    return this.validateModelNumber(this.models.prices.vacationWeekend);
+                }
+            },
+
+            eidPriceErr: function () {
+                if (!this.chosenTimePeriods.eid) {
+                    return 'is-valid'
+                } else {
+                    return this.validateModelNumber(this.models.prices.eid);
+                }
+            },
+
+            ramadanPriceErr: function () {
+                if (!this.chosenTimePeriods.ramadan) {
+                    return 'is-valid'
+                } else {
+                    return this.validateModelNumber(this.models.prices.ramadan);
+                }
+            },
+
+            stepJilsahPricesErr: function () {
+                if (this.schoolWeekPriceErr === 'is-valid'
+                    && this.schoolWeekendPriceErr === 'is-valid'
+                    && this.vacationWeekPriceErr === 'is-valid'
+                    && this.vacationWeekendPriceErr === 'is-valid'
+                    && this.eidPriceErr === 'is-valid'
+                    && this.ramadanPriceErr === 'is-valid')
+                    return true;
+                else if (this.schoolWeekPriceErr === 'is-invalid'
+                    || this.schoolWeekendPriceErr === 'is-invalid'
+                    || this.vacationWeekPriceErr === 'is-invalid'
+                    || this.vacationWeekendPriceErr === 'is-invalid'
+                    || this.eidPriceErr === 'is-invalid'
+                    || this.ramadanPriceErr === 'is-invalid')
+                    return false;
+                else
+                    return undefined;
+            },
+
+            /****IMAGES STEP****/
+
+            mainImageErr: function () {
+                if (this.models.mainImage.org) {
+                    return 'is-invalid'
+                } else {
+                    return 'is-valid'
+                }
+            },
+
+            stepJilsahImagesErr: function () {
+                return this.mainImageErr === 'is-valid';
+            },
+
+            /****CONNECT STEP****/
+
+            phoneErr: function () {
+                if (this.models.social.phone === undefined) {
+                    return '';
+                } else if (this.models.social.phone.startsWith('05')
+                    && this.models.social.phone.length === 10
+                    && !isNaN(this.models.social.phone)
+                    && this.models.social.phone.search(/[.+\-]/) === -1) {
+                    return 'is-valid'
+                } else {
+                    return 'is-invalid';
+                }
+            },
+
+            stepJilsahConnectErr : function () {
+                if(this.phoneErr === 'is-valid'){
+                    return true;
+                }else if(this.phoneErr === 'is-invalid'){
+                    return false;
+                }else{
+                    return undefined;
+                }
+            }
+        },
+
+        watch: {
+            stepJilsahInfoErr: function (v) {
+                if (v !== undefined) {
+                    if (v) {
+                        this.stepsInfo[0].state = 'success';
+                    } else {
+                        this.stepsInfo[0].state = 'danger';
+                    }
+                } else {
+                    this.stepsInfo[0].state = 'primary';
+                }
+            },
+
+            stepJilsahTimesErr: function (v) {
+                if (v) {
+                    this.stepsInfo[1].state = 'success';
+                } else {
+                    this.stepsInfo[1].state = 'danger';
+                }
+            },
+
+            stepJilsahOptionsErr: function (v) {
+                if (v !== undefined) {
+                    if (v) {
+                        this.stepsInfo[2].state = 'success';
+                    } else {
+                        this.stepsInfo[2].state = 'danger';
+                    }
+                } else {
+                    this.stepsInfo[2].state = 'primary';
+                }
+            },
+
+            stepJilsahLocationErr: function (v) {
+                if (v !== undefined) {
+                    if (v) {
+                        this.stepsInfo[3].state = 'success';
+                    } else {
+                        this.stepsInfo[3].state = 'danger';
+                    }
+                } else {
+                    this.stepsInfo[3].state = 'primary';
+                }
+            },
+
+            stepJilsahPricesErr: function (v) {
+                if (this.stepsInfo[4].disabled) {
+                    return;
+                }
+
+                if (v !== undefined) {
+
+                    if (v) {
+                        this.stepsInfo[4].state = 'success';
+                    } else {
+                        this.stepsInfo[4].state = 'danger';
+                    }
+                } else {
+                    this.stepsInfo[4].state = 'primary';
+                }
+            },
+
+            stepJilsahConnectErr : function (v) {
+                if (this.stepsInfo[6].disabled) {
+                    return;
+                }
+
+                if (v !== undefined) {
+
+                    if (v) {
+                        this.stepsInfo[6].state = 'success';
+                    } else {
+                        this.stepsInfo[6].state = 'danger';
+                    }
+                } else {
+                    this.stepsInfo[6].state = 'primary';
+                }
             }
         },
 
@@ -564,8 +872,8 @@
                 .then(res => {
                     this.cities = res.data;
                 }).catch(err => {
-                    console.log(err)
-                });
+                console.log(err)
+            });
         }
     }
 </script>
