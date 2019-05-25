@@ -15,7 +15,11 @@ class CreateJilsahTypesTable extends Migration
     {
         Schema::create('jilsah_types', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->unsignedBigInteger('jilsah_id');
+            $table->string('name');
             $table->timestamps();
+
+            $table->foreign('jilsah_id')->references('id')->on('jilsahs')->onDelete('cascade');
         });
     }
 

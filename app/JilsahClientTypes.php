@@ -4,12 +4,12 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class JilsahPrices extends Model
+class JilsahClientTypes extends Model
 {
-    protected $table = 'jilsahs_prices';
+    protected $table = 'jilsah_client_types';
 
     protected $fillable = [
-        'school_week','school_weekend','vacation_week','vacation_weekend','eid','ramadan'
+      'name', 'jilsah_id'
     ];
 
     function jilsah(){

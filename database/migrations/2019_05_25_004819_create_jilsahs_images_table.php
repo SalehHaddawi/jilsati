@@ -13,16 +13,16 @@ class CreateJilsahsImagesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('jilsahs_images')) {
-            Schema::create('jilsahs_images', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->unsignedBigInteger('jilsah_id');
-                $table->timestamps();
+        Schema::create('jilsahs_images', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('jilsah_id');
+            $table->string('src');
+            $table->timestamps();
 
-                $table->foreign('jilsah_id')->references('id')->on('jilsahs')->onDelete('cascade');
+            $table->foreign('jilsah_id')->references('id')->on('jilsahs')->onDelete('cascade');
 
-            });
-        }
+        });
+
     }
 
     /**

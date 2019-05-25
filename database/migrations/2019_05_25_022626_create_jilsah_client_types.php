@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateJilsahsOptionsTable extends Migration
+class CreateJilsahClientTypes extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateJilsahsOptionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('jilsahs_options', function (Blueprint $table) {
+        Schema::create('jilsah_client_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->unsignedBigInteger('jilsah_id');
             $table->string('name');
@@ -21,7 +21,6 @@ class CreateJilsahsOptionsTable extends Migration
 
             $table->foreign('jilsah_id')->references('id')->on('jilsahs')->onDelete('cascade');
         });
-
     }
 
     /**
@@ -31,6 +30,6 @@ class CreateJilsahsOptionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('jilsahs_options');
+        Schema::dropIfExists('jilsah_client_types');
     }
 }

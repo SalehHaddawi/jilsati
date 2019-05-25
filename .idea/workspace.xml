@@ -2,17 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863277c5-237f-4abb-b85c-41037fadc229" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/jilsati.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jilsati.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/City.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/City.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/ClientType.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Jilsah.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jilsah.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Providers/TelescopeServiceProvider.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_16_104643_create_cities_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_16_104643_create_cities_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JilsahImages.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JilsahImages.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JilsahLocation.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JilsahLocation.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JilsahOptions.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JilsahOptions.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JilsahPrices.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JilsahPrices.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JilsahSocials.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/JilsahSocials.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/JilsahType.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_25_001556_create_jilsahs_options_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_25_001556_create_jilsahs_options_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_25_004819_create_jilsahs_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_25_004819_create_jilsahs_images_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_25_021048_create_jilsah_types_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_25_021048_create_jilsah_types_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -28,11 +30,92 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004727_create_jilsahs_locations_table.php">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/City.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+            <state relative-caret-position="330">
+              <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Jilsah.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-220">
+              <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/JilsahClientTypes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="16" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/JilsahImages.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="352">
+              <caret line="16" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="16" selection-end-column="5" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/JilsahLocation.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="418">
+              <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/JilsahOptions.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/JilsahPrices.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/JilsahSocials.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="264">
+              <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/JilsahTypes.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="242">
+              <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/User.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="460">
+              <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
             </state>
           </provider>
         </entry>
@@ -88,21 +171,10 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-add-jilsah-collapse.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-istraha-props.vue" />
-        <option value="$PROJECT_DIR$/public/css/tempusdominus-bootstrap-4.min.css" />
-        <option value="$PROJECT_DIR$/public/js/moment.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-date-time-picker.vue" />
-        <option value="$PROJECT_DIR$/resources/views/layouts/layout.blade.php" />
-        <option value="$PROJECT_DIR$/public/js/tempusdominus-bootstrap-4.min.js" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-time-period-select.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-fieldset.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-step.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-filechooser.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-city-search.vue" />
         <option value="$PROJECT_DIR$/app/Exceptions/Handler.php" />
         <option value="$PROJECT_DIR$/resources/views/auth/login.blade.php" />
-        <option value="$PROJECT_DIR$/app/City.php" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/JilsahController.php" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-select.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/IndexController.php" />
@@ -127,18 +199,29 @@
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" />
         <option value="$PROJECT_DIR$/app/User.php" />
-        <option value="$PROJECT_DIR$/app/Jilsah.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_25_005553_create_jilsahs_times_table.php" />
         <option value="$PROJECT_DIR$/config/app.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_16_104643_create_cities_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_24_235535_create_client_types_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_001556_create_jilsahs_options_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_25_001646_create_jilsah_types_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004650_create_jilsahs_prices_table.php" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004819_create_jilsahs_images_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004901_create_jilsahs_socials_table.php" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004727_create_jilsahs_locations_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_021048_create_jilsah_types_table.php" />
+        <option value="$PROJECT_DIR$/app/ClientType.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_022626_create_jilsah_client_types.php" />
+        <option value="$PROJECT_DIR$/app/JilsahClientTypes.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004819_create_jilsahs_images_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_001556_create_jilsahs_options_table.php" />
+        <option value="$PROJECT_DIR$/app/JilsahSocials.php" />
+        <option value="$PROJECT_DIR$/app/JilsahTypes.php" />
+        <option value="$PROJECT_DIR$/app/Jilsah.php" />
+        <option value="$PROJECT_DIR$/app/JilsahImages.php" />
+        <option value="$PROJECT_DIR$/app/City.php" />
+        <option value="$PROJECT_DIR$/app/JilsahLocation.php" />
+        <option value="$PROJECT_DIR$/app/JilsahOptions.php" />
+        <option value="$PROJECT_DIR$/app/JilsahPrices.php" />
       </list>
     </option>
   </component>
@@ -244,6 +327,11 @@
             <path>
               <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
               <item name="jilsati" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
+              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
@@ -366,12 +454,12 @@
       <workItem from="1558523131246" duration="34553000" />
       <workItem from="1558606548757" duration="37328000" />
       <workItem from="1558692498237" duration="20201000" />
-      <workItem from="1558725679019" duration="20789000" />
+      <workItem from="1558725679019" duration="23394000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="342219000" />
+    <option name="totallyTimeSpent" value="344824000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -386,7 +474,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28389263" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.26778522" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -453,76 +541,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/node_modules/ekko-lightbox/examples/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-5104" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/ekko-lightbox/dist/ekko-lightbox.min.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/ekko-lightbox/dist/ekko-lightbox.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="24" selection-start-line="14" selection-start-column="24" selection-end-line="14" selection-end-column="24" />
-          <folding>
-            <element signature="n#!!doc" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/ekko-lightbox.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="125" column="18" selection-start-line="125" selection-start-column="18" selection-end-line="125" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/css/custom.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="38" column="41" selection-start-line="38" selection-start-column="41" selection-end-line="38" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.env.example">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-419" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/artisan">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-640" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.gitignore">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/readme.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="-1074" />
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/jilsah/create.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="660">
-          <caret line="30" column="29" selection-start-line="30" selection-start-column="29" selection-end-line="30" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-radio.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="792">
-          <caret line="36" selection-start-line="36" selection-end-line="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1854">
@@ -860,20 +878,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="548">
-          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Jilsah.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_005114_jilsah_images.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
@@ -1007,45 +1011,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="228">
-          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_001556_create_jilsahs_options_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_001646_create_jilsah_types_table.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="242">
           <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004650_create_jilsahs_prices_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004819_create_jilsahs_images_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004901_create_jilsahs_socials_table.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
         </state>
       </provider>
     </entry>
@@ -1058,8 +1027,141 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004727_create_jilsahs_locations_table.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        <state relative-caret-position="418">
+          <caret line="26" column="32" lean-forward="true" selection-start-line="26" selection-end-line="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_022626_create_jilsah_client_types.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="308">
+          <caret line="18" column="35" selection-start-line="18" selection-start-column="35" selection-end-line="18" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/ClientType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="24" lean-forward="true" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JilsahType.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="206">
+          <caret line="17" column="44" lean-forward="true" selection-start-line="17" selection-start-column="44" selection-end-line="18" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004819_create_jilsahs_images_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_001556_create_jilsahs_options_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="14" column="5" lean-forward="true" selection-start-line="14" selection-start-column="5" selection-end-line="14" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004650_create_jilsahs_prices_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="23" column="44" selection-start-line="23" selection-start-column="41" selection-end-line="23" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004901_create_jilsahs_socials_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="32" selection-end-line="20" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_021048_create_jilsah_types_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="23" column="5" lean-forward="true" selection-start-line="23" selection-start-column="5" selection-end-line="23" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/City.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="15" column="67" selection-start-line="15" selection-start-column="67" selection-end-line="15" selection-end-column="67" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Jilsah.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-220">
+          <caret line="11" column="6" selection-start-line="11" selection-start-column="6" selection-end-line="11" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JilsahClientTypes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JilsahImages.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="352">
+          <caret line="16" column="5" lean-forward="true" selection-start-line="14" selection-start-column="4" selection-end-line="16" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JilsahLocation.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="418">
+          <caret line="19" column="32" selection-start-line="19" selection-start-column="32" selection-end-line="19" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JilsahOptions.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="9" selection-start-line="11" selection-start-column="9" selection-end-line="11" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JilsahPrices.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="8" selection-start-line="11" selection-start-column="8" selection-end-line="11" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JilsahSocials.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="264">
+          <caret line="12" column="6" lean-forward="true" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/JilsahTypes.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="11" column="13" selection-start-line="11" selection-start-column="13" selection-end-line="11" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="460">
+          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
         </state>
       </provider>
     </entry>
