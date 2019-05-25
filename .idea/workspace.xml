@@ -2,15 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863277c5-237f-4abb-b85c-41037fadc229" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/slooh.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/slooh.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jilsati.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jilsati.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-checkbox.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-checkbox.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-time-picker.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Jilsah.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jilsah.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/TelescopeServiceProvider.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_16_104643_create_cities_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_16_104643_create_cities_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,317 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="154">
-              <caret line="552" lean-forward="true" selection-start-line="552" selection-end-line="552" />
-              <folding>
-                <element signature="n#template#0;n#!!top" />
-                <element signature="n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#small#0;n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#textarea#0;n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#small#0;n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#button#0;n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#p#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-checkbox#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-checkbox#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-checkbox#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#2;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#jilsati-fieldset#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#p#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-checkbox#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-checkbox#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-checkbox#0;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-checkbox#13;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-checkbox#14;n#jilsati-fieldset#2;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#2;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-select#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#small#0;n#div#0;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#small#0;n#div#1;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#small#0;n#div#2;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#button#0;n#div#3;n#div#0;n#jilsati-step#3;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#p#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-radio#0;n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-radio#1;n#div#0;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#1;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#2;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#3;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#4;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#5;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#button#0;n#div#5;n#div#0;n#jilsati-step#4;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-file-chooser#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-alert#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-card-show#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-alert#0;n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-file-chooser#0;n#div#0;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#a#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#button#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#button#0;n#div#0;n#div#1;n#jilsati-fieldset#1;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#button#0;n#div#0;n#div#0;n#jilsati-step#5;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#0;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#1;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#2;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#i#0;n#span#0;n#div#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#input#0;n#div#0;n#div#3;n#jilsati-fieldset#0;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#1;n#div#0;n#jilsati-step#6;n#div#0;n#template#0;n#!!top" />
-                <element signature="e#25231#27876#0" />
-                <element signature="e#27261#30296#0" />
-                <element signature="e#25282#25867#0" />
-                <element signature="e#25900#26050#0" />
-                <element signature="e#26089#26251#0" />
-                <element signature="e#26285#26558#0" />
-                <element signature="e#26586#27743#0" />
-                <element signature="e#27131#27441#0" />
-                <element signature="e#29471#29687#0" />
-                <element signature="e#27792#27811#0" />
-                <element signature="e#28213#28261#0" />
-                <element signature="e#28430#28522#0" />
-                <element signature="e#28540#28597#0" />
-                <element signature="e#28723#28971#0" />
-                <element signature="e#28780#28953#0" />
-                <element signature="e#29043#29104#0" />
-                <element signature="e#29159#29331#0" />
-                <element signature="e#29383#29502#0" />
-                <element signature="e#29554#29793#0" />
-                <element signature="e#29595#29644#0" />
-                <element signature="e#29659#29718#0" />
-                <element signature="e#29722#29779#0" />
-                <element signature="e#29847#30115#0" />
-                <element signature="e#29888#29937#0" />
-                <element signature="e#29981#30040#0" />
-                <element signature="e#30044#30101#0" />
-                <element signature="e#29539#35830#0" />
-                <element signature="e#30161#30180#0" />
-                <element signature="e#30216#30296#0" />
-                <element signature="e#30338#30425#0" />
-                <element signature="e#30471#30793#0" />
-                <element signature="e#30808#30828#0" />
-                <element signature="e#30875#31043#0" />
-                <element signature="e#31058#31080#0" />
-                <element signature="e#31125#31339#0" />
-                <element signature="e#31179#31245#0" />
-                <element signature="e#31250#31325#0" />
-                <element signature="e#31382#31593#0" />
-                <element signature="e#31433#31499#0" />
-                <element signature="e#31504#31579#0" />
-                <element signature="e#31643#31995#0" />
-                <element signature="e#32010#32033#0" />
-                <element signature="e#32069#32149#0" />
-                <element signature="e#32189#32272#0" />
-                <element signature="e#32323#32637#0" />
-                <element signature="e#32652#32673#0" />
-                <element signature="e#32720#32950#0" />
-                <element signature="e#32772#32829#0" />
-                <element signature="e#32833#32936#0" />
-                <element signature="e#33001#33234#0" />
-                <element signature="e#33053#33110#0" />
-                <element signature="e#33114#33220#0" />
-                <element signature="e#33284#33518#0" />
-                <element signature="e#33338#33395#0" />
-                <element signature="e#33399#33504#0" />
-                <element signature="e#33571#33808#0" />
-                <element signature="e#33625#33682#0" />
-                <element signature="e#33686#33794#0" />
-                <element signature="e#33849#34069#0" />
-                <element signature="e#33898#33955#0" />
-                <element signature="e#33959#34055#0" />
-                <element signature="e#34114#34342#0" />
-                <element signature="e#34167#34224#0" />
-                <element signature="e#34228#34328#0" />
-                <element signature="e#34389#35285#0" />
-                <element signature="e#35300#35321#0" />
-                <element signature="e#35362#35544#0" />
-                <element signature="e#35409#35468#0" />
-                <element signature="e#35473#35530#0" />
-                <element signature="e#35585#35657#0" />
-                <element signature="e#35690#35711#0" />
-                <element signature="e#35155#35501#0" />
-                <element signature="e#35809#35849#0" />
-                <element signature="e#35364#35421#0" />
-                <element signature="e#35427#35487#0" />
-                <element signature="e#35551#35820#0" />
-                <element signature="e#35601#35653#0" />
-                <element signature="e#35692#35745#0" />
-                <element signature="e#35749#35806#0" />
-                <element signature="e#35848#38344#0" />
-                <element signature="e#35894#36249#0" />
-                <element signature="e#35933#36153#0" />
-                <element signature="e#35962#36046#0" />
-                <element signature="e#36052#36135#0" />
-                <element signature="e#35877#35953#0" />
-                <element signature="e#36016#36208#0" />
-                <element signature="e#36039#36115#0" />
-                <element signature="e#36119#36194#0" />
-                <element signature="e#36259#36606#0" />
-                <element signature="e#36296#36512#0" />
-                <element signature="e#36323#36407#0" />
-                <element signature="e#36411#36494#0" />
-                <element signature="e#36516#36592#0" />
-                <element signature="e#36658#37005#0" />
-                <element signature="e#36695#36911#0" />
-                <element signature="e#36722#36806#0" />
-                <element signature="e#36810#36893#0" />
-                <element signature="e#36915#36991#0" />
-                <element signature="e#37055#37510#0" />
-                <element signature="e#37549#37604#0" />
-                <element signature="e#37092#37416#0" />
-                <element signature="e#37227#37311#0" />
-                <element signature="e#37315#37398#0" />
-                <element signature="e#37420#37496#0" />
-                <element signature="e#40217#40249#0" />
-                <element signature="e#38053#38108#0" />
-                <element signature="e#40257#40587#0" />
-                <element signature="e#40396#40480#0" />
-                <element signature="e#40486#40569#0" />
-                <element signature="e#40593#40669#0" />
-                <element signature="e#37542#37761#0" />
-                <element signature="e#37615#37678#0" />
-                <element signature="e#37693#37749#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php">
+        <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004727_create_jilsahs_locations_table.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="26" column="14" selection-start-line="26" selection-start-column="14" selection-end-line="26" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-shifts.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-126">
-              <caret line="11" column="40" selection-start-line="11" selection-start-column="40" selection-end-line="11" selection-end-column="40" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="946">
-              <caret line="43" column="26" selection-start-line="43" selection-start-column="26" selection-end-line="43" selection-end-column="26" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="88">
-              <caret line="4" column="71" selection-start-line="4" selection-start-column="71" selection-end-line="4" selection-end-column="71" />
+            <state relative-caret-position="374">
+              <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -345,7 +41,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>glyph</find>
       <find>font</find>
       <find>font-family-sans-serif</find>
       <find>رابغ</find>
@@ -375,6 +70,7 @@
       <find>مثال: سعر خاص للمجموعات</find>
       <find>serial</find>
       <find>ايــام الاسبوع</find>
+      <find>teles</find>
     </findStrings>
     <replaceStrings>
       <replace>istraha</replace>
@@ -392,19 +88,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-alert.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-istraha-jilsah-props.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-jilsah-istraha-props.vue" />
-        <option value="$PROJECT_DIR$/database/migrations/2019_05_16_104643_create_cities_table.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" />
-        <option value="$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" />
-        <option value="$PROJECT_DIR$/resources/views/auth/register.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-carousel.vue" />
-        <option value="$PROJECT_DIR$/resources/views/jilsah/show.blade.php" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-nav.vue" />
-        <option value="$PROJECT_DIR$/resources/js/components/jilsati-collapse.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-add-jilsah-collapse.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-istraha-props.vue" />
         <option value="$PROJECT_DIR$/public/css/tempusdominus-bootstrap-4.min.css" />
@@ -443,6 +126,19 @@
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" />
+        <option value="$PROJECT_DIR$/app/User.php" />
+        <option value="$PROJECT_DIR$/app/Jilsah.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_005553_create_jilsahs_times_table.php" />
+        <option value="$PROJECT_DIR$/config/app.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_16_104643_create_cities_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_24_235535_create_client_types_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_001556_create_jilsahs_options_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_001646_create_jilsah_types_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004650_create_jilsahs_prices_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004819_create_jilsahs_images_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004901_create_jilsahs_socials_table.php" />
+        <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004727_create_jilsahs_locations_table.php" />
       </list>
     </option>
   </component>
@@ -528,14 +224,12 @@
       <path value="$PROJECT_DIR$/vendor/paragonie/random_compat" />
       <path value="$PROJECT_DIR$/vendor/phpspec/prophecy" />
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
-      <path value="$PROJECT_DIR$/vendor/moontoast/math" />
-      <path value="$PROJECT_DIR$/vendor/laravel/telescope" />
     </include_path>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-10" />
-    <option name="width" value="980" />
-    <option name="height" value="1040" />
+    <option name="x" value="-8" />
+    <option name="width" value="1309" />
+    <option name="height" value="1038" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -672,12 +366,12 @@
       <workItem from="1558523131246" duration="34553000" />
       <workItem from="1558606548757" duration="37328000" />
       <workItem from="1558692498237" duration="20201000" />
-      <workItem from="1558725679019" duration="10422000" />
+      <workItem from="1558725679019" duration="20789000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="331852000" />
+    <option name="totallyTimeSpent" value="342219000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -692,7 +386,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18120806" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.28389263" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -759,170 +453,6 @@
     </option>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/resources/views/auth/login.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="14" column="47" selection-start-line="14" selection-start-column="47" selection-end-line="14" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/sass/sass.dart.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="22">
-          <caret line="5244" column="11" selection-start-line="5244" selection-start-column="11" selection-end-line="5244" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-fieldset.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="2" column="62" selection-start-line="2" selection-start-column="62" selection-end-line="2" selection-end-column="62" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/storage/logs/laravel-2019-05-21.log">
-      <provider selected="true" editor-type-id="LogFileEditorProvider">
-        <state relative-caret-position="-4772" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-352">
-          <caret line="8" column="6" selection-start-line="8" selection-start-column="6" selection-end-line="8" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/City.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="176">
-          <caret line="8" column="32" selection-start-line="8" selection-start-column="32" selection-end-line="8" selection-end-column="32" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Jilsah.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="132">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/JilsahController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="93" column="46" selection-start-line="93" selection-start-column="46" selection-end-line="93" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/public/js/googleapis.maps.api.js" />
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/IndexController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="10" column="46" selection-start-line="10" selection-start-column="46" selection-end-line="10" selection-end-column="46" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-select.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="220">
-          <caret line="10" column="45" selection-start-line="10" selection-start-column="33" selection-end-line="10" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-city-search.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/routes/web.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="29" column="2" selection-start-line="29" selection-start-column="2" selection-end-line="29" selection-end-column="2" />
-          <folding>
-            <element signature="e#391#427#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/layouts/layout.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-198">
-          <caret line="15" column="23" selection-start-line="15" selection-start-column="23" selection-end-line="15" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-navbar.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="4" column="17" selection-start-line="4" selection-start-column="17" selection-end-line="4" selection-end-column="17" />
-          <folding>
-            <element signature="n#style#0;n#a#0;n#li#0;n#ul#0;n#div#0;n#nav#0;n#template#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-test.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="12" column="24" selection-start-line="12" selection-start-column="24" selection-end-line="12" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/index.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="12" column="59" selection-start-line="12" selection-start-column="59" selection-end-line="12" selection-end-column="59" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-card.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="88">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue/types/options.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="183">
-          <caret line="108" column="2" selection-start-line="108" selection-start-column="2" selection-end-line="108" selection-end-column="2" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="17977" column="12" selection-start-line="17977" selection-start-column="12" selection-end-line="17977" selection-end-column="12" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/node_modules/vue-star-rating/dist/star-rating.min.js" />
-    <entry file="file://$PROJECT_DIR$/node_modules/vue-star-rating/src/index.js" />
-    <entry file="file://$PROJECT_DIR$/node_modules/vue-star-rating/src/star.vue" />
-    <entry file="file://$PROJECT_DIR$/node_modules/vue-star-rating/src/star-rating.vue" />
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/svg11/svg-basic-filter.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="258" column="16" selection-start-line="258" selection-start-column="16" selection-end-line="258" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/svg11/svg-shape.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="227">
-          <caret line="201" column="22" selection-start-line="201" selection-start-column="22" selection-end-line="201" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/star.vue">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="15" selection-start-line="15" selection-end-line="15" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/components/easy-lightbox.vue" />
     <entry file="file://$PROJECT_DIR$/node_modules/ekko-lightbox/examples/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-5104" />
@@ -1065,7 +595,7 @@
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="154">
-          <caret line="552" lean-forward="true" selection-start-line="552" selection-end-line="552" />
+          <caret line="552" selection-start-line="552" selection-end-line="552" />
           <folding>
             <element signature="n#template#0;n#!!top" />
             <element signature="n#div#0;n#template#0;n#!!top" />
@@ -1330,10 +860,206 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php">
+    <entry file="file://$PROJECT_DIR$/app/User.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="548">
+          <caret line="40" column="56" selection-start-line="40" selection-start-column="56" selection-end-line="40" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Jilsah.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="10" column="20" selection-start-line="10" selection-start-column="20" selection-end-line="10" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_005114_jilsah_images.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="88">
           <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_005553_create_jilsahs_times_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="16" column="40" lean-forward="true" selection-start-line="16" selection-start-column="40" selection-end-line="16" selection-end-column="40" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/TelescopeServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-638">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/Authenticate.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/CheckForMaintenanceMode.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/EncryptCookies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/RedirectIfAuthenticated.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/TrimStrings.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/TrustProxies.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Middleware/VerifyCsrfToken.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="132">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="28" column="9" selection-start-line="28" selection-start-column="9" selection-end-line="28" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/AppServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-190">
+          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/AuthServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-212">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/BroadcastServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-14">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/EventServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-256">
+          <caret line="9" column="6" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Providers/RouteServiceProvider.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1158">
+          <caret line="7" column="6" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/app.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="175" selection-start-line="175" selection-end-line="175" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/vendor/laravel/framework/src/Illuminate/Database/Migrations/Migrator.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="142">
+          <caret line="445" selection-start-line="445" selection-end-line="445" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_24_235535_create_client_types_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="440">
+          <caret line="22" column="9" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="22" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_24_230302_create_jilsah_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="228">
+          <caret line="18" column="43" selection-start-line="18" selection-start-column="43" selection-end-line="18" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_001556_create_jilsahs_options_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_001646_create_jilsah_types_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="242">
+          <caret line="18" column="16" lean-forward="true" selection-start-line="18" selection-start-column="16" selection-end-line="18" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004650_create_jilsahs_prices_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="18" column="56" selection-start-line="18" selection-start-column="56" selection-end-line="18" selection-end-column="56" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004819_create_jilsahs_images_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="338">
+          <caret line="21" column="16" selection-start-line="21" selection-start-column="16" selection-end-line="21" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004901_create_jilsahs_socials_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="22" column="31" selection-start-line="22" selection-start-column="31" selection-end-line="22" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_16_104643_create_cities_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="286">
+          <caret line="15" column="42" lean-forward="true" selection-start-line="15" selection-start-column="8" selection-end-line="15" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/database/migrations/2019_05_25_004727_create_jilsahs_locations_table.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="19" column="42" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
         </state>
       </provider>
     </entry>

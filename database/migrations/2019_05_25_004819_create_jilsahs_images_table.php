@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCitiesTable extends Migration
+class CreateJilsahsImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,14 @@ class CreateCitiesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('cities')) {
-            Schema::create('cities', function (Blueprint $table) {
+        if (!Schema::hasTable('jilsahs_images')) {
+            Schema::create('jilsahs_images', function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->string('name');
+                $table->unsignedBigInteger('jilsah_id');
                 $table->timestamps();
+
+                $table->foreign('jilsah_id')->references('id')->on('jilsahs')->onDelete('cascade');
+
             });
         }
     }
@@ -29,6 +32,6 @@ class CreateCitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cities');
+        Schema::dropIfExists('jilsahs_images');
     }
 }
