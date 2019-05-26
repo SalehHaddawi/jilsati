@@ -74,81 +74,54 @@ class JilsahController extends Controller
 
             DB::transaction(function() use ($request) {
 
-                $jilsah = new Jilsah();
-                $jilsah->user_id = auth()->id();
-                $jilsah->name = $request->get('name');
-                $jilsah->description = $request->get('description');
-                $jilsah->times = $request->get('times');
-                $jilsah->main_image = '';
+                $jilsah = Jilsah::create($request);
 
                 $jilsah->save();
 
                 /**SAVE Jilsah Client Types TO DB**/
                 $clients = $request->get('clients');
                 for ($i = 0;$i < sizeof($clients);$i++){
-                    $instance = new JilsahClientTypes();
-                    $instance->jilsah_id = $jilsah->id;
-                    $instance->name = $clients[$i];
-                    $instance->save();
+                    $jilsahClientTypes = JilsahClientTypes::create($clients[$i],$jilsah);
+
+                    $jilsahClientTypes->save();
                 }
 
                 /**SAVE Jilsah Types TO DB**/
                 $types = $request->get('types');
                 for ($i = 0;$i < sizeof($types);$i++){
-                    $instance = new JilsahTypes();
-                    $instance->jilsah_id = $jilsah->id;
-                    $instance->name = $types[$i];
-                    $instance->save();
+                    $jilsahTypes = JilsahTypes::create($types[$i], $jilsah);
+
+                    $jilsahTypes->save();
                 }
 
                 /**SAVE Jilsah Options TO DB**/
                 $options = $request->get('options');
                 if($options) {
                     for ($i = 0; $i < sizeof($options); $i++) {
-                        $instance = new JilsahOptions();
-                        $instance->jilsah_id = $jilsah->id;
-                        $instance->name = $options[$i];
-                        $instance->save();
+                        $jilsahOptions = JilsahOptions::create($options[$i],$jilsah);
+
+                        $jilsahOptions->save();
                     }
                 }
 
                 /**SAVE Jilsah location TO DB**/
                 $locationJSON = json_decode($request->get('location'),true);
 
-                $location = new JilsahLocation();
-                $location->jilsah_id = $jilsah->id;
-                $location->city_id = $locationJSON['cityId'];
-                $location->address = $locationJSON['address'];
-                $location->address_details = $locationJSON['addressDetails'];
-                $location->google_map_url = $locationJSON['googleMapUrl'];
+                $location = JilsahLocation::create($locationJSON,$jilsah);
 
                 $location->save();
 
                 /**SAVE Jilsah Prices TO DB**/
                 $pricesJSON = json_decode($request->get('prices'),true);
 
-                $prices = new JilsahPrices();
-                $prices->jilsah_id = $jilsah->id;
-                $prices->price_per_jilsah = $pricesJSON['pricePerJilsah'];
-                $prices->school_week = $pricesJSON['schoolWeek'];
-                $prices->school_weekend = $pricesJSON['schoolWeekend'];
-                $prices->vacation_week = $pricesJSON['vacationWeek'];
-                $prices->vacation_weekend = $pricesJSON['vacationWeekend'];
-                $prices->eid = $pricesJSON['eid'];
-                $prices->ramadan = $pricesJSON['ramadan'];
+                $prices = JilsahPrices::create($pricesJSON,$jilsah);
 
                 $prices->save();
 
                 /**SAVE Jilsah Socials TO DB**/
                 $socialsJSON = json_decode($request->get('socials'),true);
 
-                $socials = new JilsahSocials();
-                $socials->jilsah_id = $jilsah->id;
-                $socials->phone = $socialsJSON['phone'];
-                $socials->instagram = $socialsJSON['instagram'];
-                $socials->facebook = $socialsJSON['facebook'];
-                $socials->twitter = $socialsJSON['twitter'];
-                $socials->snapchat = $socialsJSON['snapchat'];
+                $socials = JilsahSocials::create($socialsJSON, $jilsah);
 
                 $socials->save();
 
@@ -157,19 +130,18 @@ class JilsahController extends Controller
                 /**GET MAIN IMAGE Jilsah**/
                 $main_image = $request->file('main_image');
 
-                /**GET ALL Jilsah Images**/
-                $jilsah_images = $request->file('images');
-
                 /**SAVE main Image to DB**/
                 $jilsah->main_image = Storage::putFile('jilsah-images', $main_image);
                 $jilsah->save();
 
+                /**GET ALL Jilsah Images**/
+                $jilsah_images = $request->file('images');
+
                 /**SAVE Jilsah Images TO DB**/
                 for ($i = 0;$i < sizeof($jilsah_images);$i++){
-                    $images[$i] = new JilsahImages();
-                    $images[$i]->jilsah_id = $jilsah->id;
-                    $images[$i]->src = Storage::putFile('jilsah-images',$jilsah_images[$i]);
-                    $images[$i]->save();
+                    $images = JilsahImages::createAndSave($jilsah_images[$i],$jilsah);
+
+                    $images->save();
                 }
             });
 

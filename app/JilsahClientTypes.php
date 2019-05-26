@@ -15,4 +15,12 @@ class JilsahClientTypes extends Model
     function jilsah(){
         return $this->belongsTo('App\Jilsah','jilsah_id','id');
     }
+
+    public static function create(String $name,Jilsah $jilsah){
+        $instance = new JilsahClientTypes();
+        $instance->jilsah_id = $jilsah->id;
+        $instance->name = $name;
+
+        return $instance;
+    }
 }

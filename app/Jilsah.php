@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Request;
 
 class Jilsah extends Model
 {
@@ -42,5 +43,16 @@ class Jilsah extends Model
 
     function socials(){
         return $this->hasOne('App\JilsahSocials','jilsah_id','id');
+    }
+
+    public static function create(\Illuminate\Http\Request $request){
+        $jilsah = new Jilsah();
+        $jilsah->user_id = auth()->id();
+        $jilsah->name = $request->get('name');
+        $jilsah->description = $request->get('description');
+        $jilsah->times = $request->get('times');
+        $jilsah->main_image = '';
+
+        return $jilsah;
     }
 }

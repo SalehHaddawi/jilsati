@@ -19,4 +19,15 @@ class JilsahLocation extends Model
     function jilsah(){
         return $this->belongsTo('App\Jilsah','jilsah_id','id');
     }
+
+    public static function create(Array $locationJSON,Jilsah $jilsah){
+        $location = new JilsahLocation();
+        $location->jilsah_id = $jilsah->id;
+        $location->city_id = $locationJSON['cityId'];
+        $location->address = $locationJSON['address'];
+        $location->address_details = $locationJSON['addressDetails'];
+        $location->google_map_url = $locationJSON['googleMapUrl'];
+
+        return $location;
+    }
 }
