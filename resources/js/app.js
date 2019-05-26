@@ -77,7 +77,7 @@ const app = new Vue({
 
     created : function () {
         $(function () {
-            $('[data-toggle="popover"]').popover()
+            $('[data-toggle="popover"]').popover();
         })
     }
 });

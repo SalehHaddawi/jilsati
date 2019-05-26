@@ -20,7 +20,7 @@ class JilsahImages extends Model
     public static function createAndSave($jilsahImage, Jilsah $jilsah){
         $images = new JilsahImages();
         $images->jilsah_id = $jilsah->id;
-        $images->src = Storage::putFile('jilsah-images',$jilsahImage);
+        $images->src = Storage::disk('public')->putFile('jilsah-images',$jilsahImage);
 
         return $images;
     }

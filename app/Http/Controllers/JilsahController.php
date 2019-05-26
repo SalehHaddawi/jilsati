@@ -13,6 +13,7 @@ use App\JilsahTypes;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Validator;
@@ -32,7 +33,10 @@ class JilsahController extends Controller
      */
     public function index()
     {
-        //
+        $jilsahs = Jilsah::with(['clientTypes','jilsahTypes','options','location','prices'])
+            ->where('jilsahs.user_id','=',\auth()->id())->get();
+
+        return view('jilsah.index',compact('jilsahs'));
     }
 
     /**
@@ -131,7 +135,7 @@ class JilsahController extends Controller
                 $main_image = $request->file('main_image');
 
                 /**SAVE main Image to DB**/
-                $jilsah->main_image = Storage::putFile('jilsah-images', $main_image);
+                $jilsah->main_image = Storage::disk('public')->putFile('jilsah-images', $main_image);
                 $jilsah->save();
 
                 /**GET ALL Jilsah Images**/
@@ -198,28 +202,5 @@ class JilsahController extends Controller
         $cities = \App\City::orderBy('id','ASC')->get(['id','name']);
 
         return json_encode($cities);
-    }
-
-    function saveImage(Array $images){
-        $resultNames = [];
-        for ($i = 0;$i < sizeof($images);$i++){
-            $extension = $images[$i]->getClientOriginalExtension();
-            $dir = asset('storage/');
-            $filename = uniqid() . '_' . time() . '.' . $extension;
-            $images[$i]->move($dir, $filename);
-
-            $resultNames[$i] = $filename;
-        }
-
-        return $resultNames;
-    }
-
-    function saveOneImage(UploadedFile $image){
-        $extension = $image->getClientOriginalExtension();
-        $dir = 'uploads/';
-        $filename = uniqid() . '_' . time() . '.' . $extension;
-        $image->move($dir, $filename);
-
-        return $filename;
     }
 }

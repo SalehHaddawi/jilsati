@@ -5,11 +5,6 @@
 @section('active','main')
 
 @section('body')
-
-    <p>
-    {{$test}}
-    </p>
-
 <div class="container" dir="rtl">
     <div class="jumbotron bg-light shadow-sm">
         <form method="get" action="{{route('search')}}">

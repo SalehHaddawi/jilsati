@@ -18,15 +18,15 @@ class Jilsah extends Model
     }
 
     function clientTypes(){
-        return $this->hasOne('App\jilsahClientTypes','jilsah_id','id');
+        return $this->hasMany('App\jilsahClientTypes','jilsah_id','id');
     }
 
     function jilsahTypes(){
-        return $this->hasOne('App\JilsahTypes','jilsah_id','id');
+        return $this->hasMany('App\JilsahTypes','jilsah_id','id');
     }
 
     function options(){
-        return $this->hasOne('App\JilsahOptions','jilsah_id','id');
+        return $this->hasMany('App\JilsahOptions','jilsah_id','id');
     }
 
     function location(){
@@ -38,7 +38,7 @@ class Jilsah extends Model
     }
 
     function images(){
-        return $this->hasOne('App\JilsahImages','jilsah_id','id');
+        return $this->hasMany('App\JilsahImages','jilsah_id','id');
     }
 
     function socials(){

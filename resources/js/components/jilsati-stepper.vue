@@ -340,7 +340,7 @@
                                            :types="models.jilsahType"
                                            :rating="5"
                                            :price="models.prices.schoolWeek"
-                                           :price-per="models.prices.pricePer">
+                                           :price-per-jilsah="models.prices.pricePerJilsah">
                         </jilsati-card-show>
                     </div>
                 </jilsati-fieldset>

@@ -45,37 +45,21 @@
     </div>
 
     <div class="rounded-0 shadow bg-light col-lg-9 col-12">
-        <div class="row card-columns">
-            <!--
-            <jilsati-card v-for="jilsah in jilsahs"
-                          :key="jilsah.id"
-                          :id="jilsah.id"
-                          :title="jilsah.title"
-                          :description="jilsah.description"
-                          :img-src="jilsah.imgSrc"
-                          :city="jilsah.city"
-                          :max-size="150"
-                          added-at="1997/08/03"
-            class="d-inline-block">
-            </jilsati-card>
-                -->
-
-            <div class="card mb-3 w-100" v-for="jilsah in jilsahs" :key="jilsah.id">
-                <div class="row no-gutters">
-                    <div class="col-md-4">
-                        <img :src="jilsah.imgSrc" class="card-img" alt="...">
-                    </div>
-                    <div class="col-md-8">
-                        <div class="card-body">
-                            <h5 class="card-title">@{{ jilsah.title }}</h5>
-                            <small class="text-info">@{{ jilsah.city }}</small>
-                            <p class="card-text">@{{jilsah.description}}</p>
-                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        @foreach($jilsahs as $jilsah)
+            <jilsati-card-show title="{{$jilsah->name}}"
+                               description="{{$jilsah->description}}"
+                               city="{{$jilsah->location->city->name}}"
+                               address="{{$jilsah->location->address}}"
+                               img-src="storage/{{$jilsah->main_image}}"
+                               :max-description-length="180"
+                               :clients="{{json_encode($jilsah->clientTypes->map->name)}}"
+                               :types="{{json_encode($jilsah->jilsahTypes->map->name)}}"
+                               :options="{{json_encode($jilsah->options->map->name)}}"
+                               :rating="5"
+                               price="20"
+                               price-per-jilsah="للجلسة">
+            </jilsati-card-show>
+        @endforeach
     </div>
 </div>
 

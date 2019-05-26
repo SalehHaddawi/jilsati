@@ -13,7 +13,7 @@ class JilsahLocation extends Model
     ];
 
     function city(){
-        return $this->hasOne('App\City','city_id','id');
+        return $this->hasOne('App\City','id','city_id');
     }
 
     function jilsah(){

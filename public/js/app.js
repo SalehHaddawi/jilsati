@@ -1873,6 +1873,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     imgSrc: '',
@@ -1885,11 +1892,16 @@ __webpack_require__.r(__webpack_exports__);
     types: '',
     rating: '',
     price: '',
-    pricePer: '',
+    pricePerJilsah: '',
 
     /***************/
     maxDescriptionLength: {
       type: Number
+    }
+  },
+  computed: {
+    pricePerJilsahLabel: function pricePerJilsahLabel() {
+      return parseInt(this.pricePerJilsah) ? 'للجلسة' : 'للشخص';
     }
   }
 });
@@ -2308,8 +2320,22 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['active', 'user', 'token', 'logoSrc'],
+  data: function data() {
+    return {
+      popoverHtml: "<ul class=\"list-group list-group-flush\">\n                                <li class=\"list-group-item list-group-item-action text-right\">\n                                    <a style=\"text-decoration: none;\" href=\"/jilsahs\"><h5>\u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629</h5></a>\n                                </li>\n                                <li class=\"list-group-item list-group-item-action text-right\">\n                                    <a style=\"text-decoration: none;\" href=\"/jilsahs\"><h5>\u062C\u0644\u0633\u0627\u062A\u064A</h5></a>\n                                </li>\n                                <li class=\"list-group-item list-group-item-action text-right\">\n                                    <a id=\"navbar-logout\" style=\"text-decoration: none;\" href=\"#\"><h5>\u062A\u0633\u062C\u064A\u0644 \u062E\u0631\u0648\u062C</h5></a>\n                                </li>\n                            </ul>",
+      popoverTemplate: "<div class=\"popover\" role=\"tooltip\">\n                                    <div class=\"arrow\">\n                                    </div>\n                                    <h3 class=\"popover-header\">\n                                    </h3>\n                                    <div class=\"popover-body\">\n                                    </div>\n                                </div>"
+    };
+  },
   methods: {
     logout: function logout() {
       document.getElementById('logout-form').submit();
@@ -40073,14 +40099,15 @@ var render = function() {
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "card shadow mb-3 w-100" }, [
     _c("div", { staticClass: "row no-gutters" }, [
-      _c("div", { staticClass: "col-md-5" }, [
+      _c("div", { staticClass: "col-md-4" }, [
         _c("img", {
           staticClass: "card-img rounded-0",
-          attrs: { src: _vm.imgSrc, alt: "..." }
+          staticStyle: { "max-height": "350px" },
+          attrs: { src: _vm.imgSrc, alt: "صورة الجلسة الرئيسية" }
         })
       ]),
       _vm._v(" "),
-      _c("div", { staticClass: "col-md-7" }, [
+      _c("div", { staticClass: "col-md-8" }, [
         _c("div", { staticClass: "card-body" }, [
           _c("h2", { staticClass: "card-title" }, [_vm._v(_vm._s(_vm.title))]),
           _vm._v(" "),
@@ -40101,70 +40128,82 @@ var render = function() {
             )
           ]),
           _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "mt-2" },
-            _vm._l(_vm.clients, function(client) {
-              return _c("h3", { staticClass: "d-inline-block" }, [
-                _c(
-                  "span",
-                  { staticClass: "badge badge-light text-success m-2" },
-                  [_vm._v(_vm._s(client))]
-                )
-              ])
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "mt-2" },
-            _vm._l(_vm.types, function(type) {
-              return _c("h4", { staticClass: "d-inline-block" }, [
-                _c("span", { staticClass: "badge badge-info text-light m-2" }, [
-                  _vm._v(_vm._s(type))
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-8 border-left" }, [
+              _c(
+                "div",
+                { staticClass: "mt-2" },
+                _vm._l(_vm.clients, function(client) {
+                  return _c("h3", { staticClass: "d-inline-block" }, [
+                    _c(
+                      "span",
+                      { staticClass: "badge badge-light text-success m-2" },
+                      [_vm._v(_vm._s(client))]
+                    )
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mt-2" },
+                _vm._l(_vm.types, function(type) {
+                  return _c("h4", { staticClass: "d-inline-block" }, [
+                    _c(
+                      "span",
+                      { staticClass: "badge badge-info text-light m-2" },
+                      [_vm._v(_vm._s(type))]
+                    )
+                  ])
+                }),
+                0
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "mt-2" },
+                _vm._l(_vm.options, function(option) {
+                  return _c("h6", { staticClass: "d-inline-block" }, [
+                    _c(
+                      "span",
+                      { staticClass: "badge badge-success text-light m-1" },
+                      [_vm._v(_vm._s(option))]
+                    )
+                  ])
+                }),
+                0
+              )
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "col-4" }, [
+              _c(
+                "div",
+                { staticClass: "mt-2" },
+                [
+                  _c("star-rating", {
+                    attrs: {
+                      "read-only": "",
+                      "show-rating": false,
+                      rating: _vm.rating,
+                      "star-size": 20
+                    }
+                  })
+                ],
+                1
+              ),
+              _vm._v(" "),
+              _vm._m(0),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-2" }, [
+                _c("p", { staticClass: "text-success text-lg-right" }, [
+                  _vm._v(
+                    _vm._s(
+                      "السعر " + _vm.price + "ر.س " + _vm.pricePerJilsahLabel
+                    )
+                  )
                 ])
               ])
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "mt-2" },
-            _vm._l(_vm.options, function(option) {
-              return _c("h6", { staticClass: "d-inline-block" }, [
-                _c(
-                  "span",
-                  { staticClass: "badge badge-success text-light m-1" },
-                  [_vm._v(_vm._s(option))]
-                )
-              ])
-            }),
-            0
-          ),
-          _vm._v(" "),
-          _c(
-            "div",
-            { staticClass: "mt-2" },
-            [
-              _c("star-rating", {
-                attrs: {
-                  "read-only": "",
-                  "show-rating": false,
-                  rating: _vm.rating,
-                  "star-size": 20
-                }
-              })
-            ],
-            1
-          ),
-          _vm._v(" "),
-          _vm._m(0),
-          _vm._v(" "),
-          _c("div", { staticClass: "mt-2" }, [
-            _c("p", { staticClass: "text-success text-lg-right" }, [
-              _vm._v(_vm._s("السعر " + _vm.price + "ر.س " + _vm.pricePer))
             ])
           ])
         ])
@@ -41124,7 +41163,7 @@ var render = function() {
               },
               [
                 _vm.user
-                  ? _c("div", { staticClass: "dropdown nav-link" }, [
+                  ? _c("div", { staticClass: "nav-link dropdown" }, [
                       _vm.active === "login"
                         ? _c("span", { staticClass: "sr-only" }, [
                             _vm._v("(الحالية)")
@@ -43187,7 +43226,8 @@ var render = function() {
                               types: _vm.models.jilsahType,
                               rating: 5,
                               price: _vm.models.prices.schoolWeek,
-                              "price-per": _vm.models.prices.pricePer
+                              "price-per-jilsah":
+                                _vm.models.prices.pricePerJilsah
                             }
                           })
                         ],

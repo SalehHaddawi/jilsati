@@ -19,8 +19,14 @@
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'login'}">
                     <!--<a v-if="user" class="nav-link" href="#" @click="logout()">مرحبا {{user.name}}<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>-->
-                    <div v-if="user" class="dropdown nav-link">
+                    <div v-if="user" class="nav-link dropdown">
                         <span v-if="active === 'login'" class="sr-only">(الحالية)</span>
+                        <!--
+                        <a id="popover" tabindex="0" class="text-reset" data-html="true" role="button" data-placement="bottom" data-toggle="popover" data-trigger="focus" style="text-decoration: none;cursor: pointer;"
+                           :data-content="popoverHtml">
+                            هلا {{user}}
+                        </a>
+                        -->
                         <a class="text-reset dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             هلا {{user}}
                         </a>
@@ -39,7 +45,9 @@
             </ul>
         </div>
 
-        <form method="post" action="/logout" id="logout-form"><input type="hidden" name="_token" :value="token"></form>
+        <form method="post" action="/logout" id="logout-form">
+            <input type="hidden" name="_token" :value="token">
+        </form>
     </nav>
 </template>
 
@@ -47,10 +55,35 @@
     export default {
         props : ['active', 'user','token','logoSrc'],
 
+        data : function(){
+            return {
+                popoverHtml : `<ul class="list-group list-group-flush">
+                                    <li class="list-group-item list-group-item-action text-right">
+                                        <a style="text-decoration: none;" href="/jilsahs"><h5>الصفحة الشخصية</h5></a>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action text-right">
+                                        <a style="text-decoration: none;" href="/jilsahs"><h5>جلساتي</h5></a>
+                                    </li>
+                                    <li class="list-group-item list-group-item-action text-right">
+                                        <a id="navbar-logout" style="text-decoration: none;" href="#"><h5>تسجيل خروج</h5></a>
+                                    </li>
+                                </ul>`,
+
+                popoverTemplate : `<div class="popover" role="tooltip">
+                                        <div class="arrow">
+                                        </div>
+                                        <h3 class="popover-header">
+                                        </h3>
+                                        <div class="popover-body">
+                                        </div>
+                                    </div>`
+            }
+        },
+
         methods : {
             logout : function () {
                 document.getElementById('logout-form').submit();
             }
-        }
+        },
     }
 </script>

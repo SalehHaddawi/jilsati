@@ -1,10 +1,10 @@
 <template>
     <div class="card shadow mb-3 w-100">
         <div class="row no-gutters">
-            <div class="col-md-5">
-                <img :src="imgSrc" class="card-img rounded-0" alt="...">
+            <div class="col-md-4">
+                <img :src="imgSrc" class="card-img rounded-0" alt="صورة الجلسة الرئيسية" style="max-height: 350px;">
             </div>
-            <div class="col-md-7">
+            <div class="col-md-8">
                 <div class="card-body">
                     <h2 class="card-title">{{title}}</h2>
                     <h4 class="text-success">{{ city + ', ' + address}}</h4>
@@ -14,34 +14,41 @@
                         description}}
                     </p>
 
-                    <div class="mt-2">
-                        <h3 v-for="client in clients" class="d-inline-block">
-                            <span class="badge badge-light text-success m-2">{{client}}</span>
-                        </h3>
-                    </div>
+                    <div class="row">
 
-                    <div class="mt-2">
-                        <h4 v-for="type in types" class="d-inline-block">
-                            <span class="badge badge-info text-light m-2">{{type}}</span>
-                        </h4>
-                    </div>
+                        <div class="col-8 border-left">
+                            <div class="mt-2">
+                                <h3 v-for="client in clients" class="d-inline-block">
+                                    <span class="badge badge-light text-success m-2">{{client}}</span>
+                                </h3>
+                            </div>
 
-                    <div class="mt-2">
-                        <h6 v-for="option in options" class="d-inline-block">
-                            <span class="badge badge-success text-light m-1">{{option}}</span>
-                        </h6>
-                    </div>
+                            <div class="mt-2">
+                                <h4 v-for="type in types" class="d-inline-block">
+                                    <span class="badge badge-info text-light m-2">{{type}}</span>
+                                </h4>
+                            </div>
 
-                    <div class="mt-2">
-                        <star-rating read-only :show-rating="false" :rating="rating" :star-size="20"></star-rating>
-                    </div>
+                            <div class="mt-2">
+                                <h6 v-for="option in options" class="d-inline-block">
+                                    <span class="badge badge-success text-light m-1">{{option}}</span>
+                                </h6>
+                            </div>
+                        </div>
 
-                    <p class="card-text">
-                        <small class="text-muted">20 تقييم</small>
-                    </p>
+                        <div class="col-4">
+                            <div class="mt-2">
+                                <star-rating read-only :show-rating="false" :rating="rating" :star-size="20"></star-rating>
+                            </div>
 
-                    <div class="mt-2">
-                        <p class="text-success text-lg-right">{{'السعر ' + price + 'ر.س ' + pricePer}}</p>
+                            <p class="card-text">
+                                <small class="text-muted">20 تقييم</small>
+                            </p>
+
+                            <div class="mt-2">
+                                <p class="text-success text-lg-right">{{'السعر ' + price + 'ر.س ' + pricePerJilsahLabel}}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -72,7 +79,7 @@
 
             price : '',
 
-            pricePer : '',
+            pricePerJilsah : '',
 
             /***************/
 
@@ -80,6 +87,12 @@
                 type : Number
             },
 
+        },
+
+        computed : {
+            pricePerJilsahLabel : function () {
+                return parseInt(this.pricePerJilsah) ? 'للجلسة' : 'للشخص' ;
+            }
         }
     }
 </script>

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\City;
 use App\Jilsah;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -20,9 +21,12 @@ class SearchController extends Controller
             return redirect('/');
         }
 
-        $cities = DB::table('cities')->select('*')->get();
+        $cities = City::all();
 
-        return view('search',compact('cities'));
+        $jilsahs = Jilsah::with(['clientTypes','jilsahTypes','options','location','prices'])
+            ->get();
+
+        return view('search',compact('cities','jilsahs'));
     }
 
     /**

@@ -39,6 +39,10 @@ label.custom-control-label::before, label.custom-control-label::after{
     -ms-transform: translate(-50%, -50%);
 }
 
+a{
+    text-decoration: none !important;
+}
+
 /* -------------------------------------------------------------------------
   VERTICAL STEPPERS
 -------------------------------------------------------------------------- */
