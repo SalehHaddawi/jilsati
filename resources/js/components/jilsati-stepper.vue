@@ -49,7 +49,7 @@
                 <jilsati-checkbox v-model="chosenTimePeriods.ramadan" name="ramadan-time-period">رمضان
                 </jilsati-checkbox>
 
-                <jilsati-fieldset v-show="chosenTimePeriods.school" font-size="1.4rem" legend="فترة الدراسة">
+                <jilsati-fieldset v-if="chosenTimePeriods.school" font-size="1.4rem" legend="فترة الدراسة">
                     <jilsati-fieldset font-size="1.1rem" legend="ايام الاسبوع">
                         <jilsati-shifts name="schoolWeek" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
@@ -58,7 +58,7 @@
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
-                <jilsati-fieldset v-show="chosenTimePeriods.vacation" legend="ايام الاجازة" font-size="1.4rem">
+                <jilsati-fieldset v-if="chosenTimePeriods.vacation" legend="ايام الاجازة" font-size="1.4rem">
                     <jilsati-fieldset font-size="1.1rem" legend="ايام الاسبوع">
                         <jilsati-shifts name="vacationWeek" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
@@ -67,13 +67,13 @@
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
-                <jilsati-fieldset v-show="chosenTimePeriods.eid" legend="الاعياد">
+                <jilsati-fieldset v-if="chosenTimePeriods.eid" legend="الاعياد">
                     <jilsati-fieldset font-size="1.1rem" legend="خلال الاسبوع">
                         <jilsati-shifts name="eidWeek" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
-                <jilsati-fieldset v-show="chosenTimePeriods.ramadan" legend="رمضان">
+                <jilsati-fieldset v-if="chosenTimePeriods.ramadan" legend="رمضان">
                     <jilsati-fieldset font-size="1.1rem" legend="خلال الاسبوع">
                         <jilsati-shifts name="ramadanWeek" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
@@ -669,6 +669,23 @@
         },
 
         computed: {
+            chosenTimeSchool : function(){
+                return this.chosenTimePeriods.school;
+            },
+
+            chosenTimeVacation : function(){
+                return this.chosenTimePeriods.vacation;
+            },
+
+            chosenTimeEid : function(){
+                return this.chosenTimePeriods.eid;
+            },
+
+            chosenTimeRamadan : function(){
+                return this.chosenTimePeriods.ramadan;
+            },
+
+
             /****INFO STEP****/
 
             nameErr: function () {
@@ -860,6 +877,34 @@
         },
 
         watch: {
+            chosenTimeSchool : function(v){
+                if(!v){
+                    this.models.times.schoolWeek = {};
+                    this.models.times.schoolWeekend = {};
+                }
+
+                console.log('changed',v);
+            },
+
+            chosenTimeVacation : function(v){
+                if(!v){
+                    this.models.times.vacationWeek = {};
+                    this.models.times.vacationWeekend = {};
+                }
+            },
+
+            chosenTimeEid : function(v){
+                if(!v){
+                    this.models.times.eidWeek = {};
+                }
+            },
+
+            chosenTimeRamadan : function(v){
+                if(!v){
+                    this.models.times.ramadanWeek = {};
+                }
+            },
+
             stepJilsahInfoErr: function (v) {
                 if (v !== undefined) {
                     if (v) {

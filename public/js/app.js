@@ -3366,6 +3366,19 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   computed: {
+    chosenTimeSchool: function chosenTimeSchool() {
+      return this.chosenTimePeriods.school;
+    },
+    chosenTimeVacation: function chosenTimeVacation() {
+      return this.chosenTimePeriods.vacation;
+    },
+    chosenTimeEid: function chosenTimeEid() {
+      return this.chosenTimePeriods.eid;
+    },
+    chosenTimeRamadan: function chosenTimeRamadan() {
+      return this.chosenTimePeriods.ramadan;
+    },
+
     /****INFO STEP****/
     nameErr: function nameErr() {
       return this.validateModelText(this.models.jilsah.name);
@@ -3499,6 +3512,30 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   watch: {
+    chosenTimeSchool: function chosenTimeSchool(v) {
+      if (!v) {
+        this.models.times.schoolWeek = {};
+        this.models.times.schoolWeekend = {};
+      }
+
+      console.log('changed', v);
+    },
+    chosenTimeVacation: function chosenTimeVacation(v) {
+      if (!v) {
+        this.models.times.vacationWeek = {};
+        this.models.times.vacationWeekend = {};
+      }
+    },
+    chosenTimeEid: function chosenTimeEid(v) {
+      if (!v) {
+        this.models.times.eidWeek = {};
+      }
+    },
+    chosenTimeRamadan: function chosenTimeRamadan(v) {
+      if (!v) {
+        this.models.times.ramadanWeek = {};
+      }
+    },
     stepJilsahInfoErr: function stepJilsahInfoErr(v) {
       if (v !== undefined) {
         if (v) {
@@ -41975,175 +42012,153 @@ var render = function() {
                     [_vm._v("رمضان\n            ")]
                   ),
                   _vm._v(" "),
-                  _c(
-                    "jilsati-fieldset",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.chosenTimePeriods.school,
-                          expression: "chosenTimePeriods.school"
-                        }
-                      ],
-                      attrs: { "font-size": "1.4rem", legend: "فترة الدراسة" }
-                    },
-                    [
-                      _c(
+                  _vm.chosenTimePeriods.school
+                    ? _c(
                         "jilsati-fieldset",
                         {
                           attrs: {
-                            "font-size": "1.1rem",
-                            legend: "ايام الاسبوع"
+                            "font-size": "1.4rem",
+                            legend: "فترة الدراسة"
                           }
                         },
                         [
-                          _c("jilsati-shifts", {
-                            attrs: { name: "schoolWeek" },
-                            on: { "shift-changed": _vm.handleTimesChanged }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "jilsati-fieldset",
-                        {
-                          attrs: {
-                            "font-size": "1.1rem",
-                            legend: "نهاية الاسبوع"
-                          }
-                        },
-                        [
-                          _c("jilsati-shifts", {
-                            attrs: { name: "schoolWeekend" },
-                            on: { "shift-changed": _vm.handleTimesChanged }
-                          })
+                          _c(
+                            "jilsati-fieldset",
+                            {
+                              attrs: {
+                                "font-size": "1.1rem",
+                                legend: "ايام الاسبوع"
+                              }
+                            },
+                            [
+                              _c("jilsati-shifts", {
+                                attrs: { name: "schoolWeek" },
+                                on: { "shift-changed": _vm.handleTimesChanged }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "jilsati-fieldset",
+                            {
+                              attrs: {
+                                "font-size": "1.1rem",
+                                legend: "نهاية الاسبوع"
+                              }
+                            },
+                            [
+                              _c("jilsati-shifts", {
+                                attrs: { name: "schoolWeekend" },
+                                on: { "shift-changed": _vm.handleTimesChanged }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
-                    ],
-                    1
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c(
-                    "jilsati-fieldset",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.chosenTimePeriods.vacation,
-                          expression: "chosenTimePeriods.vacation"
-                        }
-                      ],
-                      attrs: { legend: "ايام الاجازة", "font-size": "1.4rem" }
-                    },
-                    [
-                      _c(
+                  _vm.chosenTimePeriods.vacation
+                    ? _c(
                         "jilsati-fieldset",
                         {
                           attrs: {
-                            "font-size": "1.1rem",
-                            legend: "ايام الاسبوع"
+                            legend: "ايام الاجازة",
+                            "font-size": "1.4rem"
                           }
                         },
                         [
-                          _c("jilsati-shifts", {
-                            attrs: { name: "vacationWeek" },
-                            on: { "shift-changed": _vm.handleTimesChanged }
-                          })
-                        ],
-                        1
-                      ),
-                      _vm._v(" "),
-                      _c(
-                        "jilsati-fieldset",
-                        {
-                          attrs: {
-                            "font-size": "1.1rem",
-                            legend: "نهاية الاسبوع"
-                          }
-                        },
-                        [
-                          _c("jilsati-shifts", {
-                            attrs: { name: "vacationWeekend" },
-                            on: { "shift-changed": _vm.handleTimesChanged }
-                          })
+                          _c(
+                            "jilsati-fieldset",
+                            {
+                              attrs: {
+                                "font-size": "1.1rem",
+                                legend: "ايام الاسبوع"
+                              }
+                            },
+                            [
+                              _c("jilsati-shifts", {
+                                attrs: { name: "vacationWeek" },
+                                on: { "shift-changed": _vm.handleTimesChanged }
+                              })
+                            ],
+                            1
+                          ),
+                          _vm._v(" "),
+                          _c(
+                            "jilsati-fieldset",
+                            {
+                              attrs: {
+                                "font-size": "1.1rem",
+                                legend: "نهاية الاسبوع"
+                              }
+                            },
+                            [
+                              _c("jilsati-shifts", {
+                                attrs: { name: "vacationWeekend" },
+                                on: { "shift-changed": _vm.handleTimesChanged }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
-                    ],
-                    1
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c(
-                    "jilsati-fieldset",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.chosenTimePeriods.eid,
-                          expression: "chosenTimePeriods.eid"
-                        }
-                      ],
-                      attrs: { legend: "الاعياد" }
-                    },
-                    [
-                      _c(
+                  _vm.chosenTimePeriods.eid
+                    ? _c(
                         "jilsati-fieldset",
-                        {
-                          attrs: {
-                            "font-size": "1.1rem",
-                            legend: "خلال الاسبوع"
-                          }
-                        },
+                        { attrs: { legend: "الاعياد" } },
                         [
-                          _c("jilsati-shifts", {
-                            attrs: { name: "eidWeek" },
-                            on: { "shift-changed": _vm.handleTimesChanged }
-                          })
+                          _c(
+                            "jilsati-fieldset",
+                            {
+                              attrs: {
+                                "font-size": "1.1rem",
+                                legend: "خلال الاسبوع"
+                              }
+                            },
+                            [
+                              _c("jilsati-shifts", {
+                                attrs: { name: "eidWeek" },
+                                on: { "shift-changed": _vm.handleTimesChanged }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
-                    ],
-                    1
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
-                  _c(
-                    "jilsati-fieldset",
-                    {
-                      directives: [
-                        {
-                          name: "show",
-                          rawName: "v-show",
-                          value: _vm.chosenTimePeriods.ramadan,
-                          expression: "chosenTimePeriods.ramadan"
-                        }
-                      ],
-                      attrs: { legend: "رمضان" }
-                    },
-                    [
-                      _c(
+                  _vm.chosenTimePeriods.ramadan
+                    ? _c(
                         "jilsati-fieldset",
-                        {
-                          attrs: {
-                            "font-size": "1.1rem",
-                            legend: "خلال الاسبوع"
-                          }
-                        },
+                        { attrs: { legend: "رمضان" } },
                         [
-                          _c("jilsati-shifts", {
-                            attrs: { name: "ramadanWeek" },
-                            on: { "shift-changed": _vm.handleTimesChanged }
-                          })
+                          _c(
+                            "jilsati-fieldset",
+                            {
+                              attrs: {
+                                "font-size": "1.1rem",
+                                legend: "خلال الاسبوع"
+                              }
+                            },
+                            [
+                              _c("jilsati-shifts", {
+                                attrs: { name: "ramadanWeek" },
+                                on: { "shift-changed": _vm.handleTimesChanged }
+                              })
+                            ],
+                            1
+                          )
                         ],
                         1
                       )
-                    ],
-                    1
-                  ),
+                    : _vm._e(),
                   _vm._v(" "),
                   _c("div", { staticClass: "mt-2" }, [
                     _c(
