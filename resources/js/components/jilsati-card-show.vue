@@ -2,7 +2,11 @@
     <div class="card shadow mb-3 w-100">
         <div class="row no-gutters">
             <div class="col-md-4">
-                <img :src="imgSrc" class="card-img rounded-0" alt="صورة الجلسة الرئيسية" style="max-height: 350px;">
+                <a v-if="jilsahId" :href="'/jilsahs/'+jilsahId">
+                    <img :src="imgSrc" class="card-img rounded-0" alt="صورة الجلسة الرئيسية" style="max-height: 350px;">
+                </a>
+
+                <img v-else :src="imgSrc" class="card-img rounded-0" alt="صورة الجلسة الرئيسية" style="max-height: 350px;">
             </div>
             <div class="col-md-8">
                 <div class="card-body">
@@ -80,6 +84,10 @@
             price : '',
 
             pricePerJilsah : '',
+
+            jilsahId : '',
+
+            serverUrl : '',
 
             /***************/
 

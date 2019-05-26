@@ -422,7 +422,7 @@
                                 <span style="width:40px;" class="input-group-text rounded-0"><i
                                         class="fab fa-facebook-f"></i></span>
                             </div>
-                            <input v-model.trim="models.social.facebook" placeholder="http://www.facebook.com/username"
+                            <input v-model.trim="models.social.facebook" placeholder="https://m.facebook.com/profile.php?id=10000000000000"
                                    type="url" aria-label="رابط حساب فيسبوك" class="form-control rounded-0">
                         </div>
                     </div>

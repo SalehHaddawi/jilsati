@@ -1880,6 +1880,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     imgSrc: '',
@@ -1893,6 +1897,8 @@ __webpack_require__.r(__webpack_exports__);
     rating: '',
     price: '',
     pricePerJilsah: '',
+    jilsahId: '',
+    serverUrl: '',
 
     /***************/
     maxDescriptionLength: {
@@ -1979,8 +1985,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
-  props: ['images']
+  props: ['name', 'images']
 });
 
 /***/ }),
@@ -2094,6 +2101,59 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     if (this.current) this.selectedCity = this.current;
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-connect-Panel.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-connect-Panel.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: ['phone', 'instagram', 'facebook', 'twitter', 'snapchat'],
+  computed: {
+    socialsCount: function socialsCount() {
+      var count = 0;
+      if (this.instagram) count++;
+      if (this.facebook) count++;
+      if (this.twitter) count++;
+      if (this.snapchat) count++;
+      return count;
+    }
   }
 });
 
@@ -40100,11 +40160,19 @@ var render = function() {
   return _c("div", { staticClass: "card shadow mb-3 w-100" }, [
     _c("div", { staticClass: "row no-gutters" }, [
       _c("div", { staticClass: "col-md-4" }, [
-        _c("img", {
-          staticClass: "card-img rounded-0",
-          staticStyle: { "max-height": "350px" },
-          attrs: { src: _vm.imgSrc, alt: "صورة الجلسة الرئيسية" }
-        })
+        _vm.jilsahId
+          ? _c("a", { attrs: { href: "/jilsahs/" + _vm.jilsahId } }, [
+              _c("img", {
+                staticClass: "card-img rounded-0",
+                staticStyle: { "max-height": "350px" },
+                attrs: { src: _vm.imgSrc, alt: "صورة الجلسة الرئيسية" }
+              })
+            ])
+          : _c("img", {
+              staticClass: "card-img rounded-0",
+              staticStyle: { "max-height": "350px" },
+              attrs: { src: _vm.imgSrc, alt: "صورة الجلسة الرئيسية" }
+            })
       ]),
       _vm._v(" "),
       _c("div", { staticClass: "col-md-8" }, [
@@ -40340,20 +40408,17 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "carousel slide",
-      attrs: { id: "carouselExampleIndicators", "data-ride": "carousel" }
+      staticClass: "carousel slide carousel-fade",
+      attrs: { id: _vm.name, "data-ride": "carousel" }
     },
     [
       _c(
         "ol",
         { staticClass: "carousel-indicators" },
-        _vm._l(10, function(image) {
+        _vm._l(_vm.images.length, function(index) {
           return _c("li", {
             staticClass: "active",
-            attrs: {
-              "data-target": "#carouselExampleIndicators",
-              "data-slide-to": image - 1
-            }
+            attrs: { "data-target": "#" + _vm.name, "data-slide-to": index - 1 }
           })
         }),
         0
@@ -40362,22 +40427,19 @@ var render = function() {
       _c(
         "div",
         { staticClass: "carousel-inner bg-dark" },
-        _vm._l(10, function(image) {
+        _vm._l(_vm.images, function(image, index) {
           return _c(
             "div",
             {
               key: image,
               staticClass: "carousel-item",
-              class: { active: image === 1 }
+              class: { active: index === 1 }
             },
             [
               _c("img", {
                 staticClass: "d-block w-100 mx-auto",
-                staticStyle: { "max-width": "750px" },
-                attrs: {
-                  src: "/images/istraha-" + ((image % 3) + 1) + ".jpg",
-                  alt: "..."
-                }
+                staticStyle: { "max-width": "750px", "max-height": "500px" },
+                attrs: { src: "/storage/" + image, alt: "..." }
               })
             ]
           )
@@ -40385,62 +40447,41 @@ var render = function() {
         0
       ),
       _vm._v(" "),
-      _vm._m(0),
+      _c(
+        "a",
+        {
+          staticClass: "carousel-control-prev",
+          attrs: { href: "#" + _vm.name, role: "button", "data-slide": "prev" }
+        },
+        [
+          _c("span", {
+            staticClass: "carousel-control-prev-icon",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
+        ]
+      ),
       _vm._v(" "),
-      _vm._m(1)
+      _c(
+        "a",
+        {
+          staticClass: "carousel-control-next",
+          attrs: { href: "#" + _vm.name, role: "button", "data-slide": "next" }
+        },
+        [
+          _c("span", {
+            staticClass: "carousel-control-next-icon",
+            attrs: { "aria-hidden": "true" }
+          }),
+          _vm._v(" "),
+          _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
+        ]
+      )
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-prev",
-        attrs: {
-          href: "#carouselExampleIndicators",
-          role: "button",
-          "data-slide": "prev"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-prev-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" }, [_vm._v("Previous")])
-      ]
-    )
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c(
-      "a",
-      {
-        staticClass: "carousel-control-next",
-        attrs: {
-          href: "#carouselExampleIndicators",
-          role: "button",
-          "data-slide": "next"
-        }
-      },
-      [
-        _c("span", {
-          staticClass: "carousel-control-next-icon",
-          attrs: { "aria-hidden": "true" }
-        }),
-        _vm._v(" "),
-        _c("span", { staticClass: "sr-only" }, [_vm._v("Next")])
-      ]
-    )
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -40633,6 +40674,110 @@ var render = function() {
             )
           ]
         )
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-connect-Panel.vue?vue&type=template&id=3e9ec26e&":
+/*!************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-connect-Panel.vue?vue&type=template&id=3e9ec26e& ***!
+  \************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card text-right mb-4" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("p", { staticClass: "card-title text-success mb-4 h1" }, [
+        _vm._v("التواصل")
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: " mb-2 text-muted h6" }, [_vm._v("رقم الجوال")]),
+      _vm._v(" "),
+      _c("p", { staticClass: " mb-2 text-info mb-4 h1" }, [
+        _vm._v(_vm._s(_vm.phone))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: " mb-2 text-muted h6" }, [
+        _vm._v("حسابات التواصل")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-4 h2 row" }, [
+        _vm.instagram
+          ? _c(
+              "a",
+              {
+                staticClass: "text-center",
+                class: "col-" + 12 / _vm.socialsCount,
+                staticStyle: { color: "lightcoral" },
+                attrs: { href: _vm.instagram, target: "_blank" }
+              },
+              [_c("i", { staticClass: "fab fa-instagram" })]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.facebook
+          ? _c(
+              "a",
+              {
+                staticClass: "text-center",
+                class: "col-" + 12 / _vm.socialsCount,
+                attrs: { href: _vm.facebook, target: "_blank" }
+              },
+              [
+                _c("i", {
+                  staticClass: "fab fa-facebook",
+                  staticStyle: { color: "cornflowerblue" }
+                })
+              ]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.twitter
+          ? _c(
+              "a",
+              {
+                staticClass: "text-center",
+                class: "col-" + 12 / _vm.socialsCount,
+                staticStyle: { color: "#2AA9E0" },
+                attrs: { href: _vm.twitter, target: "_blank" }
+              },
+              [_c("i", { staticClass: "fab fa-twitter" })]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.snapchat
+          ? _c(
+              "a",
+              {
+                staticClass: "text-center",
+                class: "col-" + 12 / _vm.socialsCount,
+                staticStyle: { color: "gold" },
+                attrs: { href: _vm.snapchat, target: "_blank" }
+              },
+              [_c("i", { staticClass: "fab fa-snapchat" })]
+            )
+          : _vm._e(),
+        _vm._v(" "),
+        _vm.socialsCount === 0
+          ? _c("h6", { staticClass: "text-muted text-center col-12" }, [
+              _vm._v("(لا توجد)")
+            ])
+          : _vm._e()
+      ])
+    ])
   ])
 }
 var staticRenderFns = []
@@ -43534,7 +43679,8 @@ var render = function() {
                               ],
                               staticClass: "form-control rounded-0",
                               attrs: {
-                                placeholder: "http://www.facebook.com/username",
+                                placeholder:
+                                  "https://m.facebook.com/profile.php?id=10000000000000",
                                 type: "url",
                                 "aria-label": "رابط حساب فيسبوك"
                               },
@@ -56215,89 +56361,15 @@ Vue.component('JilsatiTest', __webpack_require__(/*! ./components/jilsati-test *
 Vue.component('Star', __webpack_require__(/*! ./components/star */ "./resources/js/components/star.vue")["default"]);
 Vue.component('StarRating', __webpack_require__(/*! ./components/star-rating */ "./resources/js/components/star-rating.vue")["default"]);
 Vue.component('JilsatiShifts', __webpack_require__(/*! ./components/jilsati-shifts */ "./resources/js/components/jilsati-shifts.vue")["default"]);
+Vue.component('JilsatiConnectPanel', __webpack_require__(/*! ./components/jilsati-connect-Panel */ "./resources/js/components/jilsati-connect-Panel.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-var app = new Vue({
-  el: '#app',
-  data: {
-    jilsahs: [{
-      id: 0,
-      city: 'الرياض',
-      title: 'شاليهات الواحة',
-      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسهنىمكبنورحيكثقونبلثبيقنخةولخثقبةلثسيبةتثيقبهةتنبقثهةتخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 1,
-      city: 'مكة المكرمة',
-      title: 'شاليهات جدة',
-      description: 'نةنةشنسىةنهىسنهشةىسنشىةشسمنثقبي ةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقبهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 2,
-      city: 'ينبع البحر',
-      title: 'شاليهات هدر',
-      description: 'نةنةشنسىةنهىسةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقنهشةىسنشىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 3,
-      city: 'الطائف',
-      title: 'شاليهات ابها',
-      description: 'نةنةشنسىةنهىسنهشةىسنةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقشىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 4,
-      city: 'راس تنورة',
-      title: 'شاليهات دبي',
-      description: 'نةنةشنسىةنهىسنهشةىةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقسنشىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 5,
-      city: 'الخبر',
-      title: 'شاليهات نننن',
-      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 6,
-      city: 'المدينة المنورة',
-      title: 'شاليهات نننن',
-      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 7,
-      city: 'الرياض',
-      title: 'شاليهات نننن',
-      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 8,
-      city: 'جدة',
-      title: 'شاليهات نننن',
-      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 9,
-      city: 'الدوادمي',
-      title: 'شاليهات نننن',
-      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }, {
-      id: 10,
-      city: 'الأفلاج',
-      title: 'شاليهات نننن',
-      description: 'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',
-      imgSrc: '/images/istraha-1.jpg'
-    }]
-  },
-  methods: {},
-  created: function created() {
-    $(function () {
-      $('[data-toggle="popover"]').popover();
-    });
-  }
+new Vue({
+  el: '#app'
 });
 
 /***/ }),
@@ -56838,6 +56910,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_city_search_vue_vue_type_template_id_8f94d15c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_city_search_vue_vue_type_template_id_8f94d15c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-connect-Panel.vue":
+/*!***********************************************************!*\
+  !*** ./resources/js/components/jilsati-connect-Panel.vue ***!
+  \***********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_connect_Panel_vue_vue_type_template_id_3e9ec26e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-connect-Panel.vue?vue&type=template&id=3e9ec26e& */ "./resources/js/components/jilsati-connect-Panel.vue?vue&type=template&id=3e9ec26e&");
+/* harmony import */ var _jilsati_connect_Panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-connect-Panel.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-connect-Panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_connect_Panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_connect_Panel_vue_vue_type_template_id_3e9ec26e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_connect_Panel_vue_vue_type_template_id_3e9ec26e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-connect-Panel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-connect-Panel.vue?vue&type=script&lang=js&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-connect-Panel.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_connect_Panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-connect-Panel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-connect-Panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_connect_Panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-connect-Panel.vue?vue&type=template&id=3e9ec26e&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-connect-Panel.vue?vue&type=template&id=3e9ec26e& ***!
+  \******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_connect_Panel_vue_vue_type_template_id_3e9ec26e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-connect-Panel.vue?vue&type=template&id=3e9ec26e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-connect-Panel.vue?vue&type=template&id=3e9ec26e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_connect_Panel_vue_vue_type_template_id_3e9ec26e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_connect_Panel_vue_vue_type_template_id_3e9ec26e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

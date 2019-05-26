@@ -2,18 +2,39 @@
 
 @section('title','جلستي: اضف جلستك/استراحتك')
 
-@inject('input', '\Illuminate\Support\Facades\Input')
+@section('stylesheets')
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css" integrity="sha384-oS3vJWv+0UjzBfQzYUhtDYW+Pj2yciDJxpsK1OYPAYjqT085Qq/1cq5FLXAZQ7Ay" crossorigin="anonymous">
+@endsection
 
 @section('body')
 <div class="container">
-    <div class="mb-5 jumbotron rounded-0 shadow-sm bg-light row">
-        <div class="col-lg-4">
+    <div class="mb-5 jumbotron justify-content-center rounded-0 shadow-sm bg-light row">
 
+        <div class="col-lg-4">
+            <jilsati-connect-panel class="shadow-sm" phone="{{$jilsah->socials->phone}}"
+                                   instagram="{{$jilsah->socials->instagram}}"
+                                   facebook="{{$jilsah->socials->facebook}}"
+                                   twitter="{{$jilsah->socials->twitter}}"
+                                   snapchat="{{$jilsah->socials->snapchat}}">
+            </jilsati-connect-panel>
         </div>
 
-        <div class="col-lg-8">
-            <div class="row">
-                <jilsati-card-show :images="[{'i':1},{'i':2},{'i':3},{'i':4}]"></jilsati-card-show>
+        <div class="col-8">
+            <div class="card mb-3 shadow-sm">
+                <div class="card-body text-right">
+                    <p class="card-title text-success h2">{{$jilsah->name}}</p>
+                    <p class="card-text text-secondary">{{$jilsah->location->city->name}} , {{$jilsah->location->address}}</p>
+                    <p class="card-text">
+                        <small class="text-muted">{{$jilsah->location->address_details}}</small>
+                    </p>
+                </div>
+                <jilsati-carousel class="card-img-top" name="images-carousel" :images="{{json_encode($all_images)}}">
+
+                </jilsati-carousel>
+                <div class="card-body text-right">
+                    <h5 class="card-title">الوصف</h5>
+                    <p style="direction: rtl;" class="card-text text-justify text-muted mt-4">{{$jilsah->description}}</p>
+                </div>
             </div>
         </div>
     </div>

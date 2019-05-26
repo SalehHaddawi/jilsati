@@ -12,6 +12,7 @@ use App\JilsahSocials;
 use App\JilsahTypes;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -161,7 +162,11 @@ class JilsahController extends Controller
      */
     public function show(Jilsah $jilsah)
     {
-        //
+        $all_images = $jilsah->images->map->src;
+
+        $all_images->push($jilsah->main_image);
+
+        return view('jilsah.show',compact('jilsah','all_images'));
     }
 
     /**

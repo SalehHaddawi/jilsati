@@ -12,7 +12,7 @@
                                    description="{{$jilsah->description}}"
                                    city="{{$jilsah->location->city->name}}"
                                    address="{{$jilsah->location->address}}"
-                                   img-src="storage/{{$jilsah->main_image}}"
+                                   img-src="{{asset('storage/'.$jilsah->main_image)}}"
                                    :max-description-length="180"
                                    :clients="{{json_encode($jilsah->clientTypes->map->name)}}"
                                    :types="{{json_encode($jilsah->jilsahTypes->map->name)}}"

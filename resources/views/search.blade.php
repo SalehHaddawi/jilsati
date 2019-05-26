@@ -46,18 +46,19 @@
 
     <div class="rounded-0 shadow bg-light col-lg-9 col-12">
         @foreach($jilsahs as $jilsah)
-            <jilsati-card-show title="{{$jilsah->name}}"
-                               description="{{$jilsah->description}}"
-                               city="{{$jilsah->location->city->name}}"
-                               address="{{$jilsah->location->address}}"
-                               img-src="storage/{{$jilsah->main_image}}"
-                               :max-description-length="180"
-                               :clients="{{json_encode($jilsah->clientTypes->map->name)}}"
-                               :types="{{json_encode($jilsah->jilsahTypes->map->name)}}"
-                               :options="{{json_encode($jilsah->options->map->name)}}"
-                               :rating="5"
-                               price="20"
-                               price-per-jilsah="للجلسة">
+            <jilsati-card-show :jilsah-id="{{$jilsah->id}}"
+                                title="{{$jilsah->name}}"
+                                description="{{$jilsah->description}}"
+                                city="{{$jilsah->location->city->name}}"
+                                address="{{$jilsah->location->address}}"
+                                img-src="{{asset('storage/'.$jilsah->main_image)}}"
+                                :max-description-length="180"
+                                :clients="{{json_encode($jilsah->clientTypes->map->name)}}"
+                                :types="{{json_encode($jilsah->jilsahTypes->map->name)}}"
+                                :options="{{json_encode($jilsah->options->map->name)}}"
+                                :rating="5"
+                                price="20"
+                                price-per-jilsah="للجلسة">
             </jilsati-card-show>
         @endforeach
     </div>

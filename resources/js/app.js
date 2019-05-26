@@ -43,6 +43,8 @@ Vue.component('JilsatiTest',require('./components/jilsati-test').default);
 Vue.component('Star', require('./components/star').default);
 Vue.component('StarRating', require('./components/star-rating').default);
 Vue.component('JilsatiShifts', require('./components/jilsati-shifts').default);
+Vue.component('JilsatiConnectPanel', require('./components/jilsati-connect-Panel').default);
+
 
 
 
@@ -52,32 +54,6 @@ Vue.component('JilsatiShifts', require('./components/jilsati-shifts').default);
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-const app = new Vue({
+new Vue({
     el: '#app',
-
-    data : {
-        jilsahs : [
-            {id:0,city:'الرياض',title:'شاليهات الواحة',description:'نةنةشنسىةنهىسنهشةىسنشىةشسهنىمكبنورحيكثقونبلثبيقنخةولخثقبةلثسيبةتثيقبهةتنبقثهةتخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:1,city:'مكة المكرمة',title:'شاليهات جدة',description:'نةنةشنسىةنهىسنهشةىسنشىةشسمنثقبي ةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقبهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:2,city:'ينبع البحر',title:'شاليهات هدر',description:'نةنةشنسىةنهىسةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقنهشةىسنشىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:3,city:'الطائف',title:'شاليهات ابها',description:'نةنةشنسىةنهىسنهشةىسنةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقشىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:4,city:'راس تنورة',title:'شاليهات دبي',description:'نةنةشنسىةنهىسنهشةىةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقسنشىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:5,city:'الخبر',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:6,city:'المدينة المنورة',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:7,city:'الرياض',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:8,city:'جدة',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:9,city:'الدوادمي',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-            {id:10,city:'الأفلاج',title:'شاليهات نننن',description:'نةنةشنسىةنهىسنهشةىسنشةسنميوبة ىيسنمقبث ىبمسنيقتى بنتةوسيى قبنوتةسى يصقىةشسهنىخصنهىخنصصى',imgSrc:'/images/istraha-1.jpg'},
-        ],
-    },
-
-    methods : {
-
-    },
-
-    created : function () {
-        $(function () {
-            $('[data-toggle="popover"]').popover();
-        })
-    }
 });
