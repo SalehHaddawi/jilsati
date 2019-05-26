@@ -19,8 +19,8 @@ class CreateJilsahsLocationsTable extends Migration
                 $table->unsignedBigInteger('jilsah_id');
                 $table->unsignedBigInteger('city_id');
                 $table->string('address');
-                $table->text('description');
-                $table->text('google_map_url');
+                $table->text('address_details')->nullable();
+                $table->text('google_map_url')->nullable();
                 $table->timestamps();
 
 

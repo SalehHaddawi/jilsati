@@ -18,10 +18,10 @@ class CreateJilsahsSocialsTable extends Migration
                 $table->bigIncrements('id');
                 $table->unsignedBigInteger('jilsah_id');
                 $table->string('phone');
-                $table->string('instagram');
-                $table->string('facebook');
-                $table->string('twitter');
-                $table->string('snapchat');
+                $table->string('instagram')->nullable();
+                $table->string('facebook')->nullable();
+                $table->string('twitter')->nullable();
+                $table->string('snapchat')->nullable();
                 $table->timestamps();
 
                 $table->foreign('jilsah_id')->references('id')->on('jilsahs')->onDelete('cascade');

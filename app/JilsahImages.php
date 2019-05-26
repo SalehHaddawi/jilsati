@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JilsahImages extends Model
 {
-    protected $table = 'jilsah_images';
+    protected $table = 'jilsahs_images';
 
     protected $fillable = [
         'src'

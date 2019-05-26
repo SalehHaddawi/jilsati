@@ -44,7 +44,7 @@
 
                             const reader = new FileReader();
                             reader.onload = function (e) {
-                                vue.$emit('image-changed', {name:event.target.files[i].name,src:e.target.result});
+                                vue.$emit('image-changed', {name:event.target.files[i].name,src:e.target.result,file:event.target.files[i]});
                             };
                             reader.readAsDataURL(event.target.files[i]);
                         }

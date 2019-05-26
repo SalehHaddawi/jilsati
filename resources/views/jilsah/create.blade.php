@@ -16,9 +16,7 @@
         <jilsati-alert class="mx-auto" type="info">سبعة خطوات سهلة عشان تضيف جلستك</jilsati-alert>
 
         <div class="mt-5">
-            <form>
-                <jilsati-stepper></jilsati-stepper>
-            </form>
+            <jilsati-stepper></jilsati-stepper>
         </div>
     </div>
 </div>

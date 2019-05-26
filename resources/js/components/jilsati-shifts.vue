@@ -13,9 +13,6 @@
                 </div>
             </div>
         </div>
-        <!--<a :id="name+'-popover'" tabindex="0" class="btn btn-info mt-4 mr-2" role="button" data-toggle="popover" data-placement="top" data-trigger="manual" data-content="لايوجد وقت كافي لاضافة فترة جديدة">
-            اضافة فترة عمل
-        </a>-->
 
         <button type="button" class="btn btn-info mt-4 mr-2" @click="addNewShift">اضافة فترة عمل</button>
 
@@ -36,12 +33,14 @@
             return {
                 shifts : 1,
 
-                popover : undefined,
-
                 fromTimes : [{hour:8,minute:0}],
 
                 toTimes : [{hour:23,minute:0}],
             }
+        },
+
+        created() {
+            this.shiftChanged();
         },
 
         methods : {
@@ -57,35 +56,43 @@
                 this.$set(this.toTimes,this.shifts,{hour:mom.hours(), minute:mom.minutes()});
 
                 this.shifts++;
+
+                this.shiftChanged();
             },
 
             deleteShift :function () {
-                delete this.toTimes[this.shifts-1];
+                this.fromTimes.pop();
 
-                delete this.fromTimes[this.shifts-1];
+                this.toTimes.pop();
 
                 this.shifts--;
+
+                this.shiftChanged();
             },
 
             updateTimeFrom : function (index,val) {
                 if(val) {
                     this.$set(this.fromTimes, index, {hour: val.hours(), minute: val.minutes()});
+
+                    this.shiftChanged();
                 }
             },
 
             updateTimeTo : function (index,val) {
                 if(val) {
                     this.$set(this.toTimes, index, {hour: val.hours(), minute: val.minutes()});
+
+                    this.shiftChanged();
                 }
             },
 
             setTime: function (time) {
                 return moment().hours(time.hour).minutes(time.minute);
+            },
+
+            shiftChanged : function () {
+                this.$emit('shift-changed',this.name,{from: this.fromTimes, to:this.toTimes});
             }
         },
-
-        created() {
-
-        }
     }
 </script>

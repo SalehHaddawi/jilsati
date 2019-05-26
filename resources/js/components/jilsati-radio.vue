@@ -2,7 +2,7 @@
     <div class="custom-control custom-radio text-right mr-3 mb-2" :class="{'custom-control-inline' : inline}">
         <input @change="onChange" type="radio" class="custom-control-input" :id="name + postfix" :name="name" :checked="checked ? 'checked' : ''">
 
-        <label class="custom-control-label" :for="name + postfix">{{val}}</label>
+        <label class="custom-control-label" :for="name + postfix"><slot></slot></label>
     </div>
 </template>
 

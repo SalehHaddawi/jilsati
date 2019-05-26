@@ -54,6 +54,10 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        /*NOT USED
+        USE THE ONE IN register function
+        */
+
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
@@ -87,6 +91,6 @@ class RegisterController extends Controller
 
         Auth::login($this->create($request->all()));
 
-        return redirect('/');
+        return redirect($this->redirectTo);
     }
 }

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class JilsahLocation extends Model
 {
-    protected $table = 'jilsahs_location';
+    protected $table = 'jilsahs_locations';
 
     protected $fillable = [
         'city_id', 'address', 'description', 'google_map_url'

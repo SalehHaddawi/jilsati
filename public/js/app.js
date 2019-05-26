@@ -2160,7 +2160,8 @@ __webpack_require__.r(__webpack_exports__);
             reader.onload = function (e) {
               vue.$emit('image-changed', {
                 name: event.target.files[i].name,
-                src: e.target.result
+                src: e.target.result,
+                file: event.target.files[i]
               });
             };
 
@@ -2447,9 +2448,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     name: {
@@ -2459,7 +2457,6 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       shifts: 1,
-      popover: undefined,
       fromTimes: [{
         hour: 8,
         minute: 0
@@ -2469,6 +2466,9 @@ __webpack_require__.r(__webpack_exports__);
         minute: 0
       }]
     };
+  },
+  created: function created() {
+    this.shiftChanged();
   },
   methods: {
     addNewShift: function addNewShift() {
@@ -2481,11 +2481,13 @@ __webpack_require__.r(__webpack_exports__);
         minute: mom.minutes()
       });
       this.shifts++;
+      this.shiftChanged();
     },
     deleteShift: function deleteShift() {
-      delete this.toTimes[this.shifts - 1];
-      delete this.fromTimes[this.shifts - 1];
+      this.fromTimes.pop();
+      this.toTimes.pop();
       this.shifts--;
+      this.shiftChanged();
     },
     updateTimeFrom: function updateTimeFrom(index, val) {
       if (val) {
@@ -2493,6 +2495,7 @@ __webpack_require__.r(__webpack_exports__);
           hour: val.hours(),
           minute: val.minutes()
         });
+        this.shiftChanged();
       }
     },
     updateTimeTo: function updateTimeTo(index, val) {
@@ -2501,13 +2504,19 @@ __webpack_require__.r(__webpack_exports__);
           hour: val.hours(),
           minute: val.minutes()
         });
+        this.shiftChanged();
       }
     },
     setTime: function setTime(time) {
       return moment().hours(time.hour).minutes(time.minute);
+    },
+    shiftChanged: function shiftChanged() {
+      this.$emit('shift-changed', this.name, {
+        from: this.fromTimes,
+        to: this.toTimes
+      });
     }
-  },
-  created: function created() {}
+  }
 });
 
 /***/ }),
@@ -3025,6 +3034,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -3057,7 +3071,6 @@ __webpack_require__.r(__webpack_exports__);
         state: 'secondary',
         disabled: true
       }],
-      timePeriods: ['فترة الدراسة', 'فترة الاجازة', 'الاعياد', 'رمضان'],
       chosenTimePeriods: {
         school: false,
         vacation: false,
@@ -3073,22 +3086,39 @@ __webpack_require__.r(__webpack_exports__);
         ramadanShifts: 1
       },
       models: {
-        name: undefined,
-        description: undefined,
+        jilsah: {
+          name: undefined,
+          description: undefined,
+          mainImage: {
+            name: 'upload-jilsah-image',
+            src: '/images/upload-your-jilsah.png',
+            org: true
+          }
+        },
+        times: {
+          schoolWeek: {},
+          schoolWeekend: {},
+          vacationWeek: {},
+          vacationWeekend: {},
+          ramadanWeek: {},
+          eidWeek: {}
+        },
         jilsahClients: [],
         jilsahType: [],
         options: [],
-        city: undefined,
-        mainImage: {
-          name: 'upload-jilsah-image',
-          src: '/images/upload-your-jilsah.png',
-          org: true
+        location: {
+          city: undefined,
+          address: undefined,
+          addressDetails: undefined,
+          googleMapUrl: undefined,
+
+          /**USED ONLY FOR SUBMIT**/
+          cityId: 0
+          /**USED ONLY FOR SUBMIT**/
+
         },
-        address: undefined,
-        addressDetails: undefined,
-        googleMapAddress: undefined,
-        pricePer: '',
         prices: {
+          pricePerJilsah: '',
           schoolWeek: undefined,
           schoolWeekend: undefined,
           vacationWeek: undefined,
@@ -3141,18 +3171,22 @@ __webpack_require__.r(__webpack_exports__);
         }
       });
     },
+    handleTimesChanged: function handleTimesChanged(name, timeObject) {
+      this.models.times[name] = timeObject;
+    },
     handleMainImageChanged: function handleMainImageChanged(file) {
-      this.models.mainImage = file;
+      this.models.jilsah.mainImage = file;
     },
     handleAddNewJilsahImage: function handleAddNewJilsahImage(file) {
       this.models.jilsahImages.push({
         index: this.jilsahImagesCounter,
         name: file.name,
-        src: file.src
+        src: file.src,
+        file: file.file
       });
       this.jilsahImagesCounter++;
     },
-    removeJilsahImage: function removeJilsahImage(index) {
+    handleRemoveJilsahImage: function handleRemoveJilsahImage(index) {
       this.models.jilsahImages = this.models.jilsahImages.filter(function (img) {
         return img.index !== index;
       });
@@ -3174,15 +3208,84 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return 'is-valid';
       }
+    },
+    createNewJilsah: function createNewJilsah() {
+      var _this = this;
+
+      var formData = new FormData();
+      /*Jilsah information*/
+
+      formData.append('name', this.models.jilsah.name);
+      formData.append('description', this.models.jilsah.description);
+      formData.append('main_image', this.models.jilsah.mainImage.file, this.models.jilsah.mainImage.name);
+      formData.append('times', JSON.stringify(this.models.times, function (k, v) {
+        return v === undefined ? null : v;
+      }));
+      /*jilsah client types information*/
+
+      for (var i = 0; i < this.models.jilsahClients.length; i++) {
+        formData.append('clients[' + i + ']', this.models.jilsahClients[i]);
+      }
+      /*jilsah types information*/
+
+
+      for (var _i = 0; _i < this.models.jilsahType.length; _i++) {
+        formData.append('types[' + _i + ']', this.models.jilsahType[_i]);
+      }
+      /*jilsah options information*/
+
+
+      for (var _i2 = 0; _i2 < this.models.options.length; _i2++) {
+        formData.append('options[' + _i2 + ']', this.models.options[_i2]);
+      }
+      /*jilsah location information*/
+
+
+      this.models.location.cityId = this.cities.find(function (c) {
+        return c.name === _this.models.location.city;
+      }).id;
+      formData.append('location', JSON.stringify(this.models.location, function (k, v) {
+        return v === undefined ? null : v;
+      }));
+      /*jilsah prices information*/
+
+      formData.append('prices', JSON.stringify(this.models.prices, function (k, v) {
+        return v === undefined ? null : v;
+      }));
+      /*jilsah images information*/
+
+      var images = this.models.jilsahImages.map(function (img) {
+        return img.file;
+      });
+
+      for (var _i3 = 0; _i3 < images.length; _i3++) {
+        formData.append('images[' + _i3 + ']', images[_i3]);
+      }
+      /*jilsah socials information*/
+
+
+      formData.append('socials', JSON.stringify(this.models.social, function (k, v) {
+        return v === undefined ? null : v;
+      }));
+      var settings = {
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
+      };
+      axios.post('/jilsahs', formData, settings).then(function (res) {
+        console.log('SUCCESS', res);
+      })["catch"](function (err) {
+        console.log('ERROR', err.response);
+      });
     }
   },
   computed: {
     /****INFO STEP****/
     nameErr: function nameErr() {
-      return this.validateModelText(this.models.name);
+      return this.validateModelText(this.models.jilsah.name);
     },
     descriptionErr: function descriptionErr() {
-      return this.validateModelText(this.models.description);
+      return this.validateModelText(this.models.jilsah.description);
     },
     stepJilsahInfoErr: function stepJilsahInfoErr() {
       if (this.nameErr === 'is-valid' && this.descriptionErr === 'is-valid') return true;else if (this.nameErr === 'is-invalid' || this.descriptionErr === 'is-invalid') return false;else return undefined;
@@ -3216,10 +3319,10 @@ __webpack_require__.r(__webpack_exports__);
 
     /****LOCATION STEP****/
     cityErr: function cityErr() {
-      return this.validateModelText(this.models.city);
+      return this.validateModelText(this.models.location.city);
     },
     addressErr: function addressErr() {
-      return this.validateModelText(this.models.address);
+      return this.validateModelText(this.models.location.address);
     },
     stepJilsahLocationErr: function stepJilsahLocationErr() {
       if (this.cityErr === 'is-valid' && this.addressErr === 'is-valid') return true;else if (this.cityErr === 'is-invalid' || this.addressErr === 'is-invalid') return false;else return undefined;
@@ -3274,7 +3377,7 @@ __webpack_require__.r(__webpack_exports__);
 
     /****IMAGES STEP****/
     mainImageErr: function mainImageErr() {
-      if (this.models.mainImage.org) {
+      if (this.models.jilsah.mainImage.org) {
         return 'is-invalid';
       } else {
         return 'is-valid';
@@ -3302,6 +3405,11 @@ __webpack_require__.r(__webpack_exports__);
       } else {
         return undefined;
       }
+    },
+
+    /****CREATE NEW JILSAH****/
+    createNewJilsahErr: function createNewJilsahErr() {
+      return this.stepJilsahInfoErr && this.stepJilsahTimesErr && this.stepJilsahOptionsErr && this.stepJilsahLocationErr && this.stepJilsahPricesErr && this.stepJilsahImagesErr && this.stepJilsahConnectErr;
     }
   },
   watch: {
@@ -3377,12 +3485,12 @@ __webpack_require__.r(__webpack_exports__);
     }
   },
   created: function created() {
-    var _this = this;
+    var _this2 = this;
 
     axios.post('/jilsahs/cities').then(function (res) {
-      _this.cities = res.data;
+      _this2.cities = res.data;
     })["catch"](function (err) {
-      console.log(err);
+      console.log(err.response);
     });
   }
 });
@@ -40025,7 +40133,7 @@ var render = function() {
             "div",
             { staticClass: "mt-2" },
             _vm._l(_vm.options, function(option) {
-              return _c("h5", { staticClass: "d-inline-block" }, [
+              return _c("h6", { staticClass: "d-inline-block" }, [
                 _c(
                   "span",
                   { staticClass: "badge badge-success text-light m-1" },
@@ -40997,7 +41105,7 @@ var render = function() {
                   "a",
                   { staticClass: "nav-link", attrs: { href: "/about" } },
                   [
-                    _vm._v("عن جلستي"),
+                    _vm._v("عن موقع جلستي"),
                     _vm.active === "about"
                       ? _c("span", { staticClass: "sr-only" }, [
                           _vm._v("(الحالية)")
@@ -41214,7 +41322,8 @@ var render = function() {
           staticClass: "custom-control-label",
           attrs: { for: _vm.name + _vm.postfix }
         },
-        [_vm._v(_vm._s(_vm.val))]
+        [_vm._t("default")],
+        2
       )
     ]
   )
@@ -41482,8 +41591,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model.trim",
-                  value: _vm.models.name,
-                  expression: "models.name",
+                  value: _vm.models.jilsah.name,
+                  expression: "models.jilsah.name",
                   modifiers: { trim: true }
                 }
               ],
@@ -41495,13 +41604,17 @@ var render = function() {
                 placeholder: "اسم جلستك",
                 "aria-describedby": "jilsah-nameHelp"
               },
-              domProps: { value: _vm.models.name },
+              domProps: { value: _vm.models.jilsah.name },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
-                  _vm.$set(_vm.models, "name", $event.target.value.trim())
+                  _vm.$set(
+                    _vm.models.jilsah,
+                    "name",
+                    $event.target.value.trim()
+                  )
                 },
                 blur: function($event) {
                   return _vm.$forceUpdate()
@@ -41533,8 +41646,8 @@ var render = function() {
                 {
                   name: "model",
                   rawName: "v-model.trim",
-                  value: _vm.models.description,
-                  expression: "models.description",
+                  value: _vm.models.jilsah.description,
+                  expression: "models.jilsah.description",
                   modifiers: { trim: true }
                 }
               ],
@@ -41546,14 +41659,14 @@ var render = function() {
                 rows: "5",
                 "aria-describedby": "descriptionHelp"
               },
-              domProps: { value: _vm.models.description },
+              domProps: { value: _vm.models.jilsah.description },
               on: {
                 input: function($event) {
                   if ($event.target.composing) {
                     return
                   }
                   _vm.$set(
-                    _vm.models,
+                    _vm.models.jilsah,
                     "description",
                     $event.target.value.trim()
                   )
@@ -41702,7 +41815,8 @@ var render = function() {
                         },
                         [
                           _c("jilsati-shifts", {
-                            attrs: { name: "school-week" }
+                            attrs: { name: "schoolWeek" },
+                            on: { "shift-changed": _vm.handleTimesChanged }
                           })
                         ],
                         1
@@ -41718,7 +41832,8 @@ var render = function() {
                         },
                         [
                           _c("jilsati-shifts", {
-                            attrs: { name: "school-weekend" }
+                            attrs: { name: "schoolWeekend" },
+                            on: { "shift-changed": _vm.handleTimesChanged }
                           })
                         ],
                         1
@@ -41751,7 +41866,8 @@ var render = function() {
                         },
                         [
                           _c("jilsati-shifts", {
-                            attrs: { name: "vacation-week" }
+                            attrs: { name: "vacationWeek" },
+                            on: { "shift-changed": _vm.handleTimesChanged }
                           })
                         ],
                         1
@@ -41767,7 +41883,8 @@ var render = function() {
                         },
                         [
                           _c("jilsati-shifts", {
-                            attrs: { name: "vacation-weekend" }
+                            attrs: { name: "vacationWeekend" },
+                            on: { "shift-changed": _vm.handleTimesChanged }
                           })
                         ],
                         1
@@ -41798,7 +41915,12 @@ var render = function() {
                             legend: "خلال الاسبوع"
                           }
                         },
-                        [_c("jilsati-shifts", { attrs: { name: "eid-week" } })],
+                        [
+                          _c("jilsati-shifts", {
+                            attrs: { name: "eidWeek" },
+                            on: { "shift-changed": _vm.handleTimesChanged }
+                          })
+                        ],
                         1
                       )
                     ],
@@ -41829,7 +41951,8 @@ var render = function() {
                         },
                         [
                           _c("jilsati-shifts", {
-                            attrs: { name: "ramadan-week" }
+                            attrs: { name: "ramadanWeek" },
+                            on: { "shift-changed": _vm.handleTimesChanged }
                           })
                         ],
                         1
@@ -42271,14 +42394,16 @@ var render = function() {
                     attrs: {
                       name: "city",
                       optionsLabel: "اختار المدينة اللي فيها الجلسة...",
-                      options: _vm.cities
+                      options: _vm.cities.map(function(c) {
+                        return c.name
+                      })
                     },
                     model: {
-                      value: _vm.models.city,
+                      value: _vm.models.location.city,
                       callback: function($$v) {
-                        _vm.$set(_vm.models, "city", $$v)
+                        _vm.$set(_vm.models.location, "city", $$v)
                       },
-                      expression: "models.city"
+                      expression: "models.location.city"
                     }
                   }),
                   _vm._v(" "),
@@ -42292,8 +42417,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model.trim",
-                          value: _vm.models.address,
-                          expression: "models.address",
+                          value: _vm.models.location.address,
+                          expression: "models.location.address",
                           modifiers: { trim: true }
                         }
                       ],
@@ -42305,14 +42430,14 @@ var render = function() {
                         placeholder: "الحي",
                         "aria-describedby": "jilsah-locationHelp"
                       },
-                      domProps: { value: _vm.models.address },
+                      domProps: { value: _vm.models.location.address },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.models,
+                            _vm.models.location,
                             "address",
                             $event.target.value.trim()
                           )
@@ -42347,8 +42472,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model.trim",
-                          value: _vm.models.addressDetails,
-                          expression: "models.addressDetails",
+                          value: _vm.models.location.addressDetails,
+                          expression: "models.location.addressDetails",
                           modifiers: { trim: true }
                         }
                       ],
@@ -42359,14 +42484,14 @@ var render = function() {
                         placeholder: "مثال: بجوار مسجد التقوى على اليمين",
                         "aria-describedby": "jilsah-location-detailsHelp"
                       },
-                      domProps: { value: _vm.models.addressDetails },
+                      domProps: { value: _vm.models.location.addressDetails },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.models,
+                            _vm.models.location,
                             "addressDetails",
                             $event.target.value.trim()
                           )
@@ -42401,8 +42526,8 @@ var render = function() {
                         {
                           name: "model",
                           rawName: "v-model.trim",
-                          value: _vm.models.googleMapAddress,
-                          expression: "models.googleMapAddress",
+                          value: _vm.models.location.googleMapUrl,
+                          expression: "models.location.googleMapUrl",
                           modifiers: { trim: true }
                         }
                       ],
@@ -42413,15 +42538,15 @@ var render = function() {
                         placeholder: "رابط موقع الجلسة في قوقل ماب",
                         "aria-describedby": "jilsah-google-locationHelp"
                       },
-                      domProps: { value: _vm.models.googleMapAddress },
+                      domProps: { value: _vm.models.location.googleMapUrl },
                       on: {
                         input: function($event) {
                           if ($event.target.composing) {
                             return
                           }
                           _vm.$set(
-                            _vm.models,
-                            "googleMapAddress",
+                            _vm.models.location,
+                            "googleMapUrl",
                             $event.target.value.trim()
                           )
                         },
@@ -42504,15 +42629,15 @@ var render = function() {
                         attrs: {
                           name: "price-per",
                           postfix: "jilsah",
-                          val: "للجلسة",
+                          val: "1",
                           checked: ""
                         },
                         model: {
-                          value: _vm.models.pricePer,
+                          value: _vm.models.prices.pricePerJilsah,
                           callback: function($$v) {
-                            _vm.$set(_vm.models, "pricePer", $$v)
+                            _vm.$set(_vm.models.prices, "pricePerJilsah", $$v)
                           },
-                          expression: "models.pricePer"
+                          expression: "models.prices.pricePerJilsah"
                         }
                       },
                       [
@@ -42528,17 +42653,21 @@ var render = function() {
                         attrs: {
                           name: "price-per",
                           postfix: "person",
-                          val: "للشخص"
+                          val: "0"
                         },
                         model: {
-                          value: _vm.models.pricePer,
+                          value: _vm.models.prices.pricePerJilsah,
                           callback: function($$v) {
-                            _vm.$set(_vm.models, "pricePer", $$v)
+                            _vm.$set(_vm.models.prices, "pricePerJilsah", $$v)
                           },
-                          expression: "models.pricePer"
+                          expression: "models.prices.pricePerJilsah"
                         }
                       },
-                      [_vm._v("السعر للشخص\n                ")]
+                      [
+                        _vm._v(
+                          "\n                    السعر للشخص\n                "
+                        )
+                      ]
                     )
                   ],
                   1
@@ -43047,18 +43176,18 @@ var render = function() {
                           _vm._v(" "),
                           _c("jilsati-card-show", {
                             attrs: {
-                              title: _vm.models.name,
-                              city: _vm.models.city,
-                              address: _vm.models.address,
-                              description: _vm.models.description,
-                              "img-src": _vm.models.mainImage.src,
+                              title: _vm.models.jilsah.name,
+                              city: _vm.models.location.city,
+                              address: _vm.models.location.address,
+                              description: _vm.models.jilsah.description,
+                              "img-src": _vm.models.jilsah.mainImage.src,
                               "max-description-length": 180,
                               options: _vm.models.options,
                               clients: _vm.models.jilsahClients,
                               types: _vm.models.jilsahType,
                               rating: 5,
                               price: _vm.models.prices.schoolWeek,
-                              "price-per": _vm.models.pricePer
+                              "price-per": _vm.models.prices.pricePer
                             }
                           })
                         ],
@@ -43139,7 +43268,9 @@ var render = function() {
                                   },
                                   on: {
                                     click: function($event) {
-                                      return _vm.removeJilsahImage(img.index)
+                                      return _vm.handleRemoveJilsahImage(
+                                        img.index
+                                      )
                                     }
                                   }
                                 },
@@ -43234,7 +43365,7 @@ var render = function() {
                         staticClass: "form-control rounded-0",
                         class: _vm.phoneErr,
                         attrs: {
-                          size: "10",
+                          maxlength: "10",
                           placeholder: "05xxxxxxxx",
                           type: "tel",
                           "aria-label": "جوال التواصل"
@@ -43528,7 +43659,19 @@ var render = function() {
               )
             : _vm._e()
         ]
-      )
+      ),
+      _vm._v(" "),
+      _c("div", { staticClass: "mt-2" }, [
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success",
+            attrs: { type: "button", disabled: !_vm.createNewJilsahErr },
+            on: { click: _vm.createNewJilsah }
+          },
+          [_vm._v("انشاء جلسة جديدة")]
+        )
+      ])
     ],
     1
   )

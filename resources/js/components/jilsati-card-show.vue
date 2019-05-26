@@ -27,9 +27,9 @@
                     </div>
 
                     <div class="mt-2">
-                        <h5 v-for="option in options" class="d-inline-block">
+                        <h6 v-for="option in options" class="d-inline-block">
                             <span class="badge badge-success text-light m-1">{{option}}</span>
-                        </h5>
+                        </h6>
                     </div>
 
                     <div class="mt-2">

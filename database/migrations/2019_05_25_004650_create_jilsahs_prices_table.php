@@ -13,21 +13,20 @@ class CreateJilsahsPricesTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable('jilsahs_prices')) {
-            Schema::create('jilsahs_prices', function (Blueprint $table) {
-                $table->bigIncrements('id');
-                $table->unsignedBigInteger('jilsah_id');
-                $table->unsignedDecimal('school_week');
-                $table->unsignedDecimal('school_weekend');
-                $table->unsignedDecimal('vacation_week');
-                $table->unsignedDecimal('vacation_weekend');
-                $table->unsignedDecimal('eid');
-                $table->unsignedDecimal('ramadan');
-                $table->timestamps();
+        Schema::create('jilsahs_prices', function (Blueprint $table) {
+            $table->bigIncrements('id');
+            $table->unsignedBigInteger('jilsah_id');
+            $table->boolean('price_per_jilsah')->nullable();
+            $table->unsignedDecimal('school_week')->nullable();
+            $table->unsignedDecimal('school_weekend')->nullable();
+            $table->unsignedDecimal('vacation_week')->nullable();
+            $table->unsignedDecimal('vacation_weekend')->nullable();
+            $table->unsignedDecimal('eid')->nullable();
+            $table->unsignedDecimal('ramadan')->nullable();
+            $table->timestamps();
 
-                $table->foreign('jilsah_id')->references('id')->on('jilsahs')->onDelete('cascade');
-            });
-        }
+            $table->foreign('jilsah_id')->references('id')->on('jilsahs')->onDelete('cascade');
+        });
     }
 
     /**

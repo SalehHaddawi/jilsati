@@ -35,7 +35,7 @@
                     <div class="form-group row">
                         <div class="col-md-6 offset-md-4">
                             <div class="form-check">
-                                <jilsati-checkbox name="remember">افتكرني مرة ثانية</jilsati-checkbox>
+                                <jilsati-checkbox name="remember_token">افتكرني مرة ثانية</jilsati-checkbox>
                             </div>
                         </div>
                     </div>

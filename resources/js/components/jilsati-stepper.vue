@@ -8,7 +8,7 @@
 
             <div class="form-group">
                 <label for="jilsah-name">اسم الجلسة</label>
-                <input v-model.trim="models.name" type="text" class="form-control" :class="nameErr" id="jilsah-name"
+                <input v-model.trim="models.jilsah.name" type="text" class="form-control" :class="nameErr" id="jilsah-name"
                        placeholder="اسم جلستك" aria-describedby="jilsah-nameHelp">
                 <small id="jilsah-nameHelp" class="form-text text-muted">
                     هذا الاسم اللي الناس بيبحثوا عن جلستك بيه
@@ -16,7 +16,7 @@
             </div>
             <div class="form-group">
                 <label for="jilsah-description">وصف الجلسة</label>
-                <textarea v-model.trim="models.description" class="form-control" :class="descriptionErr"
+                <textarea v-model.trim="models.jilsah.description" class="form-control" :class="descriptionErr"
                           id="jilsah-description" placeholder="الوصف" rows="5"
                           aria-describedby="descriptionHelp"></textarea>
                 <small id="descriptionHelp" class="form-text text-muted">
@@ -51,31 +51,31 @@
 
                 <jilsati-fieldset v-show="chosenTimePeriods.school" font-size="1.4rem" legend="فترة الدراسة">
                     <jilsati-fieldset font-size="1.1rem" legend="ايام الاسبوع">
-                        <jilsati-shifts name="school-week"></jilsati-shifts>
+                        <jilsati-shifts name="schoolWeek" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
                     <jilsati-fieldset font-size="1.1rem" legend="نهاية الاسبوع">
-                        <jilsati-shifts name="school-weekend"></jilsati-shifts>
+                        <jilsati-shifts name="schoolWeekend" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset v-show="chosenTimePeriods.vacation" legend="ايام الاجازة" font-size="1.4rem">
                     <jilsati-fieldset font-size="1.1rem" legend="ايام الاسبوع">
-                        <jilsati-shifts name="vacation-week"></jilsati-shifts>
+                        <jilsati-shifts name="vacationWeek" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
                     <jilsati-fieldset font-size="1.1rem" legend="نهاية الاسبوع">
-                        <jilsati-shifts name="vacation-weekend"></jilsati-shifts>
+                        <jilsati-shifts name="vacationWeekend" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset v-show="chosenTimePeriods.eid" legend="الاعياد">
                     <jilsati-fieldset font-size="1.1rem" legend="خلال الاسبوع">
-                        <jilsati-shifts name="eid-week"></jilsati-shifts>
+                        <jilsati-shifts name="eidWeek" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
                 <jilsati-fieldset v-show="chosenTimePeriods.ramadan" legend="رمضان">
                     <jilsati-fieldset font-size="1.1rem" legend="خلال الاسبوع">
-                        <jilsati-shifts name="ramadan-week"></jilsati-shifts>
+                        <jilsati-shifts name="ramadanWeek" @shift-changed="handleTimesChanged"></jilsati-shifts>
                     </jilsati-fieldset>
                 </jilsati-fieldset>
 
@@ -150,14 +150,14 @@
                 <jilsati-select
                         name="city"
                         optionsLabel="اختار المدينة اللي فيها الجلسة..."
-                        :options="cities"
+                        :options="cities.map(c => c.name)"
                         :class="cityErr"
-                        v-model="models.city">
+                        v-model="models.location.city">
                 </jilsati-select>
 
                 <div class="form-group mt-4">
                     <label for="jilsah-location">الحي</label>
-                    <input v-model.trim="models.address" type="text" class="form-control" :class="addressErr"
+                    <input v-model.trim="models.location.address" type="text" class="form-control" :class="addressErr"
                            id="jilsah-location" placeholder="الحي" aria-describedby="jilsah-locationHelp">
                     <small id="jilsah-locationHelp" class="form-text text-muted">
                         الحي اللي فيه الجلسة
@@ -166,7 +166,7 @@
 
                 <div class="form-group mt-4">
                     <label for="jilsah-location-details">وصف لموقع الجلسة (اختياري)</label>
-                    <input v-model.trim="models.addressDetails" type="text" class="form-control"
+                    <input v-model.trim="models.location.addressDetails" type="text" class="form-control"
                            id="jilsah-location-details" placeholder="مثال: بجوار مسجد التقوى على اليمين"
                            aria-describedby="jilsah-location-detailsHelp">
                     <small id="jilsah-location-detailsHelp" class="form-text text-muted">
@@ -176,7 +176,7 @@
 
                 <div class="form-group mt-4">
                     <label for="jilsah-google-location">رابط قوقل ماب (اختياري)</label>
-                    <input v-model.trim="models.googleMapAddress" type="text" class="form-control"
+                    <input v-model.trim="models.location.googleMapUrl" type="text" class="form-control"
                            id="jilsah-google-location" placeholder="رابط موقع الجلسة في قوقل ماب"
                            aria-describedby="jilsah-google-locationHelp">
                     <small id="jilsah-google-locationHelp" class="form-text text-muted">
@@ -204,10 +204,11 @@
                 </p>
 
                 <div class="mt-2">
-                    <jilsati-radio v-model="models.pricePer" name="price-per" postfix="jilsah" val="للجلسة" checked>
+                    <jilsati-radio v-model="models.prices.pricePerJilsah" name="price-per" postfix="jilsah" val="1" checked>
                         السعر للجلسة
                     </jilsati-radio>
-                    <jilsati-radio v-model="models.pricePer" name="price-per" postfix="person" val="للشخص">السعر للشخص
+                    <jilsati-radio v-model="models.prices.pricePerJilsah" name="price-per" postfix="person" val="0">
+                        السعر للشخص
                     </jilsati-radio>
                 </div>
 
@@ -328,18 +329,18 @@
                             عرض لشكل الجلسة
                         </jilsati-alert>
 
-                        <jilsati-card-show :title="models.name"
-                                           :city="models.city"
-                                           :address="models.address"
-                                           :description="models.description"
-                                           :img-src="models.mainImage.src"
+                        <jilsati-card-show :title="models.jilsah.name"
+                                           :city="models.location.city"
+                                           :address="models.location.address"
+                                           :description="models.jilsah.description"
+                                           :img-src="models.jilsah.mainImage.src"
                                            :max-description-length="180"
                                            :options="models.options"
                                            :clients="models.jilsahClients"
                                            :types="models.jilsahType"
                                            :rating="5"
                                            :price="models.prices.schoolWeek"
-                                           :price-per="models.pricePer">
+                                           :price-per="models.prices.pricePer">
                         </jilsati-card-show>
                     </div>
                 </jilsati-fieldset>
@@ -367,7 +368,7 @@
                                 <img :src="img.src" class="card-img" alt="صورة للجلسة" width="100" :title="img.name">
                             </a>
 
-                            <button @click="removeJilsahImage(img.index)" type="button" class="close close-jilsah-image"
+                            <button @click="handleRemoveJilsahImage(img.index)" type="button" class="close close-jilsah-image"
                                     aria-label="Close">
                                 <span class="text-right text-danger" aria-hidden="true">&times;</span>
                             </button>
@@ -396,7 +397,7 @@
                         <div class="input-group-prepend rounded-0">
                             <span class="input-group-text rounded-0">الجوال</span>
                         </div>
-                        <input size="10" v-model.trim="models.social.phone" placeholder="05xxxxxxxx" type="tel"
+                        <input maxlength="10" v-model.trim="models.social.phone" placeholder="05xxxxxxxx" type="tel"
                                aria-label="جوال التواصل" class="form-control rounded-0" :class="phoneErr">
                     </div>
                 </div>
@@ -456,6 +457,10 @@
                 </div>
             </div>
         </jilsati-step>
+
+        <div class="mt-2">
+            <button @click="createNewJilsah" type="button" class="btn btn-success" :disabled="!createNewJilsahErr">انشاء جلسة جديدة</button>
+        </div>
     </div>
 </template>
 
@@ -471,13 +476,6 @@
                     {id: 'jilsah-price', state: 'secondary', disabled: true},
                     {id: 'jilsah-photos', state: 'secondary', disabled: true},
                     {id: 'jilsah-connect', state: 'secondary', disabled: true},
-                ],
-
-                timePeriods: [
-                    'فترة الدراسة',
-                    'فترة الاجازة',
-                    'الاعياد',
-                    'رمضان'
                 ],
 
                 chosenTimePeriods: {
@@ -500,18 +498,33 @@
                 },
 
                 models: {
-                    name: undefined,
-                    description: undefined,
+                    jilsah :{
+                        name: undefined,
+                        description: undefined,
+                        mainImage: {name: 'upload-jilsah-image', src: '/images/upload-your-jilsah.png', org: true},
+                    },
+                    times: {
+                        schoolWeek : {},
+                        schoolWeekend : {},
+                        vacationWeek : {},
+                        vacationWeekend : {},
+                        ramadanWeek : {},
+                        eidWeek : {}
+                    },
                     jilsahClients: [],
                     jilsahType: [],
                     options: [],
-                    city: undefined,
-                    mainImage: {name: 'upload-jilsah-image', src: '/images/upload-your-jilsah.png', org: true},
-                    address: undefined,
-                    addressDetails: undefined,
-                    googleMapAddress: undefined,
-                    pricePer: '',
+                    location : {
+                        city: undefined,
+                        address: undefined,
+                        addressDetails: undefined,
+                        googleMapUrl: undefined,
+                        /**USED ONLY FOR SUBMIT**/
+                        cityId : 0 ,
+                        /**USED ONLY FOR SUBMIT**/
+                    },
                     prices: {
+                        pricePerJilsah : '',
                         schoolWeek: undefined,
                         schoolWeekend: undefined,
                         vacationWeek: undefined,
@@ -573,17 +586,26 @@
                 });
             },
 
+            handleTimesChanged : function(name, timeObject){
+                this.models.times[name] = timeObject;
+            },
+
             handleMainImageChanged: function (file) {
-                this.models.mainImage = file;
+                this.models.jilsah.mainImage = file;
             },
 
             handleAddNewJilsahImage: function (file) {
-                this.models.jilsahImages.push({index: this.jilsahImagesCounter, name: file.name, src: file.src});
+                this.models.jilsahImages.push({
+                    index: this.jilsahImagesCounter,
+                    name: file.name,
+                    src: file.src,
+                    file: file.file
+                });
 
                 this.jilsahImagesCounter++;
             },
 
-            removeJilsahImage: function (index) {
+            handleRemoveJilsahImage: function (index) {
                 this.models.jilsahImages = this.models.jilsahImages.filter(img => img.index !== index);
             },
 
@@ -605,6 +627,44 @@
                 } else {
                     return 'is-valid'
                 }
+            },
+
+            createNewJilsah : function () {
+                let formData = new FormData();
+                /*Jilsah information*/
+                formData.append('name',this.models.jilsah.name);
+                formData.append('description',this.models.jilsah.description);
+                formData.append('main_image',this.models.jilsah.mainImage.file,this.models.jilsah.mainImage.name);
+                formData.append('times',JSON.stringify(this.models.times,(k, v) => v === undefined ? null : v));
+                /*jilsah client types information*/
+                for(let i = 0; i< this.models.jilsahClients.length; i++)
+                    formData.append('clients['+i+']',this.models.jilsahClients[i]);
+                /*jilsah types information*/
+                for(let i = 0; i< this.models.jilsahType.length; i++)
+                    formData.append('types['+i+']',this.models.jilsahType[i]);
+                /*jilsah options information*/
+                for(let i = 0; i< this.models.options.length; i++)
+                    formData.append('options['+i+']',this.models.options[i]);
+                /*jilsah location information*/
+                this.models.location.cityId = this.cities.find(c => c.name === this.models.location.city).id;
+                formData.append('location',JSON.stringify(this.models.location,(k, v) => v === undefined ? null : v));
+                /*jilsah prices information*/
+                formData.append('prices',JSON.stringify(this.models.prices,(k, v) => v === undefined ? null : v));
+                /*jilsah images information*/
+                let images = this.models.jilsahImages.map(img => img.file);
+                for(let i = 0; i< images.length; i++)
+                    formData.append('images['+i+']',images[i]);
+                /*jilsah socials information*/
+                formData.append('socials',JSON.stringify(this.models.social,(k, v) => v === undefined ? null : v));
+
+                let settings = { headers: { 'content-type': 'multipart/form-data' } };
+
+                axios.post('/jilsahs',formData,settings)
+                    .then(res => {
+                        console.log('SUCCESS',res)
+                    }).catch(err => {
+                    console.log('ERROR',err.response)
+                });
             }
         },
 
@@ -612,10 +672,10 @@
             /****INFO STEP****/
 
             nameErr: function () {
-                return this.validateModelText(this.models.name);
+                return this.validateModelText(this.models.jilsah.name);
             },
             descriptionErr: function () {
-                return this.validateModelText(this.models.description);
+                return this.validateModelText(this.models.jilsah.description);
             },
             stepJilsahInfoErr: function () {
                 if (this.nameErr === 'is-valid' && this.descriptionErr === 'is-valid')
@@ -662,11 +722,11 @@
             /****LOCATION STEP****/
 
             cityErr: function () {
-                return this.validateModelText(this.models.city);
+                return this.validateModelText(this.models.location.city);
             },
 
             addressErr: function () {
-                return this.validateModelText(this.models.address);
+                return this.validateModelText(this.models.location.address);
             },
 
             stepJilsahLocationErr: function () {
@@ -750,7 +810,7 @@
             /****IMAGES STEP****/
 
             mainImageErr: function () {
-                if (this.models.mainImage.org) {
+                if (this.models.jilsah.mainImage.org) {
                     return 'is-invalid'
                 } else {
                     return 'is-valid'
@@ -784,6 +844,18 @@
                 }else{
                     return undefined;
                 }
+            },
+
+            /****CREATE NEW JILSAH****/
+
+            createNewJilsahErr : function () {
+                return this.stepJilsahInfoErr
+                    && this.stepJilsahTimesErr
+                    && this.stepJilsahOptionsErr
+                    && this.stepJilsahLocationErr
+                    && this.stepJilsahPricesErr
+                    && this.stepJilsahImagesErr
+                    && this.stepJilsahConnectErr
             }
         },
 
@@ -872,7 +944,7 @@
                 .then(res => {
                     this.cities = res.data;
                 }).catch(err => {
-                console.log(err)
+                console.log(err.response)
             });
         }
     }

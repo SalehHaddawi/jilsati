@@ -9,7 +9,7 @@ class Jilsah extends Model
     protected $table = 'jilsahs';
 
     protected $fillable = [
-      'name', 'description', 'time', 'main_image'
+      'name', 'description', 'times', 'main_image'
     ];
 
     function user(){

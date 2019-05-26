@@ -15,7 +15,7 @@
                     <a class="nav-link" href="/contact">تواصل معانا<span v-if="active === 'contact'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'about'}">
-                    <a class="nav-link" href="/about">عن جلستي<span v-if="active === 'about'" class="sr-only">(الحالية)</span></a>
+                    <a class="nav-link" href="/about">عن موقع جلستي<span v-if="active === 'about'" class="sr-only">(الحالية)</span></a>
                 </li>
                 <li class="nav-item pl-2 pr-2" :class="{active : active === 'login'}">
                     <!--<a v-if="user" class="nav-link" href="#" @click="logout()">مرحبا {{user.name}}<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>-->
