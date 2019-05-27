@@ -55,31 +55,6 @@
     export default {
         props : ['active', 'user','token','logoSrc'],
 
-        data : function(){
-            return {
-                popoverHtml : `<ul class="list-group list-group-flush">
-                                    <li class="list-group-item list-group-item-action text-right">
-                                        <a style="text-decoration: none;" href="/jilsahs"><h5>الصفحة الشخصية</h5></a>
-                                    </li>
-                                    <li class="list-group-item list-group-item-action text-right">
-                                        <a style="text-decoration: none;" href="/jilsahs"><h5>جلساتي</h5></a>
-                                    </li>
-                                    <li class="list-group-item list-group-item-action text-right">
-                                        <a id="navbar-logout" style="text-decoration: none;" href="#"><h5>تسجيل خروج</h5></a>
-                                    </li>
-                                </ul>`,
-
-                popoverTemplate : `<div class="popover" role="tooltip">
-                                        <div class="arrow">
-                                        </div>
-                                        <h3 class="popover-header">
-                                        </h3>
-                                        <div class="popover-body">
-                                        </div>
-                                    </div>`
-            }
-        },
-
         methods : {
             logout : function () {
                 document.getElementById('logout-form').submit();

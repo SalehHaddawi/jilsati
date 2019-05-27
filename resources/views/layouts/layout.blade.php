@@ -39,6 +39,8 @@
 
 </div>
 
+@yield('scripts-before')
+
 <script src="{{asset('js/app.js')}}"></script>
 
 @yield('scripts')

@@ -2,7 +2,7 @@
     <div class="card mb-3 shadow-sm rounded-0 text-right">
         <div class="card-body">
             <div>
-                <p class="card-title text-success mb-4 h1">الاسعار</p>
+<!--                <p class="card-title text-success mb-4 h1">الاسعار</p>-->
                 <p class="text-info" style="position: absolute;top:35px;left:20px;">({{pricePerJilsah}})</p>
             </div>
             <ul class="list-group list-group-flush text-right">

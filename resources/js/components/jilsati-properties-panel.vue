@@ -1,7 +1,7 @@
 <template functional>
     <div class="card shadow-sm mb-3 rounded-0">
         <div class="card-body">
-            <p class="card-title mb-5 text-success h2">خصائص الجلسة</p>
+<!--            <p class="card-title mb-5 text-success h2">خصائص الجلسة</p>-->
 
             <div class="mb-4">
                 <p class="card-subtitle mb-3 text-info h4">تستقبل:</p>

@@ -2159,6 +2159,133 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-current-price-panel.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-current-price-panel.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    prices: {
+      type: Object,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      timePeriodText: '',
+      weekPeriodText: '',
+      currentPeriod: {
+        school: {
+          week: false,
+          weekend: false
+        },
+        vacation: {
+          week: false,
+          weekend: false
+        },
+        eid: false,
+        ramadan: false
+      }
+    };
+  },
+  computed: {
+    currentPrice: function currentPrice() {
+      var price = 0;
+
+      if (this.currentPeriod.school.week) {
+        price = this.prices.school_week;
+      } else if (this.currentPeriod.school.weekend) {
+        price = this.prices.school_weekend;
+      } else if (this.currentPeriod.vacation.week) {
+        price = this.prices.vacation_week;
+      } else if (this.currentPeriod.vacation.weekend) {
+        price = this.prices.vacation_weekend;
+      } else if (this.currentPeriod.eid) {
+        return this.prices.eid;
+      } else {
+        price = this.prices.ramadan;
+      }
+
+      if (price === null) return 'لم يحدد السعر';
+      return price + ' ر.س';
+    }
+  },
+  created: function created() {
+    moment.locale('ar-SA');
+    var m = moment();
+    m.format('iYYYY/iM/iDهـ الموافق YYYY/M/Dم');
+    var hijriMonth = m.iMonth() + 1; // month start from 0
+
+    var weekDay = m.format('idddd'); // day name
+
+    var day = m.iDate(); // day number in month start from 1
+    // school
+
+    if (hijriMonth >= 0 && hijriMonth <= 8) {
+      this.timePeriodText = 'فترة الدراسة'; // schoolWeekend
+
+      if (weekDay === 'iFriday' || weekDay === 'iSaturday') {
+        this.currentPeriod.school.weekend = true;
+        this.weekPeriodText = 'نهاية الاسبوع';
+      } // schoolWeek
+      else {
+          this.currentPeriod.school.week = true;
+          this.weekPeriodText = 'ايام الاسبوع';
+        }
+    } else if (hijriMonth === 9) {
+      this.currentPeriod.ramadan = true;
+      this.timePeriodText = 'فترة رمضان';
+      this.weekPeriodText = 'خلال الاسبوع';
+    } // eid fitr
+    else if (hijriMonth === 10) {
+        if (day >= 1 && day <= 10) {
+          this.currentPeriod.eid = true;
+          this.timePeriodText = 'فترة الاعياد';
+          this.weekPeriodText = 'خلال الاسبوع';
+        }
+      } // eid adha
+      else if (hijriMonth === 12) {
+          if (day >= 10 && day <= 20) {
+            this.currentPeriod.eid = true;
+            this.timePeriodText = 'فترة الاعياد';
+            this.weekPeriodText = 'خلال الاسبوع';
+          }
+        } // vacation
+        else {
+            this.timePeriodText = 'فترة الاجازة'; // schoolWeekend
+
+            if (weekDay === 'iFriday' || weekDay === 'iSaturday') {
+              this.currentPeriod.vacation.weekend = true;
+              this.weekPeriodText = 'نهاية الاسبوع';
+            } // schoolWeek
+            else {
+                this.currentPeriod.vacation.week = true;
+                this.weekPeriodText = 'ايام الاسبوع';
+              }
+          }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-fieldset.vue?vue&type=script&lang=js&":
 /*!***************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-fieldset.vue?vue&type=script&lang=js& ***!
@@ -2433,12 +2560,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['active', 'user', 'token', 'logoSrc'],
-  data: function data() {
-    return {
-      popoverHtml: "<ul class=\"list-group list-group-flush\">\n                                <li class=\"list-group-item list-group-item-action text-right\">\n                                    <a style=\"text-decoration: none;\" href=\"/jilsahs\"><h5>\u0627\u0644\u0635\u0641\u062D\u0629 \u0627\u0644\u0634\u062E\u0635\u064A\u0629</h5></a>\n                                </li>\n                                <li class=\"list-group-item list-group-item-action text-right\">\n                                    <a style=\"text-decoration: none;\" href=\"/jilsahs\"><h5>\u062C\u0644\u0633\u0627\u062A\u064A</h5></a>\n                                </li>\n                                <li class=\"list-group-item list-group-item-action text-right\">\n                                    <a id=\"navbar-logout\" style=\"text-decoration: none;\" href=\"#\"><h5>\u062A\u0633\u062C\u064A\u0644 \u062E\u0631\u0648\u062C</h5></a>\n                                </li>\n                            </ul>",
-      popoverTemplate: "<div class=\"popover\" role=\"tooltip\">\n                                    <div class=\"arrow\">\n                                    </div>\n                                    <h3 class=\"popover-header\">\n                                    </h3>\n                                    <div class=\"popover-body\">\n                                    </div>\n                                </div>"
-    };
-  },
   methods: {
     logout: function logout() {
       document.getElementById('logout-form').submit();
@@ -41185,6 +41306,64 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-current-price-panel.vue?vue&type=template&id=1c4be434&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-current-price-panel.vue?vue&type=template&id=1c4be434& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card shadow-sm mb-3 rounded-0" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("p", { staticClass: "card-title mb-5 text-success h2" }, [
+        _vm._v("السعر الحالي")
+      ]),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticClass: "text-info",
+          staticStyle: { position: "absolute", top: "35px", left: "20px" }
+        },
+        [_vm._v("(للشخص)")]
+      ),
+      _vm._v(" "),
+      _c("p", { staticClass: " mb-2 text-info mb-4 h3" }, [
+        _vm._v(_vm._s(_vm.timePeriodText))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: " mb-2 text-muted h6" }, [
+        _vm._v(_vm._s(_vm.weekPeriodText))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: " mb-2 text-muted h6" }, [_vm._v("لكل ساعة")]),
+      _vm._v(" "),
+      _c(
+        "p",
+        {
+          staticClass: " mb-2 text-info mb-4",
+          class: _vm.currentPrice === "لم يحدد السعر" ? "h4" : "h1"
+        },
+        [_vm._v(_vm._s(_vm.currentPrice))]
+      )
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-fieldset.vue?vue&type=template&id=7e735450&":
 /*!*******************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-fieldset.vue?vue&type=template&id=7e735450& ***!
@@ -41953,10 +42132,6 @@ var render = function() {
     [
       _c("div", { staticClass: "card-body" }, [
         _c("div", [
-          _c("p", { staticClass: "card-title text-success mb-4 h1" }, [
-            _vm._v("الاسعار")
-          ]),
-          _vm._v(" "),
           _c(
             "p",
             {
@@ -42122,10 +42297,6 @@ var render = function(_h, _vm) {
   var _c = _vm._c
   return _c("div", { staticClass: "card shadow-sm mb-3 rounded-0" }, [
     _c("div", { staticClass: "card-body" }, [
-      _c("p", { staticClass: "card-title mb-5 text-success h2" }, [
-        _vm._v("خصائص الجلسة")
-      ]),
-      _vm._v(" "),
       _c(
         "div",
         { staticClass: "mb-4" },
@@ -44681,8 +44852,6 @@ var render = function() {
     { staticClass: "card mb-3 shadow-sm rounded-0 text-right" },
     [
       _c("div", { staticClass: "card-body" }, [
-        _vm._m(0),
-        _vm._v(" "),
         _c("ul", { staticClass: "list-group list-group-flush text-right" }, [
           _c("li", { staticClass: "list-group-item w-100 border-0" }, [
             _c("div", { staticClass: "w-100" }, [
@@ -44698,7 +44867,7 @@ var render = function() {
                       "div",
                       _vm._l(_vm.times.schoolWeek.from.length, function(index) {
                         return _c("div", { staticClass: "w-100" }, [
-                          _c("div", { staticClass: "mt-2" }, [
+                          _c("div", { staticClass: "mt-2 mb-3" }, [
                             _c("div", [
                               _c(
                                 "span",
@@ -44760,7 +44929,7 @@ var render = function() {
                         index
                       ) {
                         return _c("div", { staticClass: "w-100" }, [
-                          _c("div", { staticClass: "mt-2" }, [
+                          _c("div", { staticClass: "mt-2 mb-3" }, [
                             _c("div", [
                               _c(
                                 "span",
@@ -44828,7 +44997,7 @@ var render = function() {
                         index
                       ) {
                         return _c("div", { staticClass: "w-100" }, [
-                          _c("div", { staticClass: "mt-2" }, [
+                          _c("div", { staticClass: "mt-2 mb-3" }, [
                             _c("div", [
                               _c(
                                 "span",
@@ -44890,7 +45059,7 @@ var render = function() {
                         index
                       ) {
                         return _c("div", { staticClass: "w-100" }, [
-                          _c("div", { staticClass: "mt-2" }, [
+                          _c("div", { staticClass: "mt-2 mb-3" }, [
                             _c("div", [
                               _c(
                                 "span",
@@ -45082,18 +45251,7 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", [
-      _c("p", { staticClass: "card-title text-success mb-4 h1" }, [
-        _vm._v("فترات العمل")
-      ])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -57510,6 +57668,7 @@ Vue.component('JilsatiConnectionsPanel', __webpack_require__(/*! ./components/ji
 Vue.component('JilsatiPricesPanel', __webpack_require__(/*! ./components/jilsati-prices-Panel */ "./resources/js/components/jilsati-prices-Panel.vue")["default"]);
 Vue.component('JilsatiTimesPanel', __webpack_require__(/*! ./components/jilsati-times-Panel */ "./resources/js/components/jilsati-times-Panel.vue")["default"]);
 Vue.component('JilsatiPropertiesPanel', __webpack_require__(/*! ./components/jilsati-properties-panel */ "./resources/js/components/jilsati-properties-panel.vue")["default"]);
+Vue.component('JilsatiCurrentPricePanel', __webpack_require__(/*! ./components/jilsati-current-price-panel */ "./resources/js/components/jilsati-current-price-panel.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -58127,6 +58286,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_connections_Panel_vue_vue_type_template_id_2ce10174___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_connections_Panel_vue_vue_type_template_id_2ce10174___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-current-price-panel.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/jilsati-current-price-panel.vue ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_current_price_panel_vue_vue_type_template_id_1c4be434___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-current-price-panel.vue?vue&type=template&id=1c4be434& */ "./resources/js/components/jilsati-current-price-panel.vue?vue&type=template&id=1c4be434&");
+/* harmony import */ var _jilsati_current_price_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-current-price-panel.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-current-price-panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_current_price_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_current_price_panel_vue_vue_type_template_id_1c4be434___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_current_price_panel_vue_vue_type_template_id_1c4be434___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-current-price-panel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-current-price-panel.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-current-price-panel.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_current_price_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-current-price-panel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-current-price-panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_current_price_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-current-price-panel.vue?vue&type=template&id=1c4be434&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-current-price-panel.vue?vue&type=template&id=1c4be434& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_current_price_panel_vue_vue_type_template_id_1c4be434___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-current-price-panel.vue?vue&type=template&id=1c4be434& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-current-price-panel.vue?vue&type=template&id=1c4be434&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_current_price_panel_vue_vue_type_template_id_1c4be434___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_current_price_panel_vue_vue_type_template_id_1c4be434___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 
