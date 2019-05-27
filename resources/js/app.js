@@ -44,6 +44,7 @@ Vue.component('Star', require('./components/star').default);
 Vue.component('StarRating', require('./components/star-rating').default);
 Vue.component('JilsatiShifts', require('./components/jilsati-shifts').default);
 Vue.component('JilsatiConnectPanel', require('./components/jilsati-connect-Panel').default);
+Vue.component('JilsatiPricesPanel', require('./components/jilsati-prices-Panel').default);
 
 
 

@@ -1,5 +1,5 @@
 <template>
-    <div class="card text-right mb-4">
+    <div class="card text-right mb-4 shadow-sm">
         <div class="card-body">
             <p class="card-title text-success mb-4 h1">التواصل</p>
             <p class=" mb-2 text-muted h6">رقم الجوال</p>

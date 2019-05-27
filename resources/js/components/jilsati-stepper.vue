@@ -882,8 +882,6 @@
                     this.models.times.schoolWeek = {};
                     this.models.times.schoolWeekend = {};
                 }
-
-                console.log('changed',v);
             },
 
             chosenTimeVacation : function(v){

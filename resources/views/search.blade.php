@@ -44,7 +44,7 @@
         </form>
     </div>
 
-    <div class="rounded-0 shadow bg-light col-lg-9 col-12">
+    <div class="rounded-0 bg-light col-lg-9 col-12">
         @foreach($jilsahs as $jilsah)
             <jilsati-card-show :jilsah-id="{{$jilsah->id}}"
                                 title="{{$jilsah->name}}"
@@ -58,7 +58,7 @@
                                 :options="{{json_encode($jilsah->options->map->name)}}"
                                 :rating="5"
                                 price="20"
-                                price-per-jilsah="للجلسة">
+                               price-per-jilsah="{{$jilsah->prices->price_per_jilsah}}">
             </jilsati-card-show>
         @endforeach
     </div>

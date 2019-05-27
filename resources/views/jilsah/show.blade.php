@@ -8,22 +8,13 @@
 
 @section('body')
 <div class="container">
-    <div class="mb-5 jumbotron justify-content-center rounded-0 shadow-sm bg-light row">
-
-        <div class="col-lg-4">
-            <jilsati-connect-panel class="shadow-sm" phone="{{$jilsah->socials->phone}}"
-                                   instagram="{{$jilsah->socials->instagram}}"
-                                   facebook="{{$jilsah->socials->facebook}}"
-                                   twitter="{{$jilsah->socials->twitter}}"
-                                   snapchat="{{$jilsah->socials->snapchat}}">
-            </jilsati-connect-panel>
-        </div>
+    <div dir="rtl" class="mb-5 jumbotron justify-content-center rounded-0 shadow-sm bg-light row">
 
         <div class="col-8">
             <div class="card mb-3 shadow-sm">
                 <div class="card-body text-right">
                     <p class="card-title text-success h2">{{$jilsah->name}}</p>
-                    <p class="card-text text-secondary">{{$jilsah->location->city->name}} , {{$jilsah->location->address}}</p>
+                    <p class="card-text text-secondary h5">{{$jilsah->location->city->name}} , {{$jilsah->location->address}}</p>
                     <p class="card-text">
                         <small class="text-muted">{{$jilsah->location->address_details}}</small>
                     </p>
@@ -36,6 +27,19 @@
                     <p style="direction: rtl;" class="card-text text-justify text-muted mt-4">{{$jilsah->description}}</p>
                 </div>
             </div>
+        </div>
+        <div class="col-lg-4">
+            <jilsati-connect-panel phone="{{$jilsah->socials->phone}}"
+                                   instagram="{{$jilsah->socials->instagram}}"
+                                   facebook="{{$jilsah->socials->facebook}}"
+                                   twitter="{{$jilsah->socials->twitter}}"
+                                   snapchat="{{$jilsah->socials->snapchat}}">
+            </jilsati-connect-panel>
+
+            <jilsati-prices-panel :prices="{{json_encode($jilsah->prices)}}">
+
+            </jilsati-prices-panel>
+
         </div>
     </div>
 </div>
