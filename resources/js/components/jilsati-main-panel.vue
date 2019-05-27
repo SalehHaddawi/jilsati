@@ -1,7 +1,7 @@
 <template>
     <div class="card mb-3 rounded-0 shadow-sm">
         <div class="card-body text-right">
-            <p class="card-title text-success h2">{{name}}</p>
+            <p class="card-title text-success h1">{{name}}</p>
             <p class="card-text text-secondary h5">{{city}} , {{address}}</p>
             <p class="card-text">
                 <small class="text-muted">{{addressDetails}}</small>

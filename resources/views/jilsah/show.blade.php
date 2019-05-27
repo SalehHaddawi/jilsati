@@ -18,6 +18,12 @@
                     :images="{{$all_images}}"
                     description="{{$jilsah_show->description}}">
             </jilsati-main-panel>
+
+            <jilsati-properties-panel
+                    :client-types="{{$jilsah_show->clientTypes->map->name}}"
+                    :jilsah-types="{{$jilsah_show->jilsahTypes->map->name}}"
+                    :options="{{$jilsah_show->options->map->name}}">
+            </jilsati-properties-panel>
         </div>
         <div class="col-lg-4">
             <jilsati-connections-panel
