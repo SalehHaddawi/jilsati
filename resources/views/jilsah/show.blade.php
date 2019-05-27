@@ -21,46 +21,48 @@
                     description="{{$jilsah_show->description}}">
             </jilsati-main-panel>
 
-{{--            <jilsati-properties-panel--}}
-{{--                    :client-types="{{$jilsah_show->clientTypes->map->name}}"--}}
-{{--                    :jilsah-types="{{$jilsah_show->jilsahTypes->map->name}}"--}}
-{{--                    :options="{{$jilsah_show->options->map->name}}">--}}
-{{--            </jilsati-properties-panel>--}}
+            <jilsati-jilsah-details-tabs
+                    :client-types="{{$jilsah_show->clientTypes->map->name}}"
+                    :jilsah-types="{{$jilsah_show->jilsahTypes->map->name}}"
+                    :options="{{$jilsah_show->options->map->name}}"
+                    :prices="{{$jilsah_show->prices}}"
+                    :times="{{$jilsah_show->times}}">
+            </jilsati-jilsah-details-tabs>
 
-            <div class="card shadow-sm mb-3 rounded-0">
-                <div class="card-body">
-                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding-inline-start:0;">
-                        <li class="nav-item">
-                            <a class="nav-link bg-white shadow-sm active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">المميزات</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bg-white shadow-sm" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">الاسعار</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link bg-white shadow-sm" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">الدوام</a>
-                        </li>
-                    </ul>
-                    <div class="tab-content" id="myTabContent">
-                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-                            <jilsati-properties-panel
-                                    :client-types="{{$jilsah_show->clientTypes->map->name}}"
-                                    :jilsah-types="{{$jilsah_show->jilsahTypes->map->name}}"
-                                    :options="{{$jilsah_show->options->map->name}}">
-                            </jilsati-properties-panel>
-                        </div>
-                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-                            <jilsati-prices-panel
-                                    :prices="{{json_encode($jilsah_show->prices)}}">
-                            </jilsati-prices-panel>
-                        </div>
-                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                            <jilsati-times-panel
-                                    :times="{{$jilsah_show->times}}">
-                            </jilsati-times-panel>
-                        </div>
-                    </div>
-                </div>
-            </div>
+{{--            <div class="card shadow-sm mb-3 rounded-0">--}}
+{{--                <div class="card-body">--}}
+{{--                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding-inline-start:0;">--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link bg-white shadow-sm active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">المميزات</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link bg-white shadow-sm" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">الاسعار</a>--}}
+{{--                        </li>--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link bg-white shadow-sm" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">الدوام</a>--}}
+{{--                        </li>--}}
+{{--                    </ul>--}}
+{{--                    <div class="tab-content" id="myTabContent">--}}
+{{--                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">--}}
+{{--                            <jilsati-properties-panel--}}
+{{--                                    :client-types="{{$jilsah_show->clientTypes->map->name}}"--}}
+{{--                                    :jilsah-types="{{$jilsah_show->jilsahTypes->map->name}}"--}}
+{{--                                    :options="{{$jilsah_show->options->map->name}}">--}}
+{{--                            </jilsati-properties-panel>--}}
+{{--                        </div>--}}
+{{--                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">--}}
+{{--                            <jilsati-prices-panel--}}
+{{--                                    :prices="{{json_encode($jilsah_show->prices)}}">--}}
+{{--                            </jilsati-prices-panel>--}}
+{{--                        </div>--}}
+{{--                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">--}}
+{{--                            <jilsati-times-panel--}}
+{{--                                    :times="{{$jilsah_show->times}}">--}}
+{{--                            </jilsati-times-panel>--}}
+{{--                        </div>--}}
+{{--                    </div>--}}
+{{--                </div>--}}
+{{--            </div>--}}
         </div>
 
         <!---------- LEFT SIDE ----------->
@@ -73,32 +75,13 @@
                     snapchat="{{$jilsah_show->socials->snapchat}}">
             </jilsati-connections-panel>
 
-            <jilsati-current-price-panel :prices="{{json_encode($jilsah_show->prices)}}">
-
+            <jilsati-current-price-panel
+                    :prices="{{json_encode($jilsah_show->prices)}}">
             </jilsati-current-price-panel>
 
-            <div class="card shadow-sm mb-3 rounded-0">
-                <div class="card-body">
-                    <p class="card-title mb-5 text-success h2">الدوام الحالي</p>
-                    <p class=" mb-2 text-info mb-4 h1">فترة رمضان</p>
-                    <p class=" mb-2 text-muted h6">خلال الاسبوع</p>
-                    <div class="mt-4">
-                        <div>
-                            <span class="badge badge-success badge-pill float-right">08:00 AM</span>
-                            <span class="badge badge-success badge-pill float-left">11:00 PM</span>
-                        </div>
-                        <div class="clearfix"></div>
-                    </div>
-                </div>
-            </div>
-
-{{--            <jilsati-prices-panel--}}
-{{--                    :prices="{{json_encode($jilsah_show->prices)}}">--}}
-{{--            </jilsati-prices-panel>--}}
-
-{{--            <jilsati-times-panel--}}
-{{--                    :times="{{$jilsah_show->times}}">--}}
-{{--            </jilsati-times-panel>--}}
+            <jilsati-current-time-panel
+                    :times="{{$jilsah_show->times}}">
+            </jilsati-current-time-panel>
 
         </div>
     </div>

@@ -5,7 +5,7 @@
             </li>
         </ol>
         <div class="carousel-inner bg-dark">
-            <div v-for="(image,index,) in props.images" :key="image" class="carousel-item" :class="{active : index === 1}">
+            <div v-for="(image,index) in props.images" :key="index" class="carousel-item" :class="{'active' : index === 1}">
                 <img :src="'/storage/'+image" class="d-block w-100 mx-auto" alt="..." style="max-width: 750px;max-height: 500px;">
             </div>
         </div>

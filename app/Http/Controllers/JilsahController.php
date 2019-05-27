@@ -168,7 +168,7 @@ class JilsahController extends Controller
 
         $all_images = $jilsah_show->images->map->src;
 
-        $all_images->push($jilsah_show->main_image);
+        $all_images->prepend($jilsah_show->main_image);
 
         return view('jilsah.show',compact('jilsah_show','all_images'));
     }

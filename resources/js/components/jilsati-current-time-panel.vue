@@ -1,12 +1,21 @@
 <template>
     <div class="card shadow-sm mb-3 rounded-0">
         <div class="card-body">
-            <p class="card-title mb-5 text-success h2">السعر الحالي</p>
-            <p class="text-info" style="position: absolute; top: 35px; left: 20px;">(للشخص)</p>
+            <p class="card-title mb-5 text-success h2">الدوام الحالي</p>
             <p class=" mb-2 text-info mb-4 h3">{{timePeriodText}}</p>
             <p class=" mb-2 text-muted h6">{{weekPeriodText}}</p>
-            <p class=" mb-2 text-muted h6">لكل ساعة</p>
-            <p class=" mb-2 text-info mb-4" :class="currentPrice === noPriceProvidedText ? 'h4' : 'h1'">{{currentPrice}}</p>
+            <p v-if="currentTime === noTimeProvidedText" class=" mb-2 text-info mb-4" :class="currentTime === noTimeProvidedText ? 'h4' : 'h1'">{{currentTime}}</p>
+            <div v-else>
+                <div v-for="index in currentTime.from.length" class="w-100">
+                    <div class="mt-2">
+                        <div class="mt-4">
+                            <span class="badge badge-success badge-pill float-right">{{formatTime(currentTime.from[index-1])}}</span>
+                            <span class="badge badge-success badge-pill float-left">{{formatTime(currentTime.to[index-1])}}</span>
+                        </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </template>
@@ -14,7 +23,7 @@
 <script>
     export default {
         props : {
-            prices : {
+            times : {
                 type : Object,
                 required : true
             }
@@ -38,48 +47,52 @@
                     ramadan : false
                 },
 
-                noPriceProvidedText : 'لم يحدد السعر'
+                noTimeProvidedText : 'لم يحدد الوقت'
+            }
+        },
+
+        methods : {
+            formatTime : function (time) {
+                let h = time.hour%12;
+                let m = time.minute;
+
+                return (h === 0 ? 12 : ((h !== 10 && h !== 11 && h !== 12) ? '0'+h : h)) + ':' + (m === 0 ? '00' : m) + ' ' +  (time.hour <= 11 ? 'AM' : 'PM');
             }
         },
 
         computed : {
-            currentPrice : function () {
-                let price = undefined;
+            currentTime : function () {
+                let time = undefined;
 
                 if(this.currentPeriod.school.week){
-                    price = this.prices.school_week;
+                    time = this.times.schoolWeek;
                 }else if(this.currentPeriod.school.weekend){
-                    price = this.prices.school_weekend;
+                    time = this.times.schoolWeekend;
                 }else if(this.currentPeriod.vacation.week){
-                    price = this.prices.vacation_week;
+                    time = this.times.vacationWeek;
                 }else if(this.currentPeriod.vacation.weekend){
-                    price = this.prices.vacation_weekend;
+                    time = this.times.vacationWeekend;
                 }else if(this.currentPeriod.eid){
-                    return this.prices.eid;
+                    return this.times.eidWeek;
                 }else{
-                    price = this.prices.ramadan;
+                    time = this.times.ramadanWeek;
                 }
 
-                console.log(price);
+                if(!time.from)
+                    return  this.noTimeProvidedText;
 
-                if(price === null || price === undefined)
-                    return this.noPriceProvidedText;
-                else
-                    return price + ' ر.س';
+                return time;
             }
         },
 
         created() {
             moment.locale('ar-SA');
             let m = moment();
-
             m.format('iYYYY/iM/iDهـ الموافق YYYY/M/Dم');
 
             let hijriMonth = m.iMonth() + 1; // month start from 0
             let weekDay = m.format('idddd'); // day name
             let day = m.iDate(); // day number in month start from 1
-
-            console.log(hijriMonth,weekDay,day);
 
             // school
             if(hijriMonth >= 0 && hijriMonth <= 8){

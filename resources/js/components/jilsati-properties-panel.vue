@@ -22,6 +22,8 @@
                 <h5 v-for="option in props.options" class="d-inline">
                     <span class="badge badge-success text-light m-1">{{option}}</span>
                 </h5>
+
+                <p v-if="!props.options" class="card-subtitle mt-2 mb-3 text-muted h5">لا توجد معلومات</p>
             </div>
         </div>
     </div>
