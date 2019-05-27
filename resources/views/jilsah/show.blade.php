@@ -29,15 +29,16 @@
             </div>
         </div>
         <div class="col-lg-4">
-            <jilsati-connect-panel phone="{{$jilsah->socials->phone}}"
-                                   instagram="{{$jilsah->socials->instagram}}"
-                                   facebook="{{$jilsah->socials->facebook}}"
-                                   twitter="{{$jilsah->socials->twitter}}"
-                                   snapchat="{{$jilsah->socials->snapchat}}">
-            </jilsati-connect-panel>
+            <jilsati-connections-panel
+                    phone="{{$jilsah->socials->phone}}"
+                    instagram="{{$jilsah->socials->instagram}}"
+                    facebook="{{$jilsah->socials->facebook}}"
+                    twitter="{{$jilsah->socials->twitter}}"
+                    snapchat="{{$jilsah->socials->snapchat}}">
+            </jilsati-connections-panel>
 
-            <jilsati-prices-panel :prices="{{json_encode($jilsah->prices)}}">
-
+            <jilsati-prices-panel
+                    :prices="{{json_encode($jilsah->prices)}}">
             </jilsati-prices-panel>
 
         </div>
