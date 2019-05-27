@@ -41,6 +41,10 @@
                     :prices="{{json_encode($jilsah->prices)}}">
             </jilsati-prices-panel>
 
+            <jilsati-times-panel
+                    :times="{{$jilsah->times}}">
+            </jilsati-times-panel>
+
         </div>
     </div>
 </div>

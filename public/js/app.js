@@ -3933,34 +3933,69 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    prices: {
+    times: {
       required: true,
       type: Object
     }
   },
-  computed: {
-    pricePerJilsah: function pricePerJilsah() {
-      return this.prices.price_per_jilsah ? 'للجلسة' : 'للشخص';
-    },
-    schoolWeekPrice: function schoolWeekPrice() {
-      return this.prices.school_week ? this.prices.school_week + ' ر.س' : 'لم يحدد';
-    },
-    schoolWeekendPrice: function schoolWeekendPrice() {
-      return this.prices.school_weekend ? this.prices.school_weekend + ' ر.س' : 'لم يحدد';
-    },
-    vacationWeekPrice: function vacationWeekPrice() {
-      return this.prices.vacation_week ? this.prices.vacation_week + ' ر.س' : 'لم يحدد';
-    },
-    vacationWeekendPrice: function vacationWeekendPrice() {
-      return this.prices.vacation_weekend ? this.prices.vacation_weekend + ' ر.س' : 'لم يحدد';
-    },
-    eidPrice: function eidPrice() {
-      return this.prices.eid ? this.prices.eid + ' ر.س' : 'لم يحدد';
-    },
-    ramadanPrice: function ramadanPrice() {
-      return this.prices.ramadan ? this.prices.ramadan + ' ر.س' : 'لم يحدد';
+  methods: {
+    formatTime: function formatTime(time) {
+      var h = time.hour % 12;
+      var m = time.minute;
+      return (h === 0 ? 12 : h !== 10 && h !== 11 && h !== 12 ? '0' + h : h) + ':' + (m === 0 ? '00' : m) + ' ' + (time.hour <= 11 ? 'AM' : 'PM');
     }
   }
 });
@@ -44396,58 +44431,133 @@ var render = function() {
     { staticClass: "card mb-3 shadow-sm rounded-0 text-right" },
     [
       _c("div", { staticClass: "card-body" }, [
-        _c("div", [
-          _c("p", { staticClass: "card-title text-success mb-4 h1" }, [
-            _vm._v("الاسعار")
-          ]),
-          _vm._v(" "),
-          _c(
-            "p",
-            {
-              staticClass: "text-info",
-              staticStyle: { position: "absolute", top: "35px", left: "20px" }
-            },
-            [_vm._v("(" + _vm._s(_vm.pricePerJilsah) + ")")]
-          )
-        ]),
+        _vm._m(0),
         _vm._v(" "),
         _c("ul", { staticClass: "list-group list-group-flush text-right" }, [
           _c("li", { staticClass: "list-group-item w-100 border-0" }, [
             _c("div", { staticClass: "w-100" }, [
               _c("p", { staticClass: "h5 mb-3" }, [_vm._v("فترة الدراسة")]),
               _vm._v(" "),
-              _c("div", { staticClass: "w-100" }, [
-                _c("div", [
-                  _c("p", { staticClass: "h6 float-right text-muted" }, [
-                    _vm._v("ايام الاسبوع")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "badge badge-success badge-pill float-left"
-                    },
-                    [_vm._v(_vm._s(_vm.schoolWeekPrice))]
-                  )
+              _c("div", { staticClass: "mt-2 mb-4" }, [
+                _c("p", { staticClass: "h6 mb-2 text-muted" }, [
+                  _vm._v("ايام الاسبوع")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "clearfix" }),
-                _vm._v(" "),
-                _c("div", [
-                  _c("p", { staticClass: "h6 float-right text-muted" }, [
-                    _vm._v("نهاية الاسبوع")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "badge badge-success badge-pill float-left"
-                    },
-                    [_vm._v(_vm._s(_vm.schoolWeekendPrice))]
-                  )
+                _vm.times.schoolWeek.from
+                  ? _c(
+                      "div",
+                      _vm._l(_vm.times.schoolWeek.from.length, function(index) {
+                        return _c("div", { staticClass: "w-100" }, [
+                          _c("div", { staticClass: "mt-2" }, [
+                            _c("div", [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-right"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.schoolWeek.from[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-left"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.schoolWeek.to[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "clearfix" })
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  : _c(
+                      "span",
+                      { staticClass: "badge badge-success badge-pill" },
+                      [_vm._v("لم يحدد")]
+                    )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-2 mb-2" }, [
+                _c("p", { staticClass: "h6 mb-2 text-muted" }, [
+                  _vm._v("نهاية الاسبوع")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "clearfix" })
+                _vm.times.schoolWeekend.from
+                  ? _c(
+                      "div",
+                      _vm._l(_vm.times.schoolWeekend.from.length, function(
+                        index
+                      ) {
+                        return _c("div", { staticClass: "w-100" }, [
+                          _c("div", { staticClass: "mt-2" }, [
+                            _c("div", [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-right"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.schoolWeekend.from[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-left"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.schoolWeekend.to[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "clearfix" })
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  : _c(
+                      "span",
+                      { staticClass: "badge badge-success badge-pill" },
+                      [_vm._v("لم يحدد")]
+                    )
               ])
             ])
           ]),
@@ -44456,62 +44566,196 @@ var render = function() {
             _c("div", { staticClass: "w-100" }, [
               _c("p", { staticClass: "h5 mb-3" }, [_vm._v("فترة الاجازة")]),
               _vm._v(" "),
-              _c("div", { staticClass: "w-100" }, [
-                _c("div", [
-                  _c("p", { staticClass: "h6 float-right text-muted" }, [
-                    _vm._v("ايام الاسبوع")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "badge badge-success badge-pill float-left"
-                    },
-                    [_vm._v(_vm._s(_vm.vacationWeekPrice))]
-                  )
+              _c("div", { staticClass: "mt-2 mb-4" }, [
+                _c("p", { staticClass: "h6 mb-2 text-muted" }, [
+                  _vm._v("ايام الاسبوع")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "clearfix" }),
-                _vm._v(" "),
-                _c("div", [
-                  _c("p", { staticClass: "h6 float-right text-muted" }, [
-                    _vm._v("نهاية الاسبوع")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "badge badge-success badge-pill float-left"
-                    },
-                    [_vm._v(_vm._s(_vm.vacationWeekendPrice))]
-                  )
+                _vm.times.vacationWeek.from
+                  ? _c(
+                      "div",
+                      _vm._l(_vm.times.vacationWeek.from.length, function(
+                        index
+                      ) {
+                        return _c("div", { staticClass: "w-100" }, [
+                          _c("div", { staticClass: "mt-2" }, [
+                            _c("div", [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-right"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.vacationWeek.from[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-left"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.vacationWeek.to[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "clearfix" })
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  : _c(
+                      "span",
+                      { staticClass: "badge badge-success badge-pill" },
+                      [_vm._v("لم يحدد")]
+                    )
+              ]),
+              _vm._v(" "),
+              _c("div", { staticClass: "mt-2 mb-2" }, [
+                _c("p", { staticClass: "h6 mb-2 text-muted" }, [
+                  _vm._v("نهاية الاسبوع")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "clearfix" })
+                _vm.times.vacationWeekend.from
+                  ? _c(
+                      "div",
+                      _vm._l(_vm.times.vacationWeekend.from.length, function(
+                        index
+                      ) {
+                        return _c("div", { staticClass: "w-100" }, [
+                          _c("div", { staticClass: "mt-2" }, [
+                            _c("div", [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-right"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.vacationWeekend.from[
+                                          index - 1
+                                        ]
+                                      )
+                                    )
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-left"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.vacationWeekend.to[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "clearfix" })
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  : _c(
+                      "span",
+                      { staticClass: "badge badge-success badge-pill" },
+                      [_vm._v("لم يحدد")]
+                    )
               ])
             ])
           ]),
           _vm._v(" "),
           _c("li", { staticClass: "list-group-item w-100" }, [
             _c("div", { staticClass: "w-100" }, [
-              _c("p", { staticClass: "h5 mb-3" }, [_vm._v("فترة العيد")]),
+              _c("p", { staticClass: "h5 mb-3" }, [_vm._v("فترة الاعياد")]),
               _vm._v(" "),
-              _c("div", { staticClass: "w-100" }, [
-                _c("div", [
-                  _c("p", { staticClass: "h6 float-right text-muted" }, [
-                    _vm._v("خلال الاسبوع")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "badge badge-success badge-pill float-left"
-                    },
-                    [_vm._v(_vm._s(_vm.eidPrice))]
-                  )
+              _c("div", { staticClass: "mt-2 mb-2" }, [
+                _c("p", { staticClass: "h6 mb-2 text-muted" }, [
+                  _vm._v("خلال الاسبوع")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "clearfix" })
+                _vm.times.eidWeek.from
+                  ? _c(
+                      "div",
+                      _vm._l(_vm.times.eidWeek.from.length, function(index) {
+                        return _c("div", { staticClass: "w-100" }, [
+                          _c("div", { staticClass: "mt-2" }, [
+                            _c("div", [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-right"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.eidWeek.from[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-left"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.eidWeek.to[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "clearfix" })
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  : _c(
+                      "span",
+                      { staticClass: "badge badge-success badge-pill" },
+                      [_vm._v("لم يحدد")]
+                    )
               ])
             ])
           ]),
@@ -44520,22 +44764,66 @@ var render = function() {
             _c("div", { staticClass: "w-100" }, [
               _c("p", { staticClass: "h5 mb-3" }, [_vm._v("فترة رمضان")]),
               _vm._v(" "),
-              _c("div", { staticClass: "w-100" }, [
-                _c("div", [
-                  _c("p", { staticClass: "h6 float-right text-muted" }, [
-                    _vm._v("خلال الاسبوع")
-                  ]),
-                  _vm._v(" "),
-                  _c(
-                    "span",
-                    {
-                      staticClass: "badge badge-success badge-pill float-left"
-                    },
-                    [_vm._v(_vm._s(_vm.ramadanPrice))]
-                  )
+              _c("div", { staticClass: "mt-2 mb-2" }, [
+                _c("p", { staticClass: "h6 mb-2 text-muted" }, [
+                  _vm._v("خلال الاسبوع")
                 ]),
                 _vm._v(" "),
-                _c("div", { staticClass: "clearfix" })
+                _vm.times.ramadanWeek.from
+                  ? _c(
+                      "div",
+                      _vm._l(_vm.times.ramadanWeek.from.length, function(
+                        index
+                      ) {
+                        return _c("div", { staticClass: "w-100" }, [
+                          _c("div", { staticClass: "mt-2" }, [
+                            _c("div", [
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-right"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.ramadanWeek.from[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              ),
+                              _vm._v(" "),
+                              _c(
+                                "span",
+                                {
+                                  staticClass:
+                                    "badge badge-success badge-pill float-left"
+                                },
+                                [
+                                  _vm._v(
+                                    _vm._s(
+                                      _vm.formatTime(
+                                        _vm.times.ramadanWeek.to[index - 1]
+                                      )
+                                    )
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("div", { staticClass: "clearfix" })
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  : _c(
+                      "span",
+                      { staticClass: "badge badge-success badge-pill" },
+                      [_vm._v("لم يحدد")]
+                    )
               ])
             ])
           ])
@@ -44544,7 +44832,18 @@ var render = function() {
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", [
+      _c("p", { staticClass: "card-title text-success mb-4 h1" }, [
+        _vm._v("فترات العمل")
+      ])
+    ])
+  }
+]
 render._withStripped = true
 
 
