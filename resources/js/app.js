@@ -43,6 +43,7 @@ Vue.component('JilsatiTest',require('./components/jilsati-test').default);
 Vue.component('Star', require('./components/star').default);
 Vue.component('StarRating', require('./components/star-rating').default);
 Vue.component('JilsatiShifts', require('./components/jilsati-shifts').default);
+Vue.component('JilsatiMainPanel', require('./components/jilsati-main-panel').default);
 Vue.component('JilsatiConnectionsPanel', require('./components/jilsati-connections-Panel').default);
 Vue.component('JilsatiPricesPanel', require('./components/jilsati-prices-Panel').default);
 Vue.component('JilsatiTimesPanel', require('./components/jilsati-times-Panel').default);

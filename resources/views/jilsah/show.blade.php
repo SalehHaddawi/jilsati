@@ -9,40 +9,31 @@
 @section('body')
 <div class="container">
     <div dir="rtl" class="mb-5 jumbotron justify-content-center rounded-0 shadow-sm bg-light row">
-
         <div class="col-8">
-            <div class="card mb-3 shadow-sm">
-                <div class="card-body text-right">
-                    <p class="card-title text-success h2">{{$jilsah->name}}</p>
-                    <p class="card-text text-secondary h5">{{$jilsah->location->city->name}} , {{$jilsah->location->address}}</p>
-                    <p class="card-text">
-                        <small class="text-muted">{{$jilsah->location->address_details}}</small>
-                    </p>
-                </div>
-                <jilsati-carousel class="card-img-top" name="images-carousel" :images="{{json_encode($all_images)}}">
-
-                </jilsati-carousel>
-                <div class="card-body text-right">
-                    <h5 class="card-title">الوصف</h5>
-                    <p style="direction: rtl;" class="card-text text-justify text-muted mt-4">{{$jilsah->description}}</p>
-                </div>
-            </div>
+            <jilsati-main-panel
+                    name="{{$jilsah_show->name}}"
+                    city="{{$jilsah_show->location->city->name}}"
+                    address="{{$jilsah_show->location->address}}"
+                    address-details="{{$jilsah_show->location->address_details}}"
+                    :images="{{$all_images}}"
+                    description="{{$jilsah_show->description}}">
+            </jilsati-main-panel>
         </div>
         <div class="col-lg-4">
             <jilsati-connections-panel
-                    phone="{{$jilsah->socials->phone}}"
-                    instagram="{{$jilsah->socials->instagram}}"
-                    facebook="{{$jilsah->socials->facebook}}"
-                    twitter="{{$jilsah->socials->twitter}}"
-                    snapchat="{{$jilsah->socials->snapchat}}">
+                    phone="{{$jilsah_show->socials->phone}}"
+                    instagram="{{$jilsah_show->socials->instagram}}"
+                    facebook="{{$jilsah_show->socials->facebook}}"
+                    twitter="{{$jilsah_show->socials->twitter}}"
+                    snapchat="{{$jilsah_show->socials->snapchat}}">
             </jilsati-connections-panel>
 
             <jilsati-prices-panel
-                    :prices="{{json_encode($jilsah->prices)}}">
+                    :prices="{{json_encode($jilsah_show->prices)}}">
             </jilsati-prices-panel>
 
             <jilsati-times-panel
-                    :times="{{$jilsah->times}}">
+                    :times="{{$jilsah_show->times}}">
             </jilsati-times-panel>
 
         </div>

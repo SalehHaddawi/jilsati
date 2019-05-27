@@ -1,0 +1,38 @@
+<template>
+    <div class="card mb-3 rounded-0 shadow-sm">
+        <div class="card-body text-right">
+            <p class="card-title text-success h2">{{name}}</p>
+            <p class="card-text text-secondary h5">{{city}} , {{address}}</p>
+            <p class="card-text">
+                <small class="text-muted">{{addressDetails}}</small>
+            </p>
+        </div>
+        <jilsati-carousel class="card-img-top" name="images-carousel" :images="images">
+
+        </jilsati-carousel>
+        <div class="card-body text-right">
+            <h5 class="card-title">الوصف</h5>
+            <p style="direction: rtl;" class="card-text text-justify text-muted mt-4">{{description}}</p>
+        </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        props : {
+            name : '',
+
+            city : '',
+
+            address : '',
+
+            addressDetails : '',
+
+            images : {
+                type : Array
+            },
+
+            description : ''
+        }
+    }
+</script>

@@ -24,7 +24,7 @@ class JilsahController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->except('show');
     }
 
     /**
@@ -162,11 +162,15 @@ class JilsahController extends Controller
      */
     public function show(Jilsah $jilsah)
     {
-        $all_images = $jilsah->images->map->src;
+        $jilsah_show = Jilsah::with(['clientTypes','jilsahTypes','options','location','prices','images','socials'])
+            ->where('jilsahs.id','=',$jilsah->id)
+            ->first();
 
-        $all_images->push($jilsah->main_image);
+        $all_images = $jilsah_show->images->map->src;
 
-        return view('jilsah.show',compact('jilsah','all_images'));
+        $all_images->push($jilsah_show->main_image);
+
+        return view('jilsah.show',compact('jilsah_show','all_images'));
     }
 
     /**
