@@ -12,6 +12,9 @@
                 <li class="nav-item">
                     <a class="nav-link bg-white shadow-sm" id="times-tap" data-toggle="tab" href="#times" role="tab" aria-controls="times-tap" aria-selected="false">الدوام</a>
                 </li>
+                <li class="nav-item">
+                    <a class="nav-link bg-white shadow-sm" id="location-tap" data-toggle="tab" href="#location" role="tab" aria-controls="location-tap" aria-selected="false">الموقع</a>
+                </li>
             </ul>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="properties" role="tabpanel" aria-labelledby="properties-tap">
@@ -31,6 +34,25 @@
                             :times="props.times">
                     </jilsati-times-panel>
                 </div>
+                <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="times-tab">
+                    <div class="card shadow-sm mb-3 rounded-0">
+                        <div class="card-body">
+                            <p class="card-subtitle mb-3 text-info h3">{{props.location.city.name}}</p>
+                            <p class="card-subtitle mb-3 text-muted h5">{{props.location.address}}</p>
+                            <p class="card-subtitle mb-3 text-muted h6">{{props.location.address_details}}</p>
+                            <div class="h1 text-center mt-5">
+                                <div v-if="props.location.google_map_url">
+                                    <p class="card-subtitle mb-3 text-info mb-5 h6">اضغط علة الايقونة للانتقال الى موقع الجلسة في قوقل ماب</p>
+                                    <a :href="props.location.google_map_url">
+                                        <i class="fas fa-map-marked-alt mb-4" style="color: mediumseagreen;transform: scale(2);"></i>
+                                    </a>
+                                </div>
+
+                                <p v-else class="card-subtitle mb-3 text-info mb-5 h6">لم يتم ارفاق رابط الجلسة في قوقل ماب</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -48,6 +70,8 @@
             prices : '',
 
             times : '',
+
+            location : ''
         }
     }
 </script>

@@ -103,3 +103,7 @@
     </div>
 </div>
 @endsection
+
+@section('scripts-before')
+    <script src="https://polyfill.io/v2/polyfill.js?features=IntersectionObserver"></script>
+@endsection

@@ -26,7 +26,8 @@
                     :jilsah-types="{{$jilsah_show->jilsahTypes->map->name}}"
                     :options="{{$jilsah_show->options->map->name}}"
                     :prices="{{$jilsah_show->prices}}"
-                    :times="{{$jilsah_show->times}}">
+                    :times="{{$jilsah_show->times}}"
+                    :location="{{$jilsah_show->location}}">
             </jilsati-jilsah-details-tabs>
 
 {{--            <div class="card shadow-sm mb-3 rounded-0">--}}
