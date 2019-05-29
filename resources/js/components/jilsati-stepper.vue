@@ -69,7 +69,7 @@
 
             <div v-if="!stepsInfo[1].disabled">
                 <p class="text-justify">
-                    اختار الاوقات الي الجلسة تكون شغالة
+                    اختار الاوقات الي الجلسة تكون متاحة
                 </p>
 
                 <jilsati-checkbox v-model="chosenTimePeriods.school" name="school-time-period">فترة الدراسة

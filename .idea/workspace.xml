@@ -2,17 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863277c5-237f-4abb-b85c-41037fadc229" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/resources/js/components/jilsati-modal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JilsahController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JilsahController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2019_05_25_004650_create_jilsahs_prices_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2019_05_25_004650_create_jilsahs_prices_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-alert.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-alert.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-step.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-step.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search.blade.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,8 +23,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1385">
-              <caret line="736" column="52" selection-start-line="736" selection-start-column="52" selection-end-line="736" selection-end-column="52" />
+            <state relative-caret-position="416">
+              <caret line="71" column="55" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
               <folding>
                 <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
@@ -43,9 +35,6 @@
                 <element signature="n#small#0;n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#button#0;n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-                <element signature="n#p#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#jilsati-checkbox#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#jilsati-checkbox#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
                 <element signature="n#jilsati-checkbox#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
@@ -321,8 +310,53 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/Http/Controllers/JilsahController.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="528">
-              <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+            <state relative-caret-position="264">
+              <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
+              <folding>
+                <element signature="e#585#677#0#PHP" />
+                <element signature="e#683#784#0#PHP" />
+                <element signature="e#789#1039#0#PHP" />
+                <element signature="e#838#968#0#PHP" />
+                <element signature="e#1045#1154#0#PHP" />
+                <element signature="e#1159#1233#0#PHP" />
+                <element signature="e#1239#1398#0#PHP" />
+                <element signature="e#1403#4713#0#PHP" />
+                <element signature="e#1457#4707#0#PHP" />
+                <element signature="e#1505#1857#0#PHP" />
+                <element signature="e#1537#1765#0#PHP" />
+                <element signature="e#1766#1856#0#PHP" />
+                <element signature="e#1920#2083#0#PHP" />
+                <element signature="e#2099#4659#0#PHP" />
+                <element signature="e#2115#4658#2#PHP" />
+                <element signature="e#2353#2550#0#PHP" />
+                <element signature="e#2663#2839#0#PHP" />
+                <element signature="e#2958#3211#0#PHP" />
+                <element signature="e#2993#3193#0#PHP" />
+                <element signature="e#4418#4661#0#PHP" />
+                <element signature="e#4418#4607#0#PHP" />
+                <element signature="e#4682#4816#0#PHP" />
+                <element signature="e#4858#5280#0#PHP" />
+                <element signature="e#4887#5029#0#PHP" />
+                <element signature="e#5249#5401#0#PHP" />
+                <element signature="e#5443#5502#0#PHP" />
+                <element signature="e#5471#5665#0#PHP" />
+                <element signature="e#5707#5786#0#PHP" />
+                <element signature="e#5755#5901#0#PHP" />
+                <element signature="e#5943#6005#0#PHP" />
+                <element signature="e#6011#6153#0#PHP" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SearchController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="484">
+              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+              <folding>
+                <element signature="e#40#53#0#PHP" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -330,8 +364,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/js/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="418">
-              <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
+            <state relative-caret-position="550">
+              <caret line="59" column="73" selection-start-line="59" selection-start-column="73" selection-end-line="59" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -378,8 +412,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/search.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="864">
-              <caret line="103" column="6" selection-start-line="67" selection-end-line="103" selection-end-column="6" />
+            <state relative-caret-position="66">
+              <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -458,7 +492,6 @@
         <option value="$PROJECT_DIR$/app/JilsahLocation.php" />
         <option value="$PROJECT_DIR$/app/JilsahImages.php" />
         <option value="$PROJECT_DIR$/app/Jilsah.php" />
-        <option value="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" />
         <option value="$PROJECT_DIR$/resources/views/jilsah/index.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-connect-Panel.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-connections-Panel.vue" />
@@ -476,16 +509,17 @@
         <option value="$PROJECT_DIR$/resources/views/jilsah/create.blade.php" />
         <option value="$PROJECT_DIR$/resources/views/jilsah/show.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-jilsah-details-tabs.vue" />
-        <option value="$PROJECT_DIR$/resources/views/search.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-card-show.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-step.vue" />
         <option value="$PROJECT_DIR$/database/migrations/2019_05_25_004650_create_jilsahs_prices_table.php" />
         <option value="$PROJECT_DIR$/public/css/custom.css" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-file-chooser.vue" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-alert.vue" />
-        <option value="$PROJECT_DIR$/resources/js/app.js" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-modal.vue" />
         <option value="$PROJECT_DIR$/app/Http/Controllers/JilsahController.php" />
+        <option value="$PROJECT_DIR$/app/Http/Controllers/SearchController.php" />
+        <option value="$PROJECT_DIR$/resources/js/app.js" />
+        <option value="$PROJECT_DIR$/resources/views/search.blade.php" />
         <option value="$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue" />
       </list>
     </option>
@@ -574,7 +608,7 @@
       <path value="$PROJECT_DIR$/vendor/nikic/php-parser" />
     </include_path>
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
+  <component name="ProjectFrameBounds" extendedState="7">
     <option name="x" value="-10" />
     <option name="width" value="1310" />
     <option name="height" value="1040" />
@@ -609,17 +643,6 @@
               <item name="app" type="462c0819:PsiDirectoryNode" />
               <item name="Http" type="462c0819:PsiDirectoryNode" />
               <item name="Controllers" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jilsati" type="462c0819:PsiDirectoryNode" />
-              <item name="public" type="462c0819:PsiDirectoryNode" />
-              <item name="css" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="jilsati" type="b2602c69:ProjectViewProjectNode" />
@@ -762,12 +785,12 @@
       <workItem from="1558866562967" duration="39684000" />
       <workItem from="1558953500287" duration="25999000" />
       <workItem from="1559000920979" duration="4841000" />
-      <workItem from="1559054075364" duration="24861000" />
+      <workItem from="1559054075364" duration="25870000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="476482000" />
+    <option name="totallyTimeSpent" value="477491000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -782,7 +805,7 @@
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16174497" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.16174497" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -980,16 +1003,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SearchController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="264">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="25" selection-end-column="20" />
-          <folding>
-            <element signature="e#40#53#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/Jilsah.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="108">
@@ -1178,20 +1191,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="418">
-          <caret line="53" column="64" selection-start-line="53" selection-start-column="64" selection-end-line="53" selection-end-column="64" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/resources/views/search.blade.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="864">
-          <caret line="103" column="6" selection-start-line="67" selection-end-line="103" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-modal.vue">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="484">
@@ -1201,15 +1200,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/Http/Controllers/JilsahController.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="528">
-          <caret line="156" column="5" selection-start-line="156" selection-start-column="5" selection-end-line="156" selection-end-column="5" />
+        <state relative-caret-position="264">
+          <caret line="58" column="43" selection-start-line="58" selection-start-column="43" selection-end-line="58" selection-end-column="43" />
+          <folding>
+            <element signature="e#585#677#0#PHP" />
+            <element signature="e#683#784#0#PHP" />
+            <element signature="e#789#1039#0#PHP" />
+            <element signature="e#838#968#0#PHP" />
+            <element signature="e#1045#1154#0#PHP" />
+            <element signature="e#1159#1233#0#PHP" />
+            <element signature="e#1239#1398#0#PHP" />
+            <element signature="e#1403#4713#0#PHP" />
+            <element signature="e#1457#4707#0#PHP" />
+            <element signature="e#1505#1857#0#PHP" />
+            <element signature="e#1537#1765#0#PHP" />
+            <element signature="e#1766#1856#0#PHP" />
+            <element signature="e#1920#2083#0#PHP" />
+            <element signature="e#2099#4659#0#PHP" />
+            <element signature="e#2115#4658#2#PHP" />
+            <element signature="e#2353#2550#0#PHP" />
+            <element signature="e#2663#2839#0#PHP" />
+            <element signature="e#2958#3211#0#PHP" />
+            <element signature="e#2993#3193#0#PHP" />
+            <element signature="e#4418#4661#0#PHP" />
+            <element signature="e#4418#4607#0#PHP" />
+            <element signature="e#4682#4816#0#PHP" />
+            <element signature="e#4858#5280#0#PHP" />
+            <element signature="e#4887#5029#0#PHP" />
+            <element signature="e#5249#5401#0#PHP" />
+            <element signature="e#5443#5502#0#PHP" />
+            <element signature="e#5471#5665#0#PHP" />
+            <element signature="e#5707#5786#0#PHP" />
+            <element signature="e#5755#5901#0#PHP" />
+            <element signature="e#5943#6005#0#PHP" />
+            <element signature="e#6011#6153#0#PHP" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/Http/Controllers/SearchController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding>
+            <element signature="e#40#53#0#PHP" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/js/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="550">
+          <caret line="59" column="73" selection-start-line="59" selection-start-column="73" selection-end-line="59" selection-end-column="73" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/views/search.blade.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="11" column="24" selection-start-line="11" selection-start-column="24" selection-end-line="11" selection-end-column="24" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-stepper.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1385">
-          <caret line="736" column="52" selection-start-line="736" selection-start-column="52" selection-end-line="736" selection-end-column="52" />
+        <state relative-caret-position="416">
+          <caret line="71" column="55" selection-start-line="71" selection-start-column="55" selection-end-line="71" selection-end-column="55" />
           <folding>
             <element signature="n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#0;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
@@ -1220,9 +1276,6 @@
             <element signature="n#small#0;n#div#1;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
             <element signature="n#button#0;n#div#2;n#jilsati-step#0;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
-            <element signature="n#p#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-checkbox#0;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-checkbox#1;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />
             <element signature="n#jilsati-checkbox#3;n#div#0;n#jilsati-step#1;n#div#0;n#template#0;n#!!top" />

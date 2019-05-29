@@ -6,8 +6,11 @@
 
 @section('body')
 
-<jilsati-alert type="success">نتيجة البحث</jilsati-alert>
-
+@if(sizeof($jilsahs) > 0)
+    <jilsati-alert type="success text-center">نتيجة البحث</jilsati-alert>
+@else
+    <jilsati-alert type="warning text-center">لا يوجد اي جلسات مسجلة في هذه المدينة</jilsati-alert>
+@endif
 <!-- filter button visible on mobile only -->
 <div dir="rtl" class="fixed-bottom text-right m-4 d-md-block d-lg-none">
     <button class="btn btn-success rounded-circle shadow px-4 py-3" data-toggle="modal" data-target="#exampleModalCenter">

@@ -22,8 +22,10 @@ class SearchController extends Controller
 
         $cities = City::all();
 
-        $jilsahs = Jilsah::with(['clientTypes','jilsahTypes','options','location','prices'])
-            ->get();
+        $jilsahs = Jilsah::with(['clientTypes','jilsahTypes','options','location','location.city','prices'])
+            ->wherehas('location.city',function ($query){
+                $query->where('name', '=', Input::get('city'));
+            })->get();
 
         return view('search',compact('cities','jilsahs'));
     }
