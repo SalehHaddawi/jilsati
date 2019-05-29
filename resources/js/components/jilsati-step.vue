@@ -5,8 +5,8 @@
             <div :class="stepLineClasses"></div>
         </div>
         <div>
-            <div class="step-title">
-                <a style="text-decoration: none;" class="btn-link" :class="aTextClasses" data-toggle="collapse" :href="'#' + status.id" role="link" aria-expanded="false" :aria-controls="status.id">
+            <div class="step-title" @click="toggleCollapse()"><!--data-toggle="collapse"-->
+                <a style="text-decoration: none;cursor: pointer;" class="btn-link" :class="aTextClasses" role="link" aria-expanded="false" :aria-controls="status.id">
                     {{title}}
                 </a>
             </div>
@@ -21,6 +21,13 @@
 <script>
     export default {
         props : ['title','number', 'rtl','status'],
+
+        methods : {
+            toggleCollapse :function () {
+                if(!this.status.disabled)
+                    this.$emit('on-toggle-collapse',this.status.id);
+            }
+        },
 
         computed : {
             stepLineClasses : function () {

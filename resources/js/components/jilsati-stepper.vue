@@ -1,6 +1,37 @@
 <template>
     <div>
-        <jilsati-step title="معلومات الجلسة الاساسية"
+        <!-- not visible -->
+        <jilsati-modal id="modal" title="معلومة" :not-dismissible="newJilsahState === 'success'">
+
+            <jilsati-alert v-if="newJilsahState === ''" type="danger" class="text-center">
+                <p v-html="modalContent">{{modalContent}}</p>
+            </jilsati-alert>
+
+            <div v-else-if="newJilsahState === 'success'" class="text-center">
+                <p class="text-center text-success h1">تم الحفظ بنجاح</p>
+                <div class="mt-4">
+                    <div>
+                        <a href="/jilsahs">
+                            الانتقال الى جلساتي
+                        </a>
+                    </div>
+                    <div>
+                        <a href="/jilsahs/create">
+                            اضافة جلسة اخرى
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div v-else class="text-center">
+                <p class="text-center">حصل خطأ اثناء ارسال المعلومات الرجاء المحاولة مرة اخرى</p>
+                <div class="list-group mt-4">
+                    <button @click="hideModal()" type="button" class="btn btn-info">موافق</button>
+                </div>
+            </div>
+        </jilsati-modal>
+
+        <jilsati-step @on-toggle-collapse="handleToggleCollapse($event)" title="معلومات الجلسة الاساسية"
                       dir="rtl"
                       rtl="true"
                       number="1"
@@ -30,7 +61,7 @@
                 </button>
             </div>
         </jilsati-step>
-        <jilsati-step title="اوقات الجلسة"
+        <jilsati-step @on-toggle-collapse="handleToggleCollapse($event)" title="اوقات الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="2"
@@ -87,7 +118,7 @@
                 </div>
             </div>
         </jilsati-step>
-        <jilsati-step title="عن الجلسة"
+        <jilsati-step @on-toggle-collapse="handleToggleCollapse($event)" title="عن الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="3"
@@ -139,7 +170,7 @@
                 </div>
             </div>
         </jilsati-step>
-        <jilsati-step title="موقع الجلسة"
+        <jilsati-step @on-toggle-collapse="handleToggleCollapse($event)" title="موقع الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="4"
@@ -191,7 +222,7 @@
                 </div>
             </div>
         </jilsati-step>
-        <jilsati-step title="اسعار الجلسة"
+        <jilsati-step @on-toggle-collapse="handleToggleCollapse($event)" title="اسعار الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="5"
@@ -306,7 +337,7 @@
                 </div>
             </div>
         </jilsati-step>
-        <jilsati-step title="صور الجلسة"
+        <jilsati-step @on-toggle-collapse="handleToggleCollapse($event)" title="صور الجلسة"
                       dir="rtl"
                       rtl="true"
                       number="6"
@@ -316,12 +347,21 @@
 
                 <jilsati-fieldset legend="نظرة سريعة على شكل الجلسة النهائي" font-size="1.1rem">
 
+                    <jilsati-alert v-if="!models.jilsah.mainImage.file" class="text-center" type="danger">
+                        يجب ارفاق صورة الجلسة بالضغط على الزر بالاسفل
+                    </jilsati-alert>
+
                     <jilsati-file-chooser
                             name="jilsah-main-img"
                             browse="صورة الجلسة"
                             content="ارفع الصورة"
-                            @image-changed="handleMainImageChanged">
+                            :max-size-in-mb="1.5"
+                            :file-types="['jpeg','png','jpg']"
+                            @image-changed="handleMainImageChanged"
+                            @image-error="handleMainImageError">
                     </jilsati-file-chooser>
+
+                    <small class="text-muted">الصيغ المسوحة هي jpeg,png,jpg <br>الحد الاعلى لحجم الملف هو 1.5mb</small>
 
                     <div>
 
@@ -347,17 +387,25 @@
 
                 <jilsati-fieldset legend="صور الجلسة" font-size="1.3rem">
                     <div class="mt-2">
-                        <jilsati-alert type="info">
-                            اضيف صور الجلسة الاخرى
+                        <jilsati-alert type="warning">
+                            <ul>
+                                <li>قم باضافة صور اخرى عن الجلسة لزيادة مصداقية المعلومات عن جلستك </li>
+                                <li>يمكنك اضافة الى 20 صورة</li>
+                                <li>يفضل ان تكون الصور بنفس الابعاد</li>
+                                <li>سيتم تجاهل اي صورة غير مسموح بها</li>
+                            </ul>
                         </jilsati-alert>
 
                         <jilsati-file-chooser
                                 name="jilsah-imgs"
                                 browse="صور الجلسة"
                                 content="ارفع الصور"
+                                :max-size-in-mb="1.5"
+                                :file-types="['jpeg','png','jpg']"
                                 multiple
                                 @image-changed="handleAddNewJilsahImage">
                         </jilsati-file-chooser>
+                        <small class="text-muted">الصيغ المسوحة هي jpeg,png,jpg <br>الحد الاعلى لحجم الملف هو 1.5mb</small>
                     </div>
 
                     <div class="row justify-content-start mt-2">
@@ -384,7 +432,7 @@
 
             </div>
         </jilsati-step>
-        <jilsati-step title="معلومات التواصل"
+        <jilsati-step @on-toggle-collapse="handleToggleCollapse($event)" title="معلومات التواصل"
                       dir="rtl"
                       rtl="true"
                       number="7"
@@ -501,7 +549,11 @@
                     jilsah :{
                         name: undefined,
                         description: undefined,
-                        mainImage: {name: 'upload-jilsah-image', src: '/images/upload-your-jilsah.png', org: true},
+                        mainImage: {
+                            name: 'upload-jilsah-image',
+                            src: '/images/upload-your-jilsah.png',
+                            file: null,
+                        },
                     },
                     times: {
                         schoolWeek : {},
@@ -548,6 +600,12 @@
 
                 jilsahImagesCounter: 0,
 
+                modalContent : '',
+
+                jQueryModal : undefined,
+
+                newJilsahState : '',
+
                 urlPattern : new RegExp('^(https?:\\/\\/)?'+ // protocol
                     '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|'+ // domain name
                     '((\\d{1,3}\\.){3}\\d{1,3}))'+ // OR ip (v4) address
@@ -558,30 +616,60 @@
         },
 
         methods: {
-            check: function (step) {
+            handleToggleCollapse : function(id){
                 // to make the reactivity works
-                Vue.set(this.stepsInfo[step], 'state', 'success');
+                // use $set
+                // change the current step state to success
+                //this.$set(this.stepsInfo[stepIndex], 'state', 'success');
 
+                // save vue instance to variable because we can't access it inside jQuery function
+                //let vue = this;
+
+                console.log('handling');
+
+                for (let i = 0; i < this.stepsInfo.length;i++){
+                    let step = this.stepsInfo[i];
+                    if(step.id === id)
+                        continue;
+                    $('#' + step.id).collapse('hide');
+                }
+
+                $('#' + id).collapse('show');
+
+                console.log('showing: '+'#'+id);
+
+                //let jilsahStep = $('#' + this.stepsInfo[stepIndex].id);
+
+                //jilsahStep.collapse('hide');
+            },
+
+            check: function (stepIndex) {
+                // to make the reactivity works
+                // use $set
+                // change the current step state to success
+                this.$set(this.stepsInfo[stepIndex], 'state', 'success');
+
+                // save vue instance to variable because we can't access it inside jQuery function
                 let vue = this;
 
-                let jilsahStep = $('#' + this.stepsInfo[step].id);
+                let jilsahStep = $('#' + this.stepsInfo[stepIndex].id);
 
                 jilsahStep.collapse('hide');
 
                 // make disabled to false so 'v-if' will be true
                 // and step body content will appear
                 // so the collapse show animation will be good
-                if (step + 1 < vue.stepsInfo.length) {
-                    Vue.set(vue.stepsInfo[step + 1], 'disabled', false);
+                if (stepIndex + 1 < vue.stepsInfo.length) {
+                    this.$set(vue.stepsInfo[stepIndex + 1], 'disabled', false);
                 }
 
                 // execute the code after the collapse event has finished
                 // add the listener only once using -> one()
                 jilsahStep.one('hidden.bs.collapse', function () {
-                    if (step + 1 < vue.stepsInfo.length) {
-                        Vue.set(vue.stepsInfo[step + 1], 'state', 'primary');
+                    if (stepIndex + 1 < vue.stepsInfo.length && vue.stepsInfo[stepIndex + 1].state !== 'success') {
+                        vue.$set(vue.stepsInfo[stepIndex + 1], 'state', 'primary');
 
-                        $('#' + vue.stepsInfo[step + 1].id).collapse('show');
+                        $('#' + vue.stepsInfo[stepIndex + 1].id).collapse('show');
                     }
                 });
             },
@@ -594,15 +682,30 @@
                 this.models.jilsah.mainImage = file;
             },
 
-            handleAddNewJilsahImage: function (file) {
-                this.models.jilsahImages.push({
-                    index: this.jilsahImagesCounter,
-                    name: file.name,
-                    src: file.src,
-                    file: file.file
-                });
+            handleMainImageError: function (message) {
+                this.modalContent = message;
 
-                this.jilsahImagesCounter++;
+                this.showModal(true);
+            },
+
+            handleAddNewJilsahImage: function (file) {
+                if (this.models.jilsahImages.length < 20) {
+
+
+                    this.models.jilsahImages.push({
+                        index: this.jilsahImagesCounter,
+                        name: file.name,
+                        src: file.src,
+                        file: file.file
+                    });
+
+                    this.jilsahImagesCounter++;
+
+                }else {
+                    this.modalContent = 'الحد الاقصى لصور الجلسة هو 20 يمكنك ازالة بعض الصور اذا كنت تريد اضافة صور اخرى';
+
+                    this.showModal(true);
+                }
             },
 
             handleRemoveJilsahImage: function (index) {
@@ -629,8 +732,32 @@
                 }
             },
 
+            showModal : function(dismissible){
+                if(!dismissible){
+                    this.jQueryModal.modal({backdrop: 'static', keyboard: false});
+                }else {
+                    this.jQueryModal.modal({backdrop: 'true', keyboard: true});
+                }
+
+                this.jQueryModal.modal('show');
+            },
+
+            hideModal : function(){
+                this.jQueryModal.modal('hide');
+            },
+
             createNewJilsah : function () {
+
+                if(this.newJilsahState === 'success'){
+                    return;
+                }
+
+                this.modalContent = 'يتم الان ارسال المعلومات الرجاء الانتظار...';
+
+                this.showModal(false);
+
                 let formData = new FormData();
+
                 /*Jilsah information*/
                 formData.append('name',this.models.jilsah.name);
                 formData.append('description',this.models.jilsah.description);
@@ -661,14 +788,19 @@
 
                 axios.post('/jilsahs',formData,settings)
                     .then(res => {
+                        this.newJilsahState = 'success';
                         console.log('SUCCESS',res)
                     }).catch(err => {
-                    console.log('ERROR',err.response)
+                        this.newJilsahState = 'error';
+                        this.showModal(false);
+                        console.log('ERROR',err.response)
                 });
             }
         },
 
         computed: {
+
+            /** GENERAL **/
             chosenTimeSchool : function(){
                 return this.chosenTimePeriods.school;
             },
@@ -684,7 +816,6 @@
             chosenTimeRamadan : function(){
                 return this.chosenTimePeriods.ramadan;
             },
-
 
             /****INFO STEP****/
 
@@ -827,7 +958,7 @@
             /****IMAGES STEP****/
 
             mainImageErr: function () {
-                if (this.models.jilsah.mainImage.org) {
+                if (!this.models.jilsah.mainImage.file) {
                     return 'is-invalid'
                 } else {
                     return 'is-valid'
@@ -982,13 +1113,15 @@
             }
         },
 
-        created() {
+        mounted() {
             axios.post('/jilsahs/cities')
                 .then(res => {
                     this.cities = res.data;
                 }).catch(err => {
                 console.log(err.response)
             });
+
+            this.jQueryModal = $('#modal');
         }
     }
 </script>

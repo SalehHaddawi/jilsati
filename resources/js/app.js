@@ -51,6 +51,7 @@ Vue.component('JilsatiPropertiesPanel', require('./components/jilsati-properties
 Vue.component('JilsatiCurrentPricePanel', require('./components/jilsati-current-price-panel').default);
 Vue.component('JilsatiCurrentTimePanel', require('./components/jilsati-current-time-panel').default);
 Vue.component('JilsatiJilsahDetailsTabs',require('./components/jilsati-jilsah-details-tabs').default);
+Vue.component('JilsatiModal',require('./components/jilsati-modal').default);
 
 
 

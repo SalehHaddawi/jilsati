@@ -64,7 +64,7 @@ class JilsahController extends Controller
                 'name' => 'required|max:255',
                 'description' => 'required',
                 'times' => 'required|JSON',
-                'main_image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:1024',
+                'main_image' => 'required|image|mimes:jpeg,png,jpg|max:1024',
             ],[
                 'main_image.required' => 'لم يتم رفع صورة الجلسة الرئيسية'
             ]);
@@ -143,10 +143,12 @@ class JilsahController extends Controller
                 $jilsah_images = $request->file('images');
 
                 /**SAVE Jilsah Images TO DB**/
-                for ($i = 0;$i < sizeof($jilsah_images);$i++){
-                    $images = JilsahImages::createAndSave($jilsah_images[$i],$jilsah);
+                if($jilsah_images){
+                    for ($i = 0;$i < sizeof($jilsah_images);$i++){
+                        $images = JilsahImages::createAndSave($jilsah_images[$i],$jilsah);
 
-                    $images->save();
+                        $images->save();
+                    }
                 }
             });
 

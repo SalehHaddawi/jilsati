@@ -2476,11 +2476,18 @@ __webpack_require__.r(__webpack_exports__);
     },
     multiple: {
       type: Boolean
+    },
+    maxSizeInMb: {
+      type: Number
+    },
+    fileTypes: {
+      type: Array
     }
   },
   data: function data() {
     return {
-      cont: this.content
+      cont: this.content,
+      allowedFileTypes: []
     };
   },
   methods: {
@@ -2488,27 +2495,51 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       if (event.target.files) {
-        var _loop = function _loop(i) {
-          if (event.target.files[i].type.startsWith('image/')) {
-            _this.cont = event.target.files[i].name;
-            var vue = _this;
-            var reader = new FileReader();
+        (function () {
+          var files = event.target.files;
 
-            reader.onload = function (e) {
-              vue.$emit('image-changed', {
-                name: event.target.files[i].name,
-                src: e.target.result,
-                file: event.target.files[i]
-              });
-            };
+          var _loop = function _loop(i) {
+            var fileSize = files[i].size / 1024 / 1024;
+            fileSize = fileSize.toFixed(2);
 
-            reader.readAsDataURL(event.target.files[i]);
+            if (files[i].type.startsWith('image/') && _this.allowedFileTypes.includes(files[i].type) && fileSize <= _this.maxSizeInMb) {
+              _this.cont = files[i].name;
+              var vue = _this;
+              var reader = new FileReader();
+
+              reader.onload = function (e) {
+                vue.$emit('image-changed', {
+                  name: files[i].name,
+                  src: e.target.result,
+                  file: files[i]
+                });
+              };
+
+              reader.readAsDataURL(event.target.files[i]);
+            } else {
+              var msg1 = 'الملف ' + '<strong>' + files[i].name + '</strong>' + ' ليس من نوع ملفات الصور ';
+
+              if (!files[i].type.startsWith('image/')) {
+                _this.$emit('image-error', msg1);
+              } else if (!_this.allowedFileTypes.includes(files[i].type)) {
+                _this.$emit('image-error', 'صيغة الملف ' + '<strong>' + files[i].name + '</strong>' + ' ليس مسموح بها');
+              } else {
+                _this.$emit('image-error', ' الملف ' + '<strong>' + files[i].name + '</strong>' + ' حجمه ' + ' (' + fileSize + 'mb) ' + ' اكبر من اقصى حجم مسموح لملفات الصور وهو ' + _this.maxSizeInMb + 'mb');
+              }
+            }
+          };
+
+          for (var i = 0; i < files.length; i++) {
+            _loop(i);
           }
-        };
-
-        for (var i = 0; i < event.target.files.length; i++) {
-          _loop(i);
-        }
+        })();
+      }
+    }
+  },
+  created: function created() {
+    if (this.fileTypes) {
+      for (var i = 0; i < this.fileTypes.length; i++) {
+        this.allowedFileTypes[i] = 'image/' + this.fileTypes[i];
       }
     }
   }
@@ -2675,6 +2706,49 @@ __webpack_require__.r(__webpack_exports__);
       type: Array
     },
     description: ''
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-modal.vue?vue&type=script&lang=js&":
+/*!************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-modal.vue?vue&type=script&lang=js& ***!
+  \************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    id: {
+      required: true
+    },
+    title: {
+      required: true
+    },
+    notDismissible: {
+      type: Boolean
+    }
   }
 });
 
@@ -3182,6 +3256,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['title', 'number', 'rtl', 'status'],
+  methods: {
+    toggleCollapse: function toggleCollapse() {
+      if (!this.status.disabled) this.$emit('on-toggle-collapse', this.status.id);
+    }
+  },
   computed: {
     stepLineClasses: function stepLineClasses() {
       return (this.rtl ? 'step-line-rtl' : 'step-line-ltr') + ' border-' + this.status.state;
@@ -3203,6 +3282,54 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -3722,7 +3849,7 @@ __webpack_require__.r(__webpack_exports__);
           mainImage: {
             name: 'upload-jilsah-image',
             src: '/images/upload-your-jilsah.png',
-            org: true
+            file: null
           }
         },
         times: {
@@ -3769,6 +3896,9 @@ __webpack_require__.r(__webpack_exports__);
 
       /*****************/
       jilsahImagesCounter: 0,
+      modalContent: '',
+      jQueryModal: undefined,
+      newJilsahState: '',
       urlPattern: new RegExp('^(https?:\\/\\/)?' + // protocol
       '((([a-z\\d]([a-z\\d-]*[a-z\\d])*)\\.)+[a-z]{2,}|' + // domain name
       '((\\d{1,3}\\.){3}\\d{1,3}))' + // OR ip (v4) address
@@ -3779,25 +3909,47 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
-    check: function check(step) {
+    handleToggleCollapse: function handleToggleCollapse(id) {
       // to make the reactivity works
-      Vue.set(this.stepsInfo[step], 'state', 'success');
+      // use $set
+      // change the current step state to success
+      //this.$set(this.stepsInfo[stepIndex], 'state', 'success');
+      // save vue instance to variable because we can't access it inside jQuery function
+      //let vue = this;
+      console.log('handling');
+
+      for (var i = 0; i < this.stepsInfo.length; i++) {
+        var step = this.stepsInfo[i];
+        if (step.id === id) continue;
+        $('#' + step.id).collapse('hide');
+      }
+
+      $('#' + id).collapse('show');
+      console.log('showing: ' + '#' + id); //let jilsahStep = $('#' + this.stepsInfo[stepIndex].id);
+      //jilsahStep.collapse('hide');
+    },
+    check: function check(stepIndex) {
+      // to make the reactivity works
+      // use $set
+      // change the current step state to success
+      this.$set(this.stepsInfo[stepIndex], 'state', 'success'); // save vue instance to variable because we can't access it inside jQuery function
+
       var vue = this;
-      var jilsahStep = $('#' + this.stepsInfo[step].id);
+      var jilsahStep = $('#' + this.stepsInfo[stepIndex].id);
       jilsahStep.collapse('hide'); // make disabled to false so 'v-if' will be true
       // and step body content will appear
       // so the collapse show animation will be good
 
-      if (step + 1 < vue.stepsInfo.length) {
-        Vue.set(vue.stepsInfo[step + 1], 'disabled', false);
+      if (stepIndex + 1 < vue.stepsInfo.length) {
+        this.$set(vue.stepsInfo[stepIndex + 1], 'disabled', false);
       } // execute the code after the collapse event has finished
       // add the listener only once using -> one()
 
 
       jilsahStep.one('hidden.bs.collapse', function () {
-        if (step + 1 < vue.stepsInfo.length) {
-          Vue.set(vue.stepsInfo[step + 1], 'state', 'primary');
-          $('#' + vue.stepsInfo[step + 1].id).collapse('show');
+        if (stepIndex + 1 < vue.stepsInfo.length && vue.stepsInfo[stepIndex + 1].state !== 'success') {
+          vue.$set(vue.stepsInfo[stepIndex + 1], 'state', 'primary');
+          $('#' + vue.stepsInfo[stepIndex + 1].id).collapse('show');
         }
       });
     },
@@ -3807,14 +3959,23 @@ __webpack_require__.r(__webpack_exports__);
     handleMainImageChanged: function handleMainImageChanged(file) {
       this.models.jilsah.mainImage = file;
     },
+    handleMainImageError: function handleMainImageError(message) {
+      this.modalContent = message;
+      this.showModal(true);
+    },
     handleAddNewJilsahImage: function handleAddNewJilsahImage(file) {
-      this.models.jilsahImages.push({
-        index: this.jilsahImagesCounter,
-        name: file.name,
-        src: file.src,
-        file: file.file
-      });
-      this.jilsahImagesCounter++;
+      if (this.models.jilsahImages.length < 20) {
+        this.models.jilsahImages.push({
+          index: this.jilsahImagesCounter,
+          name: file.name,
+          src: file.src,
+          file: file.file
+        });
+        this.jilsahImagesCounter++;
+      } else {
+        this.modalContent = 'الحد الاقصى لصور الجلسة هو 20 يمكنك ازالة بعض الصور اذا كنت تريد اضافة صور اخرى';
+        this.showModal(true);
+      }
     },
     handleRemoveJilsahImage: function handleRemoveJilsahImage(index) {
       this.models.jilsahImages = this.models.jilsahImages.filter(function (img) {
@@ -3839,9 +4000,33 @@ __webpack_require__.r(__webpack_exports__);
         return 'is-valid';
       }
     },
+    showModal: function showModal(dismissible) {
+      if (!dismissible) {
+        this.jQueryModal.modal({
+          backdrop: 'static',
+          keyboard: false
+        });
+      } else {
+        this.jQueryModal.modal({
+          backdrop: 'true',
+          keyboard: true
+        });
+      }
+
+      this.jQueryModal.modal('show');
+    },
+    hideModal: function hideModal() {
+      this.jQueryModal.modal('hide');
+    },
     createNewJilsah: function createNewJilsah() {
       var _this = this;
 
+      if (this.newJilsahState === 'success') {
+        return;
+      }
+
+      this.modalContent = 'يتم الان ارسال المعلومات الرجاء الانتظار...';
+      this.showModal(false);
       var formData = new FormData();
       /*Jilsah information*/
 
@@ -3903,13 +4088,19 @@ __webpack_require__.r(__webpack_exports__);
         }
       };
       axios.post('/jilsahs', formData, settings).then(function (res) {
+        _this.newJilsahState = 'success';
         console.log('SUCCESS', res);
       })["catch"](function (err) {
+        _this.newJilsahState = 'error';
+
+        _this.showModal(false);
+
         console.log('ERROR', err.response);
       });
     }
   },
   computed: {
+    /** GENERAL **/
     chosenTimeSchool: function chosenTimeSchool() {
       return this.chosenTimePeriods.school;
     },
@@ -4020,7 +4211,7 @@ __webpack_require__.r(__webpack_exports__);
 
     /****IMAGES STEP****/
     mainImageErr: function mainImageErr() {
-      if (this.models.jilsah.mainImage.org) {
+      if (!this.models.jilsah.mainImage.file) {
         return 'is-invalid';
       } else {
         return 'is-valid';
@@ -4149,7 +4340,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this2 = this;
 
     axios.post('/jilsahs/cities').then(function (res) {
@@ -4157,6 +4348,7 @@ __webpack_require__.r(__webpack_exports__);
     })["catch"](function (err) {
       console.log(err.response);
     });
+    this.jQueryModal = $('#modal');
   }
 });
 
@@ -40855,7 +41047,7 @@ var render = function() {
   return _c(
     "div",
     {
-      staticClass: "m-lg-6 m-xl-8 m-4 alert text-center shadow-sm",
+      staticClass: "m-lg-6 m-xl-8 m-4 alert shadow-sm",
       class: "alert-" + _vm.type,
       attrs: { role: "alert" }
     },
@@ -42254,6 +42446,88 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-modal.vue?vue&type=template&id=9f1cb796&":
+/*!****************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-modal.vue?vue&type=template&id=9f1cb796& ***!
+  \****************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    {
+      staticClass: "modal fade rtl",
+      attrs: {
+        "data-backdrop": _vm.notDismissible ? "static" : "true",
+        "data-keyboard": false,
+        id: _vm.id,
+        tabindex: "-1",
+        role: "dialog",
+        "aria-labelledby": _vm.id + "-title",
+        "aria-hidden": "true"
+      }
+    },
+    [
+      _c(
+        "div",
+        {
+          staticClass: "modal-dialog modal-dialog-centered",
+          attrs: { role: "document" }
+        },
+        [
+          _c("div", { staticClass: "modal-content" }, [
+            _c("div", { staticClass: "modal-header rtl" }, [
+              _c(
+                "h5",
+                {
+                  staticClass: "modal-title",
+                  attrs: { id: _vm.id + "-title" }
+                },
+                [_vm._v(_vm._s(_vm.title))]
+              ),
+              _vm._v(" "),
+              !_vm.notDismissible
+                ? _c(
+                    "button",
+                    {
+                      staticClass: "close",
+                      attrs: {
+                        type: "button",
+                        "data-dismiss": "modal",
+                        "aria-label": "Close"
+                      }
+                    },
+                    [
+                      _c("span", { attrs: { "aria-hidden": "true" } }, [
+                        _vm._v("×")
+                      ])
+                    ]
+                  )
+                : _vm._e()
+            ]),
+            _vm._v(" "),
+            _c("div", { staticClass: "modal-body" }, [_vm._t("default")], 2)
+          ])
+        ]
+      )
+    ]
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-nav.vue?vue&type=template&id=aec478aa&":
 /*!**************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-nav.vue?vue&type=template&id=aec478aa& ***!
@@ -43152,24 +43426,37 @@ var render = function() {
     ]),
     _vm._v(" "),
     _c("div", [
-      _c("div", { staticClass: "step-title" }, [
-        _c(
-          "a",
-          {
-            staticClass: "btn-link",
-            class: _vm.aTextClasses,
-            staticStyle: { "text-decoration": "none" },
-            attrs: {
-              "data-toggle": "collapse",
-              href: "#" + _vm.status.id,
-              role: "link",
-              "aria-expanded": "false",
-              "aria-controls": _vm.status.id
+      _c(
+        "div",
+        {
+          staticClass: "step-title",
+          on: {
+            click: function($event) {
+              return _vm.toggleCollapse()
             }
-          },
-          [_vm._v("\n                " + _vm._s(_vm.title) + "\n            ")]
-        )
-      ]),
+          }
+        },
+        [
+          _c(
+            "a",
+            {
+              staticClass: "btn-link",
+              class: _vm.aTextClasses,
+              staticStyle: { "text-decoration": "none", cursor: "pointer" },
+              attrs: {
+                role: "link",
+                "aria-expanded": "false",
+                "aria-controls": _vm.status.id
+              }
+            },
+            [
+              _vm._v(
+                "\n                " + _vm._s(_vm.title) + "\n            "
+              )
+            ]
+          )
+        ]
+      ),
       _vm._v(" "),
       _c("br"),
       _c("br"),
@@ -43209,6 +43496,79 @@ var render = function() {
     "div",
     [
       _c(
+        "jilsati-modal",
+        {
+          attrs: {
+            id: "modal",
+            title: "معلومة",
+            "not-dismissible": _vm.newJilsahState === "success"
+          }
+        },
+        [
+          _vm.newJilsahState === ""
+            ? _c(
+                "jilsati-alert",
+                { staticClass: "text-center", attrs: { type: "danger" } },
+                [
+                  _c(
+                    "p",
+                    { domProps: { innerHTML: _vm._s(_vm.modalContent) } },
+                    [_vm._v(_vm._s(_vm.modalContent))]
+                  )
+                ]
+              )
+            : _vm.newJilsahState === "success"
+            ? _c("div", { staticClass: "text-center" }, [
+                _c("p", { staticClass: "text-center text-success h1" }, [
+                  _vm._v("تم الحفظ بنجاح")
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "mt-4" }, [
+                  _c("div", [
+                    _c("a", { attrs: { href: "/jilsahs" } }, [
+                      _vm._v(
+                        "\n                        الانتقال الى جلساتي\n                    "
+                      )
+                    ])
+                  ]),
+                  _vm._v(" "),
+                  _c("div", [
+                    _c("a", { attrs: { href: "/jilsahs/create" } }, [
+                      _vm._v(
+                        "\n                        اضافة جلسة اخرى\n                    "
+                      )
+                    ])
+                  ])
+                ])
+              ])
+            : _c("div", { staticClass: "text-center" }, [
+                _c("p", { staticClass: "text-center" }, [
+                  _vm._v(
+                    "حصل خطأ اثناء ارسال المعلومات الرجاء المحاولة مرة اخرى"
+                  )
+                ]),
+                _vm._v(" "),
+                _c("div", { staticClass: "list-group mt-4" }, [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-info",
+                      attrs: { type: "button" },
+                      on: {
+                        click: function($event) {
+                          return _vm.hideModal()
+                        }
+                      }
+                    },
+                    [_vm._v("موافق")]
+                  )
+                ])
+              ])
+        ],
+        1
+      ),
+      _vm._v(" "),
+      _c(
         "jilsati-step",
         {
           attrs: {
@@ -43217,6 +43577,11 @@ var render = function() {
             rtl: "true",
             number: "1",
             status: _vm.stepsInfo[0]
+          },
+          on: {
+            "on-toggle-collapse": function($event) {
+              return _vm.handleToggleCollapse($event)
+            }
           }
         },
         [
@@ -43357,6 +43722,11 @@ var render = function() {
             rtl: "true",
             number: "2",
             status: _vm.stepsInfo[1]
+          },
+          on: {
+            "on-toggle-collapse": function($event) {
+              return _vm.handleToggleCollapse($event)
+            }
           }
         },
         [
@@ -43616,6 +43986,11 @@ var render = function() {
             rtl: "true",
             number: "3",
             status: _vm.stepsInfo[2]
+          },
+          on: {
+            "on-toggle-collapse": function($event) {
+              return _vm.handleToggleCollapse($event)
+            }
           }
         },
         [
@@ -43999,6 +44374,11 @@ var render = function() {
             rtl: "true",
             number: "4",
             status: _vm.stepsInfo[3]
+          },
+          on: {
+            "on-toggle-collapse": function($event) {
+              return _vm.handleToggleCollapse($event)
+            }
           }
         },
         [
@@ -44225,6 +44605,11 @@ var render = function() {
             rtl: "true",
             number: "5",
             status: _vm.stepsInfo[4]
+          },
+          on: {
+            "on-toggle-collapse": function($event) {
+              return _vm.handleToggleCollapse($event)
+            }
           }
         },
         [
@@ -44757,6 +45142,11 @@ var render = function() {
             rtl: "true",
             number: "6",
             status: _vm.stepsInfo[5]
+          },
+          on: {
+            "on-toggle-collapse": function($event) {
+              return _vm.handleToggleCollapse($event)
+            }
           }
         },
         [
@@ -44773,14 +45163,40 @@ var render = function() {
                       }
                     },
                     [
+                      !_vm.models.jilsah.mainImage.file
+                        ? _c(
+                            "jilsati-alert",
+                            {
+                              staticClass: "text-center",
+                              attrs: { type: "danger" }
+                            },
+                            [
+                              _vm._v(
+                                "\n                    يجب ارفاق صورة الجلسة بالضغط على الزر بالاسفل\n                "
+                              )
+                            ]
+                          )
+                        : _vm._e(),
+                      _vm._v(" "),
                       _c("jilsati-file-chooser", {
                         attrs: {
                           name: "jilsah-main-img",
                           browse: "صورة الجلسة",
-                          content: "ارفع الصورة"
+                          content: "ارفع الصورة",
+                          "max-size-in-mb": 1.5,
+                          "file-types": ["jpeg", "png", "jpg"]
                         },
-                        on: { "image-changed": _vm.handleMainImageChanged }
+                        on: {
+                          "image-changed": _vm.handleMainImageChanged,
+                          "image-error": _vm.handleMainImageError
+                        }
                       }),
+                      _vm._v(" "),
+                      _c("small", { staticClass: "text-muted" }, [
+                        _vm._v("الصيغ المسوحة هي jpeg,png,jpg "),
+                        _c("br"),
+                        _vm._v("الحد الاعلى لحجم الملف هو 1.5mb")
+                      ]),
                       _vm._v(" "),
                       _c(
                         "div",
@@ -44823,10 +45239,24 @@ var render = function() {
                         "div",
                         { staticClass: "mt-2" },
                         [
-                          _c("jilsati-alert", { attrs: { type: "info" } }, [
-                            _vm._v(
-                              "\n                        اضيف صور الجلسة الاخرى\n                    "
-                            )
+                          _c("jilsati-alert", { attrs: { type: "warning" } }, [
+                            _c("ul", [
+                              _c("li", [
+                                _vm._v(
+                                  "قم باضافة صور اخرى عن الجلسة لزيادة مصداقية المعلومات عن جلستك "
+                                )
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [_vm._v("يمكنك اضافة الى 20 صورة")]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _vm._v("يفضل ان تكون الصور بنفس الابعاد")
+                              ]),
+                              _vm._v(" "),
+                              _c("li", [
+                                _vm._v("سيتم تجاهل اي صورة غير مسموح بها")
+                              ])
+                            ])
                           ]),
                           _vm._v(" "),
                           _c("jilsati-file-chooser", {
@@ -44834,10 +45264,18 @@ var render = function() {
                               name: "jilsah-imgs",
                               browse: "صور الجلسة",
                               content: "ارفع الصور",
+                              "max-size-in-mb": 1.5,
+                              "file-types": ["jpeg", "png", "jpg"],
                               multiple: ""
                             },
                             on: { "image-changed": _vm.handleAddNewJilsahImage }
-                          })
+                          }),
+                          _vm._v(" "),
+                          _c("small", { staticClass: "text-muted" }, [
+                            _vm._v("الصيغ المسوحة هي jpeg,png,jpg "),
+                            _c("br"),
+                            _vm._v("الحد الاعلى لحجم الملف هو 1.5mb")
+                          ])
                         ],
                         1
                       ),
@@ -44949,6 +45387,11 @@ var render = function() {
             rtl: "true",
             number: "7",
             status: _vm.stepsInfo[6]
+          },
+          on: {
+            "on-toggle-collapse": function($event) {
+              return _vm.handleToggleCollapse($event)
+            }
           }
         },
         [
@@ -58228,6 +58671,7 @@ Vue.component('JilsatiPropertiesPanel', __webpack_require__(/*! ./components/jil
 Vue.component('JilsatiCurrentPricePanel', __webpack_require__(/*! ./components/jilsati-current-price-panel */ "./resources/js/components/jilsati-current-price-panel.vue")["default"]);
 Vue.component('JilsatiCurrentTimePanel', __webpack_require__(/*! ./components/jilsati-current-time-panel */ "./resources/js/components/jilsati-current-time-panel.vue")["default"]);
 Vue.component('JilsatiJilsahDetailsTabs', __webpack_require__(/*! ./components/jilsati-jilsah-details-tabs */ "./resources/js/components/jilsati-jilsah-details-tabs.vue")["default"]);
+Vue.component('JilsatiModal', __webpack_require__(/*! ./components/jilsati-modal */ "./resources/js/components/jilsati-modal.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -59328,6 +59772,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_main_panel_vue_vue_type_template_id_0fb27fd0___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_main_panel_vue_vue_type_template_id_0fb27fd0___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-modal.vue":
+/*!***************************************************!*\
+  !*** ./resources/js/components/jilsati-modal.vue ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_modal_vue_vue_type_template_id_9f1cb796___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-modal.vue?vue&type=template&id=9f1cb796& */ "./resources/js/components/jilsati-modal.vue?vue&type=template&id=9f1cb796&");
+/* harmony import */ var _jilsati_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-modal.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-modal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_modal_vue_vue_type_template_id_9f1cb796___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_modal_vue_vue_type_template_id_9f1cb796___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-modal.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-modal.vue?vue&type=script&lang=js&":
+/*!****************************************************************************!*\
+  !*** ./resources/js/components/jilsati-modal.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-modal.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-modal.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_modal_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-modal.vue?vue&type=template&id=9f1cb796&":
+/*!**********************************************************************************!*\
+  !*** ./resources/js/components/jilsati-modal.vue?vue&type=template&id=9f1cb796& ***!
+  \**********************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_modal_vue_vue_type_template_id_9f1cb796___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-modal.vue?vue&type=template&id=9f1cb796& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-modal.vue?vue&type=template&id=9f1cb796&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_modal_vue_vue_type_template_id_9f1cb796___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_modal_vue_vue_type_template_id_9f1cb796___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

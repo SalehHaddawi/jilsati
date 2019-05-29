@@ -17,7 +17,7 @@ class CreateJilsahsPricesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('jilsah_id');
             $table->boolean('price_per_jilsah')->nullable();
-            $table->unsignedDecimal('school_week')->nullable();
+            $table->unsignedDecimal('school_week',5,2)->nullable();
             $table->unsignedDecimal('school_weekend')->nullable();
             $table->unsignedDecimal('vacation_week')->nullable();
             $table->unsignedDecimal('vacation_weekend')->nullable();
