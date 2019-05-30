@@ -8,20 +8,20 @@
 
 @section('body')
 <div class="container">
-    <div dir="rtl" class="mb-5 jumbotron justify-content-center rounded-0 shadow-sm bg-light row">
+    <div dir="rtl" class="mb-5 justify-content-center rounded-0 bg-light row">
 
         <!---------- RIGHT SIDE ----------->
-        <div class="col-8">
+        <div class="col-lg-8 col-12">
             <jilsati-main-panel
                     name="{{$jilsah_show->name}}"
                     city="{{$jilsah_show->location->city->name}}"
                     address="{{$jilsah_show->location->address}}"
                     address-details="{{$jilsah_show->location->address_details}}"
-                    :images="{{$all_images}}"
-                    description="{{$jilsah_show->description}}">
+                    :images="{{$all_images}}">
             </jilsati-main-panel>
 
             <jilsati-jilsah-details-tabs
+                    description="{{$jilsah_show->description}}"
                     :client-types="{{$jilsah_show->clientTypes->map->name}}"
                     :jilsah-types="{{$jilsah_show->jilsahTypes->map->name}}"
                     :options="{{$jilsah_show->options->map->name}}"
@@ -29,45 +29,10 @@
                     :times="{{$jilsah_show->times}}"
                     :location="{{$jilsah_show->location}}">
             </jilsati-jilsah-details-tabs>
-
-{{--            <div class="card shadow-sm mb-3 rounded-0">--}}
-{{--                <div class="card-body">--}}
-{{--                    <ul class="nav nav-tabs" id="myTab" role="tablist" style="padding-inline-start:0;">--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link bg-white shadow-sm active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">المميزات</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link bg-white shadow-sm" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">الاسعار</a>--}}
-{{--                        </li>--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link bg-white shadow-sm" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">الدوام</a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
-{{--                    <div class="tab-content" id="myTabContent">--}}
-{{--                        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">--}}
-{{--                            <jilsati-properties-panel--}}
-{{--                                    :client-types="{{$jilsah_show->clientTypes->map->name}}"--}}
-{{--                                    :jilsah-types="{{$jilsah_show->jilsahTypes->map->name}}"--}}
-{{--                                    :options="{{$jilsah_show->options->map->name}}">--}}
-{{--                            </jilsati-properties-panel>--}}
-{{--                        </div>--}}
-{{--                        <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">--}}
-{{--                            <jilsati-prices-panel--}}
-{{--                                    :prices="{{json_encode($jilsah_show->prices)}}">--}}
-{{--                            </jilsati-prices-panel>--}}
-{{--                        </div>--}}
-{{--                        <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">--}}
-{{--                            <jilsati-times-panel--}}
-{{--                                    :times="{{$jilsah_show->times}}">--}}
-{{--                            </jilsati-times-panel>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-{{--            </div>--}}
         </div>
 
         <!---------- LEFT SIDE ----------->
-        <div class="col-lg-4">
+        <div class="col-lg-4 col-12">
             <jilsati-connections-panel
                     phone="{{$jilsah_show->socials->phone}}"
                     instagram="{{$jilsah_show->socials->instagram}}"
@@ -77,12 +42,18 @@
             </jilsati-connections-panel>
 
             <jilsati-current-price-panel
-                    :prices="{{json_encode($jilsah_show->prices)}}">
+                    :prices="{{json_encode($jilsah_show->prices)}}"
+                    time="{{$time}}">
             </jilsati-current-price-panel>
 
             <jilsati-current-time-panel
-                    :times="{{$jilsah_show->times}}">
+                    :times="{{$jilsah_show->times}}"
+                    time="{{$time}}">
             </jilsati-current-time-panel>
+
+            <jilsati-action-panel>
+
+            </jilsati-action-panel>
 
         </div>
     </div>

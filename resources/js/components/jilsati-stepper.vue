@@ -11,7 +11,7 @@
                 <p class="text-center text-success h1">تم الحفظ بنجاح</p>
                 <div class="mt-4">
                     <div>
-                        <a href="/jilsahs">
+                        <a href="/jilsahs" :disabled="jilsahShifts">
                             الانتقال الى جلساتي
                         </a>
                     </div>

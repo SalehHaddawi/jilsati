@@ -1754,6 +1754,61 @@ module.exports = {
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-action-panel.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-action-panel.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      isFavorite: false,
+      reportColor: 'gray'
+    };
+  },
+  methods: {
+    onClick: function onClick() {
+      this.isFavorite = !this.isFavorite;
+    },
+    onMouseEnter: function onMouseEnter() {
+      this.reportColor = 'red';
+    },
+    onMouseLeave: function onMouseLeave() {
+      this.reportColor = 'gray';
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-add-jilsah-collapse.vue?vue&type=script&lang=js&":
 /*!**************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-add-jilsah-collapse.vue?vue&type=script&lang=js& ***!
@@ -2186,6 +2241,9 @@ __webpack_require__.r(__webpack_exports__);
     prices: {
       type: Object,
       required: true
+    },
+    time: {
+      required: true
     }
   },
   data: function data() {
@@ -2231,15 +2289,14 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     moment.locale('ar-SA');
-    var m = moment();
+    var m = moment(this.time, 'MM-DD-YYYY');
     m.format('iYYYY/iM/iDهـ الموافق YYYY/M/Dم');
     var hijriMonth = m.iMonth() + 1; // month start from 0
 
     var weekDay = m.format('idddd'); // day name
 
     var day = m.iDate(); // day number in month start from 1
-
-    console.log(hijriMonth, weekDay, day); // school
+    // school
 
     if (hijriMonth >= 0 && hijriMonth <= 8) {
       this.timePeriodText = 'فترة الدراسة'; // schoolWeekend
@@ -2319,6 +2376,9 @@ __webpack_require__.r(__webpack_exports__);
   props: {
     times: {
       type: Object,
+      required: true
+    },
+    time: {
       required: true
     }
   },
@@ -2649,6 +2709,43 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    description: '',
+    clientTypes: '',
+    jilsahTypes: '',
+    options: '',
+    prices: '',
+    times: '',
+    location: ''
+  }
+});
+
+/***/ }),
+
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-location-Panel.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-location-Panel.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -2657,12 +2754,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    clientTypes: '',
-    jilsahTypes: '',
-    options: '',
-    prices: '',
-    times: '',
-    location: ''
+    location: {
+      required: true,
+      type: Object
+    }
   }
 });
 
@@ -2677,7 +2772,6 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-//
 //
 //
 //
@@ -40962,6 +41056,64 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-action-panel.vue?vue&type=template&id=39669c55&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-action-panel.vue?vue&type=template&id=39669c55& ***!
+  \***********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", { staticClass: "card shadow-sm mb-3 rounded-0" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("p", { staticClass: "card-title mb-5 text-success h2" }, [
+        _vm._v("خيارات")
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "text-center" }, [
+        _c("p", { staticClass: " mb-2 text-info mb-4 h3" }, [
+          _vm._v("اضافة للمفضلة")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: " mb-2 text-muted w-100 h1" }, [
+          _c("i", {
+            staticClass: "fas fa-heart",
+            staticStyle: { cursor: "pointer" },
+            style: { color: _vm.isFavorite ? "red" : "gray" },
+            on: { click: _vm.onClick }
+          })
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: " mb-2 text-info mb-4 h3" }, [
+          _vm._v("الابلاغ عن الجلسة")
+        ]),
+        _vm._v(" "),
+        _c("p", { staticClass: " mb-2 text-muted w-100 h1" }, [
+          _c("i", {
+            staticClass: "far fa-flag",
+            staticStyle: { cursor: "pointer" },
+            style: { color: _vm.reportColor },
+            on: { mouseenter: _vm.onMouseEnter, mouseleave: _vm.onMouseLeave }
+          })
+        ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-add-jilsah-collapse.vue?vue&type=template&id=1bc71bae&":
 /*!******************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-add-jilsah-collapse.vue?vue&type=template&id=1bc71bae& ***!
@@ -42174,7 +42326,29 @@ var render = function(_h, _vm) {
         _c(
           "div",
           {
-            staticClass: "tab-pane fade show active",
+            staticClass:
+              "tab-pane fade show active text-justify text-muted card",
+            attrs: {
+              id: "description",
+              role: "tabpanel",
+              "aria-labelledby": "description-tap"
+            }
+          },
+          [
+            _c("div", { staticClass: "card-body shadow-sm" }, [
+              _vm._v(
+                "\n                   " +
+                  _vm._s(_vm.props.description) +
+                  "\n               "
+              )
+            ])
+          ]
+        ),
+        _vm._v(" "),
+        _c(
+          "div",
+          {
+            staticClass: "tab-pane fade",
             attrs: {
               id: "properties",
               role: "tabpanel",
@@ -42228,64 +42402,15 @@ var render = function(_h, _vm) {
             attrs: {
               id: "location",
               role: "tabpanel",
-              "aria-labelledby": "times-tab"
+              "aria-labelledby": "location-tab"
             }
           },
           [
-            _c("div", { staticClass: "card shadow-sm mb-3 rounded-0" }, [
-              _c("div", { staticClass: "card-body" }, [
-                _c("p", { staticClass: "card-subtitle mb-3 text-info h3" }, [
-                  _vm._v(_vm._s(_vm.props.location.city.name))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-subtitle mb-3 text-muted h5" }, [
-                  _vm._v(_vm._s(_vm.props.location.address))
-                ]),
-                _vm._v(" "),
-                _c("p", { staticClass: "card-subtitle mb-3 text-muted h6" }, [
-                  _vm._v(_vm._s(_vm.props.location.address_details))
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "h1 text-center mt-5" }, [
-                  _vm.props.location.google_map_url
-                    ? _c("div", [
-                        _c(
-                          "p",
-                          {
-                            staticClass: "card-subtitle mb-3 text-info mb-5 h6"
-                          },
-                          [
-                            _vm._v(
-                              "اضغط علة الايقونة للانتقال الى موقع الجلسة في قوقل ماب"
-                            )
-                          ]
-                        ),
-                        _vm._v(" "),
-                        _c(
-                          "a",
-                          {
-                            attrs: { href: _vm.props.location.google_map_url }
-                          },
-                          [
-                            _c("i", {
-                              staticClass: "fas fa-map-marked-alt mb-4",
-                              staticStyle: {
-                                color: "mediumseagreen",
-                                transform: "scale(2)"
-                              }
-                            })
-                          ]
-                        )
-                      ])
-                    : _c(
-                        "p",
-                        { staticClass: "card-subtitle mb-3 text-info mb-5 h6" },
-                        [_vm._v("لم يتم ارفاق رابط الجلسة في قوقل ماب")]
-                      )
-                ])
-              ])
-            ])
-          ]
+            _c("jilsati-location-panel", {
+              attrs: { location: _vm.props.location }
+            })
+          ],
+          1
         )
       ])
     ])
@@ -42308,12 +42433,30 @@ var staticRenderFns = [
             {
               staticClass: "nav-link bg-white shadow-sm active",
               attrs: {
+                id: "description-tap",
+                "data-toggle": "tab",
+                href: "#description",
+                role: "tab",
+                "aria-controls": "description-tap",
+                "aria-selected": "true"
+              }
+            },
+            [_vm._v("الوصف")]
+          )
+        ]),
+        _vm._v(" "),
+        _c("li", { staticClass: "nav-item" }, [
+          _c(
+            "a",
+            {
+              staticClass: "nav-link bg-white shadow-sm",
+              attrs: {
                 id: "properties-tap",
                 "data-toggle": "tab",
                 href: "#properties",
                 role: "tab",
                 "aria-controls": "properties-tap",
-                "aria-selected": "true"
+                "aria-selected": "false"
               }
             },
             [_vm._v("المميزات")]
@@ -42383,6 +42526,73 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-location-Panel.vue?vue&type=template&id=b3a13218&functional=true&":
+/*!*****************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-location-Panel.vue?vue&type=template&id=b3a13218&functional=true& ***!
+  \*****************************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function(_h, _vm) {
+  var _c = _vm._c
+  return _c("div", { staticClass: "card shadow-sm mb-3 rounded-0" }, [
+    _c("div", { staticClass: "card-body" }, [
+      _c("p", { staticClass: "card-subtitle mb-3 text-info h3" }, [
+        _vm._v(_vm._s(_vm.props.location.city.name))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-subtitle mb-3 text-muted h5" }, [
+        _vm._v(_vm._s(_vm.props.location.address))
+      ]),
+      _vm._v(" "),
+      _c("p", { staticClass: "card-subtitle mb-3 text-muted h6" }, [
+        _vm._v(_vm._s(_vm.props.location.address_details))
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "h1 text-center mt-5" }, [
+        _vm.props.location.google_map_url
+          ? _c("div", [
+              _c("p", { staticClass: "card-subtitle mb-3 text-info mb-5 h6" }, [
+                _vm._v("اضغط علة الايقونة للانتقال الى موقع الجلسة في قوقل ماب")
+              ]),
+              _vm._v(" "),
+              _c(
+                "a",
+                {
+                  attrs: {
+                    href: _vm.props.location.google_map_url,
+                    target: "_blank"
+                  }
+                },
+                [
+                  _c("i", {
+                    staticClass: "fas fa-map-marked-alt mb-4",
+                    staticStyle: {
+                      color: "mediumseagreen",
+                      transform: "scale(2)"
+                    }
+                  })
+                ]
+              )
+            ])
+          : _c("p", { staticClass: "card-subtitle mb-3 text-info mb-5 h6" }, [
+              _vm._v("لم يتم ارفاق رابط الجلسة في قوقل ماب")
+            ])
+      ])
+    ])
+  ])
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-main-panel.vue?vue&type=template&id=0fb27fd0&":
 /*!*********************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-main-panel.vue?vue&type=template&id=0fb27fd0& ***!
@@ -42423,18 +42633,7 @@ var render = function() {
         attrs: { name: "images-carousel", images: _vm.images }
       }),
       _vm._v(" "),
-      _c("div", { staticClass: "card-body text-right" }, [
-        _c("h5", { staticClass: "card-title" }, [_vm._v("الوصف")]),
-        _vm._v(" "),
-        _c(
-          "p",
-          {
-            staticClass: "card-text text-justify text-muted mt-4",
-            staticStyle: { direction: "rtl" }
-          },
-          [_vm._v(_vm._s(_vm.description))]
-        )
-      ])
+      _c("div", { staticClass: "card-body text-right" })
     ],
     1
   )
@@ -43525,11 +43724,17 @@ var render = function() {
                 _vm._v(" "),
                 _c("div", { staticClass: "mt-4" }, [
                   _c("div", [
-                    _c("a", { attrs: { href: "/jilsahs" } }, [
-                      _vm._v(
-                        "\n                        الانتقال الى جلساتي\n                    "
-                      )
-                    ])
+                    _c(
+                      "a",
+                      {
+                        attrs: { href: "/jilsahs", disabled: _vm.jilsahShifts }
+                      },
+                      [
+                        _vm._v(
+                          "\n                        الانتقال الى جلساتي\n                    "
+                        )
+                      ]
+                    )
                   ]),
                   _vm._v(" "),
                   _c("div", [
@@ -58667,6 +58872,8 @@ Vue.component('JilsatiMainPanel', __webpack_require__(/*! ./components/jilsati-m
 Vue.component('JilsatiConnectionsPanel', __webpack_require__(/*! ./components/jilsati-connections-Panel */ "./resources/js/components/jilsati-connections-Panel.vue")["default"]);
 Vue.component('JilsatiPricesPanel', __webpack_require__(/*! ./components/jilsati-prices-Panel */ "./resources/js/components/jilsati-prices-Panel.vue")["default"]);
 Vue.component('JilsatiTimesPanel', __webpack_require__(/*! ./components/jilsati-times-Panel */ "./resources/js/components/jilsati-times-Panel.vue")["default"]);
+Vue.component('JilsatiActionPanel', __webpack_require__(/*! ./components/jilsati-action-panel */ "./resources/js/components/jilsati-action-panel.vue")["default"]);
+Vue.component('JilsatiLocationPanel', __webpack_require__(/*! ./components/jilsati-location-Panel */ "./resources/js/components/jilsati-location-Panel.vue")["default"]);
 Vue.component('JilsatiPropertiesPanel', __webpack_require__(/*! ./components/jilsati-properties-panel */ "./resources/js/components/jilsati-properties-panel.vue")["default"]);
 Vue.component('JilsatiCurrentPricePanel', __webpack_require__(/*! ./components/jilsati-current-price-panel */ "./resources/js/components/jilsati-current-price-panel.vue")["default"]);
 Vue.component('JilsatiCurrentTimePanel', __webpack_require__(/*! ./components/jilsati-current-time-panel */ "./resources/js/components/jilsati-current-time-panel.vue")["default"]);
@@ -58739,6 +58946,76 @@ if (token) {
 //     cluster: process.env.MIX_PUSHER_APP_CLUSTER,
 //     encrypted: true
 // });
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-action-panel.vue":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/jilsati-action-panel.vue ***!
+  \**********************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_action_panel_vue_vue_type_template_id_39669c55___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-action-panel.vue?vue&type=template&id=39669c55& */ "./resources/js/components/jilsati-action-panel.vue?vue&type=template&id=39669c55&");
+/* harmony import */ var _jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-action-panel.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-action-panel.vue?vue&type=script&lang=js&");
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_action_panel_vue_vue_type_template_id_39669c55___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_action_panel_vue_vue_type_template_id_39669c55___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-action-panel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-action-panel.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************!*\
+  !*** ./resources/js/components/jilsati-action-panel.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************/
+/*! no static exports found */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-action-panel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-action-panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-action-panel.vue?vue&type=template&id=39669c55&":
+/*!*****************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-action-panel.vue?vue&type=template&id=39669c55& ***!
+  \*****************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_action_panel_vue_vue_type_template_id_39669c55___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-action-panel.vue?vue&type=template&id=39669c55& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-action-panel.vue?vue&type=template&id=39669c55&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_action_panel_vue_vue_type_template_id_39669c55___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_action_panel_vue_vue_type_template_id_39669c55___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
 
 /***/ }),
 
@@ -59703,6 +59980,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_jilsah_details_tabs_vue_vue_type_template_id_69a98fd1_functional_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_jilsah_details_tabs_vue_vue_type_template_id_69a98fd1_functional_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-location-Panel.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/jilsati-location-Panel.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_location_Panel_vue_vue_type_template_id_b3a13218_functional_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-location-Panel.vue?vue&type=template&id=b3a13218&functional=true& */ "./resources/js/components/jilsati-location-Panel.vue?vue&type=template&id=b3a13218&functional=true&");
+/* harmony import */ var _jilsati_location_Panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-location-Panel.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-location-Panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_location_Panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_location_Panel_vue_vue_type_template_id_b3a13218_functional_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_location_Panel_vue_vue_type_template_id_b3a13218_functional_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  true,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-location-Panel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-location-Panel.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-location-Panel.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_location_Panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-location-Panel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-location-Panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_location_Panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-location-Panel.vue?vue&type=template&id=b3a13218&functional=true&":
+/*!***********************************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-location-Panel.vue?vue&type=template&id=b3a13218&functional=true& ***!
+  \***********************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_location_Panel_vue_vue_type_template_id_b3a13218_functional_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-location-Panel.vue?vue&type=template&id=b3a13218&functional=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-location-Panel.vue?vue&type=template&id=b3a13218&functional=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_location_Panel_vue_vue_type_template_id_b3a13218_functional_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_location_Panel_vue_vue_type_template_id_b3a13218_functional_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

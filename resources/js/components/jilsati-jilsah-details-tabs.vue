@@ -4,7 +4,10 @@
             <p class="card-title mb-5 text-success h2">عن الجلسة</p>
             <ul class="nav nav-tabs" role="tablist" style="padding-inline-start:0;">
                 <li class="nav-item">
-                    <a class="nav-link bg-white shadow-sm active" id="properties-tap" data-toggle="tab" href="#properties" role="tab" aria-controls="properties-tap" aria-selected="true">المميزات</a>
+                    <a class="nav-link bg-white shadow-sm active" id="description-tap" data-toggle="tab" href="#description" role="tab" aria-controls="description-tap" aria-selected="true">الوصف</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link bg-white shadow-sm" id="properties-tap" data-toggle="tab" href="#properties" role="tab" aria-controls="properties-tap" aria-selected="false">المميزات</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link bg-white shadow-sm" id="prices-tap" data-toggle="tab" href="#prices" role="tab" aria-controls="prices-tap" aria-selected="false">الاسعار</a>
@@ -17,7 +20,12 @@
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="properties" role="tabpanel" aria-labelledby="properties-tap">
+                <div class="tab-pane fade show active text-justify text-muted card" id="description" role="tabpanel" aria-labelledby="description-tap">
+                   <div class="card-body shadow-sm">
+                       {{props.description}}
+                   </div>
+                </div>
+                <div class="tab-pane fade" id="properties" role="tabpanel" aria-labelledby="properties-tap">
                     <jilsati-properties-panel
                             :client-types="props.clientTypes"
                             :jilsah-types="props.jilsahTypes"
@@ -34,24 +42,10 @@
                             :times="props.times">
                     </jilsati-times-panel>
                 </div>
-                <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="times-tab">
-                    <div class="card shadow-sm mb-3 rounded-0">
-                        <div class="card-body">
-                            <p class="card-subtitle mb-3 text-info h3">{{props.location.city.name}}</p>
-                            <p class="card-subtitle mb-3 text-muted h5">{{props.location.address}}</p>
-                            <p class="card-subtitle mb-3 text-muted h6">{{props.location.address_details}}</p>
-                            <div class="h1 text-center mt-5">
-                                <div v-if="props.location.google_map_url">
-                                    <p class="card-subtitle mb-3 text-info mb-5 h6">اضغط علة الايقونة للانتقال الى موقع الجلسة في قوقل ماب</p>
-                                    <a :href="props.location.google_map_url">
-                                        <i class="fas fa-map-marked-alt mb-4" style="color: mediumseagreen;transform: scale(2);"></i>
-                                    </a>
-                                </div>
-
-                                <p v-else class="card-subtitle mb-3 text-info mb-5 h6">لم يتم ارفاق رابط الجلسة في قوقل ماب</p>
-                            </div>
-                        </div>
-                    </div>
+                <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
+                    <jilsati-location-panel
+                            :location="props.location">
+                    </jilsati-location-panel>
                 </div>
             </div>
         </div>
@@ -61,6 +55,8 @@
 <script>
     export default {
         props : {
+            description : '',
+
             clientTypes : '',
 
             jilsahTypes : '',

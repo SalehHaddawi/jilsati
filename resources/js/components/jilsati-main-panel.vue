@@ -7,12 +7,11 @@
                 <small class="text-muted">{{addressDetails}}</small>
             </p>
         </div>
-        <jilsati-carousel class="card-img-top" name="images-carousel" :images="images">
-
+        <jilsati-carousel class="card-img-top"
+                          name="images-carousel"
+                          :images="images">
         </jilsati-carousel>
         <div class="card-body text-right">
-            <h5 class="card-title">الوصف</h5>
-            <p style="direction: rtl;" class="card-text text-justify text-muted mt-4">{{description}}</p>
         </div>
     </div>
 </template>

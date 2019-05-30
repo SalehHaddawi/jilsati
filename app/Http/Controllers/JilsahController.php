@@ -172,7 +172,9 @@ class JilsahController extends Controller
 
         $all_images->prepend($jilsah_show->main_image);
 
-        return view('jilsah.show',compact('jilsah_show','all_images'));
+        $time = date("m-d-Y");
+
+        return view('jilsah.show',compact('jilsah_show','all_images','time'));
     }
 
     /**

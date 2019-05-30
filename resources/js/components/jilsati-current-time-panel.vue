@@ -26,6 +26,10 @@
             times : {
                 type : Object,
                 required : true
+            },
+
+            time : {
+                required: true
             }
         },
 

@@ -17,6 +17,10 @@
             prices : {
                 type : Object,
                 required : true
+            },
+
+            time : {
+                required: true
             }
         },
 
@@ -71,15 +75,14 @@
 
         created() {
             moment.locale('ar-SA');
-            let m = moment();
+
+            let m = moment(this.time,'MM-DD-YYYY');
 
             m.format('iYYYY/iM/iDهـ الموافق YYYY/M/Dم');
 
             let hijriMonth = m.iMonth() + 1; // month start from 0
             let weekDay = m.format('idddd'); // day name
             let day = m.iDate(); // day number in month start from 1
-
-            console.log(hijriMonth,weekDay,day);
 
             // school
             if(hijriMonth >= 0 && hijriMonth <= 8){
