@@ -2161,6 +2161,189 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-comments-panel.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-comments-panel.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    jilsahId: {
+      required: true,
+      type: Number
+    },
+    user: {
+      required: true,
+      type: Object
+    },
+    ratings: {
+      type: Array,
+      required: true
+    }
+  },
+  data: function data() {
+    return {
+      resultMessage: '',
+      modal: undefined,
+      rating: 0,
+      comment: '',
+      ratingsArray: [],
+      userRating: undefined
+    };
+  },
+  computed: {
+    ratingError: function ratingError() {
+      return this.rating === 0;
+    },
+    ratingButtonText: function ratingButtonText() {
+      return this.userRating ? 'تعديل التقييم' : 'اضف تقييمك';
+    },
+    modalTitle: function modalTitle() {
+      return this.userRating ? 'تعديل التقييم' : 'اضف تقييمك';
+    }
+  },
+  methods: {
+    onAddComment: function onAddComment() {
+      this.modal.modal('show');
+    },
+    submitRating: function submitRating() {
+      var _this = this;
+
+      if (!this.ratingError) {
+        var formData = new FormData();
+        formData.append('jilsah_id', this.jilsahId);
+        formData.append('rating', this.rating);
+        formData.append('comment', this.comment);
+
+        if (this.userRating) {
+          formData.append('rating_id', this.userRating.id);
+        }
+
+        axios.post('/jilsahs/comment', formData).then(function (res) {
+          if (_this.userRating) {
+            _this.userRating.rating = _this.rating;
+            _this.userRating.comment = _this.comment;
+          } else {
+            _this.userRating = {
+              id: res.data.id,
+              user: {
+                user_id: _this.user.id,
+                name: _this.user.id
+              },
+              rating: _this.rating,
+              comment: _this.comment
+            };
+
+            _this.ratingsArray.push(_this.userRating);
+          }
+
+          _this.resultMessage = 'تم الحفظ بنجاح';
+          console.log(res);
+        })["catch"](function (err) {
+          console.log(err.response);
+          _this.resultMessage = 'حصل خطأ الرجاء المحاولة لاحقا';
+        });
+      }
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.modal = $('#comments-modal');
+    var vue = this;
+    this.modal.on('hidden.bs.modal', function () {
+      //vue.rating = 0;
+      vue.resultMessage = '';
+    });
+    this.ratingsArray = this.ratings;
+    this.userRating = this.ratingsArray.find(function (rating) {
+      return rating.user_id === _this2.user.id;
+    });
+
+    if (this.userRating) {
+      this.rating = this.userRating.rating;
+      this.comment = this.userRating.comment;
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-connections-Panel.vue?vue&type=script&lang=js&":
 /*!************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-connections-Panel.vue?vue&type=script&lang=js& ***!
@@ -2837,9 +3020,7 @@ __webpack_require__.r(__webpack_exports__);
     id: {
       required: true
     },
-    title: {
-      required: true
-    },
+    title: '',
     notDismissible: {
       type: Boolean
     }
@@ -4879,7 +5060,26 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     formattedRating: function formattedRating() {
-      return this.fixedPoints === null ? this.currentRating : this.currentRating.toFixed(this.fixedPoints);
+      switch (parseInt(this.currentRating)) {
+        case 1:
+          return 'سيئة';
+
+        case 2:
+          return 'مقبولة';
+
+        case 3:
+          return 'جيدة';
+
+        case 4:
+          return 'ممتازة';
+
+        case 5:
+          return 'جدا ممتازة';
+
+        default:
+          return 'سيئة';
+      } // return (this.fixedPoints === null) ? this.currentRating : this.currentRating.toFixed(this.fixedPoints)
+
     },
     shouldRound: function shouldRound() {
       return this.ratingSelected || this.roundStartRating;
@@ -41769,6 +41969,254 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-comments-panel.vue?vue&type=template&id=71cffada&":
+/*!*************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-comments-panel.vue?vue&type=template&id=71cffada& ***!
+  \*************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c(
+    "div",
+    { staticClass: "card shadow-sm mb-3 rounded-0" },
+    [
+      _c(
+        "jilsati-modal",
+        { attrs: { id: "comments-modal", title: _vm.modalTitle } },
+        [
+          _vm.resultMessage === ""
+            ? _c("div", [
+                _c(
+                  "div",
+                  { staticClass: "w-100 text-center mb-4" },
+                  [
+                    _c("star-rating", {
+                      attrs: { rating: 5, "star-size": 20 },
+                      model: {
+                        value: _vm.rating,
+                        callback: function($$v) {
+                          _vm.rating = $$v
+                        },
+                        expression: "rating"
+                      }
+                    })
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "mb-3" }, [
+                  _c(
+                    "label",
+                    { staticClass: "mb-2", attrs: { for: "comment-textarea" } },
+                    [_vm._v("تعليق (اختياري)")]
+                  ),
+                  _vm._v(" "),
+                  _c("textarea", {
+                    directives: [
+                      {
+                        name: "model",
+                        rawName: "v-model",
+                        value: _vm.comment,
+                        expression: "comment"
+                      }
+                    ],
+                    staticClass: "form-control d-block",
+                    attrs: {
+                      rows: "5",
+                      id: "comment-textarea",
+                      placeholder: "التعليق"
+                    },
+                    domProps: { value: _vm.comment },
+                    on: {
+                      input: function($event) {
+                        if ($event.target.composing) {
+                          return
+                        }
+                        _vm.comment = $event.target.value
+                      }
+                    }
+                  })
+                ]),
+                _vm._v(" "),
+                _c("div", [
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-success",
+                      attrs: { disabled: _vm.ratingError, type: "button" },
+                      on: { click: _vm.submitRating }
+                    },
+                    [
+                      _vm._v(
+                        "\n                    " +
+                          _vm._s(_vm.ratingButtonText) +
+                          "\n                "
+                      )
+                    ]
+                  )
+                ])
+              ])
+            : _c("div", [
+                _c("p", { staticClass: "w-100 h-100 h2" }, [
+                  _vm._v(_vm._s(_vm.resultMessage))
+                ])
+              ])
+        ]
+      ),
+      _vm._v(" "),
+      _c(
+        "div",
+        { staticClass: "card-body" },
+        [
+          _c("div", [
+            _c(
+              "p",
+              { staticClass: "card-title mb-5 text-success h2 float-right" },
+              [_vm._v("التقييمات")]
+            ),
+            _vm._v(" "),
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-success float-left",
+                attrs: { type: "button" },
+                on: { click: _vm.onAddComment }
+              },
+              [
+                _vm._v(
+                  "\n                " +
+                    _vm._s(_vm.ratingButtonText) +
+                    "\n            "
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "clearfix" }),
+          _vm._v(" "),
+          _vm.userRating
+            ? _c(
+                "jilsati-fieldset",
+                {
+                  staticClass: "mb-4",
+                  attrs: { legend: "تقييمك", "font-size": "1.1rem" }
+                },
+                [
+                  _c(
+                    "div",
+                    { staticClass: "accordion" },
+                    [
+                      _c(
+                        "div",
+                        [
+                          _c("star-rating", {
+                            attrs: {
+                              rating: _vm.userRating.rating,
+                              "star-size": 20,
+                              "read-only": ""
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "clearfix" }),
+                      _vm._v(" "),
+                      _c("jilsati-alert", { attrs: { type: "secondary" } }, [
+                        _vm._v(
+                          "\n                    " +
+                            _vm._s(_vm.userRating.comment) +
+                            "\n                "
+                        )
+                      ])
+                    ],
+                    1
+                  )
+                ]
+              )
+            : _vm._e(),
+          _vm._v(" "),
+          _vm.ratingsArray.length
+            ? _c(
+                "ul",
+                { staticClass: "list-unstyled" },
+                _vm._l(_vm.ratingsArray, function(rating) {
+                  return _c("li", { staticClass: "media mb-4" }, [
+                    _c("img", {
+                      staticClass: "ml-3",
+                      attrs: {
+                        src: "/images/avatar.ico",
+                        width: "32",
+                        height: "32",
+                        alt: "..."
+                      }
+                    }),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "media-body" }, [
+                      _c(
+                        "div",
+                        [
+                          _c("h5", { staticClass: "mt-0 mb-1 float-right" }, [
+                            _vm._v(_vm._s(rating.user.name))
+                          ]),
+                          _vm._v(" "),
+                          _c("star-rating", {
+                            staticClass: "float-left",
+                            attrs: {
+                              "read-only": "",
+                              rating: rating.rating,
+                              "star-size": 20
+                            }
+                          })
+                        ],
+                        1
+                      ),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "clearfix mb-2" }),
+                      _vm._v(" "),
+                      _c("p", [
+                        _vm._v(
+                          "\n                        " +
+                            _vm._s(rating.comment) +
+                            "\n                    "
+                        )
+                      ])
+                    ])
+                  ])
+                }),
+                0
+              )
+            : _c(
+                "jilsati-alert",
+                { staticClass: "text-center", attrs: { type: "warning" } },
+                [
+                  _vm._v(
+                    "\n            لا يوجد اي تقييمات لهذه الجلسة\n        "
+                  )
+                ]
+              )
+        ],
+        1
+      )
+    ],
+    1
+  )
+}
+var staticRenderFns = []
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-connections-Panel.vue?vue&type=template&id=2ce10174&":
 /*!****************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-connections-Panel.vue?vue&type=template&id=2ce10174& ***!
@@ -42322,12 +42770,12 @@ var render = function(_h, _vm) {
       _vm._v(" "),
       _vm._m(0),
       _vm._v(" "),
-      _c("div", { staticClass: "tab-content", attrs: { id: "myTabContent" } }, [
+      _c("div", { staticClass: "tab-content" }, [
         _c(
           "div",
           {
             staticClass:
-              "tab-pane fade show active text-justify text-muted card",
+              "tab-pane fade show active text-justify text-muted card rounded-0",
             attrs: {
               id: "description",
               role: "tabpanel",
@@ -58873,6 +59321,7 @@ Vue.component('JilsatiConnectionsPanel', __webpack_require__(/*! ./components/ji
 Vue.component('JilsatiPricesPanel', __webpack_require__(/*! ./components/jilsati-prices-Panel */ "./resources/js/components/jilsati-prices-Panel.vue")["default"]);
 Vue.component('JilsatiTimesPanel', __webpack_require__(/*! ./components/jilsati-times-Panel */ "./resources/js/components/jilsati-times-Panel.vue")["default"]);
 Vue.component('JilsatiActionPanel', __webpack_require__(/*! ./components/jilsati-action-panel */ "./resources/js/components/jilsati-action-panel.vue")["default"]);
+Vue.component('JilsatiCommentsPanel', __webpack_require__(/*! ./components/jilsati-comments-panel */ "./resources/js/components/jilsati-comments-panel.vue")["default"]);
 Vue.component('JilsatiLocationPanel', __webpack_require__(/*! ./components/jilsati-location-Panel */ "./resources/js/components/jilsati-location-Panel.vue")["default"]);
 Vue.component('JilsatiPropertiesPanel', __webpack_require__(/*! ./components/jilsati-properties-panel */ "./resources/js/components/jilsati-properties-panel.vue")["default"]);
 Vue.component('JilsatiCurrentPricePanel', __webpack_require__(/*! ./components/jilsati-current-price-panel */ "./resources/js/components/jilsati-current-price-panel.vue")["default"]);
@@ -59497,6 +59946,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_city_search_vue_vue_type_template_id_8f94d15c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_city_search_vue_vue_type_template_id_8f94d15c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-comments-panel.vue":
+/*!************************************************************!*\
+  !*** ./resources/js/components/jilsati-comments-panel.vue ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_comments_panel_vue_vue_type_template_id_71cffada___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-comments-panel.vue?vue&type=template&id=71cffada& */ "./resources/js/components/jilsati-comments-panel.vue?vue&type=template&id=71cffada&");
+/* harmony import */ var _jilsati_comments_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-comments-panel.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-comments-panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_comments_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_comments_panel_vue_vue_type_template_id_71cffada___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_comments_panel_vue_vue_type_template_id_71cffada___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-comments-panel.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-comments-panel.vue?vue&type=script&lang=js&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-comments-panel.vue?vue&type=script&lang=js& ***!
+  \*************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_comments_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-comments-panel.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-comments-panel.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_comments_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-comments-panel.vue?vue&type=template&id=71cffada&":
+/*!*******************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-comments-panel.vue?vue&type=template&id=71cffada& ***!
+  \*******************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_comments_panel_vue_vue_type_template_id_71cffada___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-comments-panel.vue?vue&type=template&id=71cffada& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-comments-panel.vue?vue&type=template&id=71cffada&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_comments_panel_vue_vue_type_template_id_71cffada___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_comments_panel_vue_vue_type_template_id_71cffada___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

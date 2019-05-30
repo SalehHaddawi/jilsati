@@ -48,6 +48,7 @@ Vue.component('JilsatiConnectionsPanel', require('./components/jilsati-connectio
 Vue.component('JilsatiPricesPanel', require('./components/jilsati-prices-Panel').default);
 Vue.component('JilsatiTimesPanel', require('./components/jilsati-times-Panel').default);
 Vue.component('JilsatiActionPanel', require('./components/jilsati-action-panel').default);
+Vue.component('JilsatiCommentsPanel', require('./components/jilsati-comments-panel').default);
 Vue.component('JilsatiLocationPanel', require('./components/jilsati-location-Panel').default);
 Vue.component('JilsatiPropertiesPanel', require('./components/jilsati-properties-panel').default);
 Vue.component('JilsatiCurrentPricePanel', require('./components/jilsati-current-price-panel').default);

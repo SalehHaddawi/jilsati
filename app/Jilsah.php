@@ -45,6 +45,10 @@ class Jilsah extends Model
         return $this->hasOne('App\JilsahSocials','jilsah_id','id');
     }
 
+    function ratings(){
+        return $this->hasMany('App\JilsahRating','jilsah_id','id');
+    }
+
     public static function create(\Illuminate\Http\Request $request){
         $jilsah = new Jilsah();
         $jilsah->user_id = auth()->id();

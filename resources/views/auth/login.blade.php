@@ -11,8 +11,8 @@
     <div class="container">
 
         @if(\Illuminate\Support\Facades\Session::has('login-error'))
-            <jilsati-alert type="warning">
-                لازم نكون مسجل عشان تشوف الصفحة
+            <jilsati-alert type="warning" class="text-center">
+                لازم تكون مسجل عشان تشوف الصفحة
             </jilsati-alert>
         @endif
 

@@ -8,6 +8,7 @@ use App\JilsahImages;
 use App\JilsahLocation;
 use App\JilsahOptions;
 use App\JilsahPrices;
+use App\JilsahRating;
 use App\JilsahSocials;
 use App\JilsahTypes;
 use Illuminate\Http\Request;
@@ -164,7 +165,7 @@ class JilsahController extends Controller
      */
     public function show(Jilsah $jilsah)
     {
-        $jilsah_show = Jilsah::with(['clientTypes','jilsahTypes','options','location','prices','images','socials'])
+        $jilsah_show = Jilsah::with(['clientTypes','jilsahTypes','options','location','prices','images','socials', 'ratings','ratings.user'])
             ->where('jilsahs.id','=',$jilsah->id)
             ->first();
 
@@ -215,5 +216,30 @@ class JilsahController extends Controller
         $cities = \App\City::orderBy('id','ASC')->get(['id','name']);
 
         return json_encode($cities);
+    }
+
+    public function saveComment(Request $request){
+        if($request->ajax()){
+
+            $jilsah_id = $request->get('jilsah_id');
+            $rating = $request->get('rating');
+            $comment = $request->get('comment');
+
+            $jilsahRating = null;
+
+            if($request->get('rating_id')) {
+                $jilsahRating = JilsahRating::where('id', '=', $request->get('rating_id'))->first();
+
+                $jilsahRating->rating = $rating;
+                $jilsahRating->comment = $comment;
+            }
+            else {
+                $jilsahRating = JilsahRating::create($jilsah_id, $rating, $comment);
+            }
+
+            $jilsahRating->save();
+
+            return ['success' => true, 'message' => 'تم حفظ التقييم', 'id' => $jilsahRating->id];
+        }
     }
 }

@@ -19,8 +19,8 @@
                     <a class="nav-link bg-white shadow-sm" id="location-tap" data-toggle="tab" href="#location" role="tab" aria-controls="location-tap" aria-selected="false">الموقع</a>
                 </li>
             </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active text-justify text-muted card" id="description" role="tabpanel" aria-labelledby="description-tap">
+            <div class="tab-content">
+                <div class="tab-pane fade show active text-justify text-muted card rounded-0" id="description" role="tabpanel" aria-labelledby="description-tap">
                    <div class="card-body shadow-sm">
                        {{props.description}}
                    </div>

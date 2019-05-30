@@ -8,7 +8,8 @@
     <div dir="rtl" class="container">
         <div class="mb-5 jumbotron rounded-0 shadow-sm bg-light row">
             @foreach($jilsahs as $jilsah)
-                <jilsati-card-show title="{{$jilsah->name}}"
+                <jilsati-card-show :jilsah-id="{{$jilsah->id}}"
+                                   title="{{$jilsah->name}}"
                                    description="{{$jilsah->description}}"
                                    city="{{$jilsah->location->city->name}}"
                                    address="{{$jilsah->location->address}}"

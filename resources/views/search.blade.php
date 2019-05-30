@@ -61,7 +61,7 @@
                                 :options="{{json_encode($jilsah->options->map->name)}}"
                                 :rating="5"
                                 price="20"
-                               price-per-jilsah="{{$jilsah->prices->price_per_jilsah}}">
+                                price-per-jilsah="{{$jilsah->prices->price_per_jilsah}}">
             </jilsati-card-show>
         @endforeach
     </div>

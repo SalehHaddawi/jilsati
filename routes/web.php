@@ -22,6 +22,7 @@ Route::get('/search','SearchController@index')->name('search');
 Route::resource('jilsahs','JilsahController');
 
 Route::post('/jilsahs/cities','JilsahController@getCities');
+Route::post('/jilsahs/comment','JilsahController@saveComment');
 
 Auth::routes();
 

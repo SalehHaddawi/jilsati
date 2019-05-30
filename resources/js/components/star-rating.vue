@@ -145,7 +145,15 @@ export default {
     },
     computed: {
         formattedRating() {
-            return (this.fixedPoints === null) ? this.currentRating : this.currentRating.toFixed(this.fixedPoints)
+            switch(parseInt(this.currentRating)){
+                case 1 : return  'سيئة';
+                case 2 : return  'مقبولة';
+                case 3 : return  'جيدة';
+                case 4 : return  'ممتازة';
+                case 5 : return  'جدا ممتازة';
+                default : return 'سيئة';
+            }
+            // return (this.fixedPoints === null) ? this.currentRating : this.currentRating.toFixed(this.fixedPoints)
         },
         shouldRound() {
             return this.ratingSelected || this.roundStartRating

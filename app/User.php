@@ -40,4 +40,8 @@ class User extends Authenticatable
     function jilsahs() {
         return $this->hasMany('App\Jilsah','user_id','id');
     }
+
+    function rating() {
+        return $this->hasMany('App\JilsahRating','user_id','id');
+    }
 }

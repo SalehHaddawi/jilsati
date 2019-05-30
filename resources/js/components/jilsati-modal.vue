@@ -23,9 +23,7 @@
                 required : true
             },
 
-            title : {
-                required:  true
-            },
+            title : '',
 
             notDismissible : {
                 type : Boolean

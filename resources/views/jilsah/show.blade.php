@@ -29,6 +29,12 @@
                     :times="{{$jilsah_show->times}}"
                     :location="{{$jilsah_show->location}}">
             </jilsati-jilsah-details-tabs>
+
+            <jilsati-comments-panel
+                    :ratings="{{$jilsah_show->ratings}}"
+                    :user="{{auth()->user()}}"
+                    :jilsah-id="{{$jilsah_show->id}}">
+            </jilsati-comments-panel>
         </div>
 
         <!---------- LEFT SIDE ----------->
@@ -51,9 +57,7 @@
                     time="{{$time}}">
             </jilsati-current-time-panel>
 
-            <jilsati-action-panel>
-
-            </jilsati-action-panel>
+            <jilsati-action-panel></jilsati-action-panel>
 
         </div>
     </div>
