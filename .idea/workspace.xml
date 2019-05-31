@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="863277c5-237f-4abb-b85c-41037fadc229" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/images/avatar.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/js/components/jilsati-comments-panel.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/JilsahController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/JilsahController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Jilsah.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Jilsah.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/css/custom.css" beforeDir="false" afterPath="$PROJECT_DIR$/public/css/custom.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-jilsah-details-tabs.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-jilsah-details-tabs.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-modal.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-modal.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/js/components/star-rating.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/star-rating.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/auth/login.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/auth/login.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/jilsah/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jilsah/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/components/jilsati-comments-panel.vue" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/components/jilsati-comments-panel.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/jilsah/show.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/jilsah/show.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/search.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/search.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -38,8 +23,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/views/jilsah/show.blade.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="28">
-              <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+            <state relative-caret-position="286">
+              <caret line="34" column="70" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="70" />
             </state>
           </provider>
         </entry>
@@ -47,8 +32,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-comments-panel.vue">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="358">
-              <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
+            <state relative-caret-position="443">
+              <caret line="160" column="61" selection-start-line="160" selection-start-column="61" selection-end-line="160" selection-end-column="61" />
+              <folding>
+                <element signature="n#jilsati-fieldset#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+                <element signature="e#3133#3181#0" />
+                <element signature="e#2528#2606#0" />
+                <element signature="e#2385#2440#0" />
+                <element signature="e#3468#3500#0" />
+                <element signature="e#3602#3690#0" />
+                <element signature="e#2600#2658#0" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -105,7 +99,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>models.description</find>
       <find>models.mainImage</find>
       <find>models.social.</find>
       <find>عن جلستي</find>
@@ -135,6 +128,7 @@
       <find>current-r</find>
       <find>mouse</find>
       <find>userId</find>
+      <find>jilsahId</find>
     </findStrings>
     <replaceStrings>
       <replace>istraha</replace>
@@ -457,12 +451,12 @@
       <workItem from="1559000920979" duration="4841000" />
       <workItem from="1559054075364" duration="26023000" />
       <workItem from="1559118271210" duration="2464000" />
-      <workItem from="1559212766984" duration="25432000" />
+      <workItem from="1559212766984" duration="28015000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="505540000" />
+    <option name="totallyTimeSpent" value="508123000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -1017,15 +1011,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/views/jilsah/show.blade.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="28">
-          <caret line="34" column="43" selection-start-line="34" selection-start-column="43" selection-end-line="34" selection-end-column="43" />
+        <state relative-caret-position="286">
+          <caret line="34" column="70" selection-start-line="34" selection-start-column="29" selection-end-line="34" selection-end-column="70" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/js/components/jilsati-comments-panel.vue">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="358">
-          <caret line="152" column="32" selection-start-line="152" selection-start-column="32" selection-end-line="152" selection-end-column="32" />
+        <state relative-caret-position="443">
+          <caret line="160" column="61" selection-start-line="160" selection-start-column="61" selection-end-line="160" selection-end-column="61" />
+          <folding>
+            <element signature="n#jilsati-fieldset#0;n#div#0;n#div#0;n#template#0;n#!!top" />
+            <element signature="e#3133#3181#0" />
+            <element signature="e#2528#2606#0" />
+            <element signature="e#2385#2440#0" />
+            <element signature="e#3468#3500#0" />
+            <element signature="e#3602#3690#0" />
+            <element signature="e#2600#2658#0" />
+          </folding>
         </state>
       </provider>
     </entry>

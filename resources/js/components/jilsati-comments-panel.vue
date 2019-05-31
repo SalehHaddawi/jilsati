@@ -1,6 +1,8 @@
 <template>
     <div class="card shadow-sm mb-3 rounded-0">
+
         <!---------- Modal ---------->
+
         <jilsati-modal id="comments-modal" :title="modalTitle">
             <div v-if="resultMessage === ''">
                 <div class="w-100 text-center mb-4">
@@ -27,9 +29,12 @@
         <div class="card-body">
             <div>
                 <p class="card-title mb-5 text-success h2 float-right">التقييمات</p>
-                <button @click="onAddComment" type="button" class="btn btn-success float-left">
-                    {{ratingButtonText}}
-                </button>
+                <div class="float-left text-center">
+                    <button @click="onAddRating" type="button" class="btn btn-success" :disabled="!user || userAwnsJilsah">
+                        {{ratingButtonText}}
+                    </button>
+                    <small v-if="!user || userAwnsJilsah" class="text-muted d-block">{{addRatingTip}}</small>
+                </div>
             </div>
             <div class="clearfix"></div>
 
@@ -72,14 +77,13 @@
 <script>
     export default {
         props : {
-            jilsahId : {
+            jilsah : {
                 required : true,
-                type : Number
+                Object : Number
             },
 
             user: {
                 required : true,
-                type : Object
             },
 
             ratings : {
@@ -115,19 +119,28 @@
 
             modalTitle : function () {
                 return this.userRating ? 'تعديل التقييم' : 'اضف تقييمك';
+            },
+
+            userAwnsJilsah : function () {
+                return this.user ? this.user.id === this.jilsah.user_id : false;
+            },
+
+            addRatingTip : function () {
+                return this.userAwnsJilsah ? 'انت منشئ الجلسة' : 'لازم تكون مسجل';
             }
         },
 
         methods : {
-            onAddComment : function() {
-                this.modal.modal('show');
+            onAddRating : function() {
+                if(this.user && !this.userAwnsJilsah)
+                    this.modal.modal('show');
             },
 
             submitRating : function () {
                 if(!this.ratingError){
                     let formData = new FormData();
 
-                    formData.append('jilsah_id',this.jilsahId);
+                    formData.append('jilsah_id',this.jilsah.id);
                     formData.append('rating',this.rating);
                     formData.append('comment',this.comment);
 
@@ -145,12 +158,12 @@
                                     id : res.data.id,
                                     user: {
                                         user_id: this.user.id,
-                                        name : this.user.id
+                                        name : this.user.name
                                     },
                                     rating: this.rating,
                                     comment: this.comment
                                 };
-                                
+
                                 this.ratingsArray.push(this.userRating);
                             }
 
@@ -176,7 +189,7 @@
 
             this.ratingsArray = this.ratings;
 
-            this.userRating = this.ratingsArray.find(rating => rating.user_id === this.user.id);
+            this.userRating = this.user ? this.ratingsArray.find(rating => rating.user_id === this.user.id) : undefined;
 
             if(this.userRating) {
                 this.rating = this.userRating.rating;

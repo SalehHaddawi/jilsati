@@ -2241,15 +2241,19 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
-    jilsahId: {
+    jilsah: {
       required: true,
-      type: Number
+      Object: Number
     },
     user: {
-      required: true,
-      type: Object
+      required: true
     },
     ratings: {
       type: Array,
@@ -2275,18 +2279,24 @@ __webpack_require__.r(__webpack_exports__);
     },
     modalTitle: function modalTitle() {
       return this.userRating ? 'تعديل التقييم' : 'اضف تقييمك';
+    },
+    userAwnsJilsah: function userAwnsJilsah() {
+      return this.user ? this.user.id === this.jilsah.user_id : false;
+    },
+    addRatingTip: function addRatingTip() {
+      return this.userAwnsJilsah ? 'انت منشئ الجلسة' : 'لازم تكون مسجل';
     }
   },
   methods: {
-    onAddComment: function onAddComment() {
-      this.modal.modal('show');
+    onAddRating: function onAddRating() {
+      if (this.user && !this.userAwnsJilsah) this.modal.modal('show');
     },
     submitRating: function submitRating() {
       var _this = this;
 
       if (!this.ratingError) {
         var formData = new FormData();
-        formData.append('jilsah_id', this.jilsahId);
+        formData.append('jilsah_id', this.jilsah.id);
         formData.append('rating', this.rating);
         formData.append('comment', this.comment);
 
@@ -2303,7 +2313,7 @@ __webpack_require__.r(__webpack_exports__);
               id: res.data.id,
               user: {
                 user_id: _this.user.id,
-                name: _this.user.id
+                name: _this.user.name
               },
               rating: _this.rating,
               comment: _this.comment
@@ -2331,9 +2341,9 @@ __webpack_require__.r(__webpack_exports__);
       vue.resultMessage = '';
     });
     this.ratingsArray = this.ratings;
-    this.userRating = this.ratingsArray.find(function (rating) {
+    this.userRating = this.user ? this.ratingsArray.find(function (rating) {
       return rating.user_id === _this2.user.id;
-    });
+    }) : undefined;
 
     if (this.userRating) {
       this.rating = this.userRating.rating;
@@ -42083,21 +42093,32 @@ var render = function() {
               [_vm._v("التقييمات")]
             ),
             _vm._v(" "),
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-success float-left",
-                attrs: { type: "button" },
-                on: { click: _vm.onAddComment }
-              },
-              [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(_vm.ratingButtonText) +
-                    "\n            "
-                )
-              ]
-            )
+            _c("div", { staticClass: "float-left text-center" }, [
+              _c(
+                "button",
+                {
+                  staticClass: "btn btn-success",
+                  attrs: {
+                    type: "button",
+                    disabled: !_vm.user || _vm.userAwnsJilsah
+                  },
+                  on: { click: _vm.onAddRating }
+                },
+                [
+                  _vm._v(
+                    "\n                    " +
+                      _vm._s(_vm.ratingButtonText) +
+                      "\n                "
+                  )
+                ]
+              ),
+              _vm._v(" "),
+              !_vm.user || _vm.userAwnsJilsah
+                ? _c("small", { staticClass: "text-muted d-block" }, [
+                    _vm._v(_vm._s(_vm.addRatingTip))
+                  ])
+                : _vm._e()
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "clearfix" }),
