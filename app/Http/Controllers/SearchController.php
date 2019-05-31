@@ -22,7 +22,7 @@ class SearchController extends Controller
 
         $cities = City::all();
 
-        $jilsahs = Jilsah::with(['clientTypes','jilsahTypes','options','location','location.city','prices'])
+        $jilsahs = Jilsah::with(['clientTypes','jilsahTypes','options','location','location.city','prices','ratings','ratingsAVGs','ratingsCount'])
             ->wherehas('location.city',function ($query){
                 $query->where('name', '=', Input::get('city'));
             })->get();

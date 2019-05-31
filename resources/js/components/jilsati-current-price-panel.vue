@@ -64,8 +64,6 @@
                     price = this.prices.ramadan;
                 }
 
-                console.log(price);
-
                 if(price === null || price === undefined)
                     return this.noPriceProvidedText;
                 else

@@ -49,6 +49,16 @@ class Jilsah extends Model
         return $this->hasMany('App\JilsahRating','jilsah_id','id');
     }
 
+    function ratingsAVGs(){
+        return $this->ratings()->selectRaw('jilsah_id, avg(rating) as ratingsAVG')
+            ->groupBy('jilsah_id');
+    }
+
+    function ratingsCount(){
+        return $this->ratings()->selectRaw('jilsah_id, count(rating) as count')
+            ->groupBy('jilsah_id');
+    }
+
     public static function create(\Illuminate\Http\Request $request){
         $jilsah = new Jilsah();
         $jilsah->user_id = auth()->id();

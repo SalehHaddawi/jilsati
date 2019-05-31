@@ -59,7 +59,8 @@
                                 :clients="{{json_encode($jilsah->clientTypes->map->name)}}"
                                 :types="{{json_encode($jilsah->jilsahTypes->map->name)}}"
                                 :options="{{json_encode($jilsah->options->map->name)}}"
-                                :rating="5"
+                                :rating="{{$jilsah->ratingsAVGs->first()?$jilsah->ratingsAVGs->first()->ratingsAVG : 0}}"
+                                :ratings-count="{{$jilsah->ratingsCount->first()?$jilsah->ratingsCount->first()->count:0}}"
                                 price="20"
                                 price-per-jilsah="{{$jilsah->prices->price_per_jilsah}}">
             </jilsati-card-show>

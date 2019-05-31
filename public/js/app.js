@@ -1950,10 +1950,10 @@ __webpack_require__.r(__webpack_exports__);
     clients: '',
     types: '',
     rating: '',
+    ratingsCount: 0,
     price: '',
     pricePerJilsah: '',
     jilsahId: '',
-    serverUrl: '',
 
     /***************/
     maxDescriptionLength: {
@@ -2170,6 +2170,9 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+//
+//
+//
 //
 //
 //
@@ -2476,7 +2479,6 @@ __webpack_require__.r(__webpack_exports__);
         price = this.prices.ramadan;
       }
 
-      console.log(price);
       if (price === null || price === undefined) return this.noPriceProvidedText;else return price + ' ر.س';
     }
   },
@@ -41537,7 +41539,7 @@ var render = function(_h, _vm) {
                     attrs: {
                       "read-only": "",
                       "show-rating": false,
-                      rating: _vm.props.rating,
+                      rating: parseInt(_vm.props.rating),
                       "star-size": 20
                     }
                   })
@@ -41545,7 +41547,11 @@ var render = function(_h, _vm) {
                 1
               ),
               _vm._v(" "),
-              _vm._m(0),
+              _c("p", { staticClass: "card-text" }, [
+                _c("small", { staticClass: "text-muted" }, [
+                  _vm._v(_vm._s(_vm.props.ratingsCount) + " تقييم")
+                ])
+              ]),
               _vm._v(" "),
               _c("div", { staticClass: "mt-2" }, [
                 _c("p", { staticClass: "text-success text-lg-right" }, [
@@ -41568,14 +41574,7 @@ var render = function(_h, _vm) {
     ])
   ])
 }
-var staticRenderFns = [
-  function(_h, _vm) {
-    var _c = _vm._c
-    return _c("p", { staticClass: "card-text" }, [
-      _c("small", { staticClass: "text-muted" }, [_vm._v("20 تقييم")])
-    ])
-  }
-]
+var staticRenderFns = []
 render._withStripped = true
 
 
@@ -42182,24 +42181,31 @@ var render = function() {
                     }),
                     _vm._v(" "),
                     _c("div", { staticClass: "media-body" }, [
-                      _c(
-                        "div",
-                        [
-                          _c("h5", { staticClass: "mt-0 mb-1 float-right" }, [
-                            _vm._v(_vm._s(rating.user.name))
-                          ]),
-                          _vm._v(" "),
-                          _c("star-rating", {
-                            staticClass: "float-left",
-                            attrs: {
-                              "read-only": "",
-                              rating: rating.rating,
-                              "star-size": 20
-                            }
-                          })
-                        ],
-                        1
-                      ),
+                      _c("div", [
+                        _c("h5", { staticClass: "mt-0 mb-1 float-right" }, [
+                          _vm._v(_vm._s(rating.user.name))
+                        ]),
+                        _vm._v(" "),
+                        _c(
+                          "div",
+                          { staticClass: "float-left text-center" },
+                          [
+                            _c("star-rating", {
+                              attrs: {
+                                "read-only": "",
+                                "show-rating": false,
+                                rating: rating.rating,
+                                "star-size": 20
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c("small", { staticClass: "text-muted" }, [
+                              _vm._v(_vm._s(rating.updated_at))
+                            ])
+                          ],
+                          1
+                        )
+                      ]),
                       _vm._v(" "),
                       _c("div", { staticClass: "clearfix mb-2" }),
                       _vm._v(" "),
@@ -43026,7 +43032,7 @@ var render = function(_h, _vm) {
         _vm.props.location.google_map_url
           ? _c("div", [
               _c("p", { staticClass: "card-subtitle mb-3 text-info mb-5 h6" }, [
-                _vm._v("اضغط علة الايقونة للانتقال الى موقع الجلسة في قوقل ماب")
+                _vm._v("اضغط على الايقونة للانتقال الى موقع الجلسة في قوقل ماب")
               ]),
               _vm._v(" "),
               _c(
@@ -59423,15 +59429,14 @@ if (token) {
 /*!**********************************************************!*\
   !*** ./resources/js/components/jilsati-action-panel.vue ***!
   \**********************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _jilsati_action_panel_vue_vue_type_template_id_39669c55___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-action-panel.vue?vue&type=template&id=39669c55& */ "./resources/js/components/jilsati-action-panel.vue?vue&type=template&id=39669c55&");
 /* harmony import */ var _jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-action-panel.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-action-panel.vue?vue&type=script&lang=js&");
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _jilsati_action_panel_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__[key]; }) }(__WEBPACK_IMPORT_KEY__));
-/* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
 
@@ -59461,7 +59466,7 @@ component.options.__file = "resources/js/components/jilsati-action-panel.vue"
 /*!***********************************************************************************!*\
   !*** ./resources/js/components/jilsati-action-panel.vue?vue&type=script&lang=js& ***!
   \***********************************************************************************/
-/*! no static exports found */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";

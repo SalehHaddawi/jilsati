@@ -42,11 +42,11 @@
 
                         <div class="col-4">
                             <div class="mt-2">
-                                <star-rating read-only :show-rating="false" :rating="props.rating" :star-size="20"></star-rating>
+                                <star-rating read-only :show-rating="false" :rating="parseInt(props.rating)" :star-size="20"></star-rating>
                             </div>
 
                             <p class="card-text">
-                                <small class="text-muted">20 تقييم</small>
+                                <small class="text-muted">{{props.ratingsCount}} تقييم</small>
                             </p>
 
                             <div class="mt-2">
@@ -81,13 +81,13 @@
 
             rating : '',
 
+            ratingsCount : 0,
+
             price : '',
 
             pricePerJilsah : '',
 
             jilsahId : '',
-
-            serverUrl : '',
 
             /***************/
 
@@ -101,6 +101,6 @@
             pricePerJilsahLabel : function () {
                 return parseInt(this.pricePerJilsah) ? 'للجلسة' : 'للشخص' ;
             }
-        }
+        },
     }
 </script>

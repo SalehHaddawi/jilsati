@@ -35,7 +35,7 @@ class JilsahController extends Controller
      */
     public function index()
     {
-        $jilsahs = Jilsah::with(['clientTypes','jilsahTypes','options','location','prices'])
+        $jilsahs = Jilsah::with(['clientTypes','jilsahTypes','options','location','location.city','prices','ratings','ratingsAVGs','ratingsCount'])
             ->where('jilsahs.user_id','=',\auth()->id())->get();
 
         return view('jilsah.index',compact('jilsahs'));

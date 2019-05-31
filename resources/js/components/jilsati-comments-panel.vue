@@ -57,7 +57,10 @@
                     <div class="media-body">
                         <div>
                             <h5 class="mt-0 mb-1 float-right">{{rating.user.name}}</h5>
-                            <star-rating read-only :rating="rating.rating" :star-size="20" class="float-left"></star-rating>
+                            <div class="float-left text-center">
+                                <star-rating read-only :show-rating="false" :rating="rating.rating" :star-size="20"></star-rating>
+                                <small class="text-muted">{{rating.updated_at}}</small>
+                            </div>
                         </div>
                         <div class="clearfix mb-2"></div>
                         <p>
