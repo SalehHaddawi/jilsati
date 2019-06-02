@@ -3150,6 +3150,46 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-pagination.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-pagination.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  props: {
+    pages: {
+      type: Number,
+      required: true
+    }
+  }
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-prices-Panel.vue?vue&type=script&lang=js&":
 /*!*******************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-prices-Panel.vue?vue&type=script&lang=js& ***!
@@ -41539,7 +41579,9 @@ var render = function(_h, _vm) {
                     attrs: {
                       "read-only": "",
                       "show-rating": false,
-                      rating: parseInt(_vm.props.rating),
+                      increment: 0.5,
+                      rating: _vm.props.rating,
+                      rtl: "",
                       "star-size": 20
                     }
                   })
@@ -42150,13 +42192,19 @@ var render = function() {
                       _vm._v(" "),
                       _c("div", { staticClass: "clearfix" }),
                       _vm._v(" "),
-                      _c("jilsati-alert", { attrs: { type: "secondary" } }, [
-                        _vm._v(
-                          "\n                    " +
-                            _vm._s(_vm.userRating.comment) +
-                            "\n                "
-                        )
-                      ])
+                      _vm.userRating.comment
+                        ? _c(
+                            "jilsati-alert",
+                            { attrs: { type: "secondary" } },
+                            [
+                              _vm._v(
+                                "\n                    " +
+                                  _vm._s(_vm.userRating.comment) +
+                                  "\n                "
+                              )
+                            ]
+                          )
+                        : _vm._e()
                     ],
                     1
                   )
@@ -43598,6 +43646,86 @@ var staticRenderFns = [
           attrs: { href: "/jilsahs/create" }
         },
         [_vm._v("اضف جلستك")]
+      )
+    ])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-pagination.vue?vue&type=template&id=8a27447c&":
+/*!*********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/jilsati-pagination.vue?vue&type=template&id=8a27447c& ***!
+  \*********************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _c(
+      "nav",
+      { staticClass: "m-auto", attrs: { "aria-label": "Page navigation" } },
+      [
+        _c(
+          "ul",
+          { staticClass: "pagination justify-content-center" },
+          [
+            _vm._m(0),
+            _vm._v(" "),
+            _vm._l(_vm.pages, function(page) {
+              return _c("li", { staticClass: "page-item shadow-sm" }, [
+                _c("a", { staticClass: "page-link", attrs: { href: "#" } }, [
+                  _vm._v(_vm._s(page))
+                ])
+              ])
+            }),
+            _vm._v(" "),
+            _vm._m(1)
+          ],
+          2
+        )
+      ]
+    )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "page-item shadow-sm" }, [
+      _c(
+        "a",
+        {
+          staticClass: "page-link",
+          attrs: { href: "#", "aria-label": "Previous" }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("«")])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("li", { staticClass: "page-item shadow-sm" }, [
+      _c(
+        "a",
+        {
+          staticClass: "page-link",
+          attrs: { href: "#", "aria-label": "Next" }
+        },
+        [_c("span", { attrs: { "aria-hidden": "true" } }, [_vm._v("»")])]
       )
     ])
   }
@@ -59355,6 +59483,7 @@ Vue.component('JilsatiCurrentPricePanel', __webpack_require__(/*! ./components/j
 Vue.component('JilsatiCurrentTimePanel', __webpack_require__(/*! ./components/jilsati-current-time-panel */ "./resources/js/components/jilsati-current-time-panel.vue")["default"]);
 Vue.component('JilsatiJilsahDetailsTabs', __webpack_require__(/*! ./components/jilsati-jilsah-details-tabs */ "./resources/js/components/jilsati-jilsah-details-tabs.vue")["default"]);
 Vue.component('JilsatiModal', __webpack_require__(/*! ./components/jilsati-modal */ "./resources/js/components/jilsati-modal.vue")["default"]);
+Vue.component('JilsatiPagination', __webpack_require__(/*! ./components/jilsati-pagination */ "./resources/js/components/jilsati-pagination.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -60869,6 +60998,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_navbar_vue_vue_type_template_id_ac3c4190___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_navbar_vue_vue_type_template_id_ac3c4190___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-pagination.vue":
+/*!********************************************************!*\
+  !*** ./resources/js/components/jilsati-pagination.vue ***!
+  \********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _jilsati_pagination_vue_vue_type_template_id_8a27447c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./jilsati-pagination.vue?vue&type=template&id=8a27447c& */ "./resources/js/components/jilsati-pagination.vue?vue&type=template&id=8a27447c&");
+/* harmony import */ var _jilsati_pagination_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./jilsati-pagination.vue?vue&type=script&lang=js& */ "./resources/js/components/jilsati-pagination.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _jilsati_pagination_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _jilsati_pagination_vue_vue_type_template_id_8a27447c___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _jilsati_pagination_vue_vue_type_template_id_8a27447c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/jilsati-pagination.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-pagination.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************!*\
+  !*** ./resources/js/components/jilsati-pagination.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_pagination_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib??ref--4-0!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-pagination.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-pagination.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_pagination_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/jilsati-pagination.vue?vue&type=template&id=8a27447c&":
+/*!***************************************************************************************!*\
+  !*** ./resources/js/components/jilsati-pagination.vue?vue&type=template&id=8a27447c& ***!
+  \***************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_pagination_vue_vue_type_template_id_8a27447c___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib??vue-loader-options!./jilsati-pagination.vue?vue&type=template&id=8a27447c& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/jilsati-pagination.vue?vue&type=template&id=8a27447c&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_pagination_vue_vue_type_template_id_8a27447c___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_jilsati_pagination_vue_vue_type_template_id_8a27447c___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

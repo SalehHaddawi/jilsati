@@ -42,7 +42,7 @@
 
                         <div class="col-4">
                             <div class="mt-2">
-                                <star-rating read-only :show-rating="false" :rating="parseInt(props.rating)" :star-size="20"></star-rating>
+                                <star-rating read-only :show-rating="false" :increment="0.5" :rating="props.rating" rtl :star-size="20"></star-rating>
                             </div>
 
                             <p class="card-text">

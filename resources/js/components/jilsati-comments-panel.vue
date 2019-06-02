@@ -45,7 +45,7 @@
                     </div>
                     <div class="clearfix"></div>
 
-                    <jilsati-alert type="secondary">
+                    <jilsati-alert v-if="userRating.comment" type="secondary">
                         {{userRating.comment}}
                     </jilsati-alert>
                 </div>
