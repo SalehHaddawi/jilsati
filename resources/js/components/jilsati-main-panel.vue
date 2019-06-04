@@ -9,7 +9,7 @@
         </div>
         <jilsati-carousel class="card-img-top"
                           name="images-carousel"
-                          :images="images">
+                          :images="allImages">
         </jilsati-carousel>
         <div class="card-body text-right">
         </div>
@@ -27,11 +27,27 @@
 
             addressDetails : '',
 
+            mainImage : '',
+
             images : {
-                type : Array
+                required : false
             },
 
             description : ''
-        }
+        },
+
+        computed : {
+            allImages : function () {
+                let arr = [];
+
+                arr.push(this.mainImage);
+
+                for (let i = 0; i < this.images.length;i++){
+                    arr.push(this.images[i]);
+                }
+
+                return arr;
+            }
+        },
     }
 </script>

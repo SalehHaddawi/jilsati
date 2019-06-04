@@ -2991,10 +2991,23 @@ __webpack_require__.r(__webpack_exports__);
     city: '',
     address: '',
     addressDetails: '',
+    mainImage: '',
     images: {
-      type: Array
+      required: false
     },
     description: ''
+  },
+  computed: {
+    allImages: function allImages() {
+      var arr = [];
+      arr.push(this.mainImage);
+
+      for (var i = 0; i < this.images.length; i++) {
+        arr.push(this.images[i]);
+      }
+
+      return arr;
+    }
   }
 });
 
@@ -41762,7 +41775,7 @@ var render = function(_h, _vm) {
             {
               key: index,
               staticClass: "carousel-item",
-              class: { active: index === 1 }
+              class: { active: index === 0 }
             },
             [
               _c("img", {
@@ -43153,7 +43166,7 @@ var render = function() {
       _vm._v(" "),
       _c("jilsati-carousel", {
         staticClass: "card-img-top",
-        attrs: { name: "images-carousel", images: _vm.images }
+        attrs: { name: "images-carousel", images: _vm.allImages }
       }),
       _vm._v(" "),
       _c("div", { staticClass: "card-body text-right" })

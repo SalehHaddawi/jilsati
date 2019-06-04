@@ -181,13 +181,9 @@ class JilsahController extends Controller
             ->where('jilsahs.id','=',$jilsah->id)
             ->first();
 
-        $all_images = $jilsah_show->images->map->src;
-
-        $all_images->prepend($jilsah_show->main_image);
-
         $time = date("m-d-Y");
 
-        return view('jilsah.show',compact('jilsah_show','all_images','time'));
+        return view('jilsah.show',compact('jilsah_show','time'));
     }
 
     /**

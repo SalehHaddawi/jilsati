@@ -17,7 +17,8 @@
                     city="{{$jilsah_show->location->city->name}}"
                     address="{{$jilsah_show->location->address}}"
                     address-details="{{$jilsah_show->location->address_details}}"
-                    :images="{{$all_images}}">
+                    main-image="{{$jilsah_show->main_image}}"
+                    :images="{{json_encode($jilsah_show->images->map->src)}}">
             </jilsati-main-panel>
 
             <jilsati-jilsah-details-tabs
