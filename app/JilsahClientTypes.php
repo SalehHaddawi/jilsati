@@ -9,7 +9,7 @@ class JilsahClientTypes extends Model
     protected $table = 'jilsah_client_types';
 
     protected $fillable = [
-      'name', 'jilsah_id'
+        'name'
     ];
 
     function jilsah(){

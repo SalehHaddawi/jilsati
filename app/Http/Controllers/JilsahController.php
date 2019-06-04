@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Jilsah;
 use App\JilsahClientTypes;
-use App\JilsahImages;
+use App\JilsahImage;
 use App\JilsahLocation;
 use App\JilsahOptions;
 use App\JilsahPrices;
@@ -85,51 +85,63 @@ class JilsahController extends Controller
                 $jilsah->save();
 
                 /**SAVE Jilsah Client Types TO DB**/
+
                 $clients = $request->get('clients');
                 for ($i = 0;$i < sizeof($clients);$i++){
-                    $jilsahClientTypes = JilsahClientTypes::create($clients[$i],$jilsah);
-
-                    $jilsahClientTypes->save();
+                    $jilsah->clientTypes()->create(['name' => $clients[$i]]);
                 }
 
                 /**SAVE Jilsah Types TO DB**/
+
                 $types = $request->get('types');
                 for ($i = 0;$i < sizeof($types);$i++){
-                    $jilsahTypes = JilsahTypes::create($types[$i], $jilsah);
-
-                    $jilsahTypes->save();
+                    $jilsah->jilsahTypes()->create(['name' => $types[$i]]);
                 }
 
                 /**SAVE Jilsah Options TO DB**/
+
                 $options = $request->get('options');
                 if($options) {
                     for ($i = 0; $i < sizeof($options); $i++) {
-                        $jilsahOptions = JilsahOptions::create($options[$i],$jilsah);
-
-                        $jilsahOptions->save();
+                        $jilsah->options()->create(['name' => $options[$i]]);
                     }
                 }
 
                 /**SAVE Jilsah location TO DB**/
                 $locationJSON = json_decode($request->get('location'),true);
 
-                $location = JilsahLocation::create($locationJSON,$jilsah);
-
-                $location->save();
+                $jilsah->location()->create([
+                    'city_id' => $locationJSON['cityId'],
+                    'address' => $locationJSON['address'],
+                    'address_details' => $locationJSON['addressDetails'],
+                    'google_map_url' => $locationJSON['googleMapUrl']
+                ]);
 
                 /**SAVE Jilsah Prices TO DB**/
+
                 $pricesJSON = json_decode($request->get('prices'),true);
 
-                $prices = JilsahPrices::create($pricesJSON,$jilsah);
-
-                $prices->save();
+                $jilsah->prices()->create([
+                    'price_per_jilsah' => $pricesJSON['pricePerJilsah'],
+                    'school_week' => $pricesJSON['schoolWeek'],
+                    'school_weekend' => $pricesJSON['schoolWeekend'],
+                    'vacation_week' => $pricesJSON['vacationWeek'],
+                    'vacation_weekend' => $pricesJSON['vacationWeekend'],
+                    'eid' => $pricesJSON['eid'],
+                    'ramadan' => $pricesJSON['ramadan']
+                ]);
 
                 /**SAVE Jilsah Socials TO DB**/
+
                 $socialsJSON = json_decode($request->get('socials'),true);
 
-                $socials = JilsahSocials::create($socialsJSON, $jilsah);
-
-                $socials->save();
+                $jilsah->socials()->create([
+                    'phone' => $socialsJSON['phone'],
+                    'instagram' => $socialsJSON['instagram'],
+                    'facebook' => $socialsJSON['facebook'],
+                    'twitter' => $socialsJSON['twitter'],
+                    'snapchat' => $socialsJSON['snapchat']
+                ]);
 
                 /**Every thing is OK :) save images**/
 
@@ -146,7 +158,7 @@ class JilsahController extends Controller
                 /**SAVE Jilsah Images TO DB**/
                 if($jilsah_images){
                     for ($i = 0;$i < sizeof($jilsah_images);$i++){
-                        $images = JilsahImages::createAndSave($jilsah_images[$i],$jilsah);
+                        $images = JilsahImage::createAndSave($jilsah_images[$i],$jilsah);
 
                         $images->save();
                     }

@@ -41,7 +41,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Jilsah','user_id','id');
     }
 
-    function rating() {
+    function ratings() {
         return $this->hasMany('App\JilsahRating','user_id','id');
     }
 }

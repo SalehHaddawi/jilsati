@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
-class JilsahImages extends Model
+class JilsahImage extends Model
 {
     protected $table = 'jilsahs_images';
 
@@ -18,7 +18,7 @@ class JilsahImages extends Model
     }
 
     public static function createAndSave($jilsahImage, Jilsah $jilsah){
-        $images = new JilsahImages();
+        $images = new JilsahImage();
         $images->jilsah_id = $jilsah->id;
         $images->src = Storage::disk('public')->putFile('jilsah-images',$jilsahImage);
 

@@ -38,7 +38,7 @@ class Jilsah extends Model
     }
 
     function images(){
-        return $this->hasMany('App\JilsahImages','jilsah_id','id');
+        return $this->hasMany('App\JilsahImage','jilsah_id','id');
     }
 
     function socials(){
