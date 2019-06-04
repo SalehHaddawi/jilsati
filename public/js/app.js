@@ -2616,7 +2616,7 @@ __webpack_require__.r(__webpack_exports__);
       } else if (this.currentPeriod.vacation.weekend) {
         time = this.times.vacationWeekend;
       } else if (this.currentPeriod.eid) {
-        return this.times.eidWeek;
+        time = this.times.eidWeek;
       } else {
         time = this.times.ramadanWeek;
       }
