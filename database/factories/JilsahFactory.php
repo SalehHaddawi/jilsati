@@ -19,7 +19,7 @@ $factory->define(Jilsah::class, function (Faker $faker) {
 
     return [
         'name' => $faker->title,
-        'description' => $faker->paragraph(mt_rand(3,6),true),
+        'description' => $faker->paragraph(mt_rand(8,12),true),
         'main_image' => 'jilsah-images/'.$filePath,
         'times' => '{"eidWeek": {"to": [{"hour": 23, "minute": 0}], "from": [{"hour": 8, "minute": 0}]}, "schoolWeek": {"to": [{"hour": 16, "minute": 0}, {"hour": 16, "minute": 30}, {"hour": 17, "minute": 0}, {"hour": 17, "minute": 30}, {"hour": 23, "minute": 0}], "from": [{"hour": 8, "minute": 0}, {"hour": 16, "minute": 0}, {"hour": 16, "minute": 30}, {"hour": 17, "minute": 0}, {"hour": 17, "minute": 30}]}, "ramadanWeek": {"to": [{"hour": 23, "minute": 0}], "from": [{"hour": 8, "minute": 0}]}, "vacationWeek": {"to": [{"hour": 23, "minute": 0}], "from": [{"hour": 8, "minute": 0}]}, "schoolWeekend": {"to": [{"hour": 23, "minute": 0}], "from": [{"hour": 8, "minute": 0}]}, "vacationWeekend": {"to": [{"hour": 23, "minute": 0}], "from": [{"hour": 8, "minute": 0}]}}',
     ];
