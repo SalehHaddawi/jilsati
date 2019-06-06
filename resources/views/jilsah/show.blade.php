@@ -33,7 +33,6 @@
 
             <jilsati-comments-panel
                     :ratings="{{$jilsah_show->ratings}}"
-                    :user="{{auth()->user()?auth()->user():'undefined'}}"
                     :jilsah="{{$jilsah_show}}">
             </jilsati-comments-panel>
         </div>

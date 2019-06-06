@@ -85,10 +85,6 @@
                 Object : Number
             },
 
-            user: {
-                required : true,
-            },
-
             ratings : {
                 type : Array,
                 required : true,
@@ -97,6 +93,10 @@
 
         data : function(){
             return {
+                user : undefined,
+
+                userRating : undefined,
+
                 resultMessage : '',
 
                 modal : undefined,
@@ -106,8 +106,6 @@
                 comment : '',
 
                 ratingsArray : [],
-
-                userRating : undefined,
             }
         },
 
@@ -181,13 +179,13 @@
         },
 
         mounted() {
+            this.user = this.$store.getters.user;
+
             this.modal = $('#comments-modal');
 
-            let vue = this;
-
-            this.modal.on('hidden.bs.modal', function () {
+            this.modal.on('hidden.bs.modal', () => {
                //vue.rating = 0;
-               vue.resultMessage = '';
+               this.resultMessage = '';
             });
 
             this.ratingsArray = this.ratings;

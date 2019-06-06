@@ -21,14 +21,8 @@
                     <!--<a v-if="user" class="nav-link" href="#" @click="logout()">مرحبا {{user.name}}<span v-if="active === 'login'" class="sr-only">(الحالية)</span></a>-->
                     <div v-if="user" class="nav-link dropdown">
                         <span v-if="active === 'login'" class="sr-only">(الحالية)</span>
-                        <!--
-                        <a id="popover" tabindex="0" class="text-reset" data-html="true" role="button" data-placement="bottom" data-toggle="popover" data-trigger="focus" style="text-decoration: none;cursor: pointer;"
-                           :data-content="popoverHtml">
-                            هلا {{user}}
-                        </a>
-                        -->
                         <a class="text-reset dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            هلا {{user}}
+                            هلا {{user.name}}
                         </a>
 
                         <div class="dropdown-menu text-center" aria-labelledby="dropdownMenuLink">
@@ -60,5 +54,12 @@
                 document.getElementById('logout-form').submit();
             }
         },
+
+        created() {
+            if(this.user)
+                this.$store.commit('setUser', this.user);
+            else
+                this.$store.commit('setUser', undefined);
+        }
     }
 </script>

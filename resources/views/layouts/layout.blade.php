@@ -29,7 +29,7 @@
 <div id="app">
 
     <jilsati-navbar
-            user="{{Auth::check() ? Auth::user()->name : ''}}"
+            :user="{{Auth::check() ? Auth::user() : 'undefined'}}"
             logo-src="{{asset('images/jilsati-logo.png')}}"
             token="{{csrf_token()}}"
             active="@yield('active')">

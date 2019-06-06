@@ -6,8 +6,7 @@
 
 window.Vue = require('vue');
 
-import VueTinyLazyloadImg from 'vue-tiny-lazyload-img'
-Vue.use(VueTinyLazyloadImg);
+import store from "./store"
 
 require('./bootstrap');
 
@@ -69,4 +68,5 @@ Vue.component('JilsatiPagination',require('./components/jilsati-pagination').def
 
 new Vue({
     el: '#app',
+    store
 });
