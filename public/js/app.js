@@ -2514,6 +2514,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_current_peroid_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/current-peroid-mixin */ "./resources/js/mixins/current-peroid-mixin.js");
 //
 //
 //
@@ -2527,7 +2528,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [_mixins_current_peroid_mixin__WEBPACK_IMPORTED_MODULE_0__["currentPeriodMixin"]],
   props: {
     prices: {
       type: Object,
@@ -2539,20 +2542,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      timePeriodText: '',
-      weekPeriodText: '',
-      currentPeriod: {
-        school: {
-          week: false,
-          weekend: false
-        },
-        vacation: {
-          week: false,
-          weekend: false
-        },
-        eid: false,
-        ramadan: false
-      },
       noPriceProvidedText: 'لم يحدد السعر'
     };
   },
@@ -2576,56 +2565,6 @@ __webpack_require__.r(__webpack_exports__);
 
       if (price === null || price === undefined) return this.noPriceProvidedText;else return price + ' ر.س';
     }
-  },
-  created: function created() {
-    moment.locale('ar-SA');
-    var m = moment(this.time, 'MM-DD-YYYY');
-    m.format('iYYYY/iM/iDهـ الموافق YYYY/M/Dم');
-    var hijriMonth = m.iMonth() + 1; // month start from 0
-
-    var weekDay = m.format('idddd'); // day name
-
-    var day = m.iDate(); // day number in month start from 1
-    // school
-
-    if (hijriMonth >= 0 && hijriMonth <= 8) {
-      this.timePeriodText = 'فترة الدراسة'; // schoolWeekend
-
-      if (weekDay === 'iFriday' || weekDay === 'iSaturday') {
-        this.currentPeriod.school.weekend = true;
-        this.weekPeriodText = 'نهاية الاسبوع';
-      } // schoolWeek
-      else {
-          this.currentPeriod.school.week = true;
-          this.weekPeriodText = 'ايام الاسبوع';
-        }
-    } else if (hijriMonth === 9) {
-      this.currentPeriod.ramadan = true;
-      this.timePeriodText = 'فترة رمضان';
-      this.weekPeriodText = 'خلال الاسبوع';
-    } // eid fitr
-    else if (hijriMonth === 10 && day >= 1 && day <= 10) {
-        this.currentPeriod.eid = true;
-        this.timePeriodText = 'فترة الاعياد';
-        this.weekPeriodText = 'خلال الاسبوع';
-      } // eid adha
-      else if (hijriMonth === 12 && day >= 10 && day <= 20) {
-          this.currentPeriod.eid = true;
-          this.timePeriodText = 'فترة الاعياد';
-          this.weekPeriodText = 'خلال الاسبوع';
-        } // vacation
-        else {
-            this.timePeriodText = 'فترة الاجازة'; // vacationWeekend
-
-            if (weekDay === 'iFriday' || weekDay === 'iSaturday') {
-              this.currentPeriod.vacation.weekend = true;
-              this.weekPeriodText = 'نهاية الاسبوع';
-            } // vacationWeek
-            else {
-                this.currentPeriod.vacation.week = true;
-                this.weekPeriodText = 'ايام الاسبوع';
-              }
-          }
   }
 });
 
@@ -2640,6 +2579,7 @@ __webpack_require__.r(__webpack_exports__);
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _mixins_current_peroid_mixin__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../mixins/current-peroid-mixin */ "./resources/js/mixins/current-peroid-mixin.js");
 //
 //
 //
@@ -2662,7 +2602,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 /* harmony default export */ __webpack_exports__["default"] = ({
+  mixins: [_mixins_current_peroid_mixin__WEBPACK_IMPORTED_MODULE_0__["currentPeriodMixin"]],
   props: {
     times: {
       type: Object,
@@ -2674,20 +2616,6 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      timePeriodText: '',
-      weekPeriodText: '',
-      currentPeriod: {
-        school: {
-          week: false,
-          weekend: false
-        },
-        vacation: {
-          week: false,
-          weekend: false
-        },
-        eid: false,
-        ramadan: false
-      },
       noTimeProvidedText: 'لم يحدد الوقت'
     };
   },
@@ -2719,56 +2647,6 @@ __webpack_require__.r(__webpack_exports__);
       if (!time.from) return this.noTimeProvidedText;
       return time;
     }
-  },
-  created: function created() {
-    moment.locale('ar-SA');
-    var m = moment();
-    m.format('iYYYY/iM/iDهـ الموافق YYYY/M/Dم');
-    var hijriMonth = m.iMonth() + 1; // month start from 0
-
-    var weekDay = m.format('idddd'); // day name
-
-    var day = m.iDate(); // day number in month start from 1
-    // school
-
-    if (hijriMonth >= 0 && hijriMonth <= 8) {
-      this.timePeriodText = 'فترة الدراسة'; // schoolWeekend
-
-      if (weekDay === 'iFriday' || weekDay === 'iSaturday') {
-        this.currentPeriod.school.weekend = true;
-        this.weekPeriodText = 'نهاية الاسبوع';
-      } // schoolWeek
-      else {
-          this.currentPeriod.school.week = true;
-          this.weekPeriodText = 'ايام الاسبوع';
-        }
-    } else if (hijriMonth === 9) {
-      this.currentPeriod.ramadan = true;
-      this.timePeriodText = 'فترة رمضان';
-      this.weekPeriodText = 'خلال الاسبوع';
-    } // eid fitr
-    else if (hijriMonth === 10 && day >= 1 && day <= 10) {
-        this.currentPeriod.eid = true;
-        this.timePeriodText = 'فترة الاعياد';
-        this.weekPeriodText = 'خلال الاسبوع';
-      } // eid adha
-      else if (hijriMonth === 12 && day >= 10 && day <= 20) {
-          this.currentPeriod.eid = true;
-          this.timePeriodText = 'فترة الاعياد';
-          this.weekPeriodText = 'خلال الاسبوع';
-        } // vacation
-        else {
-            this.timePeriodText = 'فترة الاجازة'; // vacationWeekend
-
-            if (weekDay === 'iFriday' || weekDay === 'iSaturday') {
-              this.currentPeriod.vacation.weekend = true;
-              this.weekPeriodText = 'نهاية الاسبوع';
-            } // vacationWeek
-            else {
-                this.currentPeriod.vacation.week = true;
-                this.weekPeriodText = 'ايام الاسبوع';
-              }
-          }
   }
 });
 
@@ -63022,6 +62900,89 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_star_vue_vue_type_template_id_2398bfc6_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
+
+/***/ }),
+
+/***/ "./resources/js/mixins/current-peroid-mixin.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/mixins/current-peroid-mixin.js ***!
+  \*****************************************************/
+/*! exports provided: currentPeriodMixin */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "currentPeriodMixin", function() { return currentPeriodMixin; });
+var currentPeriodMixin = {
+  data: function data() {
+    return {
+      timePeriodText: '',
+      weekPeriodText: '',
+      currentPeriod: {
+        school: {
+          week: false,
+          weekend: false
+        },
+        vacation: {
+          week: false,
+          weekend: false
+        },
+        eid: false,
+        ramadan: false
+      }
+    };
+  },
+  created: function created() {
+    moment.locale('ar-SA');
+    var m = moment();
+    m.format('iYYYY/iM/iDهـ الموافق YYYY/M/Dم');
+    var hijriMonth = m.iMonth() + 1; // month start from 0
+
+    var weekDay = m.format('idddd'); // day name
+
+    var day = m.iDate(); // day number in month start from 1
+    // school
+
+    if (hijriMonth >= 0 && hijriMonth <= 8) {
+      this.timePeriodText = 'فترة الدراسة'; // schoolWeekend
+
+      if (weekDay === 'iFriday' || weekDay === 'iSaturday') {
+        this.currentPeriod.school.weekend = true;
+        this.weekPeriodText = 'نهاية الاسبوع';
+      } // schoolWeek
+      else {
+          this.currentPeriod.school.week = true;
+          this.weekPeriodText = 'ايام الاسبوع';
+        }
+    } else if (hijriMonth === 9) {
+      this.currentPeriod.ramadan = true;
+      this.timePeriodText = 'فترة رمضان';
+      this.weekPeriodText = 'خلال الاسبوع';
+    } // eid fitr
+    else if (hijriMonth === 10 && day >= 1 && day <= 10) {
+        this.currentPeriod.eid = true;
+        this.timePeriodText = 'فترة الاعياد';
+        this.weekPeriodText = 'خلال الاسبوع';
+      } // eid adha
+      else if (hijriMonth === 12 && day >= 10 && day <= 20) {
+          this.currentPeriod.eid = true;
+          this.timePeriodText = 'فترة الاعياد';
+          this.weekPeriodText = 'خلال الاسبوع';
+        } // vacation
+        else {
+            this.timePeriodText = 'فترة الاجازة'; // vacationWeekend
+
+            if (weekDay === 'iFriday' || weekDay === 'iSaturday') {
+              this.currentPeriod.vacation.weekend = true;
+              this.weekPeriodText = 'نهاية الاسبوع';
+            } // vacationWeek
+            else {
+                this.currentPeriod.vacation.week = true;
+                this.weekPeriodText = 'ايام الاسبوع';
+              }
+          }
+  }
+};
 
 /***/ }),
 
