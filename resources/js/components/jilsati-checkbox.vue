@@ -18,6 +18,8 @@
                 type : String
             },
 
+            val : '',
+
             checked : {
                 required: false,
 
@@ -46,10 +48,10 @@
 
         methods : {
             onChange : function () {
-                if(this.value.includes(this.name)){
-                    this.value.splice(this.value.indexOf(this.name), 1)
+                if(this.value.includes(this.val? this.val:this.name)){
+                    this.value.splice(this.value.indexOf(this.val? this.val:this.name), 1)
                 } else {
-                    this.value.push(this.name)
+                    this.value.push(this.val? this.val:this.name)
                 }
             },
 

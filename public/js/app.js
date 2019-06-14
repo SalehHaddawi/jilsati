@@ -2170,6 +2170,7 @@ __webpack_require__.r(__webpack_exports__);
       required: true,
       type: String
     },
+    val: '',
     checked: {
       required: false,
       type: Boolean
@@ -2190,10 +2191,10 @@ __webpack_require__.r(__webpack_exports__);
   },
   methods: {
     onChange: function onChange() {
-      if (this.value.includes(this.name)) {
-        this.value.splice(this.value.indexOf(this.name), 1);
+      if (this.value.includes(this.val ? this.val : this.name)) {
+        this.value.splice(this.value.indexOf(this.val ? this.val : this.name), 1);
       } else {
-        this.value.push(this.name);
+        this.value.push(this.val ? this.val : this.name);
       }
     },
     onChangeNotArray: function onChangeNotArray(event) {
@@ -42602,7 +42603,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["families"],
+            checked: _vm.properties["families"] === "on",
             name: "families"
           }
         },
@@ -42614,7 +42615,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["guys"],
+            checked: _vm.properties["guys"] === "on",
             name: "guys"
           }
         },
@@ -42638,7 +42639,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["women-pool"],
+            checked: _vm.properties["women-pool"] === "on",
             name: "women-pool"
           }
         },
@@ -42650,7 +42651,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["kids-pool"],
+            checked: _vm.properties["kids-pool"] === "on",
             name: "kids-pool"
           }
         },
@@ -42662,7 +42663,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["playground"],
+            checked: _vm.properties["playground"] === "on",
             name: "playground"
           }
         },
@@ -42674,7 +42675,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["women-section"],
+            checked: _vm.properties["women-section"] === "on",
             name: "women-section"
           }
         },
@@ -42686,7 +42687,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["tv"],
+            checked: _vm.properties["tv"] === "on",
             name: "tv"
           }
         },
@@ -42698,7 +42699,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["wifi"],
+            checked: _vm.properties["wifi"] === "on",
             name: "wifi"
           }
         },
@@ -42710,7 +42711,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["garden"],
+            checked: _vm.properties["garden"] === "on",
             name: "garden"
           }
         },
@@ -42722,7 +42723,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["air-condition"],
+            checked: _vm.properties["air-condition"] === "on",
             name: "air-condition"
           }
         },
@@ -42734,7 +42735,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["celebrations"],
+            checked: _vm.properties["celebrations"] === "on",
             name: "celebrations"
           }
         },
@@ -42746,7 +42747,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["jacuzzi"],
+            checked: _vm.properties["jacuzzi"] === "on",
             name: "jacuzzi"
           }
         },
@@ -42758,7 +42759,7 @@ var render = function() {
         {
           attrs: {
             postfix: _vm.idPostfix,
-            checked: _vm.properties["kitchen"],
+            checked: _vm.properties["kitchen"] === "on",
             name: "kitchen"
           }
         },
@@ -43367,7 +43368,7 @@ var render = function() {
     "nav",
     {
       staticClass:
-        "navbar navbar-expand-lg navbar-light bg-light shadow-sm fonts p-3 mb-3"
+        "navbar navbar-expand-lg navbar-light bg-light shadow-sm fonts px-3 mb-3"
     },
     [
       _vm._m(0),
@@ -43377,7 +43378,7 @@ var render = function() {
         { staticClass: "navbar-brand text-lg-center", attrs: { href: "/" } },
         [
           _c("img", {
-            attrs: { src: _vm.logoSrc, alt: "jilsati-logo", height: "60" }
+            attrs: { src: _vm.logoSrc, alt: "jilsati-logo", height: "50" }
           })
         ]
       ),
@@ -62959,12 +62960,12 @@ var currentPeriodMixin = {
       this.timePeriodText = 'فترة رمضان';
       this.weekPeriodText = 'خلال الاسبوع';
     } // eid fitr
-    else if (hijriMonth === 10 && day >= 1 && day <= 10) {
+    else if (hijriMonth === 10 && day >= 1 && day <= 6) {
         this.currentPeriod.eid = true;
         this.timePeriodText = 'فترة الاعياد';
         this.weekPeriodText = 'خلال الاسبوع';
       } // eid adha
-      else if (hijriMonth === 12 && day >= 10 && day <= 20) {
+      else if (hijriMonth === 12 && day >= 10 && day <= 16) {
           this.currentPeriod.eid = true;
           this.timePeriodText = 'فترة الاعياد';
           this.weekPeriodText = 'خلال الاسبوع';

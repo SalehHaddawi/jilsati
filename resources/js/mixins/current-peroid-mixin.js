@@ -49,14 +49,14 @@ export const currentPeriodMixin = {
             this.weekPeriodText = 'خلال الاسبوع';
         }
         // eid fitr
-        else if(hijriMonth === 10 && day >= 1 && day <= 10){
+        else if(hijriMonth === 10 && day >= 1 && day <= 6){
             this.currentPeriod.eid = true;
 
             this.timePeriodText = 'فترة الاعياد';
             this.weekPeriodText = 'خلال الاسبوع';
         }
         // eid adha
-        else if(hijriMonth === 12 && day >= 10 && day <= 20){
+        else if(hijriMonth === 12 && day >= 10 && day <= 16){
             this.currentPeriod.eid = true;
 
             this.timePeriodText = 'فترة الاعياد';
