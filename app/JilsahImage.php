@@ -2,11 +2,15 @@
 
 namespace App;
 
+use App\Traits\RevisionableTrait;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
 
 class JilsahImage extends Model
 {
+
+    use RevisionableTrait;
+
     protected $table = 'jilsahs_images';
 
     protected $fillable = [

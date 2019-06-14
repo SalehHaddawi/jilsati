@@ -48,6 +48,8 @@ class JilsahController extends Controller
      */
     public function create()
     {
+        \App\Revision::create('user opened add jilsah page');
+
         return view('jilsah.create');
     }
 
@@ -165,7 +167,7 @@ class JilsahController extends Controller
                 }
             });
 
-            return $request->all();
+            return response($request->all(), 200);
         }
     }
 

@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 Route::get('/','IndexController@index');
 
 Route::get('/search','SearchController@index')->name('search');
+Route::get('/about','AboutController@index')->name('about');
+Route::get('/test','AboutController@test')->name('test');
 
 Route::resource('jilsahs','JilsahController');
 
