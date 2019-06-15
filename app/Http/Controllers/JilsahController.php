@@ -48,7 +48,7 @@ class JilsahController extends Controller
      */
     public function create()
     {
-        \App\Revision::create('user opened add jilsah page');
+        \App\Revision::createNonModel('login');
 
         return view('jilsah.create');
     }

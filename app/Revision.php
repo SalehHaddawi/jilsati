@@ -6,10 +6,18 @@ use Illuminate\Database\Eloquent\Model;
 
 class Revision extends Model
 {
-    public $table = 'revisions';
+    protected $fillable = [
+        'revisionable_type',
+        'revisionable_id',
+        'key',
+        'old_value',
+        'new_value',
+        'user_id',
+    ];
 
-    public static function create($key){
-        $revision = new \App\Revision();
+    public static function createNonModel($key)
+    {
+        $revision = new Revision();
 
         $revision->revisionable_type = 'NONE';
         $revision->revisionable_id = -1;

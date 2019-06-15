@@ -12,9 +12,6 @@ class Jilsah extends Model
 
     use RevisionableTrait;
 
-    protected $revisionEnabled = true;
-    protected $revisionCreationsEnabled = true;
-
     protected $table = 'jilsahs';
 
     protected $fillable = [
