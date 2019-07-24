@@ -9,7 +9,17 @@
     <title>@yield('title')</title>
 
     <!-- Fonts -->
-    <link href="https://fonts.googleapis.com/css?family=Cairo" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: "Cairo";
+            src: url('{{asset('fonts/Cairo/Cairo-Bold.ttf')}}');
+            src: url('{{asset('fonts/Cairo/Cairo-Black.ttf')}}');
+            src: url('{{asset('fonts/Cairo/Cairo-Regular.ttf')}}');
+            src: url('{{asset('fonts/Cairo/Cairo-Light.ttf')}}');
+            src: url('{{asset('fonts/Cairo/Cairo-ExtraLight.ttf')}}');
+            src: url('{{asset('fonts/Cairo/Cairo-SemiBold.ttf')}}');
+        }
+    </style>
 
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
@@ -19,14 +29,15 @@
 
     <style>
         .fonts{
-            font-family: "Cairo","Open Sans",Nunito, sans-serif;
+            font-family: 'Cairo', 'sans-serif' !important;
+            font-weight: bold !important;
         }
     </style>
 </head>
 
-<body class="fonts">
+<body>
 
-<div id="app">
+<div id="app" class="fonts">
 
     <jilsati-navbar
             :user="{{Auth::check() ? Auth::user() : 'undefined'}}"
